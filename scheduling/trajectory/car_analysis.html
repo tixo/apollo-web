@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>警情分析</title>
+    <link href="../dist/css/zui.css?v=1.8" rel="stylesheet">
+    <link href="../dist/css/case.css" rel="stylesheet">
+    <link rel="stylesheet" href="../dist/plugins/iview/iview.css">
+
+    <!--[if lt IE 9]>
+    <script src="dist/lib/ieonly/html5shiv.js"></script>
+    <script src="dist/lib/ieonly/respond.js"></script>
+    <script src="dist/lib/ieonly/excanvas.js"></script>
+  <![endif]-->
+    <style>
+        /* container */
+
+        #econtainer {
+            position: relative;
+            margin: 0 auto 25px;
+            padding-bottom: 10px;
+
+        }
+
+
+
+        .grid {
+            width: 100px;
+            padding: 5px;
+            background: #fff;
+            margin: 8px;
+            font-size: 12px;
+            float: left;
+            box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+            -moz-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+            -webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+
+            -webkit-transition: top 1s ease, left 1s ease;
+            -moz-transition: top 1s ease, left 1s ease;
+            -o-transition: top 1s ease, left 1s ease;
+            -ms-transition: top 1s ease, left 1s ease;
+        }
+
+        .border {
+            box-shadow: 2px 2px 3px rgba(34, 25, 25, 0.4);
+            -moz-box-shadow: 2px 2px 3px rgba(34, 25, 25, 0.4);
+            -webkit-box-shadow: 2px 2px 3px rgba(34, 25, 25, 0.4);
+            cursor: pointer;
+        }
+
+
+        .grid .closeimg {
+            position: relative;
+            top: -25px;
+            right: -16px;
+            width: 20px;
+            height: 20px;
+            float: right;
+        }
+
+        .grid .imgholder {
+            width: 100%;
+            background: #ccc;
+            display: block;
+            margin-top: 0px;
+        }
+
+        .img {
+            margin-top: -35px;
+            height: 81px;
+        }
+
+        .rectangle {
+            width: 90px;
+            height: 20px;
+            text-align: center;
+            font-weight: normal;
+            font-style: normal;
+            z-index: 9;
+            opacity: 1;
+            background: #3280fc;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="panel">
+            <div class="panel-heading-top-blue">
+                <span style="color:#3280fc;">车辆轨迹分析</span>
+
+            </div>
+            <div class="panel-body">
+                <div class="row panel-group" id="tableView">
+                    <div class="panel-heading-top-blue panel">
+                        <span>
+                            <i class="icon icon-group"></i>&nbsp;
+                            <small>目标车牌</small>
+                        </span>
+                    </div>
+                    <div class="panel-body panel" id="targetList">
+                        <div class="grid border econtainer">
+                            <div class="closeimg">
+                                <i class="icon icon-eye-open" style="color:#3280fc;"></i>
+                            </div>
+                            <div class="imgholder">
+                                <div class="rectangle">
+                                    <span>陕A 5M989</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid border econtainer">
+                            <div class="closeimg">
+                                <i class="icon icon-eye-open" style="color:#3280fc;"></i>
+                            </div>
+                            <div class="imgholder">
+                                <div class="rectangle">
+                                    <span>陕A 5M989</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-heading-top-blue panel">
+                        <span>
+                            <i class="icon icon-map-marker"></i>&nbsp;
+                            <small>地图展示</small>
+                        </span>
+                    </div>
+                    <div class="panel-body panel" id="imageList">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- jQuery (ZUI中的Javascript组件依赖于jQuery) -->
+        <script src="../assets/jquery.js?v=1.8"></script>
+        <!-- ZUI Javascript组件 -->
+        <script src="../dist/js/zui.min.js?v=1.8"></script>
+        <script src="../dist/plugins/vue/vue.min.js"></script>
+        <script src="../dist/plugins/iview/iview.min.js"></script>
+        <script src="../dist/plugins/axios/axios.min.js"></script>
+        <script src="../dist/plugins/seajs/sea.js"></script>
+        <script src="../dist/plugins/seajs/seajs-text.js"></script>
+        <script src="../dist/plugins/seajs/handlebars-1.0.0.beta.6.js"></script>
+        <script type="text/javascript">
+            seajs.config({
+                base: "../dist/",
+                alias: {
+                    "utilityForm": "utility/form.js"
+                },
+                vars: {
+                    requestFrontUrl: 'http://127.0.0.1/apollo-front/',
+                }
+            });
+            seajs.use('./car.js');
+        </script>
+</body>
+
+</html>

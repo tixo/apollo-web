@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>菜单管理</title>
+    <link href="../dist/css/zui.css?v=1.8" rel="stylesheet">
+    <link href="../dist/css/case.css" rel="stylesheet">
+    <link href="../dist/lib/uploader/zui.uploader.min.css" rel="stylesheet">
+    <link href="../dist/lib/chosen/chosen.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="dist/lib/ieonly/html5shiv.js"></script>
+    <script src="dist/lib/ieonly/respond.js"></script>
+    <script src="dist/lib/ieonly/excanvas.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="panel">
+            <div class="panel-heading-top-blue">
+                <span style="color:#3280fc;">菜单信息</span>
+                <div class="pull-right panel-actions">
+                    <a id="pageClose" class="">
+                        <i class="icon icon-times"></i>关闭
+                    </a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="menuForm">
+                    <div class="form-group">
+                        <label for="parentId" class="col-sm-2">上级菜单</label>
+                        <div class="col-sm-2">                           
+                                <select data-placeholder="请选择菜单" class="chosen-select form-control" name='parentId' id="menu" tabindex="2" >
+                                    <option value=""></option>
+                                </select>                            
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="type" class="col-sm-2 required">类型</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="type" name="type">
+                                <option value="0">栏目</option>
+                                <option value="1">按钮</option>
+                            </select>
+                        </div>
+                        <label for="sort" class="col-sm-2 required">菜单顺序</label>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="sort" name="sort" placeholder="菜单顺序">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 required">名称</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="名称">
+                        </div>
+                        <label for="resKey" class="col-sm-2 required">菜单标识</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="resKey" name="resKey" placeholder="菜单标识" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                            <label for="icon" class="col-sm-2">图标</label>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="icon" name="icon" placeholder="图标">
+                            </div>
+                        
+                        <label for="method" class="col-sm-2">请求方法</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="method" name="method" placeholder="请求方法">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="url" class="col-sm-2">菜单URL</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="url" name="url" placeholder="菜单URL">
+                        </div>
+                        <label for="isFrontShow" class="col-sm-2">是否前端显示</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="isFrontShow" name="isFrontShow">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2">备注</label>
+                        <div class="col-md-6 col-sm-10">
+                            <textarea class="form-control" rows="3" id="remark" name="remark" placeholder="可以输入多行文本"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" id="save" name="save" class="btn btn-primary">提交</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <!-- jQuery (ZUI中的Javascript组件依赖于jQuery) -->
+        <script src="../assets/jquery.js?v=1.8"></script>
+        <!-- ZUI Javascript组件 -->
+        <script src="../dist/js/zui.min.js?v=1.8"></script>
+        <script src="../dist/lib/uploader/zui.uploader.min.js"></script>
+        <script src="../dist/plugins/axios/axios.min.js"></script>
+        <script src="../dist/plugins/seajs/sea.js"></script>
+        <script src="../dist/plugins/seajs/seajs-text.js"></script>
+        <script src="../dist/lib/chosen/chosen.min.js"></script>
+        <script src="../dist/plugins/seajs/handlebars-1.0.0.beta.6.js"></script>
+        <script type="text/javascript">
+            seajs.config({
+                base: "../dist/",
+                alias: {
+                    "utilityForm": "utility/form.js",
+                    "validate": "plugins/jquery-validate/jquery.validate.min.js",
+                    "validation": "plugins/jquery-validate/additional-methods.js",
+                    "localization": "plugins/jquery-validate/localization/messages_zh.min.js"
+                },
+                vars: {
+                    imageUrl: 'http://180.76.135.26/apollo/upload/',
+                    api: 'http://127.0.0.1:8021',
+                    requestFrontUrl: 'http://127.0.0.1/apollo-front/',
+                }
+            });
+
+            if (0 == $.trim(window.location.search).length) {
+                seajs.use('./add.js');
+            } else {
+                seajs.use('./edit.js');
+            }
+        </script>
+</body>
+
+</html>

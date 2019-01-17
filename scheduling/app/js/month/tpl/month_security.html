@@ -1,0 +1,70 @@
+<div class="row">
+    <div>
+        <h2>一、治安月警情综述 </h2>
+    </div>
+    <div contenteditable="true" id="securityAffairsText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                    <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                            治安类案件{{securityAffairs.period.security}}起，比上月{{securityAffairs.relative.security}}起{{securityAffairs.percent.security}}；
+                            调解纠纷与救助{{securityAffairs.period.help}}起，比上月{{securityAffairs.relative.help}}起{{securityAffairs.percent.help}}。            
+                    </span>            
+            </span>
+        </p>    
+    </div>
+    <div class="col-md-10">
+        <div id="securityAffairs" style="height:400px;"></div>
+    </div>
+</div>
+<div class="row">
+    <div>
+        <h2>二、月案件信息</h2>
+    </div>
+    <div class="col-md-10">
+            <div style="width:800px;">
+                <table class="table">
+                    <thead>
+                        <tr class="datatable-row datatable-row-left text-center">
+                            <th>案件类型</th>
+                            <th>办案单位</th>
+                            <th>简要案情</th>                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {{#each case}}  
+                            <tr>                                                                 
+                                <td class="datatable-cell">{{categoryName}}</td>
+                                <td class="datatable-cell">{{disposeName}}</td>
+                                <td class="datatable-cell">{{detail}}</td>                                     
+                            </tr>
+                            {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</div>
+
+<div class="row">
+    <div>
+        <h2>三、治安月警情分析</h2>
+    </div>
+    <div contenteditable="true" id="caseAnalysisText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                本月治安类案件比上月{{securityAffairs.comparsionText}}。                      
+            </span>
+        </p>    
+    </div>
+</div>
+<div class="row">
+    <div>
+        <h2>四、预警提示</h2>
+    </div>
+    <div contenteditable="true" id="warningTips">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                请治安巡逻队继续加强对辖区主要街道、易发案路段的巡逻频次，提高见警率，有效遏制街面案件的发生。
+            </span>
+        </p>    
+    </div>
+</div>

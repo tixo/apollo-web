@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<title>后台运维管理系统</title>
+		<link href="./scheduling/dist/css/zui.css?v=1.8" rel="stylesheet">
+		<link rel="shortcut icon" href="./assets/img/main_html/logo.ico"/>
+		<!--[if lt IE 8]><link rel="stylesheet" type="text/css" href="assets/css/style.css"><![endif]-->
+		<link rel="stylesheet/less" type="text/css" id="css">
+		<link rel="stylesheet" href="./supermap/webgl/supermap/3D/css/pretty.css" type="text/css">
+		<!--浏览器版本检查-->
+		<script type="text/javascript" src="./module/plugins/browserUpdate/browser.js"></script>
+		<script type="text/javascript" src="./module/jquery/jquery-1.8.1.min.js"></script>
+		<script type="text/javascript" src="./module/jquery/jquery.cookie.js"></script>
+		<script type="text/javascript" src="./module/sea/sea.js"></script>
+		<!--系统权限判断-->
+		<script type="text/javascript" src="./assets/js/auth_init.js"></script>
+		<script type="text/javascript" src="./config/common/camera/js/camera.js"></script>
+		<!--系统加载主入口-->
+		<script type="text/javascript" src="./assets/js/init.js"></script>
+		<!--主要参数配置-->
+		<script type="text/javascript" src="./config/main_config.js"></script>
+		<script type="text/javascript" src="./config/common/websocket/js/sockjs.min.js"></script>
+	    <script type="text/javascript" src="./config/common/websocket/js/stomp.min.js"></script>
+		<script>
+		var _webSocket;
+			//根据屏幕分辨率加载不同的css
+			(function(){
+				var style = document.getElementById('css');
+				if(window.screen.width<=1440){
+					style.href="./assets/css/style_1366.less"
+				}else{
+					style.href="./assets/css/style_1920.less"
+				}
+				if(window.screen.width>=1920){
+					window.services.mapconfig.zoom = 3;
+					//window.services.mapconfig.minZoom = 3;
+				}
+			})();
+			/**
+			 * 菜单和全局变量初始化
+			 */
+			initializationMenus(function (response) {
+				initMenus(getMenu(response.data,frontHttpUrl));
+				if(authorization.appId=="44D605DC09F04F67A1C549BCBB3BA442"){
+					$('#topIframe').attr('src', "./assets/html/top/top-backstage.html");
+				}else{
+					$('#topIframe').attr('src', "./assets/html/top/top.html");
+				}
+				getAlias();
+				getLocalIPAddress();
+			});
+			seajs.use(["./config/common/websocket/websocket.js"], function(webSocket) {
+				_webSocket = webSocket;
+				webSocket.connect(handlemsg, '/topic/case');
+      		    webSocket.connect(handlemsg, ' /topic/target');
+      		    webSocket.connect(handlemsg,'/topic/surveillance');
+			});
+			//webSocket回调函数
+			function handlemsg(message){
+				if(isExitsFunction($("#left_iframe")[0].contentWindow.websocketHandle)){
+					$("#left_iframe")[0].contentWindow.websocketHandle(message);
+				}
+			}
+			//判断函数是否存在
+			function isExitsFunction(funcName) {
+			  try {
+			    if (typeof(eval(funcName)) == "function") {
+			      return true;
+			    }
+			  } catch(e) {}
+			  return false;
+			}
+			/*cameraLogin1();
+			cameraLogin2();*/
+			
+		</script>
+		<script type="text/javascript" src="./module/less/less-1.3.3.min.js"></script>
+		<!--气泡模板-->
+		<!--导出为Excel文件-->
+		<script type="text/javascript" src="./module/plugins/JsonExportExcel.min.js"></script>
+		<!--系统加载主入口-->
+		<script type="text/javascript" src="./assets/js/init.js"></script>
+		<script src="./scheduling/dist/plugins/layer/layer.js"></script>
+		<style>
+			.right{
+			    float: right;
+			}
+			button.setting{background: transparent;border:none;}
+			.setting{
+			    cursor: pointer;
+			}
+			.setting img{
+			   width: 20px;
+			}
+			button {
+				outline:none;
+			}
+		</style>
+	</head>
+	<body onselectstart="return false">
+		<!--顶部logo栏-->
+		<div class="main main_top">
+			<div style="position:fixed ;z-index:999999;top:10px; right: 5px;width:50px ;">
+				 <div class="dropdown dropdown-hover"style="float: right;position:absolute ;z-index: 9999999;top: 0px; right: 5px;">
+					  <button class="right setting" type="button" data-toggle="dropdown"><img  src="./assets/html/top/img/setting.png" alt=""/></button>
+					  <ul class="dropdown-menu pull-right" style="z-index: 9999;">
+						<li><a href="javascript:void(0)" onclick="switchingSystem();">切换系统</a></li>
+						<li><a href="javascript:void(0)" onclick="updatePassword();">修改密码</a></li>
+					    <li><a href="javascript:void(0)" onclick="setting();">设置班组</a></li>
+					    <li><a href="javascript:void(0)" onclick="loginOut();">退出系统</a></li>
+					  </ul>
+					</div>
+				</div>
+			<iframe src="" id="topIframe" width="100%" height="100%"  scrolling="no" frameborder="0"></iframe>
+		</div>
+		<!--中部地图区域-->
+		<div class="main main_middle" style="width:100% !important">
+			<!--左侧导航-->
+			<iframe name="left_iframe" id="left_iframe" width="100%" height="100%"  scrolling="no" frameborder="0"  allowfullscreen="true" ></iframe>
+			<!--加载动画-->
+			<div id="loadingbar_bg">
+				<div class="spinner">
+					<div class="spinner-container container1">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
+					</div>
+					<div class="spinner-container container2">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
+					</div>
+					<div class="spinner-container container3">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+
+
+
+

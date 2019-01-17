@@ -1,0 +1,186 @@
+<div class="row">
+    <div>
+        <h2>一、警情综述 </h2>
+    </div>
+    <div contenteditable="true" id="caseAffairsCategoryText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                {{title}}共接报警{{caseAffairsCategory.total}}起，比上周{{caseAffairsCategory.relative}}起{{caseAffairsCategory.minus}}，日均接处警{{caseAffairsCategory.averageDay}}起。              
+            </span>
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div>
+        <h2>二、警情对比 </h2>
+    </div>
+    <div contenteditable="true" id="caseAffairsCategoryCompareText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">   
+                    刑事类案件{{caseAffairsCategory.criminal.period}}起，与上周{{caseAffairsCategory.criminal.relative}}起{{caseAffairsCategory.criminal.minus}}。
+                    治安类案件{{caseAffairsCategory.security.period}}起，比上周{{caseAffairsCategory.security.relative}}起{{caseAffairsCategory.security.minus}}。 
+                    调解纠纷与救助{{caseAffairsCategory.help.period}}起，比上周{{caseAffairsCategory.help.relative}}起{{caseAffairsCategory.help.minus}}。                           
+                </span>
+        </p>
+    </div>
+    <div class="col-md-10">
+        <div id="caseAffairsCategory" style="height:350px;"></div>
+    </div>
+</div>
+
+<div class="row">
+    <div>
+        <h3>（一）秦宇派出所案件情况</h3>
+    </div>
+    <div class="col-md-10">
+        <div style="width:800px;">
+            <table class="table">
+                <thead>
+                    <tr class="datatable-row datatable-row-left text-center">
+                        <th></th>
+                        <th>总数</th>
+                        <th>刑事</th>
+                        <th>治安</th>
+                        <th>调解纠纷与救助</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="datatable-cell"><strong>上周</strong></td>
+                        <td class="datatable-cell">{{east.relative.total}}</td>
+                        <td class="datatable-cell">{{east.relative.criminal}}</td>
+                        <td class="datatable-cell">{{east.relative.security}}</td>
+                        <td class="datatable-cell">{{east.relative.help}}</td>
+                    </tr>
+                    <tr>
+                        <td class="datatable-cell"><strong>本周</strong></td>
+                        <td class="datatable-cell">{{east.period.total}}</td>
+                        <td class="datatable-cell">{{east.period.criminal}}</td>
+                        <td class="datatable-cell">{{east.period.security}}</td>
+                        <td class="datatable-cell">{{east.period.help}}</td>
+                    </tr>   
+                    <tr>
+                        <td class="datatable-cell"><strong>环比</strong></td>
+                        <td class="datatable-cell">{{east.percent.all}}</td>
+                        <td class="datatable-cell">{{east.percent.criminal}}</td>
+                        <td class="datatable-cell">{{east.percent.security}}</td>
+                        <td class="datatable-cell">{{east.percent.help}}</td>
+                    </tr>                                     
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <h3>（二）神舟路派出所案件情况</h3>
+    <div class="col-md-10">
+        <div style="width:800px;">
+            <table class="table">
+                <thead>
+                    <tr class="datatable-row datatable-row-left text-center">
+                        <th></th>
+                        <th>总数</th>
+                        <th>刑事</th>
+                        <th>治安</th>
+                        <th>调解纠纷与救助</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="datatable-cell"><strong>上周</strong></td>
+                        <td class="datatable-cell">{{qinyu.relative.total}}</td>
+                        <td class="datatable-cell">{{qinyu.relative.criminal}}</td>
+                        <td class="datatable-cell">{{qinyu.relative.security}}</td>
+                        <td class="datatable-cell">{{qinyu.relative.help}}</td>
+                    </tr>
+                    <tr>
+                        <td class="datatable-cell"><strong>本周</strong></td>
+                        <td class="datatable-cell">{{qinyu.period.total}}</td>
+                        <td class="datatable-cell">{{qinyu.period.criminal}}</td>
+                        <td class="datatable-cell">{{qinyu.period.security}}</td>
+                        <td class="datatable-cell">{{qinyu.period.help}}</td>
+                    </tr>   
+                    <tr>
+                        <td class="datatable-cell"><strong>环比</strong></td>
+                        <td class="datatable-cell">{{qinyu.percent.all}}</td>
+                        <td class="datatable-cell">{{qinyu.percent.criminal}}</td>
+                        <td class="datatable-cell">{{qinyu.percent.security}}</td>
+                        <td class="datatable-cell">{{qinyu.percent.help}}</td>
+                    </tr>          
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div>
+        <h2>三、案件情况</h2>
+    </div>
+    <h3>（一）刑事类案件情况</h3>
+    <div contenteditable="true" id="criminalAffairsText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                本周刑事类案件{{criminalAffairs.total}}起，
+                与上周{{criminalAffairs.relativeTotal}}起{{criminalAffairs.percent}}。其中{{criminalAffairs.description}}。
+            </span>
+        </p>
+    </div>
+</div>
+<div class="row">
+    <h3>（二）治安类案件情况</h3>
+    <div contenteditable="true" id="securityAffairsText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                本周治安类案件{{securityAffairs.total}}起，比上周{{securityAffairs.relativeTotal}}起{{securityAffairs.percent}}。
+            </span>
+        </p>
+    </div>
+    <div class="col-md-10">
+        <div id="securityAffairs" style="height:250px;"></div>
+    </div>    
+</div>
+<div class="row">
+    <h3>(三) 最高人民法院“第六巡回”法庭安保情况</h3>
+    <div contenteditable="true" id="lawersText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                本周“六巡”法庭上访人员累计157人，日平均上访人数39人，单日最高上访人数50人；接待案件86起，属正常上访，法庭周边秩序良好。
+            </span>
+        </p>
+    </div> 
+</div>
+<div class="row">
+    <h2>四、警情分析</h2>
+    <div contenteditable="true" id="caseAnalysisText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                    本周刑事案件有所下降。 
+            </span>
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div>
+        <h2>五、预警提示</h2>
+    </div>
+    <div contenteditable="true" id="AlaramText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                    （1）请秦宇派出所、神舟路派出所社区民警加强易发案小区的治安防范管理和防范电信诈骗的宣传教育工作，有效遏制各类案件的发生；（2）请治安巡逻队继续加强对易发案路段的巡逻频次，提高见警率，有效遏制街面侵财案件的发生。       
+            </span>
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div>
+        <h2>六、预警成效</h2>
+    </div>
+    <div contenteditable="true" id="warningEffectText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                    根据上周警情提示， 对落实工作进行了反馈，治安大队、秦宇派出所未反馈。神舟路派出所反馈如下：神舟路派出所社区民警加强对易发案小区及城中村防范诈骗的宣传力度和治安管理工作，提高群众防范意识，有效遏制案件的发生。并加强对高发案路段、街面、公共场所的巡逻频次，提高见警率，遏制各类侵财案件的发生。
+             </span>
+        </p>
+    </div>
+</div>

@@ -1,0 +1,364 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.box-index {
+    width: 100%;
+    height: 100%;
+    background: url(../img/map.png) no-repeat;
+    background-size: 100% 100% !important;
+    position: relative;
+}
+
+#bj{
+    /*width: 30%;*/
+    /*height: 25%;*/
+    position: absolute;
+    margin-top: 35px;
+    left: 10px;
+    z-index: 2000;
+    margin-top: 30px;
+}
+
+#map{
+	width: 100%;
+	height: 100%;
+	background: url(../../jsc/img/jiashicang.png) no-repeat !important; 
+	background-size: 100% 100% !important;
+}
+
+.right-box {
+    width: 120px;
+    min-height: 100px;
+    position: absolute;
+    top: 30%;
+    right: 0;
+    background: url(../img/posy.png) no-repeat;
+    background-size: 100% 100% !important;
+    z-index: 2000;
+}
+
+.box-ctn-box {
+    width: 100px;
+    min-height: 100px;
+    margin: 10px !important;
+    position: relative;
+}
+
+.box-ctn-box .ul a {
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+}
+
+.box-ctn-box .ul {
+    margin-top: 20px;
+}
+
+.box-ctn-box .level2 {
+    width: 100%;
+    height: 30px;
+    background: #ccc;
+    display: none;
+}
+
+.btn-box {
+    width: 15px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+    left: -25px;
+    cursor: pointer;
+}
+
+.btn-box-left-bg {
+    background: url(../img/posy-7.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.btn-box-right-bg {
+    background: url(../img/show.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.sp-f {
+    float: left;
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    padding: 0 4px !important;
+}
+
+.sp-f:nth-child(2) {
+    width: 10px;
+    text-align: left;
+    background: url(../img/canmera-small.png) no-repeat center left;
+    background-size: 12px 12px;
+}
+
+.sp-f:nth-child(3) {
+    width: 100px;
+    text-align: left;
+}
+
+.ipt {
+    margin-top: 4px;
+}
+
+.case-dark {
+    width: 100%;
+    height: 30px;
+    display: block;
+    background: url(../img/case-dark.png)no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+    margin-top: 6px;
+    margin-right: 5px;
+    color: #62a1ff;
+    text-align: left;
+    line-height: 30px;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.case-dark span:nth-child(1) {
+    color: #f83535;
+    margin-left: 4px;
+}
+
+.case-dark span:nth-child(2) {
+    color: #fff;
+}
+
+.case-dark span:nth-child(3) {
+    color: #fff;
+}
+/*
+.case-dark:nth-child(2) {
+    top: 50px;
+}
+
+.case-dark:nth-child(3) {
+    top: 90px;
+}
+
+.case-dark:nth-child(4) {
+    top: 130px;
+}
+
+.case-dark:nth-child(5) {
+    top: 170px;
+}*/
+
+.case-popup{
+    overflow: hidden;
+    position: absolute;
+}
+
+.anjian{
+    
+   /* border:2px solid #B9130C;*/
+}
+.bukong{
+   /* border:2px solid #1912C4;*/
+}
+.selected{
+   /* border:2px solid #bcbcbc;*/
+}
+
+
+.video-btn {
+    width: 80px !important;
+    height: 20px !important;
+    margin: 10px;
+    line-height: 20px !important;
+    float: left;
+    margin-top: 5px;
+    background: url(../img/button-2.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.timeline {
+    width: 100%;
+    height: 50px;
+    background: url(../img/time-zhou.png) no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    bottom: 0;
+    z-index: 2000;
+}
+
+
+/*********时间轴********************************************/
+
+.time-box {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 50px;
+    background: url(../img/time-zhou.png)no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.bg-zhou {
+    background: #ccc;
+    height: 4px;
+    width: 96%;
+    margin-left: 2%;
+    position: relative;
+}
+
+.shu,
+.shuxian {
+    width: 100%;
+    display: block;
+    overflow: hidden;
+}
+
+.shuxian {
+    margin-top: 14px;
+}
+
+.shu li,
+.shuxian li {
+    float: left;
+    list-style: none;
+    width: 4%;
+    position: relative;
+}
+
+.shuxian li {
+    height: 10px;
+    width: 4%;
+    background: url(../img/shuxian.png)no-repeat;
+}
+
+.shuxian li span {
+    height: 10px;
+    width: 2px;
+    display: block;
+    background: url(../img/shuxian.png)no-repeat right;
+    position: absolute;
+    right: 0;
+}
+
+.shuxian .lft {
+    float: left;
+    width: 2%;
+    height: 4px;
+}
+
+.shu li span:nth-child(1) {
+    margin-left: -6px;
+}
+
+.shu li span:nth-child(2) {
+    margin-right: -8px;
+    position: absolute;
+    right: 0;
+}
+
+.shu .lft {
+    float: left;
+    width: 2%;
+    height: 4px;
+}
+
+.modal-time {
+    height: 100%;
+    width: 60%;
+    background: #86adf0;
+    position: absolute;
+    right: 0;
+}
+
+.modal-time-an {
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    margin-top: -4px;
+    border: 1px solid #c9d0d6;
+    margin-left: -5px;
+}
+
+.dytb {
+    position: absolute;
+    width: 14px;
+    height: 20px;
+    margin-left: -7px;
+    top: -20px;
+    cursor: pointer;
+}
+
+.dytb-big {
+    position: absolute;
+    width: 19px;
+    height: 25px;
+    margin-left: -7px;
+    top: -24px;
+    cursor: pointer;
+}
+
+.dytb img {
+    width: 100%;
+    height: 100%;
+}
+
+.dytb-big img {
+    width: 100%;
+    height: 100%;
+}
+
+
+/***********************************/
+
+.police {
+    background: url(../img/police.png) no-repeat center left !important;
+    background-size: 12px 12px !important;
+}
+
+.police-car {
+    background: url(../img/police-car.png) no-repeat center left !important;
+    background-size: 12px 12px !important;
+}
+.bjz {
+    background: url(../../../config/common/rightResource/img/bjz.png) no-repeat center left !important;
+    background-size: 12px 12px !important;
+}
+
+.sentry {
+    background: url(../img/sentry.png) no-repeat center left !important;
+    background-size: 14px 12px !important;
+}
+
+
+.video-list li span.check {
+    color: #4294f9 !important;
+}
+
+.bktable td:nth-child(odd){
+	text-align: right;
+}
+.bktable td:nth-child(even){
+	text-align: center;
+}
+/*地图工具栏 样式调整*/
+.top-operation{
+	z-index: 9999;
+	top:0px;
+}
+.top-operation div span:nth-child(1) {
+    margin-top: 0px;
+}
+/*地图工具栏 样式调整*/

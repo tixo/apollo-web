@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>警情分析</title>
+  <link href="../dist/css/zui.css?v=1.8" rel="stylesheet">
+  <link href="../dist/css/case.css" rel="stylesheet">
+  <style id="themeStyle"></style>
+
+  <link rel="shortcut icon" href="../docs/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../docs/favicon.ico" type="image/x-icon">
+
+  <link href="../dist/lib/chosen/chosen.min.css" rel="stylesheet">
+
+  <!--[if lt IE 9]>
+    <script src="dist/lib/ieonly/html5shiv.js"></script>
+    <script src="dist/lib/ieonly/respond.js"></script>
+    <script src="dist/lib/ieonly/excanvas.js"></script>
+  <![endif]-->
+
+</head>
+
+<body>
+  <div class="container-fluid">
+      <div class="panel">
+        <div class="panel-heading-top-blue">
+          <span style="color:#3280fc;">人口统计</span>
+          <!-- <div class="pull-right" id="actions" style="cursor:pointer;">
+            <a id='populationList' style="color:#3280fc;">人口列表</a>
+          </div> -->
+        </div>
+      </div>
+        <div id="content" class="layer_notice"></div>
+      
+  </div>
+  <!-- jQuery (ZUI中的Javascript组件依赖于jQuery) -->
+  <script src="../assets/jquery.js?v=1.8"></script>
+  <!-- ZUI Javascript组件 -->
+  <script src="../dist/js/zui.min.js?v=1.8"></script>
+  <script src="../dist/lib/chart/zui.chart.min.js"></script>
+ 
+  <script src="../dist/plugins/echarts/echarts.js"></script>
+  
+  <script src="../dist/plugins/echarts/shine.js"></script>
+  <script src="../dist/plugins/seajs/sea.js"></script>
+  <script src="../dist/plugins/seajs/seajs-text.js"></script>
+  <script src="../dist/plugins/seajs/handlebars-1.0.0.beta.6.js"></script>
+  <script src="../dist/plugins/axios/axios.min.js"></script>
+
+  <script src="../dist/plugins/babel/babel-browser.min.js"></script>
+
+  <script src="../dist/plugins/exports/jquery.base64.js"></script>
+  <script src="../dist/plugins/echarts/wordCloud.js"></script>
+  
+  <script type="text/javascript">
+    seajs.config({
+      vars: {
+        requestFrontUrl: 'http://127.0.0.1/apollo-front/',
+      }
+    });
+
+    seajs.use('./population', function (population) {
+      population.initialization();
+    });
+
+
+  </script>
+</body>
+
+</html>

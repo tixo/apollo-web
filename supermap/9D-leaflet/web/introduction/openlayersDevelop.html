@@ -1,0 +1,2485 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>iClient for OpenLayers 开发指南</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <script type="text/javascript" include='isIntroduction' src="../js/include.js"></script>
+    <style>
+        p {
+            line-height: 25px
+        }
+    </style>
+</head>
+<body class="hold-transition skin-blue">
+
+<!--顶部导航-->
+<header class="header-wrapper main-header icl-header"></header>
+<script>
+    var identification = {
+        name: "OpenLayers"
+    };
+    var navigation = {
+        nav: {
+            title: "SuperMap iClient 9D",
+            version: "",
+            path: "../"
+        }
+    };
+    utils.loadTemplate(".icl-header", "../template/header.html", navigation);
+</script>
+<!--顶部导航 end-->
+
+<!--内容区-->
+<div class="container icl-docs-container">
+    <div class="row">
+        <!--左侧导航-->
+        <div class="col-md-3" role="complementary">
+            <nav class="icl-docs-sidebar hidden-print hidden-xs hidden-sm affix-top">
+                <ul class="nav icl-docs-sidenav">
+                    <li><a href="#beginning">开发入门</a></li>
+                    <li><a href="#mapService">使用地图服务</a>
+                        <ul class="nav">
+                            <li><a href="#restMapService">使用REST地图服务示例</a></li>
+                            <li><a href="#ogcMapService">使用OGC地图服务示例</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#dataService">使用数据服务</a>
+                        <ul class="nav">
+                            <li><a href="#restDataService">使用REST数据服务</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#spatialAnalystService">使用空间分析服务</a>
+                        <ul class="nav">
+                            <li><a href="#bufferAnalystService">示例：缓冲区分析</a></li>
+                            <li><a href="#overlayAnalystService">示例：叠加分析</a></li>
+                            <li><a href="#surfaceAnalystService">示例：表面分析</a></li>
+                            <li><a href="#generateSpatialDataService">示例：动态分段</a></li>
+                            <li><a href="#routeCalculateMeasureService">示例：点定里程</a></li>
+                            <li><a href="#routeLocatorPointService">示例：里程定点</a></li>
+                            <li><a href="#routeLocatorLineService">示例：里程定线</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#networkAnalyst">使用交通网络分析</a>
+                        <ul class="nav">
+                            <li><a href="#findPathService">示例：最佳路径分析</a></li>
+                            <li><a href="#findServiceAreas">示例：服务区分析</a></li>
+                            <li><a href="#findTSPPathsService">示例：旅行商分析</a></li>
+                            <li><a href="#findClosetFacilitiesService">示例：最近设施查找分析</a></li>
+                            <li><a href="#findLocationService">示例：选址分区分析</a></li>
+                            <li><a href="#findMTSPPathsService">示例：多旅行商分析</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#trafficTransferAnalystService">使用交通换乘分析</a></li>
+                    <li><a href="#processingService">使用分布式分析服务</a>
+                        <ul class="nav">
+                            <li><a href="#kernelDensityJobService">示例：密度分析</a></li>
+                            <li><a href="#summaryMeshJobService">示例：点聚合分析</a></li>
+                            <li><a href="#singleObjectQueryJob">示例：单对象查询分析</a></li>
+                            <li><a href="#summaryRegionJobService">示例：区域汇总分析</a></li>
+                            <li><a href="#vectorClipJobService">示例：矢量裁剪分析</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#dataFlow">使用数据流服务</a></li>
+                    <li><a href="#addressMatch">使用地址匹配服务</a>
+                        <ul class="nav">
+                            <li><a href="#geocode">示例：正向地址匹配</a></li>
+                            <li><a href="#geodecode">示例：反向地址匹配</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <a class="back-to-top" href="#top">
+                    返回顶部
+                </a>
+            </nav>
+        </div>
+        <!--右侧内容区-->
+        <div class="col-md-9" id="main-content" role="main">
+            <div class="icl-docs-header">
+                <h1 class="product">SuperMap iClient for OpenLayers</h1>
+            </div>
+            <!--开发入门-->
+            <div class="section icl-docs-section">
+                <h2 id="beginning" class="section-title">开发入门</h2>
+                <p class="lead"></p>
+                <div class="section section-level-2">
+                    <p class="lead">本章节主要介绍SuperMap iClient for OpenLayers的入门用法，详细的接口参数请参考API页面。</p>
+                    <div class="section section-level-2">
+                        <p>引入 ol.js 或 ol-debug.js，OpenLayers此处引入的BootCDN的托管地址：</p>
+                        <figure class="highlight">
+                            <pre class="javascript"><code class="html">&lt;script type=&quot;text/javascript&quot; src=&quot;https://cdn.bootcss.com/openlayers/4.2.0/ol.js&quot;&gt;&lt;/script&gt;</code></pre>
+                        </figure>
+                        <p style="margin-top: 18px">引入 iclient9-openlayers.js 或 iclient9-openlayers.min.js：</p>
+                        <figure class="highlight">
+                            <pre class="javascript"><code class="html">&lt;script type=&quot;text/javascript&quot; src=&quot;http://iclient.supermap.io/dist/iclient9-openlayers.js&quot;&gt;&lt;/script&gt;</code></pre>
+                        </figure>
+                    </div>
+                    <div class="section section-level-2">
+                        <p style="margin-top: 19px">将 iServer 发布的地图加载至 OpenLayers 的 map 中：</p>
+                        <figure class="highlight">
+                        <pre class="javascript"><code>var map = new ol.Map({
+    target: &#39;map&#39;,
+    layers: [new ol.layer.Tile({
+            source: new ol.source.TileSuperMapRest({
+                    url: &quot;http://localhost:8090/iserver/services/map/rest/maps/World&quot;
+            }),
+     })]
+});<a href="../../examples/openlayers/editor.html#01_tiledMapLayer4326"
+      style="font-size: 10px;float:right">查看源码&nbsp;&raquo;</a></code></pre>
+                        </figure>
+                    </div>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/beginningExample.png" style="height:300px"/>
+                    </div>
+
+                </div>
+            </div>
+            <!--使用地图服务-->
+            <div class="section icl-docs-section">
+                <h2 id="mapService" class="section-title">使用地图服务</h2>
+                <p class="lead"></p>
+                <div class="section section-level-2">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;SuperMap iClient for OpenLayers提供的REST地图服务功能包含：</p>
+                    <ul>
+                        <li style="line-height:28px">地图图层，支持动态图层定位、动态图层叠加</li>
+                        <li style="line-height:28px">地图控件，如地图拖拽、平移缩放、绘制要素、缓存切换等</li>
+                        <li style="line-height:28px">专题图，包括单值专题图、范围分段专题图、标签专题图、点密度专题图、等级符号专题图、统计专题图</li>
+                        <li style="line-height:28px">查询，包括距离查询、几何对象查询、SQL查询、范围查询、海图查询</li>
+                        <li style="line-height:28px">量算，支持距离和面积量算</li>
+                    </ul>
+                    <h4 id="restMapService" class="section-title">使用REST地图服务示例</h4>
+                    <p><b>&nbsp;&nbsp;动态图层叠加</b></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;图层用来承载地图信息的显示。地图可以添加一个或者多个图层，组合显示达到用户所需要的最终效果。使用addLayer()方法可以添加图层到map上。本示例为：添加京津地区地图到World地图上：</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>    var map = new ol.Map({
+        target: 'map',
+        view: new ol.View({
+            center: [116.85, 39.79],
+            zoom: 7,
+            projection: 'EPSG:4326'
+        })
+    });
+    var worldLayer = new ol.layer.Tile({
+        source: new ol.source.TileSuperMapRest({
+            url: DemoURL.world
+        }),
+        projection: 'EPSG:4326'
+    });
+    map.addLayer(worldLayer);
+    var jinJingLayer = new ol.layer.Tile({
+        source: new ol.source.TileSuperMapRest({
+            url: DemoURL.jingjin_map,
+            origin: [-180, 90],
+            transparent: true
+        }),
+        projection: 'EPSG:4326'
+    });
+    map.addLayer(jinJingLayer);</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/overlayedLayer.png" style="height:300px"/>
+                    </div>
+                    <p><b>&nbsp;&nbsp;距离量算</b></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;构建服务参数类</p>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;量算服务参数类提供服务请求所需的信息，该类提供量算的查询参数封装，提供的参数有geometry和unit，用来定义量算的几何对象和单位，代码如下：</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>var measureParam = new SuperMap.MeasureParameters();
+//设置要量算的矢量对象({ol.geom.Geometry})，geometry可以通过直接初始化的方法获取
+measureParam.geometry = geometry;</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;构建服务类并发送请求</p>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;量算服务类负责向服务端发送请求，并将查询结果返回。使用服务类需要指定服务URL等服务参数，向服务端发送请求信息，然后通过监听服务请求完成事件，从事件服务数据类中获取最终的结果Result对象，按照用户需求进行处理，代码如下：</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>//初始化服务类，设置服务请求关键参数
+var measureService =new ol.supermap.MeasureService(url);
+//提交服务请求，传递服务查询参数，获取返回结果并按照用户需求进行处理
+measureService.measureArea(measureParam, function (serviceResult) {
+    function showAlert(serviceResult);
+});</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;3.处理结果</p>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;在服务请求事件的处理过程中，我们可以获取结果信息并予以展示，下面使用弹窗的形式展示量算结果：</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>function showAlert(serviceResult) {<br>    alert(serviceResult.result.area + "平方米")<br>}</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/measureService.png" style="height:300px"/>
+                    </div>
+                    <h4 id="ogcMapService" class="section-title">使用OGC地图服务示例</h4>
+                    <p><b>&nbsp;&nbsp;WMS服务</b></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;使用WMS图层，可以访问基于OGC WMS标准实现图层服务，包括iServer以外的其他第三方WMS服务。WMS服务符合OGC（Open
+                        Geospatial Consortium，开放地理信息联盟）制定的WMS实现规范，目前为1.1.1和1.3.0版本。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;本节将以SuperMap iServer服务器默认发布的”WMS_China”为例，介绍添加WMS图层，显示OGC地图服务的地图数据</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>    var resolutions = new Array(17);
+    var matrixIds = new Array(17);
+    for (var z = 0; z < 17; ++z) {
+        resolutions[z] = 156543.033928041 / Math.pow(2, z);
+        matrixIds[z] = z;
+    }
+    var map = new ol.Map({
+        target: 'map',
+        view: new ol.View({
+            center: [0, 0],
+            zoom: 0,
+        }),
+        layers: [new ol.layer.Tile({
+            opacity: 0.7,
+            source: new ol.source.TileWMS({
+                url: 'http://support.supermap.com.cn:8090/iserver/services/map-china400/wms111/China',
+                params: {
+                    'LAYERS': 'China',
+                    'FORMAT': 'image/png'
+                },
+            }),
+        })]
+    });</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/wms.png" style="height:300px"/>
+                    </div>
+                    <p><b>&nbsp;&nbsp;WMTS服务</b></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;使用WMTS图层，可以访问基于OGC WMTS 1.0.0
+                        标准实现图层服务，包括iserver以外的其他第三方WMTS服务。WMTS是OGC提出的首个支持REST的服务标准，目前为 1.0.0 版本，该服务支持三种请求模式：HTTP
+                        KVP（Key-Value
+                        Pair）方式、SOAP方式、REST方式。注意事项：WMTS对接更为广泛的服务，要求用户必须设置出图请求所需的各类参数：matrixIds、layer、tilematrixSet、url等，其中matrixIds会因为服务和出图依照的标准比例尺集不同而有所差异，需根据情况自行设置。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;本节将以SuperMap iServer服务器默认发布的“China_WMTS”服务为例，介绍WMTS服务的使用。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>    var resolutions = new Array(17);
+    var matrixIds = new Array(17);
+    for (var z = 0; z < 17; ++z) {
+        resolutions[z] = 156543.033928041 / Math.pow(2, z);
+        matrixIds[z] = z;
+    }
+    var map = new ol.Map({
+        target: 'map',
+        view: new ol.View({
+            center: [0, 0],
+            zoom: 0,
+        }),
+        layers: [new ol.layer.Tile({
+            opacity: 0.7,
+            source: new ol.source.WMTS({
+                url: 'http://support.supermap.com.cn:8090/iserver/services/map-china400/wmts100',
+                layer: 'China',
+                matrixSet: 'GoogleMapsCompatible_China',
+                format: 'image/png',
+                tileGrid: new ol.tilegrid.WMTS({
+                    origin: [-2.0037508342787E7, 2.0037508342787E7],
+                    resolutions: resolutions,
+                    matrixIds: matrixIds
+                }),
+                style: 'default',
+            })
+        })]
+    });</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/wmts.png" style="height:300px"/>
+                    </div>
+                </div>
+            </div>
+            <!--使用数据服务-->
+            <div class="section icl-docs-section">
+                <h2 id="dataService" class="section-title">使用数据服务</h2>
+                <p class="lead"></p>
+                <div class="section section-level-2">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;SuperMap iClient for OpenLayers支持的REST数据服务包括：</p>
+                    <ul>
+                        <li style="line-height:28px">数据集ID查询</li>
+                        <li style="line-height:28px">数据集几何查询</li>
+                        <li style="line-height:28px">数据集缓冲区查询</li>
+                        <li style="line-height:28px">数据集SQL查询</li>
+                        <li style="line-height:28px">数据集编辑</li>
+                    </ul>
+                    <h4 id="restDataService" class="section-title">使用REST数据服务示例</h4>
+                    <p><b>&nbsp;&nbsp;数据集ID查询</b></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;数据集ID查询，即在数据集中查询符合指定ID的地理空间要素，并在客户端中展示出来。本示例为：在World数据服务中查询指定ID的要素：</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>    var map, resultLayer,
+            baseUrl = "http://support.supermap.com.cn:8090/iserver/services/map-world/rest/maps/World",
+            url = "http://support.supermap.com.cn:8090/iserver/services/data-world/rest/data";
+    map = new ol.Map({
+        target: 'map',
+        view: new ol.View({
+            center: [100, 0],
+            zoom: 3,
+            projection: 'EPSG:4326'
+        })
+    });
+    var layer = new ol.layer.Tile({
+        source: new ol.source.TileSuperMapRest({
+            url: baseUrl
+        }),
+        projection: 'EPSG:4326'
+    });
+    map.addLayer(layer);
+    query();
+
+    function query() {
+        var idsParam = new SuperMap.GetFeaturesByIDsParameters({
+            IDs: [246, 247],
+            datasetNames: ["World:Countries"]
+        });
+        new ol.supermap.FeatureService(url).getFeaturesByIDs(idsParam, function (serviceResult) {
+            var vectorSource = new ol.source.Vector({
+                features: (new ol.format.GeoJSON()).readFeatures(serviceResult.result.features),
+                wrapX: false
+            });
+            resultLayer = new ol.layer.Vector({
+                source: vectorSource
+            });
+            map.addLayer(resultLayer);
+        });
+    }
+                            </code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/dataID.png" style="height:300px"/>
+                    </div>
+                    <p><b>&nbsp;&nbsp;数据集SQL查询</b></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;数据集SQL查询，即在指定数据集集合中查找符合 SQL
+                        条件的矢量要素，并在客户端中展示出来。本示例为：在World数据服务中查询指定SMID的要素：</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>    var map, resultLayer,
+            baseUrl = "http://support.supermap.com.cn:8090/iserver/services/map-world/rest/maps/World",
+            url = "http://support.supermap.com.cn:8090/iserver/services/data-world/rest/data";
+    map = new ol.Map({
+        target: 'map',
+        view: new ol.View({
+            center: [100, 0],
+            zoom: 3,
+            projection: 'EPSG:4326'
+        })
+    });
+    var layer = new ol.layer.Tile({
+        source: new ol.source.TileSuperMapRest({
+            url: baseUrl
+        }),
+        projection: 'EPSG:4326'
+    })
+    map.addLayer(layer);
+    query();
+
+    function query() {
+        var sqlParam = new SuperMap.GetFeaturesBySQLParameters({
+            queryParameter: {
+                name: "Countries@World",
+                attributeFilter: "SMID = 247"
+            },
+            datasetNames: ["World:Countries"]
+        });
+        new ol.supermap.FeatureService(url).getFeaturesBySQL(sqlParam, function (serviceResult) {
+            var vectorSource = new ol.source.Vector({
+                features: (new ol.format.GeoJSON()).readFeatures(serviceResult.result.features),
+                wrapX: false
+            });
+            resultLayer = new ol.layer.Vector({
+                source: vectorSource
+            });
+            map.addLayer(resultLayer);
+        });
+    }
+                            </code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/dataSQL.png" style="height:300px"/>
+                    </div>
+                </div>
+            </div>
+            <!--使用空间分析服务-->
+            <div class="section icl-docs-section">
+                <h2 id="spatialAnalystService" class="section-title">使用空间分析服务</h2>
+                <p class="lead"></p>
+                <div class="section section-level-2">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;SuperMap iClient for OpenLayers支持的空间分析功能包括：</p>
+                    <ul>
+                        <li style="line-height:28px">缓冲区分析</li>
+                        <li style="line-height:28px">叠加分析</li>
+                        <li style="line-height:28px">表面分析</li>
+                        <li style="line-height:28px">动态分段</li>
+                        <li style="line-height:28px">点定里程</li>
+                        <li style="line-height:28px">里程定点</li>
+                        <li style="line-height:28px">里程定线</li>
+                    </ul>
+                    <p id="bufferAnalystService"><b>&nbsp;&nbsp;示例：缓冲区分析</b></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;缓冲区分析（buffer）是根据指定的距离在点、线和多边形实体周围自动建立一定宽度的区域范围的分析方法。例如，在环境治理时，常在污染的河流周围划出一定宽度的范围表示受到污染的区域；又如在飞机场，常根据健康需要在周围划分出一定范围的区域作为非居住区等。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;下面以长春数据为例，对“团结路”进行半径为10米的圆头缓冲分析，缓冲区分析的接口使用方法如下：</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;设置缓冲区分析参数、缓冲区通用参数。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>    var dsBufferAnalystParameters = new SuperMap.DatasetBufferAnalystParameters({
+            dataset: "RoadLine2@Changchun",
+            filterQueryParameter: new SuperMap.FilterParameter({
+                attributeFilter: "NAME='团结路'"
+            }),
+            bufferSetting: new SuperMap.BufferSetting({
+                endType: SuperMap.BufferEndType.ROUND,
+                leftDistance: {value: 10},
+                rightDistance: {value: 10},
+                semicircleLineSegment: 10
+            })
+        });
+                            </code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;设置缓冲区分析服务对象，用于将客户端设置的缓冲区分析服务参数传递给服务端，并接收服务端返回的缓冲区分析结果数据。当向服务端发送请求并且服务端成功返回结果时，用户可对获得的缓冲区分析结果做相应处理。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>    new ol.supermap.SpatialAnalystService(serviceUrl).bufferAnalysis(dsBufferAnalystParameters, function (serviceResult) {
+            var vectorSource = new ol.source.Vector({
+                features: (new ol.format.GeoJSON()).readFeatures(serviceResult.result.recordset.features)
+            });
+            var resultLayer = new ol.layer.Vector({
+                source: vectorSource,
+                style: new ol.style.Style({
+                    stroke: new ol.style.Stroke({
+                        color: 'red',
+                        width: 1
+                    }),
+                    fill: new ol.style.Fill({
+                        color: 'rgba(255, 0, 0, 0.1)'
+                    })
+                })
+            });
+            map.addLayer(resultLayer);
+        });
+                            </code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/bufferAnalystService.png" style="height:300px"/>
+                    </div>
+                    <p id="overlayAnalystService"><b>&nbsp;&nbsp;示例：叠加分析</b></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;叠加分析是GIS中的一项非常重要的空间分析功能，是指在统一空间参考系统下，通过对两个数据集进行的一系列集合运算，产生新数据集的过程，其目的是通过对空间数据的加工或分析，提取用户需要的新的空间几何信息。同时，通过叠加分析，还将对数据的各种属性信息进行处理。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;目前叠加分析广泛应用于资源管理、城市建设评估、国土管理、农林牧业、统计等领域。叠加分析在各领域中的作用：</p>
+                    <ul>
+                        <li style="line-height:28px">资源管理主要应用于农业和林业领域，解决农业和林业领域各种资源（如土地、森林、草场等）分布变化、统计等问题</li>
+                        <li style="line-height:28px">城市建设评估主要应用于分析城市人口、经济、建设等的发展变化，统计变化趋势和变化规律</li>
+                        <li style="line-height:28px">
+                            土地和地籍管理涉及土地使用性质变化、地块轮廓变化、地籍权属关系变化等许多内容，借助GIS的叠加分析功能可以高效、高质量地完成这些工作
+                        </li>
+                        <li style="line-height:28px">生态、环境的管理评价用于区域生态规划的评价、环境现状评价、环境影响评价、污染物削减分配的决策支持等</li>
+                        <li style="line-height:28px">地学研究与应用用于地形分析、流域分析、土地利用研究、经济地理研究、空间统计分析、制图等都可以借助叠加分析来完成/li>
+                    </ul>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;下面将京津地区的行政区域与临边地区的行政区域进行叠加分析，叠加分析接口使用方法如下所示：</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;设置叠加分析参数</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>    var datasetOverlayAnalystParameters = new SuperMap.DatasetOverlayAnalystParameters({
+            sourceDataset: "BaseMap_R@Jingjin",
+            operateDataset: "Neighbor_R@Jingjin",
+            tolerance: 0,
+            operation: SuperMap.OverlayOperationType.UNION
+        });
+                            </code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;设置叠加分析服务对象，用于将客户端设置的叠加分析服务参数传递给服务端，并接收服务端返回的分析结果数据。当向服务端发送请求并且服务端成功返回结果时，用户可对获得的叠加分析结果做相应处理。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>    new ol.supermap.SpatialAnalystService(serviceUrl).overlayAnalysis(datasetOverlayAnalystParameters, function (serviceResult) {
+            var resultLayer = new ol.layer.Vector({
+                source: new ol.source.Vector({
+                    features: (new ol.format.GeoJSON()).readFeatures(serviceResult.result.recordset.features)
+                }),
+                style: new ol.style.Style({
+                    stroke: new ol.style.Stroke({
+                        color: 'rgba(100, 100, 225, 10)',
+                        width: 3
+                    }),
+                    fill: new ol.style.Fill({
+                        color: 'rgba(0, 0, 255, 0.1)'
+                    })
+                })
+            });
+            map.addLayer(resultLayer);
+        });
+                            </code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/overlayAnalystService.png" style="height:300px"/>
+                    </div>
+                    <p id="surfaceAnalystService"><b>&nbsp;&nbsp;示例：表面分析</b></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;表面分析是指通过对数据集或几何对象进行分析，从中挖掘原始数据所包含的隐藏信息。表面分析包括提取等值线和提取等值面。等值线是将相邻的、具有相同值的点连起来的线，常用的等值线有等高线、等深线、等温线、等压线、等降水量线等。等值线的分布反应了栅格表面上值的变化，等值线分布越密集的地方，表示栅格表面值的变化比较剧烈。等值线分布较稀疏的地方，表示栅格表面值的变化较小。通过提取等值线，可以找到高程、温度、降水量等值相同的位置，同时等值线的分布状况也可以反映出变化的陡峭和平缓区。等值面是由相邻的等值线封闭组成的面，等值面的变化可以很直观的表示出相邻等值线之间的变化，诸如高程、降水、温度或大气压力等。通过提取等值面可以获得高程、降水、温度等值相同的地方。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;本节将通过从全国平均气温采样点中提取等值线的功能来具体说明表面分析的接口使用。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;设置表面分析参数设置参数、数据集表面分析——等值线提取参数</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>    function surfaceAnalystProcess() {
+        //创建表面分析服务参数
+        var region = new ol.geom.Polygon([[
+            [0, 4010338],
+            [1063524, 4010338],
+            [1063524, 3150322],
+            [0, 3150322]
+        ]]);
+        var surfaceAnalystParameters = new SuperMap.DatasetSurfaceAnalystParameters({
+            extractParameter: new SuperMap.SurfaceAnalystParametersSetting({
+                datumValue: 0,
+                interval: 2,
+                resampleTolerance: 0,
+                smoothMethod: SuperMap.SmoothMethod.BSPLINE,
+                smoothness: 3,
+                clipRegion: region
+            }),
+            dataset: "SamplesP@Interpolation",
+            resolution: 3000,
+            zValueFieldName: "AVG_TMP"
+        });</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;设置表面分析服务对象，用于将客户端设置的表面分析服务参数传递给服务端，
+                        并接收服务端返回的表面分析结果数据。当向服务端发送请求并且服务端成功返回结果时，用户可对获得的表面分析结果做相应处理。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>        //创建表面分析服务实例
+        var surfaceAnalystService = new ol.supermap.SpatialAnalystService(serviceUrl);
+        surfaceAnalystService.surfaceAnalysis(surfaceAnalystParameters, function (surfaceAnalystServiceResult) {
+            var result = surfaceAnalystServiceResult.result;
+            if (result && result.recordset && result.recordset.features) {
+                var resultLayer = new ol.layer.Vector({
+                    source: new ol.source.Vector({
+                        features: (new ol.format.GeoJSON()).readFeatures(result.recordset.features)
+                    }),
+                    style: new ol.style.Style({
+                        stroke: new ol.style.Stroke({
+                            color: 'rgba(100, 100, 225, 10)',
+                            width: 1.5
+                        }),
+                        fill: new ol.style.Fill({
+                            color: 'rgba(0, 0, 255, 0.1)'
+                        })
+                    })
+                });
+                map.addLayer(resultLayer);
+            }
+        });</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/surfaceAnalystService.png" style="height:300px"/>
+                    </div>
+                    <p id="generateSpatialDataService"><b>&nbsp;&nbsp;示例：动态分段</b></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;动态分段技术是在传统GIS数据模型的基础上，利用线性参考技术，实现属性数据在地图上动态地显示、分析及输出等，是GIS空间分析中的一个重要技术手段。它不是在线要素沿线上某种属性发生变化的地方进行“物理分段”，而是在传统的GIS数据模型的基础上利用线性参考系统的思想及算法，将属性的沿线变化存储为独立的属性表字段（事件属性表）；在分析、显示、查询和输出时直接依据事件属性表中的距离值对线性要素进行动态逻辑分段，使用相对位置描述发生在线上的事件，比传统GIS要素更容易定位。除此之外，该技术还提高了数据制作效率和数据存储空间利用率，降低了数据维护的复杂度。目前已广泛应用于公共交通管理、路面质量管理、航海线路模拟、通讯网络管理、电网管理等诸多领域。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;本专题将以长春市道路的数据为例，根据某一时刻的某些道路路段出现拥堵和车辆较多现象，利用动态分段技术在客户端实时动态显示出道路的路况(拥挤/缓行/畅通)，以提示驾驶人员避免进入拥堵路段，选择合适的行驶路线。动态分段接口使用方法如下：</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;在客户端设置用于向服务端发送的动态分段各参数，包括数据返回选项(DataReturnOption)、动态分段参数(GenerateSpatialDataParameters)</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>        //配置动态分段Parameters
+        var generateSpatialDataParameters = new SuperMap.GenerateSpatialDataParameters({
+            routeTable: "RouteDT_road@Changchun",
+            routeIDField: "RouteID",
+            eventTable: "LinearEventTabDT@Changchun",
+            eventRouteIDField: "RouteID",
+            measureField: "",
+            measureStartField: "LineMeasureFrom",
+            measureEndField: "LineMeasureTo",
+            measureOffsetField: "",
+            errorInfoField: "",
+            dataReturnOption: new SuperMap.DataReturnOption({
+                expectCount: 1000,
+                dataset: "generateSpatialData@Changchun",
+                deleteExistResultDataset: true,
+                dataReturnMode: SuperMap.DataReturnMode.DATASET_ONLY
+            })
+        });</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;定义动态分段服务对象，用于将客户端设置的动态分段分析服务参数(generateSpatialDataParameters)传递给服务端,并接收服务端返回的动态分段分析结果数据。当向服务端发送请求并且服务端成功返回结果时，用户可在客户端对获得的动态分段空间数据做相应处理，将空间数据中的路况信息以专题图的形式展现给用户。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>        new ol.supermap.SpatialAnalystService(serviceUrl).generateSpatialData(generateSpatialDataParameters, function (serviceResult) {
+            var a = serviceResult.result;
+            //用专题图展示分析结果
+            showAnalysisResult_ThemeGridUnique();
+        });
+
+        //构造专题图
+        function showAnalysisResult_ThemeGridUnique() {
+            //配置专题样式
+            var style1, style2, style3;
+            style1 = new SuperMap.ServerStyle({
+                fillForeColor: new SuperMap.ServerColor(242, 48, 48),
+                lineColor: new SuperMap.ServerColor(242, 48, 48),
+                lineWidth: 1
+            });
+            style2 = new SuperMap.ServerStyle({
+                fillForeColor: new SuperMap.ServerColor(255, 159, 25),
+                lineColor: new SuperMap.ServerColor(255, 159, 25),
+                lineWidth: 1
+            });
+            style3 = new SuperMap.ServerStyle({
+                fillForeColor: new SuperMap.ServerColor(91, 195, 69),
+                lineColor: new SuperMap.ServerColor(91, 195, 69),
+                lineWidth: 1
+            });
+            //配置专题项
+            var themeUniqueIteme1, themeUniqueIteme2, themeUniqueIteme3;
+            themeUniqueIteme1 = new SuperMap.ThemeUniqueItem({
+                unique: "拥挤",
+                style: style1
+            });
+            themeUniqueIteme2 = new SuperMap.ThemeUniqueItem({
+                unique: "缓行",
+                style: style2
+            });
+            themeUniqueIteme3 = new SuperMap.ThemeUniqueItem({
+                unique: "畅通",
+                style: style3
+            });
+            var themeUnique = new SuperMap.ThemeUnique({
+                uniqueExpression: "TrafficStatus",
+                defaultStyle: new SuperMap.ServerStyle({
+                    fillForeColor: new SuperMap.ServerColor(48, 89, 14),
+                    lineColor: new SuperMap.ServerColor(48, 89, 14)
+                }),
+                items: [themeUniqueIteme1, themeUniqueIteme2, themeUniqueIteme3]
+            });
+            var themeParameters = new SuperMap.ThemeParameters({
+                themes: [themeUnique],
+                datasetNames: ["generateSpatialData"],
+                dataSourceNames: ["Changchun"]
+            });
+            new ol.supermap.ThemeService(baseUrl).getThemeInfo(themeParameters, function (serviceResult) {
+                var result = serviceResult.result;
+                if (result && result.newResourceID) {
+                    var themeLayer = new ol.layer.Tile({
+                        source: new ol.source.TileSuperMapRest({
+                            url: baseUrl,
+                            noWrap: true,
+                            cacheEnabled: false,
+                            transparent: true,
+                            layersID: result.newResourceID,
+                            tileGrid: new ol.tilegrid.TileGrid({
+                                extent: extent,
+                                resolutions: options.tileGrid.getResolutions()
+                            }),
+                            transparent: true
+                        })
+                    });
+                    map.addLayer(themeLayer);
+                }
+            })
+        }</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/generateSpatialDataService.png" style="height:300px"/>
+                    </div>
+                    <p id="routeCalculateMeasureService"><b>&nbsp;&nbsp;示例：点定里程</b></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;点定里程是计算路由上某点到起始点的M值，实际应用情景例如知道某事故发生的位置确定该点位于某路口距离。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;下面以长春数据为例，计算一条路上（路由ID为1690的路由）发生交通事故的地点到该条路路口的距离。</p>
+                    <p>点定里程接口使用方法如下：</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;在进行点定里程处理之前，需要先初始化地图。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>    var map,baseUrl = "http://support.supermap.com.cn:8090/iserver/services/map-changchun/rest/maps/长春市区图",
+            serviceUrl = "http://support.supermap.com.cn:8090/iserver/services/spatialanalyst-changchun/restjsr/spatialanalyst";
+    var container = document.getElementById('popup');
+    var content = document.getElementById('popup-content');
+    var overlay = new ol.Overlay(({
+        element: container,
+        autoPan: true,
+        autoPanAnimation: {
+            duration: 250
+        }
+    }));
+    var extent = [48.4, -7668.25, 8958.85, -55.58];
+    var projection = new ol.proj.Projection({
+        extent: extent,
+        units: 'm'
+    });
+    var mapService = new ol.supermap.MapService(baseUrl);
+    mapService.getMapInfo(function (serviceResult) {
+        var mapJSONObj = serviceResult.result;
+        map = new ol.Map({
+            target: 'map',
+            view: new ol.View({
+                center: [4503.62, -3861.91],
+                zoom: 2,
+                extent: extent,
+                projection: projection
+            }),
+            overlays: [overlay]
+        });
+        var options = ol.source.TileSuperMapRest.optionsFromMapJSON(baseUrl, mapJSONObj);
+        var layer = new ol.layer.Tile({
+            source: new ol.source.TileSuperMapRest(options)
+        });
+        map.addLayer(layer);
+        routeCalculateMeasureProcess();
+    });</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;地图加载完成后进行点定里程分析服务，首先根据RouteID获得路由对象，路由对象查询成功之后才能进行后续的点定里程操作。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>    function routeCalculateMeasureProcess() {
+        //通过SQL查询的方法建立路由,并添加到地图上
+        var queryBySQLService = new ol.supermap.QueryService(baseUrl);
+        var queryBySQLParams = new SuperMap.QueryBySQLParameters({
+            queryParams: [
+                new SuperMap.FilterParameter({
+                    name: "RouteDT_road@Changchun",
+                    attributeFilter: "RouteID=1690"
+                })
+            ]
+        });
+        queryBySQLService.queryBySQL(queryBySQLParams, function (SQLQueryServiceResult) {
+            var queryBySQLResult = SQLQueryServiceResult.result.recordsets[0].features;
+            var pathSource = new ol.source.Vector({
+                features: (new ol.format.GeoJSON()).readFeatures(queryBySQLResult)
+            });
+            var pathLayer = new ol.layer.Vector({
+                source: pathSource,
+                style: new ol.style.Style({
+                    stroke: new ol.style.Stroke({
+                        color: 'rgba(100, 100, 225, 10)',
+                        width: 3
+                    })
+                })
+            });
+            map.addLayer(pathLayer);
+
+            //将形成路由的点提出来，为了构造下面点定里程服务sourceRoute
+            var pointsList = [];
+            var routeObj = queryBySQLResult.features[0].geometry.coordinates[0];
+            for (var i = 0; i < routeObj.length; i++) {
+                pointsList.push([routeObj[i][0], routeObj[i][1],routeObj[i][2]])
+            }
+            var routeLine = new ol.geom.LineString([pointsList]);
+
+            //在组成路由的点中选取一个查询点(数组中第8个点),并添加到地图上
+            var point = new ol.geom.Point([routeObj[7][0], routeObj[7][1]]);
+
+            //点定里程服务
+            var routeCalculateMeasureService = new ol.supermap.SpatialAnalystService(serviceUrl);
+            var routeCalculateMeasureParameters = new SuperMap.RouteCalculateMeasureParameters({
+                "sourceRoute": routeLine,   //必选,路由类型
+                "point": point,            //必选
+                "tolerance": 10,
+                "isIgnoreGap": false
+            });
+            routeCalculateMeasureService.routeCalculateMeasure(routeCalculateMeasureParameters, function (routeCaculateServiceResult) {
+                var vectorSource = new ol.source.Vector({
+                    features: [new ol.Feature(point)],
+                });
+                var resultLayer = new ol.layer.Vector({
+                    source: vectorSource
+                });
+                map.addLayer(resultLayer);
+                var innerHTML = "查询获取的M值为:" + routeCaculateServiceResult.result.measure;
+                content.innerHTML = innerHTML;
+                overlay.setPosition([point.getCoordinates()[0],point.getCoordinates()[1]]);
+            });
+        });
+    }</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/routeCalculateMeasureService.png" style="height:300px"/>
+                    </div>
+                    <p id="routeLocatorPointService"><b>&nbsp;&nbsp;示例：里程定点</b></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;里程定点是根据指定路由上的M值来定位点。应用情景与点定里程相反，如知道某事故距离某路口位置，需要确定其相对精确的坐标的时候使用。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;下面以长春数据为例，确定一条发生交通事故的路上（路由ID为1690的路由）与路口距离为10km的事故点，里程定点的接口使用方法：</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;在进行里程定点处理之前，需要先初始化地图。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code> var map,baseUrl = "http://support.supermap.com.cn:8090/iserver/services/map-changchun/rest/maps/长春市区图",
+            serviceUrl = "http://support.supermap.com.cn:8090/iserver/services/spatialanalyst-changchun/restjsr/spatialanalyst";
+    var extent = [48.4, -7668.25, 8958.85, -55.58];
+    var projection = new ol.proj.Projection({
+        extent: extent,
+        units: 'm'
+    });
+    var container = document.getElementById('popup');
+    var content = document.getElementById('popup-content');
+    var overlay = new ol.Overlay(({
+        element: container,
+        autoPan: true,
+        autoPanAnimation: {
+            duration: 250
+        }
+    }));
+    var mapService = new ol.supermap.MapService(baseUrl);
+    mapService.getMapInfo(function (serviceResult) {
+        var mapJSONObj = serviceResult.result;
+        map = new ol.Map({
+            target: 'map',
+            view: new ol.View({
+                center: [4503.62, -3861.91],
+                zoom: 2,
+                projection: projection
+            }),
+            overlays: [overlay]
+        });
+        var options = ol.source.TileSuperMapRest.optionsFromMapJSON(baseUrl, mapJSONObj);
+        var layer = new ol.layer.Tile({
+            source: new ol.source.TileSuperMapRest(options)
+        });
+        map.addLayer(layer);
+        routeLocatorProcess_point();
+    });</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;地图加载完成后进行里程定点分析服务，首先根据RouteID获得路由对象，路由对象查询成功之后才能进行后续的里程定点操作。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>    function routeLocatorProcess_point() {
+        //通过SQL查询的方法建立路由,并添加到地图上
+        var queryBySQLService = new ol.supermap.QueryService(baseUrl);
+        var queryBySQLParams = new SuperMap.QueryBySQLParameters({
+            queryParams: [
+                new SuperMap.FilterParameter({
+                    name: "RouteDT_road@Changchun",
+                    attributeFilter: "RouteID=1690"
+                })
+            ]
+        });
+        queryBySQLService.queryBySQL(queryBySQLParams, function (SQLQueryServiceResult) {
+            var queryBySQLResult = SQLQueryServiceResult.result.recordsets[0].features;
+            var pathSource = new ol.source.Vector({
+                features: (new ol.format.GeoJSON()).readFeatures(queryBySQLResult)
+            });
+            var pathLayer = new ol.layer.Vector({
+                source: pathSource,
+                style: new ol.style.Style({
+                    stroke: new ol.style.Stroke({
+                        color: 'rgba(100, 100, 225, 10)',
+                        width: 3
+                    })
+                })
+            });
+            map.addLayer(pathLayer);
+
+            //将形成路由的点提出来，为了构造下面点定里程服务sourceRoute
+            var pointsList = [];
+            var routeObj = queryBySQLResult.features[0].geometry.coordinates[0];
+            for (var i = 0; i < routeObj.length; i++) {
+                pointsList.push([routeObj[i][0], routeObj[i][1], routeObj[i][2]])
+            }
+            var routeLine = new ol.geom.LineString([pointsList]);
+
+            //里程定点服务
+            var routeLocatorService = new ol.supermap.SpatialAnalystService(serviceUrl);
+            var routeLocatorParameters_point = new SuperMap.RouteLocatorParameters({
+                "sourceRoute": routeLine,
+                "type": "POINT",
+                "measure": 800,
+                "offset": 0,
+                "isIgnoreGap": true
+            });
+            routeLocatorService.routeLocate(routeLocatorParameters_point, function (routeLocateServiceResult) {
+                var vectorSource = new ol.source.Vector({
+                    features: [(new ol.format.GeoJSON()).readFeature(routeLocateServiceResult.result.resultGeometry)],
+                    wrapX: false
+                });
+                var resultLayer = new ol.layer.Vector({
+                    source: vectorSource,
+                });
+                map.addLayer(resultLayer);
+                var innerHTML = "查询到的里程为 "+routeLocatorParameters_point.measure+" 的点";
+                content.innerHTML = innerHTML;
+                overlay.setPosition([routeLocateServiceResult.result.resultGeometry.geometry.coordinates[0],routeLocateServiceResult.result.resultGeometry.geometry.coordinates[1]]);
+            });
+        });
+    }</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/routeLocatorPointService.png" style="height:300px"/>
+                    </div>
+                    <p id="routeLocatorLineService"><b>&nbsp;&nbsp;示例：里程定线</b></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;里程定线是根据指定线的范围来确定路由上对应的线对象。应用场景如当知道某一路段发生阻塞，能够确定该路段相对精确的位置范围。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;下面以长春数据为例，一条路（路由ID为1690的路由）在距离路口10-800km之间的发生堵塞，里程定线的接口使用方法如下：</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;在进行里程定线处理之前，需要先初始化地图。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>    var map, baseUrl = "http://support.supermap.com.cn:8090/iserver/services/map-changchun/rest/maps/长春市区图",
+            serviceUrl = "http://support.supermap.com.cn:8090/iserver/services/spatialanalyst-changchun/restjsr/spatialanalyst";
+    var extent = [48.4, -7668.25, 8958.85, -55.58];
+    var projection = new ol.proj.Projection({
+        extent: extent,
+        units: 'm'
+    });
+    var mapService = new ol.supermap.MapService(baseUrl);
+    mapService.getMapInfo(function (serviceResult) {
+        var mapJSONObj = serviceResult.result;
+        map = new ol.Map({
+            target: 'map',
+            view: new ol.View({
+                center: [4503.62, -3861.91],
+                zoom: 2,
+                projection: projection
+            })
+        });
+        var options = ol.source.TileSuperMapRest.optionsFromMapJSON(baseUrl, mapJSONObj);
+        var layer = new ol.layer.Tile({
+            source: new ol.source.TileSuperMapRest(options)
+        });
+        map.addLayer(layer);
+        routeLocatorProcess_line();
+    });</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;地图加载完成后进行里程定线分析服务，首先根据RouteID获得路由对象，路由对象查询成功之后才能进行后续的里程定线操作。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>    function routeLocatorProcess_line() {
+        //通过SQL查询的方法建立路由,并添加到地图上
+        var queryBySQLService = new ol.supermap.QueryService(baseUrl);
+        var queryBySQLParams = new SuperMap.QueryBySQLParameters({
+            queryParams: [
+                new SuperMap.FilterParameter({
+                    name: "RouteDT_road@Changchun",
+                    attributeFilter: "RouteID=1690"
+                })
+            ]
+        });
+        queryBySQLService.queryBySQL(queryBySQLParams, function (SQLQueryServiceResult) {
+            var queryBySQLResult = SQLQueryServiceResult.result.recordsets[0].features;
+            var pathSource = new ol.source.Vector({
+                features: (new ol.format.GeoJSON()).readFeatures(queryBySQLResult)
+            });
+            var pathLayer = new ol.layer.Vector({
+                source: pathSource,
+                style: new ol.style.Style({
+                    stroke: new ol.style.Stroke({
+                        color: 'rgba(100, 100, 225, 10)',
+                        width: 3
+                    })
+                })
+            });
+            map.addLayer(pathLayer);
+
+            //将形成路由的点提出来，为了构造下面点定里程服务sourceRoute
+            var pointsList = [];
+            var routeObj = queryBySQLResult.features[0].geometry.coordinates[0];
+            for (var i = 0; i < routeObj.length; i++) {
+                pointsList.push([routeObj[i][0], routeObj[i][1], routeObj[i][2]])
+            }
+            var routeLine = new ol.geom.LineString([pointsList]);
+
+            //里程定线服务
+            var routeLocatorService = new ol.supermap.SpatialAnalystService(serviceUrl);
+            var routeLocatorParameters_line = new SuperMap.RouteLocatorParameters({
+                "sourceRoute": routeLine,
+                "type": "LINE",
+                "startMeasure": 200,
+                "endMeasure": 1000,
+                "isIgnoreGap": true
+            });
+            routeLocatorService.routeLocate(routeLocatorParameters_line, function (routeLocateServiceResult) {
+                var vectorSource = new ol.source.Vector({
+                    features: [(new ol.format.GeoJSON()).readFeature(routeLocateServiceResult.result.resultGeometry)],
+                    wrapX: false
+                });
+                resultLayer = new ol.layer.Vector({
+                    source: vectorSource,
+                    style: new ol.style.Style({
+                        stroke: new ol.style.Stroke({
+                            color: 'red',
+                            width: 3
+                        }),
+                        fill: new ol.style.Fill({
+                            color: 'rgba(0, 0, 255, 0.1)'
+                        })
+                    })
+                });
+                map.addLayer(resultLayer);
+            });
+        });
+    }</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/routeLocatorLineService.png" style="height:300px"/>
+                    </div>
+                </div>
+            </div>
+            <!--使用交通网络分析服务-->
+            <div class="section icl-docs-section">
+                <h2 id="networkAnalyst" class="section-title">使用交通网络分析服务</h2>
+                <p class="lead"></p>
+                <div class="section section-level-2">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;SuperMap iClient for OpenLayers支持的交通网络分析REST服务包含：</p>
+                    <ul>
+                        <li style="line-height:28px">最佳路径分析</li>
+                        <li style="line-height:28px">服务区分析</li>
+                        <li style="line-height:28px">旅行商分析</li>
+                        <li style="line-height:28px">最近设施查找分析</li>
+                        <li style="line-height:28px">选址分区分析</li>
+                        <li style="line-height:28px">多旅行商分析</li>
+                    </ul>
+                    <p id="findPathService"><b>&nbsp;&nbsp;示例：最佳路径分析</b></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;最佳路径，是求解网络中两点之间阻抗最小的路经，必须按照结点的选择顺序访问网络中的结点。“阻抗最小”有多种理解，如基于单因素考虑的时间最短、费用最低、风景最好、路况最佳、过桥最少、收费站最少、经过乡村最多等。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;下面以长春数据为例，计算地图中将要行走的地点间的最佳路径。其接口使用方法如下：</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;设置最佳路径分析参数findPathParameter，包括交通网络分析通用参数、途径站点等；</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>        //创建最佳路径分析参数实例
+        var resultSetting = new SuperMap.TransportationAnalystResultSetting({
+            returnEdgeFeatures: true,
+            returnEdgeGeometry: true,
+            returnEdgeIDs: true,
+            returnNodeFeatures: true,
+            returnNodeGeometry: true,
+            returnNodeIDs: true,
+            returnPathGuides: true,
+            returnRoutes: true
+        });
+        var analystParameter = new SuperMap.TransportationAnalystParameter({
+            resultSetting: resultSetting,
+            weightFieldName: "length"
+        });
+        var findPathParameter = new SuperMap.FindPathParameters({
+            isAnalyzeById: false,
+            nodes: [new ol.geom.Point([4000, -3000]), new ol.geom.Point([5500, -2500]), new ol.geom.Point([6900, -4000])],
+            hasLeastEdgeCount: false,
+            parameter: analystParameter
+        });</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;向服务端提交最佳路径分析的请求，待服务端成功处理并返回最佳路径分析结果serviceResult对其进行解析，将行驶路线在地图中展现出来并给出行驶导引信息。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>        //进行查找
+        new ol.supermap.NetworkAnalystService(serviceUrl).findPath(findPathParameter, function (serviceResult) {
+            var guideLayerStyle = new ol.style.Style({
+                image: new ol.style.Icon(({
+                    src: 'http://support.supermap.com.cn:8090/iserver/iClient/forJavaScript/examples/images/walk.png',
+                    size: [20, 20]
+                }))
+            });
+            var routeLayerStyle = new ol.style.Style({
+                stroke: new ol.style.Stroke({
+                    color: 'rgba(100, 100, 225, 10)',
+                    width: 3
+                }),
+                fill: new ol.style.Fill({
+                    color: 'rgba(0, 0, 255, 0.1)'
+                })
+            });
+            serviceResult.result.pathList.map(function (result) {
+                //添加分析出的路线
+                var routeSource = new ol.source.Vector({
+                    features: (new ol.format.GeoJSON()).readFeatures(result.route)
+                });
+                var pathLayer = new ol.layer.Vector({
+                    source: routeSource,
+                    style: routeLayerStyle
+                });
+                map.addLayer(pathLayer);
+                //添加分析出的引导点
+                var guideSource = new ol.source.Vector({
+                    features: (new ol.format.GeoJSON()).readFeatures(result.pathGuideItems)
+                });
+                var guideLayer = new ol.layer.Vector({
+                    source: guideSource,
+                    style: guideLayerStyle
+                });
+                map.addLayer(guideLayer);
+            });
+        });</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/findPathService.png" style="height:300px"/>
+                    </div>
+                    <p id="findServiceAreas"><b>&nbsp;&nbsp;示例：服务区分析</b></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;服务区分析是为网络上指定的服务中心点查找其服务范围。例如：为网络上某点计算其 30
+                        分钟的服务区，则结果服务区内，任意点出发到该点的时间都不会超过30分钟。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;下面以长春数据为例，然后在地图中选择将要分析的服务中心点(支持多中心)，根据选择服务中心点的顺序依次按照
+                        400、500、600...递增的数值作为服务半径进行缓冲区分析。(即第一个服务中心点的服务半径为 400，第二个服务中心店的服务半径为 500，依次类推)</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;服务区分析接口使用方法：</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;设置服务区分析参数findServiceAreasParams，包括交通网络分析通用参数、途径站点等</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>var resultSetting = new SuperMap.TransportationAnalystResultSetting({
+            returnEdgeFeatures: true,
+            returnEdgeGeometry: true,
+            returnEdgeIDs: true,
+            returnNodeFeatures: true,
+            returnNodeGeometry: true,
+            returnNodeIDs: true,
+            returnPathGuides: true,
+            returnRoutes: true
+        });
+        var analystParameter = new SuperMap.TransportationAnalystParameter({
+            resultSetting: resultSetting,
+            weightFieldName: "length"
+        });
+        var parameter = new SuperMap.FindServiceAreasParameters({
+            centers: [point],
+            isAnalyzeById: false,
+            parameter: analystParameter
+        });
+        parameter.weights = [400 + Math.random() * 100];</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;定义服务区分析服务对象，用于将客户端设置的服务区分析服务参数(parameters)传递给服务端，
+                        并接收服务端返回的动态分段分析结果数据。当向服务端发送请求并且服务端成功返回结果时，用户可对获得的服务区分析结果做相应处理。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>new ol.supermap.NetworkAnalystService(serviceUrl).findServiceAreas(parameter, function (serviceResult) {
+            var vectorSource = new ol.source.Vector({
+                features: (new ol.format.GeoJSON()).readFeatures(serviceResult.result.serviceAreaList[0].edgeFeatures)
+            });
+            var resultLayer = new ol.layer.Vector({
+                source: vectorSource
+            });
+            map.addLayer(resultLayer);
+        });</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/findServiceAreas.png" style="height:300px"/>
+                    </div>
+                    <p id="findTSPPathsService"><b>&nbsp;&nbsp;示例：旅行商分析</b></p>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;旅行商分析是查找经过指定一系列点的路径，旅行商分析是无序的路径分析。旅行商可以自己决定访问结点的顺序，目标是旅行路线阻抗总和最小（或接近最小）。 </p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;旅行商分析，如果指定了终止点，则旅行商必须最后一个访问终止点，而其他经过点的访问次序有旅行商自己决定。下面以长春数据为例，对地图中将要行走的地点进行旅行商分析，其接口使用方法如下：</p>
+                    <p> &nbsp;&nbsp;&nbsp;&nbsp;设置旅行商分析参数findTSPPathsParams，包括交通网络分析通用参数、途径站点等</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>        //创建多旅行商分析参数实例
+        var resultSetting = new SuperMap.TransportationAnalystResultSetting({
+            returnEdgeFeatures: true,
+            returnEdgeGeometry: true,
+            returnEdgeIDs: true,
+            returnNodeFeatures: true,
+            returnNodeGeometry: true,
+            returnNodeIDs: true,
+            returnPathGuides: true,
+            returnRoutes: true
+        });
+        var analystParameter = new SuperMap.TransportationAnalystParameter({
+            resultSetting: resultSetting,
+            weightFieldName: "length"
+        });
+        var findTSPPathsParameter = new SuperMap.FindTSPPathsParameters({
+            //是否指定终止点
+            endNodeAssigned: false,
+            isAnalyzeById: false,
+            //旅行商分析途经点数组，必设字段
+            nodes: [new ol.geom.Point([3000, -1000]), new ol.geom.Point([3760, -4850]), new ol.geom.Point([8000, -2700])],
+            parameter: analystParameter
+        });</code>
+                        </pre>
+                    </figure>
+                    <p> &nbsp;&nbsp;&nbsp;&nbsp;定义服务区分析服务对象，用于将客户端设置的服务区分析服务参数传递给服务端，
+                        并接收服务端返回的动态分段分析结果数据。当向服务端发送请求并且服务端成功返回结果时，用户可对获得的旅行商分析结果做相应处理。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>        //进行查找
+        new ol.supermap.NetworkAnalystService(serviceUrl).findTSPPaths(findTSPPathsParameter, function (serviceResult) {
+            serviceResult.result.tspPathList.map(function (result) {
+                var vectorSource = new ol.source.Vector({
+                    features: (new ol.format.GeoJSON()).readFeatures(result.route)
+                });
+                var resultLayer = new ol.layer.Vector({
+                    source: vectorSource,
+                    style: new ol.style.Style({
+                        stroke: new ol.style.Stroke({
+                            color: 'rgba(100, 100, 225, 10)',
+                            width: 3
+                        }),
+                        fill: new ol.style.Fill({
+                            color: 'rgba(0, 0, 255, 0.1)'
+                        })
+                    })
+                });
+                map.addLayer(resultLayer);
+            });
+        });</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/findTSPPathsService.png" style="height:300px"/>
+                    </div>
+                    <p id="findClosetFacilitiesService"><b>&nbsp;&nbsp;示例：最近设施查找分析</b></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;最近设施分析是指在网络上给定一个事件点和一组设施点，为事件点查找以最小耗费能到达的一个或几个设施点，结果显示从事件点到设施点(或从设施点到事件点)的最佳路径，耗费，及行驶方向。例如事件发生点是一起交通事故，要求查找在10分钟内能到达的最近医院，超过10分钟能到达的都不予考虑。此例中，事故发生地即是一个事件点，周边的医院则是设施点。最近设施查找实际上也是一种路径分析，因此，同样可以应用障碍边和障碍点的设置，在行驶路途上这些障碍将不能被穿越，在路径分析中会予以考虑。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;下面以长春数据为例，在地图上标记事故事件点，然后针对三个医院进行最近设施查找分析，其接口使用方法如下所示：</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;设置最近设施分析参数，包括交通网络分析通用参数、事件点、设施点、查找半径等。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>        //添加设施点
+        var facilityPoint1 = new ol.geom.Point([2500, -3500]);
+        var facilityPoint2 = new ol.geom.Point([5500, -2500]);
+        var facilityPoint3 = new ol.geom.Point([7000, -4000]);
+        var facilityFeature1 = new ol.Feature(facilityPoint1);
+        var facilityFeature2 = new ol.Feature(facilityPoint2);
+        var facilityFeature3 = new ol.Feature(facilityPoint3);
+        var iconStyle_facility = new ol.style.Style({
+            image: new ol.style.Icon(({
+                src: 'http://support.supermap.com.cn:8090/iserver/iClient/forJavaScript/theme/images/marker-gold.png'
+            }))
+        });
+        facilityFeature1.setStyle(iconStyle_facility);
+        facilityFeature2.setStyle(iconStyle_facility);
+        facilityFeature3.setStyle(iconStyle_facility);
+        var facilitySource = new ol.source.Vector({
+            features: [facilityFeature1, facilityFeature2, facilityFeature3]
+        });
+        var facilityLayer = new ol.layer.Vector({
+            source: facilitySource
+        });
+        //添加事件点
+        var eventPoint = new ol.geom.Point([5000, -3700]);
+        var eventFeature = new ol.Feature(eventPoint);
+        var iconStyle_event = new ol.style.Style({
+            image: new ol.style.Icon(({
+                src: 'http://support.supermap.com.cn:8090/iserver/iClient/forJavaScript/theme/images/marker.png'
+            }))
+        });
+        eventFeature.setStyle(iconStyle_event);
+        var eventSource = new ol.source.Vector({
+            features: [eventFeature]
+        });
+        var eventLayer = new ol.layer.Vector({
+            source: eventSource
+        });
+        //创建最近设施分析参数实例
+        var resultSetting = new SuperMap.TransportationAnalystResultSetting({
+            returnEdgeFeatures: true,
+            returnEdgeGeometry: true,
+            returnEdgeIDs: true,
+            returnNodeFeatures: true,
+            returnNodeGeometry: true,
+            returnNodeIDs: true,
+            returnPathGuides: true,
+            returnRoutes: true
+        });
+        var analystParameter = new SuperMap.TransportationAnalystParameter({
+            resultSetting: resultSetting,
+            turnWeightField: "TurnCost",
+            weightFieldName: "length"  //length,time
+        });
+        var findClosetFacilitiesParameter = new SuperMap.FindClosestFacilitiesParameters({
+            //事件点,必设参数
+            event: new ol.geom.Point([5000, -3700]),
+            //要查找的设施点数量。默认值为1
+            expectFacilityCount: 1,
+            //设施点集合,必设
+            facilities: [new ol.geom.Point([2500, -3500]), new ol.geom.Point([5500, -2500]), new ol.geom.Point([7000, -4000])],
+            isAnalyzeById: false,
+            parameter: analystParameter
+        });</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;定义最近设施查找分析对象，用于将客户端设置的最近设施查找分析服务参数传递给服务端，
+                        并接收服务端返回的最近设施分析结果。当向服务端发送请求并且服务端成功返回结果时，用户可对获得的最近设施分析结果做相应处理。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>        //进行查找
+        new ol.supermap.NetworkAnalystService(serviceUrl).findClosestFacilities(findClosetFacilitiesParameter, function (serviceResult) {
+            serviceResult.result.facilityPathList.map(function (result) {
+                var vectorSource = new ol.source.Vector({
+                    features: (new ol.format.GeoJSON()).readFeatures(result.route)
+                });
+                var pathLayer = new ol.layer.Vector({
+                    source: vectorSource,
+                    style: new ol.style.Style({
+                        stroke: new ol.style.Stroke({
+                            color: 'rgba(100, 100, 225, 10)',
+                            width: 3
+                        }),
+                        fill: new ol.style.Fill({
+                            color: 'rgba(0, 0, 255, 0.1)'
+                        })
+                    })
+                });
+                map.addLayer(pathLayer);
+            });
+            map.addLayer(facilityLayer);
+            map.addLayer(eventLayer);
+        });</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/findClosetFacilitiesService.png" style="height:300px"/>
+                    </div>
+                    <p id="findLocationService"><b>&nbsp;&nbsp;示例：选址分区分析</b></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;选址分区分析是为了确定一个或多个待建设施的最佳或最优位置，使得设施可以用一种最经济有效的方式为需求方提供服务或者商品。选址分区不仅仅是一个选址过程，还要将需求点的需求分配到相应的新建设施的服务区中，因此称之为选址与分区。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;设置选址分区分析参数，包括交通网络分析通用参数、途径站点等</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>        //添加设施点
+        var facilityPoint1 = new ol.geom.Point([1675.9256791377206, -593.56822512495194]);
+        var facilityPoint2 = new ol.geom.Point([2820.35101097629, -2358.0414663985171]);
+        var facilityPoint3 = new ol.geom.Point([2909.4396668115278, -3647.0074300836109]);
+        var facilityPoint4 = new ol.geom.Point([1544.5037476378677, -5616.5950974905827]);
+        var facilityPoint5 = new ol.geom.Point([6623.5972101719526, -2130.4887600981415]);
+        var facilityPoint6 = new ol.geom.Point([5482.4979617984973, -4504.2328567816048]);
+        var facilityPoint7 = new ol.geom.Point([6940.6579024271468, -1627.6012900626256]);
+        var facilityPoint8 = new ol.geom.Point([8215.9188781715948, -5747.5063918659716]);
+        var facilityFeature1 = new ol.Feature(facilityPoint1);
+        var facilityFeature2 = new ol.Feature(facilityPoint2);
+        var facilityFeature3 = new ol.Feature(facilityPoint3);
+        var facilityFeature4 = new ol.Feature(facilityPoint4);
+        var facilityFeature5 = new ol.Feature(facilityPoint5);
+        var facilityFeature6 = new ol.Feature(facilityPoint6);
+        var facilityFeature7 = new ol.Feature(facilityPoint7);
+        var facilityFeature8 = new ol.Feature(facilityPoint8);
+        var iconStyle_facility = new ol.style.Style({
+            image: new ol.style.Icon(({
+                src: 'http://support.supermap.com.cn:8090/iserver/iClient/forJavaScript/theme/images/marker.png',
+                anchor: [0.5, 1]
+            }))
+        });
+        facilityFeature1.setStyle(iconStyle_facility);
+        facilityFeature2.setStyle(iconStyle_facility);
+        facilityFeature3.setStyle(iconStyle_facility);
+        facilityFeature4.setStyle(iconStyle_facility);
+        facilityFeature5.setStyle(iconStyle_facility);
+        facilityFeature6.setStyle(iconStyle_facility);
+        facilityFeature7.setStyle(iconStyle_facility);
+        facilityFeature8.setStyle(iconStyle_facility);
+        var facilitySource = new ol.source.Vector({
+            features: [
+                facilityFeature1, facilityFeature2,
+                facilityFeature3, facilityFeature4,
+                facilityFeature5, facilityFeature6,
+                facilityFeature7, facilityFeature8
+            ]
+        });
+        var facilityLayer = new ol.layer.Vector({
+            source: facilitySource
+        });
+
+        // 设置设施点的资源供给中心
+        var supplyCenterType_FIXEDCENTER = SuperMap.SupplyCenterType.FIXEDCENTER,
+            supplyCenterType_NULL = SuperMap.SupplyCenterType.NULL;
+        var supplyCenterType_OPTIONALCENTER = SuperMap.SupplyCenterType.OPTIONALCENTER,
+            supplyCenters = [new SuperMap.SupplyCenter({
+                maxWeight: 500,             // 资源供给中心的最大耗费值,必设参数
+                nodeID: 139,                // 资源供给中心点的结点 ID 号,必设参数
+                resourceValue: 100,         // 资源供给中心能提供的最大服务量或商品数量,必设参数
+                type: supplyCenterType_OPTIONALCENTER      //选址分区中资源中心的类型包括固定中心和可选中心两种
+            }),
+                new SuperMap.SupplyCenter({
+                    maxWeight: 500,
+                    nodeID: 1358,
+                    resourceValue: 100,
+                    type: supplyCenterType_OPTIONALCENTER
+                }),
+                new SuperMap.SupplyCenter({
+                    maxWeight: 500,
+                    nodeID: 2972,
+                    resourceValue: 100,
+                    type: supplyCenterType_OPTIONALCENTER
+                }),
+                new SuperMap.SupplyCenter({
+                    maxWeight: 500,
+                    nodeID: 5523,
+                    resourceValue: 100,
+                    type: supplyCenterType_OPTIONALCENTER
+                }),
+                new SuperMap.SupplyCenter({
+                    maxWeight: 500,
+                    nodeID: 1161,
+                    resourceValue: 100,
+                    type: supplyCenterType_OPTIONALCENTER
+                }),
+                new SuperMap.SupplyCenter({
+                    maxWeight: 500,
+                    nodeID: 4337,
+                    resourceValue: 100,
+                    type: supplyCenterType_OPTIONALCENTER
+                }),
+                new SuperMap.SupplyCenter({
+                    maxWeight: 500,
+                    nodeID: 5732,
+                    resourceValue: 100,
+                    type: supplyCenterType_NULL
+                }),
+                new SuperMap.SupplyCenter({
+                    maxWeight: 500,
+                    nodeID: 663,
+                    resourceValue: 100,
+                    type: supplyCenterType_FIXEDCENTER
+                })
+            ];
+
+        //创建选址分区分析参数实例
+        var findLocationParameter = new SuperMap.FindLocationParameters({
+            // 期望用于最终设施选址的资源供给中心数量,必设字段
+            expectedSupplyCenterCount: 8,
+            // 是否从中心点开始分配资源。默认为 false
+            isFromCenter: false,
+            nodeDemandField: "Demand",
+            // 转向权值字段的名称
+            turnWeightField: "TurnCost",
+            // 阻力字段的名称, 必设
+            weightName: "length",
+            // 资源供给中心集合,必设字段
+            supplyCenters: supplyCenters
+        });</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;定义选址分区分析服务对象，用于将客户端设置的选址分区分析服务参数传递给服务端，并接收服务端返回的动态分段分析结果数据。当向服务端发送请求并且服务端成功返回结果时，用户可对获得的选址分区分析结果做相应处理。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>        //进行查找
+        new ol.supermap.NetworkAnalystService(serviceUrl).findLocation(findLocationParameter, function (serviceResult) {
+            var vectorSource = new ol.source.Vector({
+                features: (new ol.format.GeoJSON()).readFeatures(serviceResult.result.demandResults)
+            });
+            var polygonLayer = new ol.layer.Vector({
+                source: vectorSource,
+                style: new ol.style.Style({
+                    image: new ol.style.Circle({
+                        radius: 2.5,
+                        fill: new ol.style.Fill({
+                            color: 'dodgerblue'
+                        })
+                    })
+                })
+            });
+            map.addLayer(polygonLayer);
+            map.addLayer(facilityLayer);
+        });</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/findLocationService.png" style="height:300px"/>
+                    </div>
+                    <p id="findMTSPPathsService"><b>&nbsp;&nbsp;示例：多旅行商分析</b></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;多旅行商分析也称为物流配送，是指在网络数据集中，给定M个配送中心点和N个配送目的地（M，N为大于零的整数），查找经济有效的配送路径，并给出相应的行走路线。
+                        多旅行商分析功能就是解决如何合理分配配送次序和送货路线，使配送总花费达到最小或每个配送中心的花费达到最小。 </p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;多旅行商分析的结果将给出，每个配送中心所负责的配送目的地，并且在某个配送中心向其负责的配送目的地配送货物的时候，又给出经过各个配送目的地的顺序，和相应的行走路线，从而使该配送中心的配送花费最少，或者使得所有的配送中心的总花费最小。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;下面以长春数据为例，利用多旅行商分析和旅行商分析对食品厂各个仓库配送中心到用户指定的零售站的配送路线进行分析，并且给出质检员定期到各个零售站检查货品情况时所走的花费最小的路线，其接口使用方法如下所示：</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;设置多旅行商分析参数findMTSPPathsParams，包括交通网络分析通用参数、配送中心点集合、配送目标点集合、配送模式等</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>        //添加配送点
+        var facilityPoint1 = new ol.geom.Point([6000, -5500]);
+        var facilityPoint2 = new ol.geom.Point([5500, -2500]);
+        var facilityPoint3 = new ol.geom.Point([2500, -3500]);
+        var facilityFeature1 = new ol.Feature(facilityPoint1);
+        var facilityFeature2 = new ol.Feature(facilityPoint2);
+        var facilityFeature3 = new ol.Feature(facilityPoint3);
+        var iconStyle_facility = new ol.style.Style({
+            image: new ol.style.Icon(({
+                src: 'http://support.supermap.com.cn:8090/iserver/iClient/forJavaScript/theme/images/marker-gold.png'
+            }))
+        });
+        facilityFeature1.setStyle(iconStyle_facility);
+        facilityFeature2.setStyle(iconStyle_facility);
+        facilityFeature3.setStyle(iconStyle_facility);
+        var facilitySource = new ol.source.Vector({
+            features: [facilityFeature1, facilityFeature2, facilityFeature3]
+        });
+        var facilityLayer = new ol.layer.Vector({
+            source: facilitySource
+        });
+
+        //添加配送目的地
+        var destPoint1 = new ol.geom.Point([5000, -5000]);
+        var destPoint2 = new ol.geom.Point([6500, -3200]);
+        var destFeature1 = new ol.Feature(destPoint1);
+        var destFeature2 = new ol.Feature(destPoint2);
+        var iconStyle_dest = new ol.style.Style({
+            image: new ol.style.Icon(({
+                src: 'http://support.supermap.com.cn:8090/iserver/iClient/forJavaScript/theme/images/marker.png'
+            }))
+        });
+        destFeature1.setStyle(iconStyle_dest);
+        destFeature2.setStyle(iconStyle_dest);
+        var destSource = new ol.source.Vector({
+            features: [destFeature1, destFeature2]
+        });
+        var destLayer = new ol.layer.Vector({
+            source: destSource
+        });
+
+        //创建多旅行商分析参数实例
+        var resultSetting = new SuperMap.TransportationAnalystResultSetting({
+            returnEdgeFeatures: true,
+            returnEdgeGeometry: true,
+            returnEdgeIDs: true,
+            returnNodeFeatures: true,
+            returnNodeGeometry: true,
+            returnNodeIDs: true,
+            returnPathGuides: true,
+            returnRoutes: true
+        });
+        var analystParameter = new SuperMap.TransportationAnalystParameter({
+            resultSetting: resultSetting,
+            weightFieldName: "length"  //"length"或者"time"
+        });
+        var findMTSPPathsParameter = new SuperMap.FindMTSPPathsParameters({
+            centers: [new ol.geom.Point([6000, -5500]), new ol.geom.Point([5500, -2500]), new ol.geom.Point([2500, -3500])],
+            isAnalyzeById: false,
+            nodes: [new ol.geom.Point([5000, -5000]), new ol.geom.Point([6500, -3200])],
+            hasLeastTotalCost: true,
+            parameter: analystParameter
+        });</code>
+                        </pre>
+                    </figure>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;通过向服务端提交物流配送分析的请求参数，待服务端成功处理并返回分析处理结果后对其进行解析，获得由配送中心依次向各个配送目的地配送货物的最佳路径。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>        //进行查找
+        new ol.supermap.NetworkAnalystService(serviceUrl).findMTSPPaths(findMTSPPathsParameter, function (serviceResult) {
+            serviceResult.result.pathList.map(function (result) {
+                var vectorSource = new ol.source.Vector({
+                    features: (new ol.format.GeoJSON()).readFeatures(result.route)
+                });
+                var pathLayer = new ol.layer.Vector({
+                    source: vectorSource,
+                    style: new ol.style.Style({
+                        stroke: new ol.style.Stroke({
+                            color: 'rgba(100, 100, 225, 10)',
+                            width: 3
+                        }),
+                        fill: new ol.style.Fill({
+                            color: 'rgba(0, 0, 255, 0.1)'
+                        })
+                    })
+                });
+                map.addLayer(pathLayer);
+            });
+            map.addLayer(facilityLayer);
+            map.addLayer(destLayer);
+        });</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/findMTSPPathsService.png" style="height:300px"/>
+                    </div>
+                </div>
+            </div>
+            <!--使用交通换乘分析服务-->
+            <div class="section icl-docs-section">
+                <h2 id="trafficTransferAnalystService" class="section-title">使用交通换乘分析服务</h2>
+                <p class="lead"></p>
+                <div class="section section-level-2">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;交通换乘分析的使用方法如下：</p>
+                    <ul>
+                        <li style="line-height:28px">定义起始站点和终点站点名查询函数；</li>
+                        <li style="line-height:28px">
+                            进行交通换乘查询，首先需在客户端设置用于向服务端发送的交通换乘参数，其次定义交通换乘服务，用于向服务端发送请求并从服务端获得交通换乘结果数据，最后将返回的结果在客户端进行展示。
+                        </li>
+                    </ul>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;下面以长春交通数据模拟的公交线路数据为例，起点为省汽修，终点为中央大厦，范例提供了最少时间的换乘策略，用户可根据自己的需要选择最为合适的出行路线。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;1. 交通换乘方案查询</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;交通方案查询：该方法返回所有的乘车方案，根据方案中的介绍信息可以获取具体的乘车路线。实现过程首先需要设置交通换乘参数，需要设置的参数包括solutionCount、transferTactic、transferPreference、walkingRatio、points，定义交通换乘服务函数，向服务端发送请求，待服务端成功处理并返回交通换乘结果数据。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>var map, startMarker, endMarker, container, content, tempMarker, solution, line,
+        stopSourceLayer, roadSourceLayer, tempMarkerSourceLayer, tempRedSourceLayer,
+        info, paths = {transSolutions: null, solutions: null},
+        baseUrl = "http://support.supermap.com.cn:8090/iserver/services/map-changchun/rest/maps/长春市区图",
+        serviceUrl = "http://support.supermap.com.cn:8090/iserver/services/traffictransferanalyst-sample/restjsr/traffictransferanalyst/Traffic-Changchun";
+    var extent = [48.4, -7668.25, 8958.85, -55.58];
+    var projection = new ol.proj.Projection({
+        extent: extent,
+        units: 'm'
+    });
+    new ol.supermap.MapService(baseUrl).getMapInfo(function (serviceResult) {
+        var mapJSONObj = serviceResult.result;
+        map = new ol.Map({
+            target: 'map',
+            controls: ol.control.defaults({attributionOptions: {collapsed: false}})
+                .extend([new ol.supermap.control.Logo()]),
+            view: new ol.View({
+                center: [4700, -3600],
+                zoom: 2,
+                projection: projection
+            })
+        });
+        var options = ol.source.TileSuperMapRest.optionsFromMapJSON(baseUrl, mapJSONObj);
+        var layer = new ol.layer.Tile({
+            source: new ol.source.TileSuperMapRest(options)
+        });
+        stopSourceLayer = new ol.source.Vector();
+        roadSourceLayer = new ol.source.Vector();
+        tempRedSourceLayer = new ol.source.Vector();
+        tempMarkerSourceLayer = new ol.source.Vector();
+        map.addLayer(layer);
+
+        //设置起始、终止点并添加到地图上
+        startMarker = new ol.Overlay({
+            element: document.getElementById('startMarker'),
+            positioning: 'center-center',
+            position: [3111.42533851, -5527.73795456]
+        });
+        endMarker = new ol.Overlay({
+            element: document.getElementById('endMarker'),
+            positioning: 'center-center',
+            position: [6055.3431955, -4270.0725196]
+        });
+        map.addOverlay(startMarker);
+        map.addOverlay(endMarker);
+        initResultInfoWin();
+        execTransSolutionsQuery('LESS_TIME');  //交通换乘的有4种方式:'LESS_TIME','MIN_DISTANCE','LESS_WALK','LESS_TRANSFER'
+    });
+
+    function initResultInfoWin() {
+        container = document.getElementById('popup');
+        content = document.getElementById('popup-content');
+        info = new ol.control.Control({element: container});
+        info.setMap(map);
+        info.update = function (transSolutions, transGuide) {
+            if (!transSolutions) {
+                return;
+            }
+            var solution, lines, line, dispStatus = "block";
+            $("&lt;div class='panel-heading' style='background:steelblue;color: honeydew'&gt;起点：省汽修&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;终点：中安大厦&lt;br/&gt;乘车方案（最少时间）&lt;/div&gt;").appendTo(content);
+            for (var i = 0, iLen = transSolutions.length; i &lt; iLen; i++) {
+                solution = transSolutions[i];
+                //显示方案头
+                var title = "";
+                for (var ii = 0, iiLen = solution.linesItems.length; ii &lt; iiLen; ii++) {
+                    lines = solution.linesItems[ii];
+                    for (var iii = 0, iiiLen = lines.lineItems.length; iii &lt; iiiLen; iii++) {
+                        line = lines.lineItems[iii];
+                        if (iii !== iiiLen - 1) {
+                            title += line.lineName + "/";
+                        } else {
+                            title += line.lineName;
+                        }
+                    }
+                    if (ii !== iiLen - 1) {
+                        title += " → ";
+                    }
+                }
+                $("&lt;div class='transferSolution' id='transferSolution-" + i + "'&gt;&lt;span class='transferIndex'&gt;方案" + (i + 1) + "：&lt;/span&gt;" + title + "&lt;/div&gt;").appendTo(content);
+                if (i !== 0) {
+                    dispStatus = "none";
+                }
+                var list = $("&lt;div class='transferInfo' id='transferInfo-" + i + "' style='display:" + dispStatus + "'&gt;&lt;/div&gt;");
+                list.appendTo(content);
+                //默认显示方案1下的table
+                if (i === 0) {
+                    fillTransferInfo(transGuide, transSolutions, 0).appendTo(list);
+                    setPopup();
+                }
+            }
+            //点击方案时显示对应的table
+            bindSolutionsClickEvent();
+        };
+        map.addControl(info);
+    }
+
+    function execTransSolutionsQuery(tactic) {
+        paths.points = [26, 180];
+        var params = new SuperMap.TransferSolutionParameters({
+            solutionCount: 6,        //最大换乘导引数量
+            transferTactic: tactic,  //公交换乘策略类型
+            walkingRatio: 10,        //步行与公交的消耗权重比
+            points: paths.points     //起始点坐标
+        });
+        new ol.supermap.TrafficTransferAnalystService(serviceUrl)
+            .analysisTransferSolution(params, function (serviceResult) {
+                transferSolutionsSucceed(serviceResult.result);
+            });
+    }
+
+    function transferSolutionsSucceed(result) {
+        clearLayer();
+        //在地图上叠加符号信息
+        var transGuide = result.defaultGuide,
+            transSolutions = result.solutionItems,
+            solutions = [];
+        for (var j = 0; j &lt; transSolutions.length; j++) {
+            var linesItems = transSolutions[j].linesItems, transSolution = [];
+            for (var jj = 0; jj &lt; linesItems.length; jj++) {
+                var lineItems = linesItems[jj].lineItems, items = [];
+                for (var jjj = 0; jjj &lt; lineItems.length; jjj++) {
+                    var lineItem = lineItems[jjj];
+                    items.push(lineItem
+                    );
+                }
+                transSolution.push(items);
+            }
+            solutions.push(transSolution);
+        }
+        paths["transSolutions"] = transSolutions;
+        paths["solutions"] = solutions;
+        if (!transGuide || !transSolutions) return;
+        info.update(transSolutions, transGuide);
+    }
+
+    function fillTransferInfo(transGuide, transSolutions, indexX) {
+        clearLayer();
+        //在地图上显示路线
+        if (transGuide && transGuide.items.length) {
+            var items = transGuide.items;
+            for (var itemIndex = 0, itemLen = items.length; itemIndex &lt; itemLen; itemIndex++) {
+                var geometry = items[itemIndex].route;
+                var pointsList = [];
+                for (var k = 0; k &lt; geometry.points.length; k++) {
+                    pointsList.push([geometry.points[k].x, geometry.points[k].y]);
+                }
+                var roadLine = new ol.geom.LineString(pointsList);
+                roadSourceLayer.addFeatures([new ol.Feature(roadLine)]);
+                var roadResultLayer = new ol.layer.Vector({
+                    source: roadSourceLayer,
+                    style: new ol.style.Style({
+                        stroke: new ol.style.Stroke({
+                            color: 'dodgerblue',
+                            width: 3
+                        })
+                    })
+                });
+                map.addLayer(roadResultLayer);
+            }
+        }
+        var table = $("&lt;table id='trafficRes' border='1'&gt;&lt;/table&gt;");
+        var startStop = $("&lt;tr&gt;&lt;/tr&gt;");
+        $("&lt;td class='start_transfer' width='10px'&gt;&lt;/td&gt;").appendTo(startStop);
+        $("&lt;td colspan='2'&gt;&lt;span class='busLink bgSpan'&gt;&lt;span style='display:none'&gt;" + transGuide.items[0].startPosition.x + "," + transGuide.items[0].startPosition.y + "&lt;/span&gt;" + transGuide.items[0].startStopName + "&lt;/span&gt;&lt;/td&gt;").appendTo(startStop);
+        startStop.appendTo(table);
+        var indexY = 0;
+        for (var m = 0, mLen = transGuide.items.length; m &lt; mLen; m++) {
+            var item = transGuide.items[m];
+            var tr2 = $("&lt;tr&gt;&lt;/tr&gt;");
+            if (item.isWalking) {
+                $("&lt;td class='step_transfer' &gt;&lt;/td&gt;").appendTo(tr2);
+                $("&lt;td&gt;步行至:&lt;a class='busLink'&gt;&lt;span style='display:none'&gt;" + item.endPosition.x + "," + item.endPosition.y + "&lt;/span&gt;" + item.endStopName + "&lt;/a&gt;&lt;/td&gt;").appendTo(tr2);
+                $("&lt;td&gt;" + parseInt(item.distance) + "米&lt;/td&gt;").appendTo(tr2);
+            } else {
+                var otherLines = transSolutions[indexX].linesItems[indexY],
+                    links = "";
+                if (otherLines && otherLines.lineItems.length &gt; 1) {
+                    links = "&lt;/br&gt;还可乘坐:"
+                    for (var oti = 0, otLen = otherLines.lineItems.length; oti &lt; otLen; oti++) {
+                        var line = otherLines.lineItems[oti];
+                        if (item.lineName !== line.lineName) {
+                            var other = indexX + "," + indexY + "," + oti + ",0";
+                            links += "&lt;a class='busLink'&gt;&lt;span style='display:none'&gt;" + other + "&lt;/span&gt;" + line.lineName + "&lt;/a&gt;";
+                        }
+                    }
+                }
+                $("&lt;td class='bus_transfer'&gt;&lt;/td&gt;").appendTo(tr2);
+                var points = item.route.points, pointStr = "";
+                for (var i = 0; i &lt; points.length; i++) {
+                    pointStr += points[i].x + " " + points[i].y;
+                    if (i != points.length - 1) {
+                        pointStr += ",";
+                    }
+                }
+                $("&lt;td&gt;乘坐&lt;a class='busLink'&gt;" + item.lineName + "&lt;span style='display:none'&gt;" + pointStr + "&lt;/span&gt;&lt;/a&gt;, 在&lt;a class='busLink'&gt;&lt;span style='display:none'&gt;" + item.endPosition.x + "," + item.endPosition.y + "&lt;/span&gt;" + item.endStopName + "&lt;/a&gt;下车" + links + "&lt;/td&gt;").appendTo(tr2);
+                $("&lt;td&gt;" + item.passStopCount + "站&lt;/td&gt;").appendTo(tr2);
+                indexY++;
+            }
+            tr2.appendTo(table);
+        }
+        var endStop = $("&lt;tr&gt;&lt;/tr&gt;");
+        endStop.appendTo(table);
+        $("&lt;td class='end_transfer' width='10px'&gt;&lt;/td&gt;").appendTo(endStop);
+        $("&lt;td colspan='2'&gt;&lt;span class='busLink bgSpan'&gt;&lt;span style='display:none'&gt;" + transGuide.items[transGuide.items.length - 1].endPosition.x + "," + transGuide.items[transGuide.items.length - 1].endPosition.y + "&lt;/span&gt;" + transGuide.items[transGuide.items.length - 1].endStopName + "&lt;/span&gt;&lt;/td&gt;").appendTo(endStop);
+        return table;
+    }
+
+    function clearLayer() {
+        if (roadSourceLayer) {
+            roadSourceLayer.clear();
+        }
+        if (tempMarkerSourceLayer) {
+            tempMarkerSourceLayer.clear();
+        }
+        if (tempRedSourceLayer) {
+            tempRedSourceLayer.clear();
+        }
+    }</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;2. 乘车路线查询</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;根据换乘方案查询结果（transferSolutions）得到的乘车方案，获取某一条乘车路线的详细信息。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>    function bindSolutionsClickEvent() {
+        for (var i = 0; i &lt; 6; i++) {
+            $("#transferSolution-" + i).click(toggleGuideItems);
+        }
+        function toggleGuideItems(e) {
+            for (var j = 0; j &lt; 6; j++) {
+                $("#transferInfo-" + j).hide(500);
+            }
+            var id = parseInt(e.currentTarget.id.split("-")[1]);
+            $("#transferInfo-" + id).show(500);
+            //构造传入iServer服务器的transferLines
+            var transLines = [];
+            for (var i = 0; i &lt; paths.solutions[id].length; i++) {
+                var trans = paths.solutions[id][i][0];
+                transLines.push(trans);
+            }
+            execTransPathQuery(id, transLines);
+        }
+    }
+
+    //在popup里点击每个站点、交通路线时，在地图上对应显示并进行强调
+    function setPopup() {
+        $(".busLink").click(function () {
+            if (tempMarkerSourceLayer) {
+                tempMarkerSourceLayer.clear();
+            }
+            if (tempRedSourceLayer) {
+                tempRedSourceLayer.clear();
+            }
+            var points = this.children[0].innerText.split(",");
+            //添加换乘点的marker
+            if (points.length === 2) {
+                tempMarker = new ol.geom.Point([points[0], points[1]]);
+                var iconStyle_marker = new ol.style.Style({
+                    image: new ol.style.Icon(({
+                        src: 'http://support.supermap.com.cn:8090/iserver/iClient/forJavaScript/theme/images/marker.png',
+                        anchor: [0.5, 1]
+                    }))
+                });
+                var tempMarkerFeature = new ol.Feature(tempMarker);
+                tempMarkerFeature.setStyle(iconStyle_marker);
+                tempMarkerSourceLayer.addFeatures([tempMarkerFeature]);
+                var markerLayer = new ol.layer.Vector({
+                    source: tempMarkerSourceLayer
+                });
+                map.addLayer(markerLayer);
+                var coords = tempMarker.getCoordinates();
+                map.getView().setCenter([parseInt(coords[0]), parseInt(coords[1])]);
+                map.getView().setZoom(3)
+            } else if (points.length === 4 && points[3] === "0") {
+                var linesItems = paths["solutions"][points[0]], lineStr = "[";
+                for (var i = 0; i &lt; linesItems.length; i++) {
+                    var lineItem = linesItems[i][0], j = parseInt(points[1]);
+                    if (i !== j) {
+                        lineStr += lineItem;
+                    } else if (i === j) {
+                        lineItem = linesItems[points[1]][points[2]];
+                        lineStr += lineItem;
+                    }
+                    if (i !== linesItems.length - 1) {
+                        lineStr += ",";
+                    }
+                }
+                lineStr += "]";
+                $("#transferInfo-" + points[0]).hide(500);
+                execTransPathQuery(points[0], lineStr);
+                $("#transferInfo-" + points[0]).show(500);
+            } else {
+                var linePoints = [];
+                for (var i = 0; i &lt; points.length; i++) {
+                    var arr = points[i].split(" ");
+                    var point = [parseInt(arr[0]), parseInt(arr[1])];
+                    linePoints.push(point);
+                }
+                var lineString = new ol.geom.LineString(linePoints);
+                tempRedSourceLayer.addFeatures([new ol.Feature(lineString)]);
+                var tempRedLayer = new ol.layer.Vector({
+                    source: tempRedSourceLayer,
+                    style: new ol.style.Style({
+                        stroke: new ol.style.Stroke({
+                            color: 'red',
+                            width: 6
+                        })
+                    })
+                });
+                map.addLayer(tempRedLayer);
+                //设置线路中心
+                var lineCenter = [];
+                if ((linePoints.length) % 2 == 0) {
+                    lineCenter = [linePoints[linePoints.length / 2][0], linePoints[linePoints.length / 2][1]];
+                    map.getView().setCenter([parseInt(lineCenter[0]), parseInt(lineCenter[1])]);
+                } else {
+                    lineCenter = [linePoints[(linePoints.length + 1) / 2][0], linePoints[(linePoints.length + 1) / 2][1]];
+                    map.getView().setCenter([parseInt(lineCenter[0]), parseInt(lineCenter[1])]);
+                }
+                map.getView().setZoom(3);
+            }
+        });
+    }
+
+    function execTransPathQuery(id, transLines) {
+        var params = new SuperMap.TransferPathParameters({
+            points: paths["points"],
+            transferLines: transLines
+        });
+        new ol.supermap.TrafficTransferAnalystService(serviceUrl)
+            .analysisTransferPath(params, function (serviceResult) {
+                $("#transferInfo-" + id).empty();
+                var transGuide = serviceResult.result;
+                transSolutions = paths["transSolutions"];
+                map.getView().setCenter([4700, -3600]);
+                map.getView().setZoom(2);
+                fillTransferInfo(transGuide, transSolutions, id).appendTo($("#transferInfo-" + id));
+                setPopup();
+            });
+    }</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <p>&nbsp;&nbsp;这里仅展示最少时间查询结果，其中起始站点为省汽修，终点站点为中安大厦，查询效果图如下所示：</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/trafficTransferAnalystService.png"
+                             style="height:300px"/>
+                    </div>
+                </div>
+            </div>
+            <!--使用分布式分析服务-->
+            <div class="section icl-docs-section">
+                <h2 id="processingService" class="section-title">使用分布式分析服务</h2>
+                <p class="lead"></p>
+                <div class="section section-level-2">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;SuperMap iClient for OpenLayers支持的分布式分析服务包含：</p>
+                    <ul>
+                        <li style="line-height:28px">密度分析</li>
+                        <li style="line-height:28px">点聚合分析</li>
+                        <li style="line-height:28px">单对象查询分析</li>
+                        <li style="line-height:28px">区域汇总分析</li>
+                        <li style="line-height:28px">矢量剪裁分析</li>
+                    </ul>
+                    <p id="kernelDensityJobService"><b>&nbsp;&nbsp;示例：密度分析</b></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;分布式分析服务中的密度分析包括简单点密度分析和核密度分析两种</p>
+                    <ul>
+                        <li style="line-height:28px">
+                            简单点密度分析：用于计算每个点的指定邻域形状内的每单位面积量值。计算方法为点的测量值除以指定邻域面积，点的邻域叠加处，其密度值也相加，每个输出栅格的密度均为叠加在栅格上的所有邻域密度值之和。结果栅格值的单位为原数据集单位的平方的倒数，即若原数据集单位为米，则结果栅格值的单位为每平方米。
+                        </li>
+                        <li style="line-height:28px">
+                            核密度分析：用于计算点、线要素测量值在指定邻域范围内的单位密度。简单来说，它能直观的反映出离散测量值在连续区域内的分布情况。其结果是中间值大周边值小的光滑曲面，栅格值即为单位密度，在邻域边界处降为0。核密度分析可用于计算人口密度、建筑密度、获取犯罪情况报告、旅游区人口密度监测、连锁店经营情况分析等等。
+                        </li>
+                    </ul>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;下面对已注册的大数据进行简单点密度分析，网格面类型为四边形网格。其接口使用方法如下：</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;设置密度分析参数kernelDensityJobParams，包括数据集、分析方法、分析类型、格网大小等。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>//密度分析参数
+var kernelDensityJobParams = new SuperMap.KernelDensityJobParameter({
+//已注册的数据集名
+datasetName: "newyork_taxi_2013_01_14k_csv_newyork_taxi_2013-01_14k",
+//网格大小,对于四边形网格为网格的边长;对于六边形网格为六边形顶点到中心点的距离
+    resolution: 80,
+//分析方法, 指定分析方法为简单点密度分析,还是核密度分析。0表示前者,1表示后者
+    method:0,
+//格网面类型, 指定网格单元为四边形网格,还是六边形网格。0表示前者,1表示后者
+    meshType:0,
+//指定待分析的点的权重值所在的字段索引列号集合，字段索引从0开始。格式如:col7,col8
+    fields: col7,col8,
+    query: Bounds, //分析范围
+    radius: 300, //分析的影响半径
+    meshSizeUnit: Meter, //网格大小单位
+radiusUnit: Meter, //搜索半径单位
+    areaUnit: SquareMile, //面积单位
+});
+                            </code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;向服务端提交密度分析的请求，待服务端成功处理并返回密度分析结果后对其进行解析处理，将其在地图中展现出来。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>        var processingService = new ol.supermap.ProcessingService(processingsUrl);
+        processingService.addKernelDensityJob(kernelDensityJobParameter, function (serviceResult) {
+            serviceResult.result.setting.serviceInfo.targetServiceInfos.map(function (info) {
+                if (info.serviceType === 'RESTMAP') {
+                    SuperMap.FetchRequest.get(info.serviceAddress + '/maps').then(function (response) {
+                        return response.json();
+                    }).then(function (result) {
+                        var mapUrl = result[0].path;
+                        new ol.supermap.MapService(mapUrl).getMapInfo(function (mapInfo) {
+                            layer = new ol.layer.Tile({
+                                source: new ol.source.ImageSuperMapRest(ol.source.ImageSuperMapRest.optionsFromMapJSON(mapUrl, mapInfo.result))
+                            });
+                            map.addLayer(layer);
+                        });
+                    });
+                }
+            });
+        });</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/kernelDensityJobService.png" style="height:300px"/>
+                    </div>
+                    <p id="summaryMeshJobService"><b>&nbsp;&nbsp;示例：点聚合分析</b></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;点聚合分析，指的是针对点数据集制作聚合图的一种空间分析作业。指通过网格面或多边形对地图点要素进行划分，然后，计算每个面对象内点要素的数量，并作为面对象的统计值，也可以引入点的权重信息，考虑面对象内点的加权值作为面对象的统计值；最后基于面对象的统计值，按照统计值大小排序的结果，通过色带对面对象进行色彩填充。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;目前支持的点聚合分析类型包括：网格面聚合和多边形聚合，其中网格面聚合图按照网格类型又可分为四边形网格和六边形网格。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;下面对已注册的大数据进行点聚合分析，其中聚合类型为网格面聚合，网格面类型为四边形网格。其接口使用方法如下：</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;设置点聚合分析参数summaryMeshJobParam，包括数据集、聚合类型、统计模式、格网大小等。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>//点聚合分析参数
+var summaryMeshJobParam = new SuperMap.SummaryMeshJobParameter({
+//已注册的数据集名
+datasetName: "newyork_taxi_2013_01_14k_csv_newyork_taxi_2013-01_14k",
+//网格大小,对于四边形网格为网格的边长;对于六边形网格为六边形顶点到中心点的距离
+    resolution: 80,
+//网格面类型, 指定网格单元为四边形网格,还是六边形网格。0表示前者,1表示后者
+    meshType:0,
+//指定待分析的点的权重值所在的字段索引列号集合，字段索引从0开始。格式如:col7,col8
+    fields: col7,
+    query: Bounds, //分析范围
+    statisticModes:,//统计模式, 需与“权重值字段”个数保持一致
+    type:, SummaryType//聚合类型, 指定聚合类型为网格面聚合,还是多边形聚合。
+    //regionDataset: 'regionDataset', 聚合面数据集, 在多边形聚合时使用
+});
+                            </code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;向服务端提交点聚合分析的请求，待服务端成功处理并返回点聚合分析结果后对其进行解析处理，将其在地图中展现出来。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>        var processingService = new ol.supermap.ProcessingService(processingsUrl);
+        processingService.addSummaryMeshJob(summaryMeshJobParameter, function (serviceResult) {
+            serviceResult.result.setting.serviceInfo.targetServiceInfos.map(function (info) {
+                if (info.serviceType === 'RESTMAP') {
+                    SuperMap.FetchRequest.get(info.serviceAddress + '/maps').then(function (response) {
+                        return response.json();
+                    }).then(function (result) {
+                        var mapUrl = result[0].path;
+                        new ol.supermap.MapService(mapUrl).getMapInfo(function (mapInfo) {
+                            layer = new ol.layer.Tile({
+                                source: new ol.source.ImageSuperMapRest(ol.source.ImageSuperMapRest.optionsFromMapJSON(mapUrl, mapInfo.result))
+                            });
+                            map.addLayer(layer);
+                        });
+                    });
+                }
+            });
+        });</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/summaryMeshJobService.png" style="height:300px"/>
+                    </div>
+                    <p id="singleObjectQueryJob"><b>&nbsp;&nbsp;示例：单对象查询分析</b></p>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;空间查询是通过几何对象之间的空间位置关系来构建过滤条件的一种查询方式。例如：通过空间查询可以找到被包含在面中的空间对象，相离或者相邻的空间对象等。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;分布式分析服务中的单对象空间查询，指的是只支持查询对象数据集中有一个对象对被查询数据集做空间查询。如果查询对象数据集中有多个对象，则默认用
+                        SmID 最小的对象对被查询数据集做空间查询。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;下面对已注册的大数据进行单对象查询分析，其中空间查询模式使用“相交”。其接口使用方法如下：</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;设置单对象查询分析参数singleObjectQueryJobsParam，包括源数据集、查询对象数据集、空间查询模式。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>//单对象查询分析参数
+var singleObjectQueryJobsParam = new SuperMap.SingleObjectQueryJobsParameter({
+datasetName: 'ProcessingData_processing_newyorkZone_R', //已注册的数据集名
+datasetQuery: 'ProcessingData_processing_singleRegion_R', //查询对象所在数据集名称
+mode:SpatialQueryMode //空间查询模式
+});
+                            </code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;向服务端提交单对象查询分析的请求，待服务端成功处理并返回单对象查询分析结果后对其进行解析处理，将其在地图中展现出来。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>        var processingService = new ol.supermap.ProcessingService(processingsUrl);
+        processingService.addQueryJob(singleObjectQueryJobsParameter, function (serviceResult) {
+            serviceResult.result.setting.serviceInfo.targetServiceInfos.map(function (info) {
+                if (info.serviceType === 'RESTMAP') {
+                    SuperMap.FetchRequest.get(info.serviceAddress + '/maps').then(function (response) {
+                        return response.json();
+                    }).then(function (result) {
+                        var mapUrl = result[0].path;
+                        new ol.supermap.MapService(mapUrl).getMapInfo(function (mapInfo) {
+                            layer = new ol.layer.Tile({
+                                source: new ol.source.ImageSuperMapRest(ol.source.ImageSuperMapRest.optionsFromMapJSON(mapUrl, mapInfo.result))
+                            });
+                            map.addLayer(layer);
+                        });
+                    });
+                }
+            });
+        });</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/singleObjectQueryJob.png" style="height:300px"/>
+                    </div>
+                    <p id="summaryRegionJobService"><b>&nbsp;&nbsp;示例：区域汇总分析</b></p>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;区域汇总分析，指的是针对线数据集和面数据集制作聚合图的一种空间分析作业。指通过网格面或多边形对地图线或面要素进行划分，然后，以标准属性字段或权重字段对每个网格单元内线或面要素进行统计，将统计结果作为该网格单元的统计值。最后按照网格单元统计值的大小进行排序，通过色带对网格单元进行色彩填充。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;区域汇总分析的概念与点聚合分析的概念类似，不同的是点聚合分析是对点数据集进行统计计算，而区域汇总分析，是对线数据集和面数据集进行统计计算。在区域汇总分析的概念里，网格单元的统计值有两种统计方式，以标准属性字段统计和以权重字段统计。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;下面对已注册的大数据进行区域汇总分析，其中汇总类型为网格面汇总，网格面类型为四边形网格。其接口使用方法如下：</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;设置区域汇总分析参数summaryRegionJobParam，包括数据集、汇总类型、网格面汇总类型等。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>//区域汇总分析参数
+var summaryRegionJobParam = new SuperMap.SummaryRegionJobParameter({
+datasetName: 'ProcessingData_processing_newyorkZone_R', //已注册的数据集名
+    //regionDataset: 'regionDataset', 聚合面数据集, 在多边形聚合时使用
+    type: SummaryType, //汇总类型,包括网格面汇总和多边形汇总两种类型
+//网格面类型, 指定网格单元为四边形网格,还是六边形网格。0表示前者,1表示后者
+    meshType:0,
+    query: Bounds, //分析范围
+    standardSummaryFields: true, //是否以标准属字段统计
+    //当以标准属字段统计时，标准属字段统计的统计模式
+    standardStatisticModes: StatisticAnalystMode,
+    standardFields: "LocationID", //当以标准属字段统计时，标准属字段统计的字段名称
+    weightedFields:false, //是否以权重字段统计
+    weightedStatisticModes: "", //使用权重字段统计模式，权重字段统计的统计模式
+weightedSummaryFields: "",//使用权重字段统计模式时，权重字段统计的字段名称
+//网格大小,对于四边形网格为网格的边长;对于六边形网格为六边形顶点到中心点的距离
+    resolution:100,
+    meshSizeUnit: Meter, //网格大小单位
+    sumShape:true //是否统计长度或面积
+});
+                            </code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;2. 向服务端提交区域汇总分析的请求，待服务端成功处理并返回区域汇总分析结果后对其进行解析处理，将其在地图中展现出来。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>        var processingService = new ol.supermap.ProcessingService(processingsUrl);
+        processingService.addSummaryRegionJob(summaryRegionJobParameter, function (serviceResult) {
+            serviceResult.result.setting.serviceInfo.targetServiceInfos.map(function (info) {
+                if (info.serviceType === 'RESTMAP') {
+                    SuperMap.FetchRequest.get(info.serviceAddress + '/maps').then(function (response) {
+                        return response.json();
+                    }).then(function (result) {
+                        var mapUrl = result[0].path;
+                        new ol.supermap.MapService(mapUrl).getMapInfo(function (mapInfo) {
+                            layer = new ol.layer.Tile({
+                                source: new ol.source.ImageSuperMapRest(ol.source.ImageSuperMapRest.optionsFromMapJSON(mapUrl, mapInfo.result))
+                            });
+                            map.addLayer(layer);
+                        });
+                    });
+                }
+            });
+        });</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/summaryRegionJobService.png" style="height:300px"/>
+                    </div>
+                    <p id="vectorClipJobService"><b>&nbsp;&nbsp;示例：矢量裁剪分析</b></p>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;矢量裁剪分析为对矢量数据集进行裁剪。包括内部裁剪和外部裁剪。内部裁剪，则被裁剪的矢量数据集在裁剪区范围内的部分被保留到结果数据集中；相反，使用外部裁剪，则保留不在裁剪区范围内的那部分数据到结果数据集中。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;分布式分析服务中的矢量裁剪分析，只支持裁剪对象数据集中有一个对象对源数据集做矢量裁剪。如果裁剪数据集中有多个对象，则默认用 SmID
+                        最小的对象对源数据集做矢量裁剪。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;下面对已注册的大数据进行矢量裁剪分析，裁剪矢量分析模式使用内部裁剪。其接口使用方法如下：</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;设置矢量裁剪分析参数vectorClipJobsParam，包括源数据、裁剪对象数据集、裁剪分析模式。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>//矢量裁剪分析参数
+var vectorClipJobsParam = new SuperMap.VectorClipJobsParameter({
+datasetName: 'ProcessingData_newyork_taxi_2013-01_14k', //已注册的数据集名
+    datasetOverlay: 'ProcessingData_processing_singleRegion_R',//裁剪对象所在数据集名称
+    mode:ClipAnalystMode //裁剪分析模式
+});
+                            </code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;向服务端提交矢量裁剪分析的请求，待服务端成功处理并返回矢量裁剪分析结果后对其进行解析处理，将其在地图中展现出来。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>        var processingService = new ol.supermap.ProcessingService(processingsUrl);
+        processingService.addVectorClipJob(vectorClipJobsParameter, function (serviceResult) {
+            serviceResult.result.setting.serviceInfo.targetServiceInfos.map(function (info) {
+                if (info.serviceType === 'RESTMAP') {
+                    SuperMap.FetchRequest.get(info.serviceAddress + '/maps').then(function (response) {
+                        return response.json();
+                    }).then(function (result) {
+                        var mapUrl = result[0].path;
+                        new ol.supermap.MapService(mapUrl).getMapInfo(function (mapInfo) {
+                            layer = new ol.layer.Tile({
+                                source: new ol.source.ImageSuperMapRest(ol.source.ImageSuperMapRest.optionsFromMapJSON(mapUrl, mapInfo.result))
+                            });
+                            map.addLayer(layer);
+                        });
+                    });
+                }
+            });
+        });</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/vectorClipJobService.png" style="height:300px"/>
+                    </div>
+                </div>
+            </div>
+            <!--使用数据流服务-->
+            <div class="section icl-docs-section">
+                <h2 id="dataFlow" class="section-title">使用数据流服务</h2>
+                <p class="lead"></p>
+                <div class="section section-level-2">
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>var container = document.getElementById('popup');
+    var content = document.getElementById('popup-content');
+    var overlay = new ol.Overlay(({
+        element: container,
+        autoPan: true,
+        autoPanAnimation: {
+            duration: 250
+        }
+    }));
+    var map, resultLayer,
+            urlMap = "http://support.supermap.com.cn:8090/iserver/services/map-china400/rest/maps/China",
+            urlQuery = "http://support.supermap.com.cn:8090/iserver/services/map-china400/rest/maps/China_4326",
+            urlDataFlow = "ws://117.122.248.69:8091/iserver/services/dataflow/dataflow";
+    var timer, featureResult, dataFlowService, source;
+    new ol.supermap.MapService(urlQuery).getMapInfo(function (serviceResult) {
+        var mapJSONObj = serviceResult.result;
+        var map = new ol.Map({
+            target: 'map',
+            controls: ol.control.defaults({attributionOptions: {collapsed: false}})
+                .extend([new ol.supermap.control.Logo()]),
+            view: new ol.View({
+                center: [116.443571, 39.887549],
+                zoom: 12,
+                projection: 'EPSG:4326'
+            }),
+            overlays: [overlay]
+        });
+        var layer = new ol.layer.Tile({
+            source: new ol.source.TileSuperMapRest(ol.source.TileSuperMapRest.optionsFromMapJSON(urlQuery, mapJSONObj))
+        });
+        map.addLayer(layer);
+        query();
+        function query() {
+            var param = new SuperMap.QueryBySQLParameters({
+                queryParams: {
+                    name: "Main_Road_L@China#1",
+                    attributeFilter: "SMID = 1755"
+                }
+            });
+            var fill = new ol.style.Fill({
+                color: 'rgba(255,0,0,0.9)'
+            });
+            var stroke = new ol.style.Stroke({
+                color: '#3399CC',
+                width: 1.25
+            });
+            var styles = [
+                new ol.style.Style({
+                    image: new ol.style.Circle({
+                        fill: fill,
+                        radius: 5
+                    }),
+                    fill: fill,
+                })
+            ];
+            new ol.supermap.QueryService(urlQuery)
+                    .queryBySQL(param, function (serviceResult) {
+                        featureResult = serviceResult;
+                        source = new ol.source.DataFlow({ws: urlDataFlow});
+                        source.on('addfeature',function (e) {
+                            var feature=e.feature;
+                            content.innerHTML = feature.get('time');
+                            overlay.setPosition(feature.getGeometry().getCoordinates());
+                        });
+                        resultLayer = new ol.layer.Vector({
+                            source: source,
+                            style:new ol.style.Style({
+                                image: new ol.style.Circle({
+                                    fill: fill,
+                                    radius: 6
+                                }),
+                                fill: fill,
+                            })
+                        });
+                        source.on('subscribeSuccessed', function (e) {
+                            dataFlowService = new ol.supermap.DataFlowService(urlDataFlow).initBroadcast();
+                            dataFlowService.on('broadcastSocketConnected', function (e) {
+                                timer = window.setInterval("broadcast()", 2000);
+                            })
+                        })
+                        map.addLayer(resultLayer);
+                    });
+
+
+        }
+    });
+    var count = 200;
+    function broadcast() {
+        if (count >= featureResult.result.recordsets[0].features.features[0].geometry.coordinates.length) {
+            window.clearInterval(timer);
+            return;
+        }
+        var point = featureResult.result.recordsets[0].features.features[0].geometry.coordinates[count];
+        var feature = {
+            geometry: {coordinates: [point[0], point[1]], type: "Point"},
+            type: "Feature",
+            properties: {id: 1, time: new Date()}
+        };
+        dataFlowService.broadcast(feature);
+        count += 3;
+    }</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;下面的结果图为不同时刻实时数据的效果图，可以看到数据在不同时刻展现在地图不同的位置上。</p>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/dataflow1.png"
+                             style="height:300px"/>
+                    </div>
+                    <br>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/dataflow2.png"
+                             style="height:300px"/>
+                    </div>
+                </div>
+            </div>
+            <!--使用地址匹配服务-->
+            <div class="section icl-docs-section">
+                <h2 id="addressMatch" class="section-title">使用地址匹配服务</h2>
+                <p class="lead"></p>
+                <div class="section section-level-2">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;SuperMap iClient for
+                        OpenLayers支持地址匹配服务。地址匹配服务包含正向匹配与反向匹配两种方式，即，用户可通过地点名称找到地址位置，也可以找到指定位置上的地点。</p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;下面以China_4326数据为例，在其上进行地址匹配服务分析。</p>
+                    <p id="geocode"><b>&nbsp;&nbsp;&nbsp;&nbsp;示例：正向地址匹配</b></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;正向地址匹配根据地点描述、城市范围返回对应的地理坐标和结构化的地址详细描述，支持中文模糊匹配。</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>//正向匹配参数
+var geoCodeParam = new SuperMap.GeoCodingParameter({
+address: "超图软件", //地址
+    fromIndex:0, //最小索引
+    toIndex:10, //最大索引
+    filters: "公司", //过滤条件
+    prjCoordSys:{epsgcode26}, //坐标设置
+    maxReturn:3 //最大结果数
+});
+//创建地址匹配服务
+var addressUrl = "http://117.122.248.69:8090/iserver/services/addressmatch-Address/restjsr/v1/address",
+    addressMatchService = new ol.supermap.AddressMatchService(addressUrl);
+//向服务端发送请求进行正向地址匹配，并对返回的结果进行处理
+addressMatchService.code(geoCodeParam, match);
+function match(obj) {
+        var vectorSource = new ol.source.Vector();
+        var features = [];
+        obj.result.map(function (item) {
+            var feature = new ol.Feature();
+            feature.setGeometry(new ol.geom.Point([item.location.x, item.location.y]));
+            feature.setProperties({
+                location: item.location,
+                address: item.address,
+                score: item.score,
+                filters: item.filters
+            });
+            feature.setStyle(new ol.style.Style({
+                image: new ol.style.Icon(({
+                    anchor: [0.5, 1],
+                    src: imgUrl
+                }))
+            }));
+            features.push(feature);
+        });
+        vectorSource.addFeatures(features);
+}</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/geocode.png"
+                             style="height:300px"/>
+                    </div>
+                    <p id="geodecode"><b>&nbsp;&nbsp;&nbsp;&nbsp;示例：反向地址匹配</b></p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;反向地址匹配根据输入的地址坐标获取对应的地址描述</p>
+                    <figure class="highlight">
+                        <pre class="javascript">
+                            <code>//反向匹配参数
+var geoDecodeParam = new SuperMap.GeoDecodingParameter({
+x:116.3518541194, //横坐标
+y:40.00097839595, //纵坐标
+    fromIndex:0, //最小索引
+    toIndex:10, //最大索引
+    filters: "", //过滤字段
+    prjCoordSys:{epsgcode26}, //坐标设置
+    maxReturn:3, //最大结果数
+geoDecodingRadius:1000 //查询半径
+});
+//创建地址匹配服务
+var addressUrl = "http://117.122.248.69:8090/iserver/services/addressmatch-Address/restjsr/v1/address",
+    addressMatchService = new ol.supermap.AddressMatchService(addressUrl);
+//向服务端发送请求进行正向地址匹配，并对返回的结果进行处理
+addressMatchService.code(geoCodeParam, match);
+function match(obj) {
+        var vectorSource = new ol.source.Vector();
+        var features = [];
+        obj.result.map(function (item) {
+            var feature = new ol.Feature();
+            feature.setGeometry(new ol.geom.Point([item.location.x, item.location.y]));
+            feature.setProperties({
+                location: item.location,
+                address: item.address,
+                score: item.score,
+                filters: item.filters
+            });
+            feature.setStyle(new ol.style.Style({
+                image: new ol.style.Icon(({
+                    anchor: [0.5, 1],
+                    src: imgUrl
+                }))
+            }));
+            features.push(feature);
+        });
+        vectorSource.addFeatures(features);
+}</code>
+                        </pre>
+                    </figure>
+                    <p>&nbsp;&nbsp;运行效果</p>
+                    <div style="text-align:center; width:100%;">
+                        <img src="../img/development/openlayers/geodecode.png"
+                             style="height:300px"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--内容区 end-->
+
+<!--footer-->
+<footer class="icl-footer"></footer>
+<script>
+    utils.loadTemplate(".icl-footer", "../template/footer.html");
+</script>
+<!--footer end-->
+
+<script type="text/javascript" src="../js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,524 @@
+/*
+ * 主页面样式组
+ * @author zjc
+ * 2016.6.22
+ * ie 9+、chrome、firefox专用
+ * 分辨率大于1440*900专用
+ */
+
+/*配置系统初始化参数*/
+//系统默认字体大小
+@default_fontsize:16px;
+//顶部logo栏高度
+@top_height:74px;
+//左侧导航栏宽度
+@middle_left_width:300px;
+//工具栏高度
+@middle_top_height:35px;
+//地图切换控件长度高度
+@map_switch_width:250px;
+@map_switch_height:40px;
+@text_height:65px;
+
+html,body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: "微软雅黑";
+    font-size: @default_fontsize;
+}
+.main{
+    position: absolute;
+    width:100%;
+}
+//logo栏
+.main_top{
+    top:0px;
+    height: @top_height;
+}
+.main_middle{
+    top: @top_height;
+    bottom:0px;
+    #loadingbar_bg{
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        overflow: hidden;
+        background-color: rgba(251, 251, 251, 0.5);
+        z-index: 5000;
+        display: none;
+    }
+}
+//导航栏
+.main_middle_left{
+    position: relative;
+    height: 100%;
+    width:@middle_left_width;
+    z-index: 0;
+    .loading{
+        position:absolute;
+        background-color:rgb(238,239,241);
+        z-index:1000;
+        height:100%;
+        width:100%;
+        top: 0px;
+        left:0px;
+        display: none;
+        /*左侧iframe等待条*/
+        .spinner{
+            margin: 100px auto;
+            width: 80px;
+            height: 30px;
+            text-align: center;
+            font-size: 10px;
+        }
+        .spinner > div {
+            background-color: rgb(68,126,214);
+            height: 100%;
+            width: 6px;
+            display: inline-block; 
+            -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+            animation: stretchdelay 1.2s infinite ease-in-out;
+        }
+        .spinner .rect2 {
+            -webkit-animation-delay: -1.1s;
+            animation-delay: -1.1s;
+        }
+        .spinner .rect3 {
+            -webkit-animation-delay: -1.0s;
+            animation-delay: -1.0s;
+        }
+        .spinner .rect4 {
+            -webkit-animation-delay: -0.9s;
+            animation-delay: -0.9s;
+        }
+        .spinner .rect5 {
+            -webkit-animation-delay: -0.8s;
+            animation-delay: -0.8s;
+        }
+        @-webkit-keyframes stretchdelay {
+            0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+            20% { -webkit-transform: scaleY(1.0) }
+        }
+        @keyframes stretchdelay {
+            0%, 40%, 100% { 
+                transform: scaleY(0.4);
+                -webkit-transform: scaleY(0.4);
+            }20%{
+                transform: scaleY(1.0);
+                -webkit-transform: scaleY(1.0);
+            }
+        }
+    }
+    #left_iframe_module{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 9999;
+    }
+}
+//右侧地图区域
+.main_middle_right{
+    position: absolute;
+    top: 0px;
+    left: @middle_left_width;
+    right: 0px;
+    bottom: 0px;
+    background-color: white;
+    #main_middle_iframe{
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        display: none;
+        z-index: 1000;
+    }
+    
+    //ysl底部非gis功能承载模板
+    #main_bottom_iframe{
+        position: absolute;
+        z-index: 2;
+        left: 0px;
+        bottom: 0px;
+        display: none;
+        background-color: white;
+    }
+    
+    .main_right_iframe{
+        border:solid 2px rgba(220, 220, 220, 0.5);
+    }
+}
+.main_bottom_iframe{
+    border:solid 2px rgba(220, 220, 220, 0.5);
+}
+//工具栏
+.main_middle_top{
+    position: absolute;
+    top: 0px;
+    left:0px;
+    right: 0px;
+    height:@middle_top_height;
+    z-index: 2;
+    background-color: rgba(255,255,255,1);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#fff,endColorstr=#fff);
+    color: #555;
+    overflow: hidden;
+    .tools{
+        position:absolute;
+        top: 50%;
+        left:0px;
+        width: 100%;
+        height: 30px;
+        margin-top: -15px;
+        overflow: hidden;
+        z-index: 2;
+        .mapSwitch{
+            position: absolute;
+            //top: @middle_top_height+13;
+            right: 15px;
+            //width: @map_switch_width;
+            height: 100%;
+    //          background-color: rgb(255,255,255);
+    //          z-index: 3;
+    //          -moz-box-shadow: 3px 3px 3px #BBB; /* 老的 Firefox */
+    //          box-shadow: 3px 3px 3px #BBB;
+    //          border: solid 1px #F1F1F1;
+            .mapSwitch_btn_middle{
+                position: relative;
+                top: 50%;
+                left: 0;
+                right: 0;
+                height: 20px;
+                margin-top: -10px;
+            }
+            .mapSwitch_btn{
+                float: left;
+                height: 20px;
+                line-height: 20px;
+                vertical-align: middle;
+                cursor: pointer;
+                font-size: 1em;
+                img{
+                    float: left;
+                    margin: 0 3px 0px 8px;
+                }
+                div{
+                    float: left;
+                }
+            }
+            .mapSwitch_line{
+                border-left: solid 1px #DDD;
+                margin-left: 5px;
+            }
+            .mapSwitch_btn_checked{
+                color: rgb(62,163,223);
+                font-weight: bold;
+            }
+        }
+    }
+    .tool{
+        float: left;
+        height: 30px;
+        line-height: 30px;
+        vertical-align: middle;
+        margin-left: 20px;
+        margin-right: 15px;
+        cursor: pointer;
+        font-size: 1em;
+        display: none;
+    }
+    .tool_show{
+        display: block;
+    }
+    #userinfo{
+        float: right;
+        margin-right: 30px;
+    }
+    img{
+        float: left;
+        margin-top: 7px;
+        margin-right: 5px;
+    }
+    .hover_bar{
+        position:absolute;
+        left:14px;
+        top:3px;
+        cursor: pointer;
+        z-index: -1;
+        display: none;
+    }
+    .hover_bar div{
+        float:left;
+        height:28px;
+        background-repeat:repeat-x;
+    }
+}
+//地图区域
+.main_middle_map{
+    position: absolute;
+    left:0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    z-index: 1;
+    .content{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    .inmap{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+    .shadowx{
+        .inmap;
+        top: @middle_top_height;
+        width: 100%;
+        height: 5px;
+        background-image: url(../img/main_html/main_middle_map_shadowx.png);
+        z-index: 2;
+    }
+    .shadowy{
+        .inmap;
+        height: 100%;
+        width: 4px;
+        background-image: url(../img/main_html/main_middle_map_shadowy.png);
+        z-index: 2;
+    }
+    #operateInfoTab{
+        position: absolute;
+        top: 50%;
+        left: 0px;
+        margin-top: -33px;
+        width: 18px;
+        height:63px;
+        z-index: 2;
+        overflow: hidden;
+        background-image: url(../img/main_html/tools/arrow_left.png);
+        cursor: pointer;
+    }
+    #map{
+        .inmap;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: block;
+    }
+    #cesiumContainer{
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: none;
+    }
+}
+
+#custombox_content{
+    width: 220px;
+    padding: 15px;
+    line-height: 30px;
+    background-color: white;
+    border: solid 1px #9C9C9C;
+    border-radius: 5px;
+    font-size: 1em;
+    display: none;
+    #custombox_close{
+        position: absolute;
+        z-index: 2;
+        top: -5px;
+        right: 5px;
+        font-size: 1.6em;
+        font-weight: bold;
+        cursor: pointer;
+        color: #222222;
+    }
+    #custombox_close:hover{
+        color: #707070;
+    }
+}
+#popup{
+    position: absolute;
+    z-index: 9999;
+    top: 100px;
+    left: 100px;
+    width: 600px;
+    background:url(../../assets/img/main_html/popup/backgroud.png) repeat;
+    border: solid 1px #DADADA;
+    border-radius: 5px;
+    -webkit-box-shadow:0 0 5px rgba(165, 164, 164, 0.5);  
+    -moz-box-shadow:0 0 5px rgba(165, 164, 164, 0.5);  
+    box-shadow:0 0 5px rgba(165, 164, 164, 0.5);  
+    .popup_top{
+        position: relative;
+        top: -9px;
+        z-index: -1;
+        width: 100%;
+        height: 45px;
+        margin-bottom: -10px;
+        .popup_title{
+            width: 171px;
+            height: 32px;
+            color: white;
+            line-height: 32px;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-align: center;
+            margin: 0 auto;
+            background-image: url(../../assets/img/main_html/popup/bubble_title.png);
+        }
+        .popup_close{
+            position: absolute;
+            top: 15px;
+            right: 10px;
+            width:18px;
+            height: 18px;
+            cursor: pointer;
+            background-image: url(../../assets/img/main_html/popup/btn_close.png);
+        }
+        .popup_close:hover{
+            background-image: url(../../assets/img/main_html/popup/btn_close_2.png);
+        }
+    }
+    .popup_middle{
+        padding: 0px 10px 10px 10px;
+        
+        .popup_table{
+            
+            table{
+                width: 100%;
+                height: 100%;
+                border-collapse:collapse;
+                font-size: 1.05em;
+                table-layout:fixed;
+            }
+            td{
+                border: solid #BDBDBD 1px;
+                padding:5px 10px;
+                overflow:hidden;
+                white-space:nowrap;
+                text-overflow:ellipsis;
+            }
+            .key{
+                text-align: center;
+                font-weight: bold;
+            }
+        }
+    }
+    .popup_bottom{
+        
+        .popup_arrow{
+            position: absolute;
+            left: 50%;
+            margin-left: -14.5px;
+            width: 29px;
+            height: 23px;
+            background-image: url(../../assets/img/main_html/popup/bubble_shape.png);
+        }
+    }
+}
+//信息查询与检索病害体输出列表样式
+.bht_div_list{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%; 
+    height: 30%;
+    background-color: white;
+    overflow: auto;
+    z-index: 6000;
+    .bht_table{
+        width: 100%;
+        border-collapse:collapse;
+        font-size: 1em;
+        table-layout:fixed;
+        tr{
+            height: 30px !important;
+            th,td{
+                border: solid #BDBDBD 1px;
+                padding:5px 5px;
+                width: 120px;
+                text-align: center;
+                overflow:hidden;
+                white-space:nowrap;
+                text-overflow:ellipsis;
+            }
+        }
+    }
+}
+/*项目独有样式*/
+#xzqh{
+    position: absolute;
+    z-index: 3;
+    top: @middle_top_height+@map_switch_height+23;
+    right: 15px;
+    width: 140px;
+    height:0px;
+    padding-top:5px;
+    padding-bottom: 5px;
+    background-color: white;
+    font-size: 1.1em;
+    border: solid 1px #F1F1F1;
+    box-shadow: 3px 3px 3px #BBB;
+    display: none;
+    overflow: hidden;
+    ul{
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    ul li{
+        list-style-type:none;
+        cursor: pointer;
+        height: 30px;
+    }
+    ul li img{
+        vertical-align: top;
+        margin-top: 3px;
+        margin-right: 3px;
+    }
+    ul li span:hover{
+        color: dodgerblue;
+        text-decoration: underline;
+    }
+}
+//图层管理 start
+.layersmanager{
+    position:absolute;
+    top: 80px;
+    right:0px;
+    width: 34px;
+    height: 34px;
+    z-index: 1;
+    background-image:url(../../supermap/theme/images/controlSkinWhite/layer-switcher-maximize.png);
+}
+
+.winTitle{background:#4192c9; height:20px; line-height:20px}
+.winTitle .title_left{font-weight:bold; color:#FFF; padding-left:5px; float:left}
+.winTitle .title_right{float:right; padding-right:3px;}
+.winTitle .title_right a{color:#FFF; text-decoration:none; padding-right:3px;}
+.winTitle .title_right a:hover{text-decoration:underline; color:#FF0000; padding-right:3px;}
+.transferPreference {
+    border: 1px solid #D6E3F1;
+    height: 20px;
+    margin: 1px 30%;
+    padding: 0 12px;
+}
+.winContent{padding:5px; overflow-y:auto; height:400px;font-size: 12px}
+.popupWindow {
+    right:0px;
+    top: 114px;
+    position: absolute;
+    border: 2px solid #D6E3F1;
+    background: #FFF;
+    z-index: 9999;
+    display: none;
+}
+
+//图层管理 end
+/*引用复选框样式*/
+@import 'checkbox';

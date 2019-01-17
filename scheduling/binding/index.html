@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>警情分析</title>
+    <link href="../dist/css/zui.css?v=1.8" rel="stylesheet">
+    <link href="../dist/css/case.css" rel="stylesheet">
+    <link href="../dist/lib/treemap/zui.treemap.min.css" rel="stylesheet">
+    <style>
+        .active {
+            color: #fff;
+            background-color: #f5f5f9;
+            border-color: #3280fc;
+        }
+    </style>
+    <!--[if lt IE 9]>
+    <script src="dist/lib/ieonly/html5shiv.js"></script>
+    <script src="dist/lib/ieonly/respond.js"></script>
+    <script src="dist/lib/ieonly/excanvas.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+                <ul class="tree tree-lines" data-ride="tree" id="deviceTree">
+                    <li class="has-list open in">
+                        <a href="#">警用设施</a>
+                        <ul>
+                            <li class="active">
+                                <a href="#" url="../recorder/index.html">
+                                    <i class="icon icon-file-movie"></i>&nbsp;执法记录仪</a>
+                            </li>
+                            <li>
+                                <a href="#" url="../locator/index.html">
+                                    <i class="icon icon-location-arrow"></i>&nbsp;北斗车辆定位</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-10" id="content">
+                <iframe frameborder="0" src="../recorder/index.html" id="deviceRender" width="100%"></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (ZUI中的Javascript组件依赖于jQuery) -->
+    <script src="../assets/jquery.js?v=1.8"></script>
+    <!-- ZUI Javascript组件 -->
+    <script src="../dist/js/zui.min.js?v=1.8"></script>
+    <script src="../dist/lib/treemap/zui.treemap.min.js"></script>
+    <script src="../dist/plugins/axios/axios.min.js"></script>
+    <script src="../dist/plugins/seajs/sea.js"></script>
+    <script src="../dist/plugins/seajs/seajs-text.js"></script>
+    <script src="../dist/plugins/seajs/handlebars-1.0.0.beta.6.js"></script>
+    <script type="text/javascript">
+        seajs.config({
+            vars: {
+                requestFrontUrl: 'http://127.0.0.1/apollo-front/',
+            }
+        });
+        seajs.use('./binding.js');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>设置 </title>
+		<link href="../../../scheduling/dist/css/zui.css?v=1.8" rel="stylesheet">
+		<link rel="stylesheet" href="../../../app/sjtj/css/allVideo.css" type="text/css">
+		<link rel="stylesheet" href="../../../config/common/camera/css/multichannelCamera.css" type="text/css">
+		<script type="text/javascript" src="../../../supermap/webgl/module/jquery/jquery-1.8.1.min.js"></script>
+		<script type="text/javascript" src="../../../module/template.js"></script>
+		<script type="text/javascript" src="../../../module/sea/sea.js"></script>
+		<script type="text/javascript" src="../../../scheduling/dist/utility/form.js"></script>
+		<script type="text/javascript" src="../../../config/common/camera/js/flv.js"></script>
+   		<script type="text/javascript" src="../../../config/common/camera/js/camera.js"></script>
+   		<script type="text/javascript" src="../../../scheduling/dist/js/zui.min.js?v=1.8"></script>
+	</head>
+	<body>
+		<div class="box-index">
+			<div class="video-ctn" style="right: 170px;">
+				<div class="options" style="display:none ;">
+                    <input type="checkbox" id="isLive"  checked />
+                    <input type="checkbox" id="withCredentials"  />
+                    <input type="checkbox" id="hasAudio" />
+                    <input type="checkbox" id="hasVideo" checked />
+                </div>
+			</div>
+			<div class="video-option" style="background:white;width: 170px;">
+				<ul class="right-top">
+					<li id="video-his" style="text-align: right;">
+						<span class="label label-primary cursor" onclick="addVideoRecords();">添加记录</span>
+						<span class="label label-primary cursor" onclick="openHisCamera();">历史视频</span>
+						&nbsp;</li>
+					<li id="video-address">位置：</li>
+					<li id="video-type">类型：</li>
+				</ul>
+				<ul class="direction">
+	                <li onclick="upPan('2')"><img src="../../../config/common/rightResource/img/control-up.png" /></li>
+	                <li onclick="leftPan('4')"><img src="../../../config/common/rightResource/img/control-left.png" /></li>
+	                <li onclick="rightPan('0')"><img src="../../../config/common/rightResource/img/control-right.png" /></li>
+	                <li onclick="leftUpPan('3')"><img src="../../../config/common/rightResource/img/control-leftUp.png" /></li>
+	                <li><img src="../../../config/common/rightResource/img/control-center.png" /></li>
+	                <li onclick="leftDownPan('5')"><img src="../../../config/common/rightResource/img/control-leftDown.png" /></li>
+	                <li onclick="rightDownPan('7')"><img src="../../../config/common/rightResource/img/control-rightDown.png" /></li>
+	                <li onclick="rightUpPan('1')"><img src="../../../config/common/rightResource/img/control-rightUp.png" /></li>
+	                <li onclick="downPan('6')"><img src="../../../config/common/rightResource/img/control-down.png" /></li>
+	            </ul>
+	            <ul class="right-down">
+	               <!-- <li>
+	                    <span><img src="../../config/common/rightResource/img/add.png"/></span>
+	                    <span>速度</span>
+	                    <span><img src="../../config/common/rightResource/img/subtract.png"/></span>
+	                </li>-->
+	                <li>
+	                    <span><img onclick="irisAddPan('10')" src="../../../config/common/rightResource/img/add.png"/></span>
+	                    <span>光圈</span>
+	                    <span><img onclick="irisMinusPan('10')" src="../../../config/common/rightResource/img/subtract.png"/></span>
+	                </li>
+	                <li>
+	                    <span><img onclick="zoomAddPan('11')" src="../../../config/common/rightResource/img/add.png"/></span>
+	                    <span>焦距</span>
+	                    <span><img onclick="zoomMinusPan('11')" src="../../../config/common/rightResource/img/subtract.png"/></span>
+	                </li>
+	                <li>
+	                    <span><img onclick="focusAddPan('12')" src="../../../config/common/rightResource/img/add.png"/></span>
+	                    <span>焦点</span>
+	                    <span><img onclick="focusMinusPan('12')" src="../../../config/common/rightResource/img/subtract.png"/></span>
+	                </li>
+	            </ul>
+	            <span class="messageInfo" >视频正在加载中．． </span>
+			</div>
+		</div>
+	</body>
+	<style>
+	.aa{
+		width: 50%;
+		position: relative;
+		float: left;
+		height: 150%;
+	}
+	</style>
+<script id="videoLiPopup" type="text/html">
+{{each list}}
+	<div  class="{{$index==0?'checkbox-video':''}} video-box" data-id="{{$value.id}}" id="{{$index+1}}" data-stage="{{$value.stage}}" data-name="{{$value.cameraIndex}}" data-address="{{$value.installationAddress}}" data-type="{{$value.cameraType}}" >
+		<span class="no">{{$index+1}}</span>
+		<span class="no" style="margin-left: 25px;cursor: Pointer;border: 1px solid #07CC3F;color:#07CC3F ;" onclick="flvLoad('videoIframe{{$index+1}}');">刷新</span>
+		<iframe style="position:relative ;z-index: 1;" data-id="{{$index+1}}"  name="videoIframe{{$index+1}}" id="videoIframe{{$index+1}}" src="camera.html" width="100%" height="100%"  scrolling="no" frameborder="0"  allowfullscreen="true" ></iframe>
+	</div>
+{{/each}}
+</script>
+<script>
+var up=1,down=15,left=1,right=15,leftUp=1,leftDown=15,rightUp=1,rightDown=15;
+var iris=0,zoom=0,focus=0;
+
+(function(){
+	var thisIframe1 = null;
+	$("iframe", parent.document).each(function(index, e) {
+        if (e.src.indexOf("multichannelCamera.html") > 0) {
+            thisIframe1=e;
+            return false;
+        }
+    });
+    thisIframe1.setAttribute('allowfullscreen','true');
+    var names = parent.window.cameraLists;
+ 	var contentHTML = template("videoLiPopup",{
+        list: names
+    });
+    $(".video-ctn").append(contentHTML);
+     nowVideo();
+    if(names.length==1){
+    	$("#1").addClass('video_box_one');
+    	//$("#1").removeClass('checkbox-video');
+    }
+    setTimeout(function(){
+    	$("iframe",document).each(function(index, e) {
+	    	$("#"+e.id).contents().find("video").click(function(i) {
+	            $("#"+e.dataset.id).addClass('checkbox-video').siblings().removeClass('checkbox-video');
+	            nowVideo();
+	        });
+	    });
+	    $.each(names, function(i,item) {
+	    	var url = window.getCameraBatchUrl(item);
+	    	if(!$.isEmptyObject(item.cameraIndex)){
+	    		//加载视频流
+				$("#videoIframe"+(i+1))[0].contentWindow.window.openStream(item.cameraIndex,url,1,item.id);
+	    	}else{
+	    		$(".messageInfo").html("没有对应的视频信息！");
+	    	}
+	    });
+    },1000);
+})();
+function flvLoad(iframeId){
+	$("#"+iframeId)[0].contentWindow.flv_load();
+}
+function upPan(cmd_p){
+	pan(cmd_p,up);
+	up = up+3;
+}
+function nowVideo(){
+	up=0,down=15,left=0,right=15,leftUp=0,leftDown=15,rightUp=0,rightDown=15;
+	iris=0,zoom=0,focus=0;
+	$("#video-address").html("位置："+$(".checkbox-video")[0].dataset.address);
+	$("#video-type").html("类型："+$(".checkbox-video")[0].dataset.type);
+}
+function leftPan(cmd_p){
+	pan(cmd_p,left);
+	left = left+3;
+}
+function rightPan(cmd_p){
+	pan(cmd_p,right);
+	right = right-3;
+}
+function downPan(cmd_p){
+	down = down-3;
+	pan(cmd_p,down);
+}
+function leftUpPan(cmd_p){
+	leftUp = leftUp+3;
+	pan(cmd_p,leftUp);
+}
+function leftDownPan(cmd_p){
+	leftDown = leftDown-3;
+	pan(cmd_p,leftDown);
+}
+function rightDownPan(cmd_p){
+	rightDown = rightDown-3;
+	pan(rightDown,rightDown);
+}
+
+function rightUpPan(cmd_p){
+	rightUp = rightUp+3;
+	pan(cmd_p,rightUp);
+}
+function irisAddPan(cmd_p){
+	pan(cmd_p,iris);
+	iris = iris+1;
+}
+function irisMinusPan(cmd_p){
+	pan(cmd_p,iris);
+	iris = iris-1;
+}
+function zoomAddPan(cmd_p){
+	pan(cmd_p,zoom);
+	zoom = zoom+3;
+}
+function zoomMinusPan(cmd_p){
+	pan(cmd_p,zoom);
+	zoom = zoom-3;
+}
+function focusAddPan(cmd_p){
+	pan(cmd_p,focus);
+	focus = focus+1;
+}
+function focusMinusPan(cmd_p){
+	pan(cmd_p,focus);
+	focus = focus-1;
+}
+function pan(cmd_p,speed){
+	var stage = $('.checkbox-video')[0].dataset.stage;
+	var name = $('.checkbox-video')[0].dataset.name;
+	var cameraType = $('.checkbox-video')[0].dataset.type;
+	var cameraUrl = window.getCameraBatchUrl({"cameraType":cameraType,"stage":stage,"pan":"no"});
+	window.panRight(cameraUrl[0],name,cmd_p,speed);
+}
+//打开历史视频
+function openHisCamera(){
+	 /*parent.layer.closeAll();*/
+	var hisVideo = parent.layer.open({
+		id:"aa",
+	    type: 2,
+	    title: '历史视频',
+	    shade: 0,
+	    maxmin: true,
+	    shadeClose: true, 
+	    area: ['800px', '560px'],
+	    content: '../../config/common/camera/historyCamera.html',
+	    cancel: function() {
+	    	//$("#aa").find("iframe")[0].contentWindow.window.clearIntervalCameraFun();   
+        }
+	  });
+	  parent.layer.full(hisVideo);
+}
+//打开历史视频记录
+function addVideoRecords(){
+    /*parent.layer.closeAll();*/
+    var hisVideo = parent.layer.open({
+        id:"addVideoRecords",
+        type: 2,
+        title: ["添加视频记录",'height: 30px;line-height: 30px'],
+        shade: 0,
+        offset: ['190px', '700px'],
+        maxmin: false,
+        shadeClose: true,
+        area: ['590px', '352px'],
+        content: '../../config/common/camera/videoRecords.html',
+        cancel: function() {
+            //$("#aa").find("iframe")[0].contentWindow.window.var();
+        }
+    });
+}
+</script>
+</html>

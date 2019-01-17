@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../module/plugins/scrollbar/jquery.mCustomScrollbar.css" type="text/css">
+    <link rel="stylesheet" href="./css/bk1.css" />
+    <link rel="stylesheet" href="../yibiaosanshi/css/ybss.css" />
+    <link rel="stylesheet" href="../bk/css/bk_fight.css" />
+    <script type="text/javascript" src="../../module/jquery/jquery-1.8.1.min.js"></script>
+    <script type="text/javascript" src="../../module/template.js"></script>
+    <script type="text/javascript" src="../bk/js/bk_fight.js"></script>
+    <script type="text/javascript" src="../../config/common/jqueryPager/jquery.z-pager.js"></script>
+    <script type="text/javascript" src="../../module/plugins/scrollbar/jquery.mCustomScrollbar.js"></script>
+	<script type="text/javascript" src="../../module/plugins/scrollbar/minified/jquery.mousewheel-3.0.6.min.js"></script>
+</head>
+
+<body>
+    <div class="box1 tab-ctn-box">
+        <div class="add-fenzu">
+            <span class="select-box">
+                    <select class="select-ctn plan_category" id="categoryName">
+                        <option value="">全部</option>
+                    </select>
+                </span>
+            <span class="add-select" id="add-fenzu">
+                    <img src="img/add.png"/>
+                    新建分组
+                </span>
+        </div>
+        <div class="ctn-yj-list-box">
+        </div>
+        <div class="fenye-box pager clearfix" id="planPage" style="margin-bottom: 0px;">
+        		
+        </div>
+    </div>
+</body>
+<!-- 布控预案列表 START-->
+<script id="bkplan" type="text/html">
+    {{each list}}
+    <div class="bkfa-box">
+        <div class="bkfa-box-aj" data-description="{{$value.description}}" data-name="{{$value.name}}" data-id='{{$value.id}}' data-categoryid='{{$value.categoryId}}' data-categoryname='{{$value.categoryName}}'>
+            <p>{{$value.name}}</p>
+            <span class="tog" onclick="pulldown(this)">
+                    <img src="img/pulldown.png"/>
+                </span>
+            <span class="edit-fenzu" onclick="updateFenzu(this)">
+                    <img  src="img/update.png"/>
+                </span>
+            <span class="rm-fenzu" onclick="deleteFenzu(this)">
+                    <img src="img/delete.png"/>
+                </span>
+            <span class="add-plan" onclick="addPlan(this)">
+                    <img src="img/add-1.png"/>
+                </span>
+        </div>
+        <ul class="bkfa-box-fa">
+            {{include 'bkplan_child' $value.plans}}
+        </ul>
+    </div>
+    {{/each}}
+</script>
+<!-- ondblclick="changePlan({{$value.id}})" --><!-- onclick="printPlan(this)" -->
+<script id="bkplan_child" type="text/html">
+    {{each}}
+    <li class="plan-item" data-id='{{$value.id}}'>
+        <p ondblclick="changePlan(this)" onclick="selectedPlan(this)">
+            <input type="text" name="name" value="{{$value.name}}" readonly="true">
+        </p>
+         <span class="play-plan" onclick="play(this)">
+                <img data-state=false  src="img/unfold.png" title="先编辑获取预案播放"/>
+           </span>
+        <span>
+                <img class="img1"  onclick="printPlan(this)" src="img/print.png" style="display:none;" />
+                <img class="img2" src="img/print.png" title="先编辑获取预案打印"/>
+            </span>
+        <span class="rm-plan" onclick="delatePlan(this)">
+                <img  src="img/delete.png" title="删除"/>
+            </span>
+        <span class="edit-plan" onclick="editPlan(this)">
+                <img data-state=false  src="img/update.png" title="编辑"/>
+          </span>
+    </li>
+    {{/each}}
+</script>
+<!-- 布控预案列表 END-->
+
+</html>

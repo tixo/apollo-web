@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" href="../../module/plugins/scrollbar/jquery.mCustomScrollbar.css" type="text/css">
+		<meta charset="UTF-8"><link rel="stylesheet" href="css/ajjq.css" />
+		<link rel="stylesheet" href="../yibiaosanshi/css/ybss.css" />
+		<script type="text/javascript" src="../../supermap/webgl/module/jquery/jquery-1.11.2.min.js" ></script>
+		<script type="text/javascript" src="../anjianjingqing/js/ajjq_history.js"></script>
+	    <script type="text/javascript" src="../anjianjingqing/js/jquery.z-pager.js"></script>
+	    <script type="text/javascript" src="../../module/plugins/scrollbar/jquery.mCustomScrollbar.js"></script>
+		<script type="text/javascript" src="../../module/plugins/scrollbar/minified/jquery.mousewheel-3.0.6.min.js"></script>
+	</head>
+	   <style>
+	   	.criminal-right{
+	   		width:160px;
+	   	}
+	   </style>
+	<body>
+		<div class="box2 hide tab-ctn-box">
+        	<div class="history-box">
+        		<div class="history-select-box">
+        			<ul class="history-box-select">
+            			<li>时间</li>
+            			<li data-name="area">区域</li>
+            			<li data-name="classify">类型</li>
+            			<li data-name="level">级别</li>
+            			<li data-name="caseState">状态</li>
+            		</ul>
+            		<div class="history-box-ctn">
+            			<div class="option-gather">
+            				<div class="shouqi-box">
+            					所选分类条件：
+            					<span class="shouqi" id="clearParam">全部</span>
+            				</div>
+            				<div class="option-gather-ctn" >
+            					<span id="qsTime"></span>
+            					<span id="area"></span>
+            					<span id="classify"></span>
+            					<span id="level"></span>
+            					<span id="caseState"></span>
+            				</div>
+            			</div>
+            			<div class="history-ctn-option" id="datehide">
+            				<div>
+            					<div class="input-group">
+							        <button type="button" class="btn btn-default pull-right" id="daterange-btn">
+							            <span>起始时间</span>
+							        </button>
+							    </div>
+            				</div>
+            			</div>
+            			<div class="history-ctn-option" id="queryArea" name="area"></div>
+            		</div>
+            		<div class="pagerHtmlWrap" id="pagerHtmlWrap">
+            		</div>
+            		<div id="historyCase" class="pager clearfix" ></div>
+        		</div>
+        	</div>
+        </div>
+	</body>
+</html>

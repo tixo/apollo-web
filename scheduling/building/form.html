@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>建筑物信息</title>
+    <link href="../dist/css/zui.css?v=1.8" rel="stylesheet">
+    <link href="../dist/css/case.css" rel="stylesheet">
+    <link href="../dist/lib/uploader/zui.uploader.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="dist/lib/ieonly/html5shiv.js"></script>
+    <script src="dist/lib/ieonly/respond.js"></script>
+    <script src="dist/lib/ieonly/excanvas.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="panel">
+            <div class="panel-heading-top-blue">
+                <span style="color:#3280fc;">新增建筑物</span>
+                <div class="pull-right panel-actions">
+                    <a id="pageClose" class="">
+                        <i class="icon icon-times"></i>关闭
+                    </a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="buildingForm">
+                    <div class="form-group">
+                        <label for="no" class="col-sm-2 required">建筑物编号</label>
+                        <div class="col-md-6 col-sm-10">
+                            <input type="text" class="form-control" id="no" name="no" placeholder="建筑物编号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 required">建筑物名称</label>
+                        <div class="col-md-6 col-sm-10">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="建筑物名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="holderName" class="col-sm-2 required">产权人</label>
+                        <div class="col-md-6 col-sm-10">
+                            <input type="text" class="form-control" id="holderName" name="holderName" placeholder="产权人">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="holderTelephone" class="col-sm-2 required">联系电话</label>
+                        <div class="col-md-6 col-sm-10">
+                            <input type="text" class="form-control" id="holderTelephone" name="holderTelephone" placeholder="联系电话">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address" class="col-sm-2 required">地址</label>
+                        <div class="col-md-6 col-sm-10">
+                            <input type="text" class="form-control" id="address" name="address" placeholder="地址">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="type" class="col-sm-2 required">建筑类型</label>
+                        <div class="col-md-6 col-sm-10">
+                            <input type="text" class="form-control" id="type" name="type" placeholder="建筑类型">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="height" class="col-sm-2 required">楼高</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="height" name="height">
+                                <option>10</option>
+                                <option>50</option>
+                                <option>80</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="floor" class="col-sm-2 required">层高</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="floor" name="floor">
+                                <option>6</option>
+                                <option>20</option>
+                                <option>33</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="year" class="col-sm-2 required">建筑年代</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="year" name="year" placeholder="建筑年代">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="remark" class="col-sm-2">备注</label>
+                        <div class="col-md-6 col-sm-10">
+                            <textarea class="form-control" rows="3" id="remark" name="remark" placeholder="可以输入多行文本"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" id="save" name="save" class="btn btn-primary">提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- jQuery (ZUI中的Javascript组件依赖于jQuery) -->
+        <script src="../assets/jquery.js?v=1.8"></script>
+        <!-- ZUI Javascript组件 -->
+        <script src="../dist/js/zui.min.js?v=1.8"></script>
+        <script src="../dist/plugins/laydate/laydate.js"></script>
+        <script src="../dist/lib/uploader/zui.uploader.min.js"></script>
+        <script src="../dist/plugins/axios/axios.min.js"></script>
+        <script src="../dist/plugins/seajs/sea.js"></script>
+        <script src="../dist/plugins/seajs/seajs-text.js"></script>
+        <script src="../dist/plugins/seajs/handlebars-1.0.0.beta.6.js"></script>
+        <script type="text/javascript">
+            seajs.config({
+                base: "../dist/",
+                alias: {
+                    "utilityForm": "utility/form.js",
+                    "validate": "plugins/jquery-validate/jquery.validate.min.js",
+                    "validation": "plugins/jquery-validate/additional-methods.js",
+                    "localization": "plugins/jquery-validate/localization/messages_zh.min.js"
+                },
+                vars: {
+                    requestFrontUrl: 'http://127.0.0.1/apollo-front/',
+                    api:'http://127.0.0.1:8021/'
+                }
+            });
+
+            if(0==$.trim(window.location.search).length){
+                seajs.use('./add.js');
+            }else{
+                seajs.use('./edit.js');
+            }
+        </script>
+</body>
+
+</html>

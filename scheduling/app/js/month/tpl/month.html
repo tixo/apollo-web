@@ -1,0 +1,161 @@
+<div class="row">
+    <div>
+        <h2>一、接处警综合统计情况 </h2>
+    </div>
+    <div contenteditable="true" id="caseAffairsCategory_text">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                    本月接处警共{{caseAffairsCategory.total}}起，日均接警{{caseAffairsCategory.averageDay}}起，
+                    比上月{{caseAffairsCategory.relative}}起{{caseAffairsCategory.percent}}。其中刑事案件{{caseAffairsCategory.criminal}}起，
+                    治安案件{{caseAffairsCategory.security}}起，调解纠纷与救助{{caseAffairsCategory.help}}起。                
+            </span>
+        </p>    
+    </div>
+    <div class="col-md-10">
+        <div id="caseAffairsCategory" style="height:400px;"></div>
+    </div>
+</div>
+<div class="row">
+    <div>
+        <h2>二、刑事类案件情况</h2>
+    </div>
+    <h3>（一）概况</h3>
+    <div contenteditable="true" id="">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                本月刑事类案件{{criminalAffairs.sumary.period}}起，
+                比上月{{criminalAffairs.sumary.relative}}起{{criminalAffairs.sumary.percent}}。
+                {{criminalAffairs.sumary.description}}
+            </span>
+        </p>
+    </div>
+    <div class="">
+        <div id="criminalAffairs" style="height:250px;width:1000px;"></div>
+    </div>
+</div>
+<div class="row">
+    <h3>（二）主要案件情况对比表</h3>
+    <div class="col-md-10">
+        <div style="width:800px;">
+            <table class="table">
+                <thead>
+                    <tr class="datatable-row datatable-row-left text-center">
+                        <th>案件类型</th>
+                        <th>案件数（起）</th>
+                        <th>同比</th>
+                        <th>环比</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        {{#each criminalAffairs.sumary.criminalAffairsTable}}  
+                        <tr>                                                                 
+                            <td class="datatable-cell">{{name}}</td>
+                            <td class="datatable-cell">{{num}}</td>
+                            <td class="datatable-cell">{{basis}}</td>
+                            <td class="datatable-cell">{{relative}}</td>                                     
+                        </tr>
+                        {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <h3>（三）刑事类案件报警时段分析</h3>
+    <div contenteditable="true" id="criminalCaseTowHourText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                    本月各类刑事报警共{{criminalCaseTowHour.total}}起（日均{{criminalCaseTowHour.averageDay}}起），
+                    报警时间主要集中在6时-8时、10时-12时、16时-18时、20时-22时共11起，占69%。
+            </span>
+        </p>
+    </div>
+    
+    <div class="col-md-8 col-md-offset-2">
+            <div style="width:800px;">
+                    <table class="table">
+                        <thead>
+                            <tr class="datatable-row datatable-row-left text-center">
+                                <th>案发时间段</th>
+                                <th>案件数（起）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                {{#each criminalCaseTowHour.table}}  
+                                <tr>                                                                 
+                                    <td class="datatable-cell">{{DIC_NAME}}</td>
+                                    <td class="datatable-cell">{{TOTAL}}</td>                                    
+                                </tr>
+                                {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+        <div id="criminalCaseTowHour" style="height:250px;"></div>
+    </div>
+</div>
+<div class="row">
+    <div>
+        <h2>三、治安类案件</h2>
+    </div>
+    <div contenteditable="true" id="">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                    治安类案件{{securityAffairs.period.security}}起，比上月{{securityAffairs.relative.security}}起{{securityAffairs.percent.security}}；
+                    调解纠纷与救助{{securityAffairs.period.help}}起，比上月{{securityAffairs.relative.help}}起{{securityAffairs.percent.help}}。            
+                </span>
+        </p>    
+    </div>
+    <div class="col-md-8 col-md-offset-2">
+        <div id="securityAffairs" style="height:250px;"></div>
+    </div>
+</div>
+<div class="row">
+    <div>
+        <h2>四、最高人民法院“第六巡回”法庭安保情况</h2>
+    </div>
+    <div contenteditable="true" id="lawersText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                    本月上访人员累计523人，接待人数523人，接待案件328起，属正常上访，法庭周边秩序良好。           </span>
+        </p>    
+    </div>
+</div>
+<div class="row">
+    <div>
+        <h2>五、警情分析</h2>
+    </div>
+    <div contenteditable="true" id="caseAnalysisText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                    本月刑事案件{{caseAffairsCategory.criminal}}起，较上月明显下降。主要案件类型和分布情况：盗窃民宅7起（北里王村、黄子坡村、东韦村、天浩上元郡小区、吉泰花园小区、航天城二期小区、曲江观山悦小区各1起）；盗窃电动车2起（东韦村、揽月府小区各1起）；扒窃1起（杜陵东路918公交车站牌）；其他盗窃3起（龙湖花千树三顾便利店、东韦村卫生室、千林郡二期小区各1起）；诈骗案件3起；治安类案件3起，较上月明显下降。           </span>
+        </p>    
+    </div>
+</div>
+<div class="row">
+    <div>
+        <h2>六、预警提示</h2>
+    </div>
+    <div contenteditable="true" id="warningTips">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                    针对本月警情: 
+                    （1）请秦宇派出所加大对东韦村的治安管控力度，有效遏制盗窃民宅、盗窃电动车等案件的发生；
+                    （2）请秦宇派出所、东所社区民警加大对辖区小区群众防盗知识的宣传工作，提高群众自我保护意识，有效遏制盗窃案件的发生；
+                    （3）请治安巡逻队加强对雁塔南路的巡逻频次，提高见警率，有效遏制街面侵财案件的发生。          </span>
+        </p>    
+    </div>
+</div>
+<div class="row">
+    <div>
+        <h2>七、预警成效</h2>
+    </div>
+    <div contenteditable="true" id="warningEffect">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                    根据上月警情提示，秦宇派出所、秦宇东所对落实工作进行了反馈，治安大队未做出反馈。秦宇派出所、秦宇东所反馈如下：
+                    秦宇派出所社区民警与北里王村、金堆城等易发案区域负责人沟通，要求加大群防群治等案件防控力度，加大治安管控力度；秦宇所、东所社区民警加强宣传教育力度，提醒群众提高防范意识；每日派出警力加强城中村、菜市场以及易发案路段等重点部位街面巡逻，并加强社区治安联防工作。
+                    请治安大队、秦宇派出所、东所根据预警提示于2018年2月23日16时前将所做工作（电子版）报文档安全集中存储与管理系统/预警反馈文件夹。
+                              </span>
+        </p>    
+    </div>
+</div>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>FAQ</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <script type="text/javascript" include='isFAQ' src="../js/include.js"></script>
+</head>
+<body class="hold-transition skin-blue">
+<!--顶部导航-->
+<header class="header-wrapper main-header icl-header"></header>
+<script>
+    var identification = {};
+    var navigation = {
+        nav: {
+            title: "SuperMap iClient 9D",
+            version: "",
+            path: "../"
+        }
+    };
+    utils.loadTemplate(".icl-header", "../template/header.html", navigation);
+</script>
+<!--顶部导航 end-->
+
+<!--内容区-->
+<div class="container faq-ontainer">
+    <h2>FAQ</h2>
+    <div>
+        <h3>SuperMap iClient for JavaScript 9D 是收费的吗？</h3>
+        <p>SuperMap iClient for JavaScript 9D 是完全免费的，核心源代码基于 Apache License 2.0 开源许可协议发布，可在 GitHub、OSChina自由下载和分发使用。</p>
+    </div>
+    <div>
+        <h3>开源库是否会集成到 SuperMap iClient for JavaScript 9D 中，还是用户自行下载？</h3>
+        <p>已将最新兼容版本的三方库在GitHub、OSChina托管库中提供（对应lib文件夹），用户也可以自行下载，产品介绍页面会提供相关链接。</p>
+    </div>
+    <div>
+        <h3>SuperMap iClient for JavaScript 9D 中的3D-WebGL产品和 iClient 3D for WebGL 产品是什么关系？</h3>
+        <p>同一款产品。SuperMap iClient 3D for WebGL 是一款在服务式 GIS 架构体系中，无任何插件，跨浏览器的客户端产品。它基于Cesium开源框架,面向 HTML 5
+            的三维应用开发，可以快速构建内容丰富、响应迅速、体验流畅的三维真空间应用。</p>
+    </div>
+    <div>
+        <h3>EChartsLayer 和 MapVLayer 能否进行多图层叠加？</h3>
+        <p>可以。同时在地图控件中添加两个图层后，会分别在不同的Canvas中绘制。</p>
+    </div>
+    <div>
+        <h3>Elasticsearch 部分对接了哪些功能？</h3>
+        <p>详细功能说明请参考API Doc中的 SuperMap.Elasticsearch 接口说明。</p>
+    </div>
+    <div>
+        <h3>分布式分析的范例不知道如何设置参数？</h3>
+        <p>默认参数即可，详细参数说明请参考API Doc中的 xx.supermap.ProcessingService 接口。</p>
+    </div>
+
+</div>
+<<!--内容区 end-->
+
+<!--footer-->
+<footer class="icl-footer"></footer>
+<script>
+    utils.loadTemplate(".icl-footer", "../template/footer.html");
+</script>
+<!--footer end-->
+
+<script type="text/javascript" src="../js/common.js"></script>
+
+<script type="text/javascript">
+    var notFor = ['iClient Classic', '3D-WebGL'];
+    $(document).ready(function () {
+        if (identification && identification.name) {
+            var suffixHeader = document.getElementById("suffix-title");
+            suffixHeader.innerText = (notFor.indexOf(identification.name) < 0 ? "for " : "") + identification.name;
+        }
+    });
+</script>
+</body>
+</html>

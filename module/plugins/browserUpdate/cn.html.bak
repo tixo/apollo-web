@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-Hans" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <title>Outdated Browser</title>
+    <meta name="description" content="为开发者节约时间的工具。它可以检测过时的浏览器并建议用户将其升级至新版本。">
+    <meta name="author" content="Bürocratik - www.burocratik.com">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Sharing -->
+    <meta property="og:title" content="Outdated Browser">
+    <meta property="og:description" content="为开发者节约时间的工具。它可以检测过时的浏览器并建议用户将其升级至新版本。">
+    <meta property="og:url" content="http://outdatedbrowser.com/">
+    <meta property="og:image" content="http://outdatedbrowser.com/public/files/pics/outdated-social.jpg">
+    <meta property="og:site_name" content="Outdated Browser">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Outdated Browser">
+    <meta name="twitter:description" content="为开发者节约时间的工具。它可以检测过时的浏览器并建议用户将其升级至新版本。">
+    <meta property="og:image" content="http://outdatedbrowser.com/public/files/pics/outdated-social.jpg">
+    <meta name="twitter:domain" content="http://outdatedbrowser.com/">
+    <!-- Icons -->
+    <link rel="shortcut icon" href="http://outdatedbrowser.com/public/imgs/favicon.ico">
+    <meta name="msapplication-TileColor" content="#f5b722">
+    <meta name="msapplication-TileImage" content="http://outdatedbrowser.com/public/imgs/windows-title-288x288.png">
+    <meta name="msapplication-square150x150logo" content="http://outdatedbrowser.com/public/imgs/id/windows-title-288x288.png">
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="./public/scripts/fonts.css">
+    <link rel="stylesheet" href="./public/scripts/outdatedBrowser.min.css">
+    <link rel="stylesheet" href="./public/scripts/awards.css">
+    <link rel="stylesheet" href="./public/scripts/mobile.min.css">
+
+
+    <!--[if lte IE 9]>
+        <script src="./public/scripts/html5.js"></script>
+        <link rel="stylesheet" type="text/css" href="./public/scripts/ie9-and-down.min.css">
+    <![endif]-->
+
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" type="text/css" href="./public/scripts/ie8-and-down.min.css">
+    <![endif]-->
+
+    <script src="./public/scripts/modernizr-2.6.2.min.js"></script>
+    <noscript>
+        <style type="text/css">
+            .menu, .newBrowser{display: none;}
+            .disabledJS{display: block;}
+            .c_browsers.hideBrowsers{opacity: 1;}
+            .browser .statistic, .browser .download{display: block; opacity: 0; margin-left: 0; left: 0; width: 100%;}
+            .browser .download a{ max-width: 210px; width: 80%;}
+            .browser:hover .statistic, .browser:hover .download{opacity: 1;}
+        </style>
+    </noscript>
+
+</head>
+<body class="noajax  home">
+
+    <div class="menu"><a data-effect="effect" class="btnCloseNav">关闭导航<span class="l1"></span><span class="l2"></span><span class="l3"></span></a></div>
+    <div id="container" class="container effect">
+        <nav class="main_menu effect" role="navigation">
+            <span class="close"></span>
+            <ul>
+                <li class="lang-picker">
+                    <a href="#">中文<span class="lang-arrow"></span></a>
+                    <ul><li><a href="http://outdatedbrowser.com/br">brasileiro</a></li><li><a href="http://outdatedbrowser.com/cz">Česká republika</a></li><li><a href="http://outdatedbrowser.com/ee">Eesti</a></li><li><a href="http://outdatedbrowser.com/de">deutsch</a></li><li><a href="http://outdatedbrowser.com/en">english</a></li><li><a href="http://outdatedbrowser.com/es">español</a></li><li><a href="http://outdatedbrowser.com/fr">français</a></li><li><a href="http://outdatedbrowser.com/hu">magyar</a></li><li><a href="http://outdatedbrowser.com/it">italiano</a></li><li><a href="http://outdatedbrowser.com/nl">nederlands</a></li><li><a href="http://outdatedbrowser.com/pl">polski</a></li><li><a href="http://outdatedbrowser.com/pt">português</a></li><li><a href="http://outdatedbrowser.com/ru">русский</a></li><li><a href="http://outdatedbrowser.com/si">slovenski</a></li><li><a href="http://outdatedbrowser.com/ua">Українська</a></li></ul>
+                </li>
+                <li><a class="btnAjax  active" href="http://outdatedbrowser.com/cn" data-title="" data-url="">主页</a></li>
+                <li><a class="btnAjax " href="http://outdatedbrowser.com/cn/project" data-title="项目" data-url="/project">项目</a></li>
+                <li><a class="btnAjax " href="http://outdatedbrowser.com/cn/how" data-title="如何使用" data-url="/how">如何使用</a></li>
+                <li><a href="https://github.com/burocratik/outdated-browser/wiki/FAQ" rel="external" data-track="Faqs"><span>常见问题</span></a></li>
+                <li><a href="https://github.com/burocratik/outdated-browser" rel="external" data-track="Github"><span>GitHub 页面</span></a></li>
+                <li><a href="http://www.burocratik.com/" rel="external" data-track="Burocratik"><span>by bürocratik</span></a></li>
+            </ul>
+        </nav>
+<!--      <div id="awwwards" class="right black">
+        <a href="http://www.awwwards.com/web-design-awards/outdated-browser" target="_blank" data-track="Awwwards" title="Site of the Day">Site of the Day: Wednesday 25, June</a>
+    </div>
+      <div id="awwwardsDev" class="right black">
+        <a href="http://www.awwwards.com/web-design-awards/outdated-browser" target="_blank" data-track="Awwwards" title="Developer Award">Developer Award: Wednesday 25, June</a>
+    </div> -->
+
+<div class="pusher">
+    <!-- LOAD CONTENT -->
+    <div class="loadContent current">
+        
+
+
+<div id="content" class="home">
+
+    <div id="preload" aria-hidden="true">
+        <img src="./public/scripts/browsers-bg.png" alt="">
+        <img src="./public/scripts/operatingsystems-bg.png" alt="">
+    </div>
+
+
+    <div class="inner">
+
+        <!--  HEADER  -->
+        <header class="title" role="banner">
+            <div class="browserVersion newBrowser">
+                <h1>Outdated Browser</h1>
+                <p>为了更佳的浏览体验，将您的浏览器保持最新。在这里您可以获得最新的版本。</p>
+            </div>
+            <div class="browserVersion disabledJS">
+                <h1>Outdated Browser</h1>
+                <p>您的浏览器已禁用 Javascript，启用它获得更好的体验。</p>
+            </div>
+            <div class="browserVersion ifMobile">
+                <h1>Outdated Browser</h1>
+                <p>这是为桌面用户准备的工具，<br>但您可以安心在这里浏览</p>
+            </div>
+        <!-- end HEADER  -->
+        </header>
+
+
+
+
+        <!-- SECTION -->
+        <!-- DATA SOURCE:
+        Browser Version: http://caniuse.com/usage_table.php
+        Browser Statistics: http://gs.statcounter.com/
+        -->
+        <section class="c_browsers sorted kwicks kwicks-horizontal hideBrowsers">
+
+            <!-- BROWSER - Chrome -->
+            <div id="chrome" class="browser" rel="">
+                <h3 class="statistic"><span>46.5%</span> 的人们在使用 <br>这款浏览器</h3>
+                <div class="center">
+                    <h2><span></span> GOOGLE CHROME</h2>
+                    <div class="download">
+                        <a href="http://dlsw.baidu.com/sw-search-sp/soft/9d/14744/ChromeStandaloneSetup.1422328105.exe" target="_blank" class="browserlink" data-track="Google Chrome">下载</a>
+                        <h4>版本 <span>39</span></h4>
+                    </div>
+                </div>
+                <div class="available">
+                    <h4>在以下操作系统可用 </h4>
+                    <ul>
+                        <li class="windows"><span>Windows</span></li>
+                        <li class="mac"><span>Mac OS</span></li>
+                        <li class="linux"><span>Linux</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- BROWSER - Firefox -->
+            <div id="firefox" class="browser" rel="">
+                <h3 class="statistic"><span>16.5%</span> 的人们在使用 <br>这款浏览器</h3>
+                <div class="center">
+                    <h2><span></span> MOZILLA FIREFOX</h2>
+                    <div class="download">
+                        <a href="http://dlsw.baidu.com/sw-search-sp/soft/51/11843/Firefox_V35.0.0.5486_latest.1421228135.exe" target="_blank" class="browserlink" data-track="Mozilla Firefox">下载</a>
+                        <h4>版本 <span>35</span></h4>
+                    </div>
+                </div>
+                <div class="available">
+                    <h4>在以下操作系统可用 </h4>
+                    <ul>
+                        <li class="windows"><span>Windows</span></li>
+                        <li class="mac"><span>Mac OS</span></li>
+                        <li class="linux"><span>Linux</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- BROWSER - Internet Explorer -->
+            <div id="internetExplorer" class="browser" rel="">
+                <h3 class="statistic"><span>21.6%</span> 的人们在使用 <br>这款浏览器</h3>
+                <div class="center">
+                    <h2><span></span> INTERNET EXPLORER</h2>
+                    <div class="download">
+                        <a href="http://dlsw.baidu.com/sw-search-sp/soft/dc/23360/IE11-Setup-Full-32bitieak.1809390759.EXE" target="_blank" class="browserlink" data-track="Internet Explorer">下载</a>
+                        <h4>版本 <span>11</span></h4>
+                    </div>
+                </div>
+                <div class="available">
+                    <h4>在以下操作系统可用 </h4>
+                    <ul class="single">
+                        <li class="windows"><span>Windows</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- BROWSER - Safari -->
+            <div id="safari" class="browser" rel="">
+                <h3 class="statistic"><span>10.3%</span> 的人们在使用 <br>这款浏览器</h3>
+                <div class="center">
+                    <h2><span></span> APPLE SAFARI</h2>
+                    <div class="download">
+                        <a href="http://dlsw.baidu.com/sw-search-sp/soft/d3/12966/Safari_5.34.57.2.1417745549.exe" target="_blank" class="browserlink" data-track="Apple Safari">下载</a>
+                        <h4>版本 <span>8</span></h4>
+                    </div>
+                </div>
+                <div class="available">
+                    <h4>在以下操作系统可用 </h4>
+                    <ul class="single">
+                        <li class="mac"><span>Mac OS</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- BROWSER - Opera -->
+            <div id="opera" class="browser" rel="">
+                <h3 class="statistic"><span>1.5%</span> 的人们在使用 <br>这款浏览器</h3>
+                <div class="center">
+                    <h2><span></span> OPERA</h2>
+                    <div class="download">
+                        <a href="http://dlsw.baidu.com/sw-search-sp/soft/6f/11508/opera_stable_26.0.1656.60_windows.1418883897.exe" target="_blank" data-track="Opera" class="browserlink">下载</a>
+                        <h4>版本 <span>26</span></h4>
+                    </div>
+                </div>
+                <div class="available">
+                    <h4>在以下操作系统可用 </h4>
+                    <ul>
+                        <li class="windows"><span>Windows</span></li>
+                        <li class="mac"><span>Mac OS</span></li>
+                        <li class="linux"><span>Linux</span></li>
+                    </ul>
+                </div>
+            </div>
+        <!-- end SECTION -->
+        </section>
+
+        <!-- <section class="c_browsers sorted kwicks kwicks-horizontal"></section> -->
+
+    <!-- end .inner -->
+    </div>
+<!-- end #content -->
+</div>    </div>
+    <!-- end .loadContent -->
+
+
+    <div class="loadContent next">
+    </div>
+    <!-- end .loadContent -->
+
+<!-- end .pusher -->
+</div>
+
+
+    <!-- end .container -->
+    </div>
+
+
+    <!-- KEEP CALM MESSAGE -->
+    <div class="keep_calm">
+        <p class="center">冷静 <br><span class="xs">这是为</span>桌面<br>用户提供的<span class="xs">不是</span>为手机用户提供的。</p>
+        <p class="close">关闭</p>
+    </div>
+
+    
+    <!-- ============= SCRIPTS ============= -->
+    <script src="./public/scripts/jquery-1.10.1.min.js"></script>
+    <script src="./public/scripts/outdatedBrowser.min.js"></script>
+
+    <!--[if !IE]><!-->
+      <script type="text/javascript" src="./public/scripts/main.min.js"></script>
+    <!--<![endif]-->
+
+    <!--[if gte IE 9]>
+      <script type="text/javascript" src="./public/scripts/ie/main.min.js"></script>
+    <![endif]-->
+
+    <!-- GOOGLE ANALYTICS -->
+
+    </body>
+</html>

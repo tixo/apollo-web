@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../../module/plugins/scrollbar/jquery.mCustomScrollbar.css" type="text/css">
+		<link rel="stylesheet" href="../../app/anjianjingqing/css/ajjq.css" />
+		<link rel="stylesheet" href="../../app/yibiaosanshi/css/ybss.css" />
+		<script type="text/javascript" src="../../module/jquery/jquery-1.8.1.min.js"></script>
+		<script type="text/javascript" src="../anjianjingqing/js/ajjq_today.js"></script>
+		<script type="text/javascript" src="../../module/plugins/scrollbar/jquery.mCustomScrollbar.js"></script>
+		<script type="text/javascript" src="../../module/plugins/scrollbar/minified/jquery.mousewheel-3.0.6.min.js"></script>
+	</head>
+	<body>
+        <div class="box1 tab-ctn-box">
+			<div id="todayCase" class="" style="overflow-x:auto;">
+			<img class="not-data" src="../../app/anjianjingqing/img/not-data-1.png" />
+			</div>
+        </div>
+	</body>
+	<script>
+		var bodyH = $("body").height();
+		$("#todayCase").height(bodyH);
+		$(window).resize(function(){
+		    var bodyH = $("body").height();
+			$("#todayCase").height(bodyH);
+		});
+	</script>
+</html>

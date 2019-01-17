@@ -1,0 +1,176 @@
+<div class="row">
+    <div>
+        <h2>一、接处警综合统计情况 </h2>
+    </div>
+    <div contenteditable="true" id="caseAffairsCategoryText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                    本季度共接处警{{caseAffairsCategory.total}}起，日均接处警{{caseAffairsCategory.averageDay}}起。其中刑事案件{{caseAffairsCategory.criminal.period}}起，治安案件{{caseAffairsCategory.security.period}}起，调解纠纷与救助{{caseAffairsCategory.help.period}}起。               
+            </span>
+        </p>
+    </div>
+    <div class="col-md-10">
+        <div id="caseAffairsCategory" style="height:250px;"></div>
+    </div>
+</div>
+<div class="row">
+    <div>
+        <h2>二、刑事类案件情况</h2>
+    </div>
+    <h3>（一）概况</h3>
+    <div contenteditable="true" id="criminalAffairsText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">               
+                本季度刑事类案件{{criminalAffairs.total}}起。其中{{criminalAffairs.description}}。
+            </span>
+        </p>
+    </div>
+</div>
+<div class="row">
+    <h3>（二）主要案件情况表</h3>
+    <div class="col-md-10">
+        <div style="width:800px;">
+            <table class="table">
+                <thead>
+                    <tr class="datatable-row datatable-row-left text-center">
+                        <th>案件类型</th>
+                        <th>2018年1-3月 案件数（起）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each criminalAffairs.criminalAffairsTable}}
+                    <tr>
+                        <td class="datatable-cell">{{name}}</td>
+                        <td class="datatable-cell">{{total}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <h3>（三）刑事类案件报警时段分析</h3>
+    <div contenteditable="true" id="criminalCaseTowHourText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                    本季度各类刑事报警共{{criminalCaseTowHour.total}}起（日均{{criminalCaseTowHour.averageDay}}起），报警时间主要集中在6时-8时、10时-12时、16时-18时、20时-22时共11起，占69%。
+            </span>
+        </p>
+    </div>
+
+    <div class="col-md-10">
+        <div style="width:800px;">
+            <table class="table">
+                <thead>
+                    <tr class="datatable-row datatable-row-left text-center">
+                        <th>案发时间段</th>
+                        <th>案件数（起）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each criminalCaseTowHour.table}}
+                    <tr>
+                        <td class="datatable-cell">{{name}}</td>
+                        <td class="datatable-cell">{{total}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <div id="criminalCaseTowHour" style="height:250px;"></div>
+    </div>
+</div>
+<div class="row">
+    <h3>（四）盗窃案件主要分布情况</h3>
+    <div class="col-md-10">
+        <div style="width:800px;">
+            <table class="table">
+                <thead>
+                    <tr class="datatable-row datatable-row-left text-center">
+                        <th>地域</th>
+                        <th>案件数（起）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="datatable-cell">北里王村</td>
+                        <td class="datatable-cell">4</td>
+                    </tr>
+                    <tr>
+                        <td class="datatable-cell">东韦村</td>
+                        <td class="datatable-cell">4</td>
+                    </tr>       
+                    <tr>
+                        <td class="datatable-cell">北里王村</td>
+                        <td class="datatable-cell">4</td>
+                    </tr>
+                    <tr>
+                        <td class="datatable-cell">富力城小区</td>
+                        <td class="datatable-cell">4</td>
+                    </tr>
+                     <tr>
+                        <td class="datatable-cell">曲江澜山小区</td>
+                        <td class="datatable-cell">4</td>
+                    </tr>
+                    <tr>
+                        <td class="datatable-cell">天浩上元郡小区</td>
+                        <td class="datatable-cell">4</td>
+                    </tr>        
+                    <tr>
+                        <td class="datatable-cell">龙湖花千树小区</td>
+                        <td class="datatable-cell">4</td>
+                    </tr>        
+                    <tr>
+                        <td class="datatable-cell">工地</td>
+                        <td class="datatable-cell">4</td>
+                    </tr>  
+                    <tr>
+                        <td colspan="2" class="datatable-cell">注：其它37起盗窃案件区域分布零散。</td>
+                    </tr>                                                                                                             
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div>
+        <h2>三、治安类案件</h2>
+    </div>
+    <div contenteditable="true" id="securityAffairsText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                    治安案件共{{securityAffairs.period.security}}起，调解纠纷与救助共{{securityAffairs.period.help}}起。治安案件发案地较为分散。     
+            </span>
+        </p>
+    </div>
+    <div class="col-md-10">
+        <div id="securityAffairs" style="height:250px;"></div>
+    </div>
+</div>
+<div class="row">
+    <div>
+        <h2>四、警情分析</h2>
+    </div>
+    <div contenteditable="true" id="caseAnalysisText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                    2018年一季度刑事案件主要以盗窃为主。其中“两抢”案件1起（神舟六路与东长安街十字）；盗窃民宅发案较高的区域有：天浩上元郡小区、曲江澜山小区、北里王村、东韦村；盗窃电动车发案分布零散；工地盗窃数额较大的有：人民医院工地仓库；易发案路段有：航天西路、航天大道、神舟六路、东长安街。  
+            </span>
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div>
+        <h2>五、预警提示</h2>
+    </div>
+    <div contenteditable="true" id="AlaramText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                    针对本季度警情：（1）请秦宇派出所、秦宇东所加大对北里王村、东韦村、曲江澜山小区、天浩上元郡小区及富力城小区的治安管理防范工作，有效遏制盗窃案件的高发；（2）请治安巡逻队加强巡逻防控工作，加大对航天大道、航天西路、神舟六路、东长安街等易发案路段的巡逻频次，提高见警率，有效遏制街面各类侵财案件的发生；（3）请各部门做好“清明节”期间的安保维稳工作。       
+            </span>
+        </p>
+    </div>
+</div>

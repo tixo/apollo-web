@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>iClient for Leaflet IE8示例</title>
+    <!--引入shim垫片-->
+    <!--引入leaflet 1.0.3,iclient9-leaflet-->
+    <script type="text/javascript"
+            include="polyfill,leaflet-1.0.3,iclient9-leaflet"
+            exclude="default,common"
+            src="../js/include.js"></script>
+
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            overflow-x: hidden;
+        }
+
+        #code, #map {
+            position: absolute;
+            width: 50%;
+            height: 80%;
+            border: 1px solid #00a65a;
+        }
+
+        #code {
+            right: 0;
+        }
+
+        #map {
+            left: 0;
+        }
+
+        #code_area {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+<div id="code">
+<textarea name="code" id="code_area" title="code">
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset='UTF-8'>
+        <title>iClient for Leaflet IE8示例</title>
+        <!--引入shim垫片-->
+
+        <!--[if lt IE 9]>
+        <script src='https://cdn.bootcss.com/es5-shim/4.5.10/es5-shim.min.js'></script>
+        <script src='https://cdn.bootcss.com/es5-shim/4.5.10/es5-sham.min.js'></script>
+        <![endif]-->
+
+        <!--引入leaflet 1.2.0暂时还不支持IE8-->
+        <link href='https://cdn.bootcss.com/leaflet/1.0.3/leaflet.css' rel='stylesheet'>
+        <script src='https://cdn.bootcss.com/leaflet/1.0.3/leaflet.js'></script>
+
+        <!--引入iclient9-leaflet-->
+        <script src='../../dist/iclient9-leaflet.min.js'></script>
+
+        <style>
+            body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                position: absolute;
+            }
+
+            #map {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+    <div id='mymap'></div>
+
+    <script type='text/javascript'>
+        var host = window.isLocal ? window.server : 'http://support.supermap.com.cn:8090';
+        var map,
+            resultLayer,
+            tileLayerUrl = host + '/iserver/services/map-world/rest/maps/World',
+            dataUrl = host + '/iserver/services/data-world/rest/data';
+
+
+        map = L.map('mymap', {
+            crs: L.CRS.EPSG4326,
+            center: [20, 80],
+            maxZoom: 18,
+            zoom: 2
+        });
+        L.supermap.tiledMapLayer(tileLayerUrl).addTo(map);
+
+        query();
+
+        //ID查询中国
+        function query() {
+            var idsParam = new SuperMap.GetFeaturesByIDsParameters({
+                IDs: [247],
+                datasetNames: ['World:Countries']
+            });
+            L.supermap
+                .featureService(dataUrl)
+                .getFeaturesByIDs(idsParam, function (serviceResult) {
+                    resultLayer = L.geoJSON(serviceResult.result.features, {
+                        onEachFeature: function (feature, layer) {
+                            layer.bindPopup(feature.properties.COUNTRY);
+                        }
+                    }).addTo(map);
+                });
+        }
+    </script>
+    </body>
+    </html>
+</textarea>
+</div>
+
+<div id="map">
+</div>
+<script type="text/javascript">
+    var host = window.isLocal ? window.server : "http://support.supermap.com.cn:8090";
+    var map,
+        resultLayer,
+        tileLayerUrl = host + "/iserver/services/map-world/rest/maps/World",
+        dataUrl = host + "/iserver/services/data-world/rest/data";
+
+
+    map = L.map('map', {
+        crs: L.CRS.EPSG4326,
+        center: [20, 80],
+        maxZoom: 18,
+        zoom: 2
+    });
+    L.supermap.tiledMapLayer(tileLayerUrl).addTo(map);
+
+    query();
+
+    //ID查询中国
+    function query() {
+        var idsParam = new SuperMap.GetFeaturesByIDsParameters({
+            IDs: [247],
+            datasetNames: ["World:Countries"]
+        });
+        L.supermap
+            .featureService(dataUrl)
+            .getFeaturesByIDs(idsParam, function (serviceResult) {
+                resultLayer = L.geoJSON(serviceResult.result.features, {
+                    onEachFeature: function (feature, layer) {
+                        layer.bindPopup(feature.properties.COUNTRY);
+                    }
+                }).addTo(map);
+            });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+        <link rel="stylesheet" href="../../config/common/rightResource/css/right_resource.css" type="text/css">
+        <link rel="stylesheet" type="text/css" href="css/ybss.css" />
+        <link rel="stylesheet" href="../../config/common/mapTools/css/map_tools.css" type="text/css">
+        <link rel="stylesheet" href="../../module/plugins/scrollbar/jquery.mCustomScrollbar.css" type="text/css">
+        <link rel="stylesheet" href="../../config/common/camera/css/camera.css" type="text/css">
+        <script type="text/javascript" src="../../supermap/webgl/module/jquery/jquery-1.8.1.min.js"></script>
+        <script type="text/javascript" src="../../module/plugins/scrollbar/jquery.mCustomScrollbar.js"></script>
+        <script type="text/javascript" src="../../module/plugins/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script type="text/javascript" src="../../module/template.js"></script>
+        <script type="text/javascript" src="../../config/common/classie.js"></script>
+        <script type="text/javascript" src="../../supermap/webgl/supermap/3D/webgl.Include3D.js"></script>
+        <script type="text/javascript" include="iclient-classic" src="../../supermap/9D-leaflet/dist/include-classic.js"></script>
+        <script type="text/javascript" src="../../module/sea/sea.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/zTreeStyle.css" />
+        <script type="text/javascript" src="../../module/plugins/zTree/js/jquery.ztree.core.min.js"></script>
+        <script type="text/javascript" src="../../module/plugins/zTree/js/jquery.ztree.excheck.js"></script>
+        <script type="text/javascript" src="../../module/plugins/zTree/js/jquery.ztree.exhide.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../module/plugins/datetimepicker/jquery.datetimepicker.css">
+        <script type="text/javascript" src="../../module/plugins/datetimepicker/build/jquery.datetimepicker.full.js"></script>
+   	    <script type="text/javascript" src="../../config/common/jqueryPager/jquery.z-pager.js"></script>
+   		<script type="text/javascript" src="../../config/common/camera/js/flv.js"></script>
+   		<script type="text/javascript" src="../../config/common/camera/js/camera.js"></script>
+   		<script src="../../scheduling/dist/plugins/layer/layer.js"></script>
+    </head>
+
+    <body class="cbp-spmenu-push">
+        <div class="main-content">
+            <div class="sidebar" role="navigation">
+                <div class="navbar-collapse">
+                    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right dev-page-sidebar " id="cbp-spmenu-s1">
+                        <div class="left-box">
+                            <button id="showLeftPush" class="showLeftPushBg"></button>
+                            <div class="tab-box">
+                                <div class="tab-contain">
+                                    <!-- 对应显示内容 -->
+                                    <div id="content">
+                                        <div id="tab1" class="item">
+                                            <div class="soso">
+                                                <input type="text" class="soso-ipt" placeholder="请输入人口，房屋，单位信息" />
+                                                <button class="btn-soso" id="">
+                                                    <img src="img/search-1.png" />
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div id="tab2" class="item show">
+                                            <div class="soso">
+                                                <input type="text" class="soso-ipt" placeholder="请输入人口姓名/身份证号" id="so-renkou"/>
+                                                <button class="btn-soso" id="btn-soso-rk">
+                                                    <img src="img/search-1.png" />
+                                                </button>
+                                                <div id="div_items-rk" on>
+                                                	
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="tab3" class="item">
+                                            <div class="soso">
+                                                <input type="text" class="soso-ipt" placeholder="请输入房屋地址" id="so-fangwu"/>
+                                                <button class="btn-soso" id="btn-soso-fw">
+                                                    <img src="img/search-1.png" />
+                                                </button>
+                                                <div id="div_items-fw" on>
+                                                	
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="tab4" class="item">
+                                            <div class="soso">
+                                                <input type="text" class="soso-ipt" placeholder="请输入单位名称" id="so-danwei"/>
+                                                <button class="btn-soso" id="btn-soso-dw">
+                                                    <img src="img/search-1.png" />
+                                                </button>
+                                                <div id="div_items" on>
+                                                	
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- tab栏 -->
+                                    <ul id="ybssTabs">
+                                        <li></li>
+                                        <li class="current">
+                                            <a href="#" title="tab2" name="tab2-bottom">
+								      		<span><img src="img/population.png"/>实有人口</span>
+								      	</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" title="tab3" name="tab3-bottom">
+								      		<span><img src="img/house.png"/>实有房屋</span>
+								      	</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" title="tab4" name="tab4-bottom">
+								      		<span><img src="img/unit.png"/>实有单位</span>
+								      	</a>
+                                        </li>
+                                    </ul>
+                                    <div id="content1" class="show">
+                                        <div id="tab1-bottom" class="item item-botton">
+                                        </div>
+                                        <div id="tab2-bottom" class="item item-botton show">
+                                            <select class="sect" id="renkou-lei" name="household">
+                                                <option value="">类 型</option>
+                                            </select>
+                                            <select class="sect sect2" id="renkou-shequ" name="district">
+                                                <option value="">区 域</option>
+                                            </select>
+                                            <select class="sect sect3" id="renkou-minzu" name="nation">
+                                                <option value="">民 族</option>
+                                            </select>
+                                            <div class="">
+                                            	<div class="rk-box renkou" id="renkouScrollbar">
+                                            	
+                                            	</div>
+                                            </div>
+                                        </div>
+                                        <div class="fenye-box pager clearfix " id="fenye-renkou">
+                                        	
+                                        </div>
+                                        <div id="tab3-bottom" class="item item-botton">
+                                            <select class="sect house_type" id="fangwu-lei" name="category">
+                                              	<option value="">类 型</option>
+                                            </select>
+                                            <select class="sect sect2" id="fangwu-shequ" name="district">
+                                                <option value="">区  域</option>
+                                            </select>
+                                            <select class="sect sect3 house_purpose" id="fangwu-yongtu" name="purpose">
+                                                <option value="">用 途</option>
+                                            </select>
+                                            <div class="">
+                                            	<div class="rk-box" id="fangwu">
+                                            		
+                                            	</div>
+                                            	  
+                                            </div>
+                                        </div>
+                                        <div class="fenye-box pager clearfix" id="fenye-fangwu">
+                                        	
+                                        </div>
+                                        <div id="tab4-bottom" class="item item-botton">
+                                            <select class="sect company_type " id="danwei-lei" name="type">
+                                                <option class="sect_option1" value="">类 别</option>
+                                            </select>
+                                            <select class="sect sect2" id="danwei-shequ" name="district">
+                                                <option class="sect_option1" value="">区 域</option>
+                                            </select>
+                                            <select class="sect sect3" id="danwei-diman" name="isSlowSmall">
+                                                <option class="sect_option1" value="">低慢小</option>
+                                                <option value="1">是</option>
+                                                <option value="0">否</option>
+                                            </select>
+                                            <div class="">
+                                                <div class="rk-box" id="danwei">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="fenye-box pager clearfix" id="fenye-danwei">
+                                        	
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div id="page-wrapper">
+                <!--加载map tools  zhangai  	start -->
+                <!--<span id="map-tools3D"></span>
+                <span id="map-tools" style="display: none;"></span>-->
+                <!--end -->
+                <!--加载3维场景模块-->
+                <div id="cesiumContainer" style="width: calc(100% - 293px)"></div>
+                <!--加载2维场景模块-->
+                <div id="map"  class="map-background" style="width:100%;height:100%;position:absolute ;display: none;"></div>
+                <!--加载 右侧资源  zhangai  	start -->
+                <span id="right-resource"></span>
+                <!--end -->
+                <!--加载map cut 地图切换  zhangai  	start -->
+                <span id="map_cut"></span>
+            </div>
+        </div>
+    </body>
+    <script>
+        var mybss,_rightResource,mbuilding;
+        //获取场景配置信息
+        var services = parent.window.services;
+        var  cameraNames=[{"name":"129"},{"name":"112"},{"name":"171"},{"name":"174"}];
+        seajs.config({ base: "./js/" });
+        seajs.use(["ybss.js"], function(ybss) {
+            mybss = ybss;
+            mbuilding = ybss;
+            mbuilding.queryFeature = mybss.ybssSceneEvent;
+            mybss.ybssSceneEvent.initScene(services);
+            mybss.initUi();
+            _rightResource = mybss.rightResource;
+        });
+        var menuLeft = document.getElementById('cbp-spmenu-s1'),
+            showLeftPush = document.getElementById('showLeftPush'),
+            body = document.body;
+        /* 获取父类的document */
+        var parentDoc = parent.document;
+        /* 定义一个接收元素的变量 */
+        var thisIframe = null;
+        $("iframe", parentDoc).each(function(index, e) {
+            if (e.src.indexOf("ybss.html") > 0) {
+                thisIframe = e;
+                return false;
+            }
+        });
+        showLeftPush.onclick = function() {
+            classie.toggle(this, 'active');
+            classie.toggle(body, 'cbp-spmenu-push-toright');
+            classie.toggle(menuLeft, 'cbp-spmenu-open');
+            $(this).toggleClass('showRightPushBg');
+            var left = $("#cesiumContainer").css("left");
+		if ($(".showRightPushBg").length > 0) {
+			$("#cesiumContainer").css({
+				"left": "0",
+				"width": "100%"
+			});
+			$("#map").css({
+				"left": "0",
+				"width": "100%"
+			});
+			$(".time-box").css({
+				"width": "100%"
+			});
+		} else {
+			$("#cesiumContainer").css({
+				"left": "293px",
+				"width": "calc(100% - 293px)"
+			});
+			$("#map").css({
+				"left": "293px",
+				"width": "100%"
+			});
+			$(".time-box").css({
+				"width": "calc(100% - 293px)"
+			});
+		}
+        };
+        $(".clear-win").click(function() {
+            $(".modal-backdrop-box").hide();
+        });
+        $(".maximize").click(function() {
+            $(".modal-maximize-box").show();
+        });
+        $(".modal-maximize-box-clear").click(function() {
+            $(".modal-maximize-box").hide();
+        });
+        //加载右侧资源 zhangai
+        $.get("../../config/common/rightResource/right_resource.html", function(data) {
+            $("#right-resource").html(data);
+        });
+        //加载地图切换 zhangai
+        $.get("../../config/common/mapCut/map_cut.html", function(data) {
+            $("#map_cut").html(data);
+        });
+        function setIframeAllowfullscreen(){
+        	 $("iframe", document).each(function(index, e) {
+            if (e.src.indexOf("multichannelCamera.html") > 0) {
+                e.allowfullscreen=true;
+                return false;
+            }
+        });
+        }
+        $.get("buildingPopup.html", function(data) {
+            $("body").append(data);
+        });
+    </script>
+    <script type="text/javascript" src="../../config/common/camera/js/camera.js"></script>
+   
+</html>

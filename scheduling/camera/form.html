@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>设备信息</title>
+    <link href="../dist/css/zui.css?v=1.8" rel="stylesheet">
+    <link href="../dist/css/case.css" rel="stylesheet">
+    <link rel="stylesheet" href="../dist/plugins/iview/iview.css">
+    <link href="../dist/lib/chosen/chosen.min.css" rel="stylesheet">
+    <link href="../dist/lib/uploader/zui.uploader.min.css" rel="stylesheet">
+    <link href="../dist/plugins/zTree_v3/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css" />
+    
+    <!--[if lt IE 9]>
+    <script src="dist/lib/ieonly/html5shiv.js"></script>
+    <script src="dist/lib/ieonly/respond.js"></script>
+    <script src="dist/lib/ieonly/excanvas.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="panel">
+            <div class="panel-heading-top-blue">
+                <span style="color:#3280fc;">添加警用资源</span>
+                <div class="pull-right panel-actions">
+                    <a id="pageClose" class="">
+                        <i class="icon icon-times"></i>关闭
+                    </a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="cameraForm">
+                    <div class="form-group">
+                        <label for="no" class="col-sm-2 required">设备编号</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="no" name="no" placeholder="请输入设备编号">
+                        </div>
+                        <label for="name" class="col-sm-2 required">设备名称</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="请输入设备名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="producerName" class="col-sm-2">设备厂商名称</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="producerName" name="producerName">
+                                <option value="1">摄像头1厂</option>
+                                <option value="2">摄像头2厂</option>
+                            </select>
+                        </div>
+                        <label for="cameraModel" class="col-sm-2 required">设备型号</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="cameraModel" name="cameraModel">
+                                <option value="1">Camera1</option>
+                                <option value="2">Camera2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="administrativeRegionName" class="col-sm-2 required">行政区域名称</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="administrativeRegionName" name="administrativeRegionName" rows="3"></input>
+                        </div>
+                        <label for="divisonCode" class="col-sm-2 required">行政区域代码</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="divisonCode" name="divisonCode" rows="3"></input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="monitoryPointType" class="col-sm-2 required">监控点类型名称</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="monitoryPointType" name="monitoryPointType" rows="3"></input>
+                        </div>
+                        <label for="alias" class="col-sm-2">点位俗名</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="alias" name="alias" rows="3"></input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ipFour" class="col-sm-2 required">IPV4</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="ipFour" name="ipFour" rows="3"></input>
+                        </div>
+                        <label for="ipSix" class="col-sm-2">IPV6</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="ipSix" name="ipSix" rows="3"></input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="macAddrerss" class="col-sm-2">MAC地址</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="macAddrerss" name="macAddrerss" rows="3"></input>
+                        </div>
+                        <label for="fillLightProperties" class="col-sm-2">补光属性</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="fillLightProperties" name="fillLightProperties" rows="3"></input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cameraType" class="col-sm-2 required">摄像机类型</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="cameraType" name="cameraType" rows="3"></input>
+                        </div>
+                        <label for="cameraFunctionType" class="col-sm-2">摄像机功能类型</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="cameraFunctionType" name="cameraFunctionType" rows="3"></input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cameraCodeFormat" class="col-sm-2">摄像机编码格式</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="cameraCodeFormat" name="cameraCodeFormat" rows="3"></input>
+                        </div>
+                        <label for="cameraLocationType" class="col-sm-2 required">摄像机位置类型</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="cameraLocationType" name="cameraLocationType" rows="3"></input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="installationAddress" class="col-sm-2 required">安装地址</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="installationAddress" name="installationAddress" rows="3"></input>
+                        </div>
+                        <label for="installationDate" class="col-sm-2 required">安装时间</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="installationDate" name="installationDate" rows="3"></input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pointLon" class="col-sm-2 required">经度</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="pointLon" name="pointLon" rows="3"></input>
+                        </div>
+                        <label for="pointLat" class="col-sm-2 required">维度</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="pointLat" name="pointLat" rows="3"></input>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="monitoringBearing" class="col-sm-2">监视方位</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="monitoringBearing" name="monitoringBearing" rows="3"></input>
+                        </div>
+                        <label for="networkingProperties" class="col-sm-2 required">联网属性</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="networkingProperties" name="networkingProperties" rows="3"></input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="popedomPopedom" class="col-sm-2 required">所属辖区公安机关</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="popedomPopedom" name="popedomPopedom" rows="3"></input>
+                        </div>
+                        <label for="popedomPopedomCode" class="col-sm-2 required">所属辖区公安机关代码</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="popedomPopedomCode" name="popedomPopedomCode" rows="3"></input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="managementUnitContact" class="col-sm-2 required">管理单位联系方式</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="managementUnitContact" name="managementUnitContact" rows="3"></input>
+                        </div>
+                        <label for="videoPreservationDays" class="col-sm-2 required">录像保存天数</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="videoPreservationDays" name="videoPreservationDays" rows="3"></input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cameraState" class="col-sm-2 required">摄像头状态</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="cameraState" name="cameraState" rows="3"></input>
+                        </div>
+                        <label for="bayonetType" class="col-sm-2 required">卡口类型</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="bayonetType" name="bayonetType" rows="3"></input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginName" class="col-sm-2 required">用户名</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="loginName" name="loginName" rows="3"></input>
+                        </div>
+                        <label for="loginPassword" class="col-sm-2 required">密码</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="loginPassword" name="loginPassword" rows="3"></input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="unitId" class="col-sm-2 required">所属单位</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="unit" name="unit"  value="" readonly="readonly">
+                            <input type="text" id="unitId" style="display: none;">
+                        </div>
+                        <label for="departmentId" class="col-sm-2">所属部门</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="departmentId" name="departmentId">
+                                    
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" id="save" name="save" class="btn btn-primary">提交</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <!-- jQuery (ZUI中的Javascript组件依赖于jQuery) -->
+        <script src="../assets/jquery.js?v=1.8"></script>
+        <!-- ZUI Javascript组件 -->
+        <script src="../dist/js/zui.min.js?v=1.8"></script>
+        <script src="../dist/plugins/laydate/laydate.js"></script>
+        <script src="../dist/lib/uploader/zui.uploader.min.js"></script>
+        <script src="../dist/plugins/axios/axios.min.js"></script>
+        <script src="../dist/plugins/seajs/sea.js"></script>
+        <script src="../dist/lib/chosen/chosen.min.js"></script>
+        <script src="../dist/plugins/seajs/seajs-text.js"></script>
+        <script src="../dist/plugins/seajs/handlebars-1.0.0.beta.6.js"></script>
+        <script src="../app/common/organization_tree.js"></script>
+        <script src="../dist/plugins/zTree_v3/js/jquery.ztree.all.js"></script>
+        <script type="text/javascript">
+            seajs.config({
+                base: "../dist/",
+                alias: {
+                    "utilityForm": "utility/form.js",
+                    "validate": "plugins/jquery-validate/jquery.validate.min.js",
+                    "validation": "plugins/jquery-validate/additional-methods.js",
+                    "localization": "plugins/jquery-validate/localization/messages_zh.min.js"
+                },
+                vars: {
+                    requestFrontUrl: 'http://127.0.0.1/apollo-front/',
+                }
+            });
+            if (0 == $.trim(window.location.search).length) {
+                seajs.use('./add.js');
+            } else {
+                seajs.use('./edit.js');
+            }
+        </script>
+</body>
+
+</html>

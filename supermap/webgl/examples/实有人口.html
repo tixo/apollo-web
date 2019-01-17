@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript" src="../module/jquery/jquery-1.8.1.min.js" ></script>
+		<script type="text/javascript" src="../supermap/3D/webgl.Include3D.js" ></script>
+		<script type="text/javascript" src="../../libs/SuperMap.Include.js" ></script>
+		<script type="text/javascript" src="../module/sea/sea.js" ></script>
+	</head>
+	<body style="padding: 0;margin: 0;overflow: hidden;">
+		<div id="cesiumContainer"></div>
+		<div id="content" style="position: absolute;height: 300px;width:  300px;background-color:  red;left:  20px;top: 20px;">
+			
+		</div>>
+	</body>
+	<script>
+		var supermap3DUtils;
+		var allPeopleJSON = {};
+		var sceneUrl="http://118.190.145.178:8070/iserver/services/3D-apollo-service/rest/realspace";
+		$(document).ready(function(){
+			seajs.use(['../supermap/3D/supermap3DUtils.js'], function(supermap3DUtils){
+//				全局的三维接口对象，为气泡模板关闭事件使用
+				this.supermap3DUtils = supermap3DUtils;
+				//初始化场景，id为加载场景所需要的div ID
+				var config={
+					cesium: Cesium,
+					id: "cesiumContainer"
+				};
+				//所使用的是：scene.js的 initScene方法
+				supermap3DUtils.sceneUtil.initScene(config);
+				//再打开场景url：场景地址    center:定位到场景的配置信息
+				var json = {
+					url: sceneUrl,
+					center: {
+						x: 104.90036772571641,
+						y: 33.33523142291564, 
+						height: 971.1160413874313,
+						heading: 0.0002141084319855795,
+						pitch: -1.5707953113269526,
+						roll:0,
+						type:"setView"
+					},
+					callbackOpenedScene:function(){
+						queryPeople();  //打开场景
+						//移除加载动画
+						$('#loadingbar').css("display","none");
+					}
+				};
+				//所使用的是：scene.js的 openScene方法
+				supermap3DUtils.sceneUtil.openScene(json);
+				/**
+				 * 查询所有实有人口数据
+				 * @param {Object} entity
+				 */
+				function queryPeople(){
+		        	var config02={
+						dataName:"一标三实:" + "实有人口",
+						sql:"",
+						url:top.services.queryUrl,
+						successCallback:onQueryComplete,
+						failCallback:processFailed
+					};
+					//所使用的是：query.js的getSqlBydata方法   数据查询方法
+		        	supermap3DUtils.query3DUtil.getSqlBydata(config02);
+		        	
+				}
+				
+				//查询成功返回结果
+				function onQueryComplete(queryEventArgs){
+					debugger;
+					var selectedFeatures = queryEventArgs.originResult.features;
+					for(var i =0;i<selectedFeatures.length;i++){
+						var boarddiv = "";
+						allPeopleJSON[i] = new Array();
+						for(var j = 0;j<selectedFeatures[i].fieldNames.length;j++){
+							if(selectedFeatures[i].fieldNames[j].indexOf("SM")==-1){
+								if(selectedFeatures[i].fieldNames[j].indexOf("ID")>-1){
+									boarddiv = "<div id="+selectedFeatures[i].fieldValues[j]+" class="+"rk-name"+">";
+								}
+								if(selectedFeatures[i].fieldNames[j].indexOf("姓名")>-1){
+									boarddiv += "<span class="+"name"+">"+selectedFeatures[i].fieldValues[j];
+								}
+								if(selectedFeatures[i].fieldNames[j].indexOf("社区")>-1){
+									boarddiv+="</span><p class="+"location"+"><span>位置：</span>"+selectedFeatures[i].fieldValues[j]+"</p></div>";
+								}
+								allPeopleJSON[i][selectedFeatures[i].fieldNames[j]] =selectedFeatures[i].fieldValues[j];
+							}
+						}
+						$("#content").append(boarddiv); 
+					}
+					$("#1").click(peopleClick);
+					$("#2").click(peopleClick);
+		        }
+				
+				//查询失败返回
+				function processFailed(error){
+		        	
+		       }
+				function peopleClick(){
+					var id=$(this).attr("id");
+					for(var i in allPeopleJSON){
+						if(allPeopleJSON[i].ID == id){
+							var json = {
+								x: parseFloat(allPeopleJSON[i].X),
+								y: parseFloat(allPeopleJSON[i].Y ), 
+								height: parseFloat(allPeopleJSON[i].Z) +900,
+								heading: 0.0002141084319855795,
+								pitch: -1.5707953113269526,
+								roll:0,
+								type:"flyto"
+							};
+							supermap3DUtils.sceneUtil.resetCenter(json);
+							
+							var position = supermap3DUtils.sceneUtil.cesium.Cartesian3.fromDegrees(json.x,json.y,500);
+							break;
+						}
+					}
+					//气泡配置及显示
+					var config03 = {
+						supermap3DUtils:supermap3DUtils,
+						tempId:"featurePopup",
+						popupId:"popup",
+						lonlat:position,
+						offsetX:0,
+						offsetY:-30,
+						data:{
+							content:{
+								name:"asdf"
+							}
+						}
+					};
+					supermap3DUtils.popup3DUtil.showPopup(config03);
+//					debugger;
+				}
+		        
+			});
+			
+		});
+	</script>
+	<!--气泡模板-->
+	<script id="featurePopup" type="text/html">
+		<div id="popup">
+			<div class="popup_top">
+				<div class="popup_close" onclick="supermap3DUtils.popup3DUtil.closePopup()"></div>
+				<div class="popup_title">{{content.name}}</div>
+			</div>
+			<div class="popup_middle">
+				<table cellspacing="0">
+					<col style="width: 15%" />
+					<col style="width: 35%" />
+					<col style="width: 15%" />
+					<col style="width: 35%" />
+					<tbody>
+						<tr>
+							<td class="popup_titleStyle">名称</td>
+							<td class="popup_normalStyle">{{content.name}}</td>
+						</tr>
+						<tr>
+							<td class="popup_titleStyle">位置</td>
+							<td colspan="3" class="popup_normalStyle">{{content.name}}</td>
+						</tr>
+						<tr>
+							<td class="popup_titleStyle">类别</td>
+							<td class="popup_normalStyle">{{content.name}}</td>
+						</tr>
+						<tr>
+							<td class="popup_titleStyle">年代</td>
+							<td class="popup_normalStyle">{{content.name}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="popup_bottom"></div>
+		</div>
+	</script>
+</html>

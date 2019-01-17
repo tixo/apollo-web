@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>所有视频</title>
+		<link href="../../scheduling/dist/css/zui.css?v=1.8" rel="stylesheet">
+		<link rel="stylesheet" href="../../app/sjtj/css/allVideo.css" type="text/css">
+		<link href="../../app/anjianjingqing/css/daterangepicker.css" rel="stylesheet">
+		<script type="text/javascript" src="../../module/jquery/jquery-1.8.1.min.js"></script>
+		<link rel="stylesheet" href="../../module/plugins/scrollbar/jquery.mCustomScrollbar.css" type="text/css">
+		<link rel="stylesheet" type="text/css" href="../../app/yibiaosanshi/css/zTreeStyle.css" />
+		<script type="text/javascript" src="../../module/plugins/zTree/js/jquery.ztree.core.min.js"></script>
+		<script type="text/javascript" src="../../module/plugins/zTree/js/jquery.ztree.excheck.js"></script>
+		<script type="text/javascript" src="../../module/plugins/zTree/js/jquery.ztree.exhide.js"></script>
+		<script type="text/javascript" src="../../module/sea/sea.js"></script>
+		<script type="text/javascript" src="../../module/plugins/scrollbar/jquery.mCustomScrollbar.js"></script>
+		<script type="text/javascript" src="../../module/plugins/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../config/common/camera/js/flv.js"></script>
+   		<script type="text/javascript" src="../../config/common/camera/js/camera.js"></script>
+   		<script type="text/javascript" src="../../scheduling/dist/js/zui.min.js?v=1.8"></script>
+   		<script type="text/javascript" src="../../scheduling/dist/utility/form.js"></script>
+   		<script type="text/javascript" src="../../app/anjianjingqing/js/moment.min.js"></script>
+	    <script type="text/javascript" src="../../config/common/camera/js/daterangepicker.js"></script>
+		<script type="text/javascript">
+			var thisIframe1 = null;
+			var _video;
+			$("iframe", parent.document).each(function(index, e) {
+		        if (e.src.indexOf("videoAll.html") > 0) {
+		            thisIframe1=e;
+		            return false;
+		        }
+		    });
+		    thisIframe1.setAttribute('allowfullscreen','true');
+			seajs.config({base: "./js/"});
+     		seajs.use(["videoAll.js"],function(video){
+     			_video = video;
+     		});
+  		</script>
+	</head>
+	<body>
+		<div class="box-index">
+			<div class="video-ctn">
+				<div class="options" style="display:none ;">
+                    <input type="checkbox" id="isLive"  checked />
+                    <input type="checkbox" id="withCredentials"  />
+                    <input type="checkbox" id="hasAudio" />
+                    <input type="checkbox" id="hasVideo" checked />
+                </div>
+				<div class="video-box checkbox-video" id="sp001" style="display: block;">
+					<span class="no" style="margin-left: 0px;cursor: Pointer;border: 1px solid #07CC3F;color:#07CC3F ;" onclick="_video.flvLoad('videoIframesp001');">刷新</span>
+					<iframe style="position:relative ;z-index: 1;" class="video-content"  data-id="sp001"  name="videoIframesp001" id="videoIframesp001" src="../../config/common/camera/camera.html" width="100%" height=""  scrolling="no" frameborder="0"  allowfullscreen="true" ></iframe>
+				</div>
+				<div class="video-box" id="sp002" style="display: block;">
+					<span class="no" style="margin-left: 0px;cursor: Pointer;border: 1px solid #07CC3F;color:#07CC3F ;" onclick="_video.flvLoad('videoIframesp002');">刷新</span>
+					<iframe style="position:relative ;z-index: 1;" class="video-content"  data-id="sp002"  name="videoIframesp002" id="videoIframesp002" src="../../config/common/camera/camera.html" width="100%" height=""  scrolling="no" frameborder="0"  allowfullscreen="true" ></iframe>
+				</div>
+				<div class="video-box" id="sp003" style="display: block;">
+					<span class="no" style="margin-left: 0px;cursor: Pointer;border: 1px solid #07CC3F;color:#07CC3F ;" onclick="_video.flvLoad('videoIframesp003');">刷新</span>
+					<div id="streamURLsp003" style="display: none;">
+			            <div class="url-input">
+			                <input id="sURLsp003" type="text" value="" />
+			            </div>
+			        </div>
+					<iframe style="position:relative ;z-index: 1;" class="video-content"  data-id="sp003"  name="videoIframesp003" id="videoIframesp003" src="../../config/common/camera/camera.html" width="100%" height=""  scrolling="no" frameborder="0"  allowfullscreen="true" ></iframe>
+				</div>
+				<div class="video-box" id="sp004" style="display: block;">
+					<span class="no" style="margin-left: 0px;cursor: Pointer;border: 1px solid #07CC3F;color:#07CC3F ;" onclick="_video.flvLoad('videoIframesp004');">刷新</span>
+					<iframe style="position:relative ;z-index: 1;" class="video-content"  data-id="sp004"  name="videoIframesp004" id="videoIframesp004" src="../../config/common/camera/camera.html" width="100%" height=""  scrolling="no" frameborder="0"  allowfullscreen="true" ></iframe>
+				</div>
+			</div>
+			<div class="video-option" id="now">
+				<div class="top-bt">
+					<span>视频列表</span>
+					<span class="label label-primary" style="margin:6px ;cursor:pointer ;padding: 4px;" onclick="_video.hisCameraShow();">历史视频</span>
+				</div>
+				<div class="car-box">
+					<input type="text" class="car-ss" id="video-list-nowSeach"  placeholder="摄像头名称...">
+					<button class="ss-btn" onclick="_video.autoMatch('video-list-now')"><img src="../../config/common/rightResource/img/ss-col.png"></button>
+				</div>
+				<div id="treeScrollbar-now" style="height:calc(100% - 80px)">
+					<ul class="ztree" id="video-list-now">
+						
+					</ul>
+				</div>
+			</div>
+			<div class="video-option" id="history" style="display: none;">
+				<!--<div class="top-bt">
+					<span>历史视频查询</span>
+					<span></span>
+				</div>-->
+				<div class="panel panel-primary" style="top:2px;">
+				  <div class="panel-heading">
+				   	摄像头历史查询
+				   	<span class="now-but" onclick="_video.hisCameraHide();">实时视频</span>
+				  </div>
+				<div class="panel-body" style="padding:6px ;">
+					<div class="car-box">
+						<input type="text" class="car-ss" id="video-AddressSeach"  placeholder="摄像头名称...">
+						<button class="ss-btn" onclick="_video.autoMatch('video-Address')"><img src="../../config/common/rightResource/img/ss-col.png"></button>
+					</div>
+					<div id="radioAddress"   style="height:160px;">
+						<ul class="ztree" id="video-Address">
+						</ul>
+					</div>
+					<div class="input-group" style="margin-top: 8px;">
+						<div class="input-control search-box search-box-circle search-example" id="searchboxExample">
+							<input id="inputSearch" type="search" class="form-control search-input" placeholder="时间选择">
+							<label for="inputSearch" class="input-control-icon-left"></label>
+						</div>
+						<span class="input-group-btn">
+						    <button class="btn btn-primary" type="button" onclick="_video.hisCameraSearch();">查询</button>
+						</span>
+					</div>
+				</div>
+				</div>
+				<div id="treeScrollbar" style="height:calc(100% - 320px)">
+					<ul class="ztree" id="video-list">
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

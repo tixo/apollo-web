@@ -1,0 +1,269 @@
+/*****************视频记录*******************/
+html,body{
+    margin:0;
+    padding:0;
+    height:100%;
+    width:100%;
+    overflow: hidden;
+  }
+ .box-index .ctn-yj-list-box{
+ 	height:100%;
+    width:100%;
+ }
+.box-index{
+	height: 77%;
+}
+.shipin-log-box{
+	width:490px;
+	height:300px;
+	background:#fff;
+	position:absolute;
+	bottom:51px;
+	left:593px;
+	text-align: center;
+	color:#fff;
+	font-size: 12px;
+}
+.shipin-log-top{
+	height:30px;
+	line-height: 30px;
+	background:#69a6e5;
+	position:relative;
+}
+.shipin-log-ctn{
+	border:none;
+	width:100%;
+	height:230px;
+	padding:10px;
+	box-sizing: border-box;
+}
+.tab-shipin-log{
+	width:100%;
+	height:100%;
+	overflow:auto;
+}
+.tab-shipin-log tr{
+	vertical-align:baseline;
+	
+}
+.tab-shipin-log th{
+	font-size: 12px;
+	color:#424242;
+	vertical-align:baseline !important;
+	background:#e2ecfb;
+	height:30px !important;
+	line-height: 30px !important;
+	text-align: center;
+}
+.tab-shipin-log td{
+	color:#424242;
+	border:1px solid #ccc;
+}
+.tab-shipin-log thead tr{
+	display: block;
+	width:100%;
+}
+.tab-shipin-log thead th{
+	padding:0 39px;
+	border:1px solid #ccc;
+}
+.tab-shipin-log thead th:nth-child(1){
+	padding:0;
+	width:140px;
+}
+.tab-shipin-log thead th:nth-child(2){
+	padding:0;
+	width:290px;
+}
+.tab-shipin-log thead th:nth-child(3){
+	padding:0;
+	width:103px;
+}
+.tab-shipin-log thead th:nth-child(4){
+	padding:0;
+	width:55px;
+}
+.tab-shipin-log tbody{
+	width:100%;
+	height:100%;
+	display: block;
+	overflow: auto;
+}
+.tab-shipin-log tbody tr{
+	width:100%;
+	display: block;
+}
+.tab-shipin-log tbody tr td{
+	width:120px;
+	padding:4px 0;
+	text-align: center;
+	border:1px solid #ccc;
+	border-top:none;
+	/*border-bottom:none;*/
+}
+.tab-shipin-log tbody tr td:nth-child(1){
+	width:140px;
+}
+.tab-shipin-log tbody tr td:nth-child(2){
+	width:290px;
+}
+.tab-shipin-log tbody tr td:nth-child(3){
+	width:103px;
+	padding:0;
+}
+.tab-shipin-log tbody tr td:nth-child(4){
+	width:55px;
+	padding:0;
+}
+.tb-btn{
+	overflow: hidden;
+}
+.tb-btn a{
+	float: left;
+	width:14px;
+	height:14px;
+	margin-left:8px;
+	margin-top:6px;
+}
+.tb-btn a img{
+	width:100%;
+	height:100%;
+}
+.shipin-btn-box{
+	padding:4px 0;
+	box-sizing: border-box;
+	background:#e0e0e0;
+	overflow: hidden;
+}
+.log-caozuo-btn{
+	width:100px;
+	height:30px;
+	line-height: 30px;
+	background:#2e6aab;
+	float:left;
+	border-radius: 4px;
+	margin-left:10px;
+}
+.log-caozuo-btn2{
+	background:#66a0de;
+}
+.jilu{
+	float:right;
+	color:#424242;
+	height:30px;
+	line-height: 30px;
+	margin-right:20px;
+}
+.jilu span{
+	color:#3d6bb6;
+}
+.log-clear{
+	width:30px;
+	height:30px;
+	text-align: center;
+	position:absolute;
+	color:#fff;
+	right:0;
+	top:0;
+	font-size: 14px;
+	cursor: pointer;
+}
+.log-img{
+	width:20px;
+	height:20px;
+	float: left;
+	margin-top:4px;
+	margin-left:8px;
+}
+.ipt-stime{
+	width:125px;
+	height:18px;
+	line-height: 18px;
+	border:1px solid #ccc;
+	padding:0;
+}
+.ipt-sect{
+	width:80%;
+}
+/*********************************分页样式*************************************************/
+.clearfix {
+	clear: both;
+}
+.clearfix:after {
+	clear: both;
+	content: "";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+.pager {
+	width:100%;
+	text-align: center;
+	display: inline-block;
+	position:absolute;
+	bottom:4px;
+}
+.pager a{
+	cursor: pointer;
+}
+.pager a,
+.pager span {
+  	width: 16px;
+    height: 20px;
+    border: 1px #cccccc solid;
+    margin-left: -1px;
+    color: #8a8a8a;
+    display: inline-block;
+    line-height: 20px;
+    float: left;
+    font-size: 12px;
+    text-decoration: none;
+    margin: 0 2px;
+}
+.pager a:hover,
+.pager span:hover {
+	border-color: #3897cd;
+	color: #3897cd;
+	position: relative;
+	z-index: 1;
+}
+.pager span.current {
+	background-color: #3897cd;
+	color: #fff;
+	border-color: #3897cd;
+	position: relative;
+	z-index: 1;
+}
+.pg-prev{
+	background:url(../../../config/common/jqueryPager/img/page_bg.jpg)no-repeat -6px -31px;
+}
+.pg-next{
+	background:url(../../../config/common/jqueryPager/img/page_bg.jpg)no-repeat -38px -31px;
+}
+.pg-last,
+.pager .pg-last:hover{
+	background-position: -29px 0;
+}
+.pager .pg-prev[disabled='true'],
+.pager .pg-prev[disabled='true']:hover{
+	cursor: default;
+	background-image: url(../img/page_bg.jpg);
+}
+.pager .pg-next[disabled='true'],
+.pager .pg-next[disabled='true']:hover{
+	cursor: default;
+	background-image: url(../img/page_bg.jpg);
+}
+.pager .pg-prev[disabled='true'],
+.pager .pg-next[disabled='true']{
+	border-color: #eeeeee;
+}*/
+.pager span.els{
+	border-color: transparent;
+}

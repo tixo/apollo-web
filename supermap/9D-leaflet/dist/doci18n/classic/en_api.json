@@ -1,0 +1,4160 @@
+[
+    {
+        "hash": "dabe69995c0be24184f48581323a536b",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\mapv\\MapVRenderer.js",
+            "lineno": 4,
+            "columnno": 0,
+            "code": {}
+        },
+        "kind": "class",
+        "name": "MapVRenderer",
+        "classdesc": "<p>MapV渲染器。</p>",
+        "access": "private",
+        "augments": [
+            "mapv.MapVBaseLayer"
+        ],
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.Map"
+                    ]
+                },
+                "description": "<p>待渲染的地图</p>",
+                "name": "map"
+            },
+            {
+                "type": {
+                    "names": [
+                        "mapv.baiduMapLayer"
+                    ]
+                },
+                "description": "<p>待渲染的图层</p>",
+                "name": "layer"
+            },
+            {
+                "type": {
+                    "names": [
+                        "mapv.DataSet"
+                    ]
+                },
+                "description": "<p>待渲染的数据集</p>",
+                "name": "dataSet"
+            },
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>渲染的参数</p>",
+                "name": "options"
+            }
+        ],
+        "longname": "MapVRenderer",
+        "scope": "global",
+        "___id": "T000002R000020",
+        "___s": true
+    },
+    {
+        "hash": "8f9d087162ccf5d81b004e10863b17bb",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\mapv\\MapVRenderer.js",
+            "lineno": 35,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "clickEvent",
+        "description": "<p>点击事件</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>触发对象</p>",
+                "name": "e"
+            }
+        ],
+        "memberof": "MapvRenderer",
+        "longname": "MapvRenderer#clickEvent",
+        "scope": "instance",
+        "___id": "T000002R000030",
+        "___s": true
+    },
+    {
+        "hash": "d0ff8a8efa8658840d25ff766450d817",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\mapv\\MapVRenderer.js",
+            "lineno": 45,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "mousemoveEvent",
+        "description": "<p>鼠标移动事件</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>触发对象</p>",
+                "name": "e"
+            }
+        ],
+        "memberof": "MapvRenderer",
+        "longname": "MapvRenderer#mousemoveEvent",
+        "scope": "instance",
+        "___id": "T000002R000033",
+        "___s": true
+    },
+    {
+        "hash": "a0880994d42226e8f3017bfa8eb298f0",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\mapv\\MapVRenderer.js",
+            "lineno": 55,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "bindEvent",
+        "description": "<p>绑定鼠标移动和鼠标点击事件</p>",
+        "memberof": "MapvRenderer",
+        "longname": "MapvRenderer#bindEvent",
+        "scope": "instance",
+        "___id": "T000002R000036",
+        "___s": true
+    },
+    {
+        "hash": "dd42f5529936c5ab90a060d9dde8418e",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\mapv\\MapVRenderer.js",
+            "lineno": 72,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "unbindEvent",
+        "description": "<p>解绑鼠标移动和鼠标滑动触发的事件</p>",
+        "memberof": "MapvRenderer",
+        "longname": "MapvRenderer#unbindEvent",
+        "scope": "instance",
+        "___id": "T000002R000041",
+        "___s": true
+    },
+    {
+        "hash": "d990fb01c48133bcd9e4e97f1e8f3cfd",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\mapv\\MapVRenderer.js",
+            "lineno": 89,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getContext",
+        "description": "<p>获取信息</p>",
+        "memberof": "MapvRenderer",
+        "longname": "MapvRenderer#getContext",
+        "scope": "instance",
+        "___id": "T000002R000046",
+        "___s": true
+    },
+    {
+        "hash": "f1b1d533a65b459a55a70b8b918e6465",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\mapv\\MapVRenderer.js",
+            "lineno": 97,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "addData",
+        "description": "<p>追加数据</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "oject"
+                    ]
+                },
+                "description": "<p>待添加的数据</p>",
+                "name": "data"
+            },
+            {
+                "type": {
+                    "names": [
+                        "oject"
+                    ]
+                },
+                "description": "<p>待添加的数据信息</p>",
+                "name": "options"
+            }
+        ],
+        "memberof": "MapvRenderer",
+        "longname": "MapvRenderer#addData",
+        "scope": "instance",
+        "___id": "T000002R000048",
+        "___s": true
+    },
+    {
+        "hash": "c1a241c7e8ff164f715fcab86874c399",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\mapv\\MapVRenderer.js",
+            "lineno": 112,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "updateData",
+        "description": "<p>更新覆盖原数据</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "oject"
+                    ]
+                },
+                "description": "<p>待更新的数据</p>",
+                "name": "data"
+            },
+            {
+                "type": {
+                    "names": [
+                        "oject"
+                    ]
+                },
+                "description": "<p>待更新的数据信息</p>",
+                "name": "options"
+            }
+        ],
+        "memberof": "MapvRenderer",
+        "longname": "MapvRenderer#updateData",
+        "scope": "instance",
+        "___id": "T000002R000053",
+        "___s": true
+    },
+    {
+        "hash": "ded6fc8ccb940704969b7ebd6563413a",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\mapv\\MapVRenderer.js",
+            "lineno": 128,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getData",
+        "description": "<p>获取数据</p>",
+        "memberof": "MapvRenderer",
+        "longname": "MapvRenderer#getData",
+        "scope": "instance",
+        "___id": "T000002R000059",
+        "___s": true
+    },
+    {
+        "hash": "f183abe5fa0a9f5b4f201c590f89a957",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\mapv\\MapVRenderer.js",
+            "lineno": 136,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "removeData",
+        "description": "<p>删除符合过滤条件的数据</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>过滤条件。条件参数为数据项，返回值为true,表示删除该元素；否则表示不删除</p>",
+                "name": "filter"
+            }
+        ],
+        "memberof": "MapvRenderer",
+        "longname": "MapvRenderer#removeData",
+        "scope": "instance",
+        "___id": "T000002R000061",
+        "___s": true
+    },
+    {
+        "hash": "3669875491c5a638458c7576ddd6cb38",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\mapv\\MapVRenderer.js",
+            "lineno": 154,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "clearData",
+        "description": "<p>清除数据</p>",
+        "memberof": "MapvRenderer",
+        "longname": "MapvRenderer#clearData",
+        "scope": "instance",
+        "___id": "T000002R000066",
+        "___s": true
+    },
+    {
+        "hash": "364a0cad1e1e064aec7447cc42aa7246",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\mapv\\MapVRenderer.js",
+            "lineno": 163,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "render",
+        "description": "<p>着色</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "number"
+                    ]
+                },
+                "description": "<p>-</p>",
+                "name": "time"
+            }
+        ],
+        "memberof": "MapvRenderer",
+        "longname": "MapvRenderer#render",
+        "scope": "instance",
+        "___id": "T000002R000069",
+        "___s": true
+    },
+    {
+        "hash": "da01fda4ddc4da57ea14dd0ce8976ac2",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\mapv\\MapVRenderer.js",
+            "lineno": 172,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "transferToMercator",
+        "description": "<p>墨卡托坐标为经纬度</p>",
+        "memberof": "MapvRenderer",
+        "longname": "MapvRenderer#transferToMercator",
+        "scope": "instance",
+        "___id": "T000002R000071",
+        "___s": true
+    },
+    {
+        "hash": "1ecbb9bdcb5b4535a299905d2ef1da4a",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\mapv\\MapVRenderer.js",
+            "lineno": 293,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "addAnimatorEvent",
+        "description": "<p>添加动画事件</p>",
+        "memberof": "MapvRenderer",
+        "longname": "MapvRenderer#addAnimatorEvent",
+        "scope": "instance",
+        "___id": "T000002R000113",
+        "___s": true
+    },
+    {
+        "hash": "a36f6475a74478170963680a1a5567b4",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\mapv\\MapVRenderer.js",
+            "lineno": 302,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "clear",
+        "description": "<p>清除环境</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>当前环境</p>",
+                "name": "context"
+            }
+        ],
+        "memberof": "MapvRenderer",
+        "longname": "MapvRenderer#clear",
+        "scope": "instance",
+        "___id": "T000002R000117",
+        "___s": true
+    },
+    {
+        "hash": "cab11b55f0087a80f57406863b8a0bc2",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\mapv\\MapVRenderer.js",
+            "lineno": 311,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "show",
+        "description": "<p>展示渲染效果</p>",
+        "memberof": "MapvRenderer",
+        "longname": "MapvRenderer#show",
+        "scope": "instance",
+        "___id": "T000002R000119",
+        "___s": true
+    },
+    {
+        "hash": "8cef7765378b2e174ff887ff6d575645",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\mapv\\MapVRenderer.js",
+            "lineno": 319,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "hide",
+        "description": "<p>隐藏渲染效果</p>",
+        "memberof": "MapvRenderer",
+        "longname": "MapvRenderer#hide",
+        "scope": "instance",
+        "___id": "T000002R000121",
+        "___s": true
+    },
+    {
+        "hash": "e260c57f27481752057c7f454c1e192d",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\mapv\\MapVRenderer.js",
+            "lineno": 328,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "draw",
+        "description": "<p>渲染绘制</p>",
+        "memberof": "MapvRenderer",
+        "longname": "MapvRenderer#draw",
+        "scope": "instance",
+        "___id": "T000002R000123",
+        "___s": true
+    },
+    {
+        "hash": "51f9f6080191606a9adb93be8b5337ae",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\MapVLayer.js",
+            "lineno": 4,
+            "columnno": 0,
+            "code": {}
+        },
+        "kind": "class",
+        "name": "MapVLayer",
+        "classdesc": "<p>The MapV layer calss</p>",
+        "augments": [
+            "SuperMap.Layer"
+        ],
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "string"
+                    ]
+                },
+                "description": "<p>The layer name</p>",
+                "name": "name"
+            },
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>The optional parameters. For instance:<br>\n       dataSet - {mapv.DataSet} The dataset object of the mapv.<br>\n       options - {Object} The configuration information of the mapv drawing style.</p>",
+                "name": "options"
+            }
+        ],
+        "memberof": "SuperMap.Layer",
+        "longname": "SuperMap.Layer.MapVLayer",
+        "scope": "static",
+        "___id": "T000002R000125",
+        "___s": true
+    },
+    {
+        "hash": "3be2572d9baeba56756d78ac766c5efc",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\MapVLayer.js",
+            "lineno": 29,
+            "columnno": 8,
+            "code": {}
+        },
+        "kind": "member",
+        "name": "dataSet",
+        "type": {
+            "names": [
+                "mapv.DataSet"
+            ]
+        },
+        "description": "<p>The dataset object of the mapv.</p>",
+        "memberof": "SuperMap.Layer.MapVLayer",
+        "longname": "SuperMap.Layer.MapVLayer#dataSet",
+        "scope": "instance",
+        "___id": "T000002R000129",
+        "___s": true
+    },
+    {
+        "hash": "43733435e87f37c05c80ed691afda085",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\MapVLayer.js",
+            "lineno": 35,
+            "columnno": 8,
+            "code": {}
+        },
+        "kind": "member",
+        "name": "options",
+        "type": {
+            "names": [
+                "Object"
+            ]
+        },
+        "description": "<p>The configuration information of the mapv drawing style.</p>",
+        "memberof": "SuperMap.Layer.MapVLayer",
+        "longname": "SuperMap.Layer.MapVLayer#options",
+        "scope": "instance",
+        "___id": "T000002R000131",
+        "___s": true
+    },
+    {
+        "hash": "da66a7991bd9505d68662f16f7474509",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\MapVLayer.js",
+            "lineno": 41,
+            "columnno": 8,
+            "code": {}
+        },
+        "kind": "member",
+        "name": "supported",
+        "type": {
+            "names": [
+                "boolean"
+            ]
+        },
+        "description": "<p>Whether the current browser supports canvas rendering, the default is false. This determines whether the MapV is available, use of the internal judgment.</p>",
+        "memberof": "SuperMap.Layer.MapVLayer",
+        "longname": "SuperMap.Layer.MapVLayer#supported",
+        "scope": "instance",
+        "___id": "T000002R000133",
+        "___s": true
+    },
+    {
+        "hash": "816ae5abb32aad33fb84ee47f316ddc7",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\MapVLayer.js",
+            "lineno": 47,
+            "columnno": 8,
+            "code": {}
+        },
+        "kind": "member",
+        "name": "canvas",
+        "type": {
+            "names": [
+                "Canvas"
+            ]
+        },
+        "description": "<p>The main rendering panel of the MapV.</p>",
+        "memberof": "SuperMap.Layer.MapVLayer",
+        "longname": "SuperMap.Layer.MapVLayer#canvas",
+        "scope": "instance",
+        "___id": "T000002R000135",
+        "___s": true
+    },
+    {
+        "hash": "5ac582a22cdc64b6e3503f7c5745762f",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\MapVLayer.js",
+            "lineno": 53,
+            "columnno": 8,
+            "code": {}
+        },
+        "access": "private",
+        "kind": "member",
+        "name": "canvasContext",
+        "type": {
+            "names": [
+                "CanvasContext"
+            ]
+        },
+        "description": "<p>The main rendering object of the MapV.</p>",
+        "memberof": "SuperMap.Layer.MapVLayer",
+        "longname": "SuperMap.Layer.MapVLayer#canvasContext",
+        "scope": "instance",
+        "___id": "T000002R000137",
+        "___s": true
+    },
+    {
+        "hash": "bc56c51d750467f567625140c6d409b4",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\MapVLayer.js",
+            "lineno": 88,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "destroy",
+        "override": true,
+        "memberof": "SuperMap.Layer.MapVLayer",
+        "longname": "SuperMap.Layer.MapVLayer#destroy",
+        "scope": "instance",
+        "___id": "T000002R000151",
+        "___s": true
+    },
+    {
+        "hash": "87d152cb9bd1830710ebe841b3a78bc7",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\MapVLayer.js",
+            "lineno": 105,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "addData",
+        "description": "<p>Add data</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "mapv.DataSet"
+                    ]
+                },
+                "description": "<p>The mapv dataset</p>",
+                "name": "dataSet"
+            },
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>Parameters of the mapv drawing</p>",
+                "name": "options"
+            }
+        ],
+        "memberof": "SuperMap.Layer.MapVLayer",
+        "longname": "SuperMap.Layer.MapVLayer#addData",
+        "scope": "instance",
+        "___id": "T000002R000161",
+        "___s": true
+    },
+    {
+        "hash": "13cfa322a6a56ecb2c6e0ac42a0b78d5",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\MapVLayer.js",
+            "lineno": 127,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getData",
+        "description": "<p>Get data</p>",
+        "returns": [
+            {
+                "type": {
+                    "names": [
+                        "mapv.DataSet"
+                    ]
+                },
+                "description": "<p>The mapV dataset</p>"
+            }
+        ],
+        "memberof": "SuperMap.Layer.MapVLayer",
+        "longname": "SuperMap.Layer.MapVLayer#getData",
+        "scope": "instance",
+        "___id": "T000002R000164",
+        "___s": true
+    },
+    {
+        "hash": "19a5f8916d1dfe72d6012882d47a33d6",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\MapVLayer.js",
+            "lineno": 139,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "removeData",
+        "description": "<p>Delete data that conforms to the filter conditions</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The filter conditions, the conditions parameter is data items.The return value is true, meaning to delete this element, otherwise the expression is not deleted.</p>",
+                "name": "filter"
+            }
+        ],
+        "examples": [
+            "filter=function(data){\r   if(data.id==\"1\"){\r     return true\r   }\r   return false;\r }"
+        ],
+        "memberof": "SuperMap.Layer.MapVLayer",
+        "longname": "SuperMap.Layer.MapVLayer#removeData",
+        "scope": "instance",
+        "___id": "T000002R000167",
+        "___s": true
+    },
+    {
+        "hash": "c3847cb8fecec4dd5cd4489a1f21ad79",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\MapVLayer.js",
+            "lineno": 155,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "clearData",
+        "description": "<p>Clear data</p>",
+        "memberof": "SuperMap.Layer.MapVLayer",
+        "longname": "SuperMap.Layer.MapVLayer#clearData",
+        "scope": "instance",
+        "___id": "T000002R000169",
+        "___s": true
+    },
+    {
+        "hash": "d1bd7ac36719952d6fb1a2617bdb1260",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\MapVLayer.js",
+            "lineno": 164,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "setMap",
+        "description": "<p>Layer has been added to the Map.\n             If the current browser supports canvas, start to rendering elements. If don't supports canvas remove this layer.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.Map"
+                    ]
+                },
+                "description": "<p>Map objects that need to be bound.</p>",
+                "name": "map"
+            }
+        ],
+        "memberof": "SuperMap.Layer.MapVLayer",
+        "longname": "SuperMap.Layer.MapVLayer#setMap",
+        "scope": "instance",
+        "___id": "T000002R000171",
+        "___s": true
+    },
+    {
+        "hash": "89baef7eea0a2ec9a8ba80689ca03e51",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\MapVLayer.js",
+            "lineno": 180,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "moveTo",
+        "description": "<p>Reset the div of the current MapV layer and consistent with the Map control once again.\n             Modify the current display bounds, redraw the rendering effect of the MapV map after the translation or scaling.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.Bounds"
+                    ]
+                },
+                "description": "<p>The layer bounds</p>",
+                "name": "bounds"
+            },
+            {
+                "type": {
+                    "names": [
+                        "boolean"
+                    ]
+                },
+                "description": "<p>Whether the zoom level is changes or not.</p>",
+                "name": "zoomChanged"
+            },
+            {
+                "type": {
+                    "names": [
+                        "boolean"
+                    ]
+                },
+                "description": "<p>Whether or not to drag.</p>",
+                "name": "dragging"
+            }
+        ],
+        "memberof": "SuperMap.Layer.MapVLayer",
+        "longname": "SuperMap.Layer.MapVLayer#moveTo",
+        "scope": "instance",
+        "___id": "T000002R000174",
+        "___s": true
+    },
+    {
+        "hash": "b8b14d4748ed905ef573b472f11dc453",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\overlay\\MapVLayer.js",
+            "lineno": 221,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "transferToMapLatLng",
+        "description": "<p>Transform the Latitude and longitude to the projection coordinate of the map.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.Lonlat"
+                    ]
+                },
+                "description": "<p>The SuperMap.Lonlat</p>",
+                "name": "latLng"
+            }
+        ],
+        "memberof": "SuperMap.Layer.MapVLayer",
+        "longname": "SuperMap.Layer.MapVLayer#transferToMapLatLng",
+        "scope": "instance",
+        "___id": "T000002R000190",
+        "___s": true
+    },
+    {
+        "hash": "82f9ec465abfe401dc5c3a1e622a75ac",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\AddressMatchService.js",
+            "lineno": 5,
+            "columnno": 0,
+            "code": {}
+        },
+        "kind": "class",
+        "name": "AddressMatchService",
+        "classdesc": "<p>The AddressMatchService class, including coding and decoding address match service.</p>",
+        "augments": [
+            "SuperMap.REST.CommonServiceBase"
+        ],
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "string"
+                    ]
+                },
+                "description": "<p>The url of service</p>",
+                "name": "url"
+            },
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>The optional parameters</p>",
+                "name": "options"
+            }
+        ],
+        "memberof": "SuperMap.REST",
+        "longname": "SuperMap.REST.AddressMatchService",
+        "scope": "static",
+        "___id": "T000002R000197",
+        "___s": true
+    },
+    {
+        "hash": "86924a4c7d10c0625fbaffc79fcd494b",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\AddressMatchService.js",
+            "lineno": 19,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "code",
+        "description": "<p>Get the result of coding addressMatchService</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.GeoCodingParameter"
+                    ]
+                },
+                "description": "<p>The GeoCodingParameter class</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.REST.AddressMatchService",
+        "longname": "SuperMap.REST.AddressMatchService#code",
+        "scope": "instance",
+        "___id": "T000002R000202",
+        "___s": true
+    },
+    {
+        "hash": "c04a7a470f8b07cd3984ba98f80e1617",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\AddressMatchService.js",
+            "lineno": 38,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "decode",
+        "description": "<p>Get the result of decoding addressMatchService.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.GeoDeCodingParameter"
+                    ]
+                },
+                "description": "<p>The GeoDeCodingParameter class</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.REST.AddressMatchService",
+        "longname": "SuperMap.REST.AddressMatchService#decode",
+        "scope": "instance",
+        "___id": "T000002R000211",
+        "___s": true
+    },
+    {
+        "hash": "227e5afcf4f395db29f00530acf1a8dd",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 14,
+            "columnno": 0,
+            "code": {}
+        },
+        "kind": "class",
+        "name": "ProcessingService",
+        "classdesc": "<p>The ProcessingService class</p>",
+        "augments": [
+            "SuperMap.CommonServiceBase"
+        ],
+        "examples": [
+            "new SuperMap.REST.ProcessingService(url,options)\r     .getKernelDensityJobs(function(result){\r         //doSomething\r     })"
+        ],
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "string"
+                    ]
+                },
+                "description": "<p>The url of service.</p>",
+                "name": "url"
+            },
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>The optional parameters.</p>",
+                "name": "options"
+            }
+        ],
+        "memberof": "SuperMap.REST",
+        "longname": "SuperMap.REST.ProcessingService",
+        "scope": "static",
+        "___id": "T000002R000223",
+        "___s": true
+    },
+    {
+        "hash": "4551c58fd41c5eae7c6eebbe21c224d2",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 41,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getKernelDensityJobs",
+        "description": "<p>Get jobs of kernel density analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getKernelDensityJobs",
+        "scope": "instance",
+        "___id": "T000002R000236",
+        "___s": true
+    },
+    {
+        "hash": "e37800c249f75951e0a17aa4379daff6",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 62,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getKernelDensityJob",
+        "description": "<p>Get a job of kernel density analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "string"
+                    ]
+                },
+                "description": "<p>id of kernel density analysis</p>",
+                "name": "id"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getKernelDensityJob",
+        "scope": "instance",
+        "___id": "T000002R000247",
+        "___s": true
+    },
+    {
+        "hash": "024769fff7dea961ec9b445f93c32795",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 84,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "addKernelDensityJob",
+        "description": "<p>Add a job of kernel density analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.KernelDensityJobParameter"
+                    ]
+                },
+                "description": "<p>The KernelDensityJobParameter class.</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "number"
+                    ]
+                },
+                "description": "<p>Time interval for obtaining successful results after the creation.</p>",
+                "name": "seconds"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#addKernelDensityJob",
+        "scope": "instance",
+        "___id": "T000002R000258",
+        "___s": true
+    },
+    {
+        "hash": "9ac59890ba24a54e265efbe90b9ea21c",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 108,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getKernelDensityJobState",
+        "description": "<p>Get the state of kernel density analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "string"
+                    ]
+                },
+                "description": "<p>id of kernel density analysis.</p>",
+                "name": "id"
+            }
+        ],
+        "returns": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>The state of kernel density analysis.</p>"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getKernelDensityJobState",
+        "scope": "instance",
+        "___id": "T000002R000270",
+        "___s": true
+    },
+    {
+        "hash": "adf205192d6b223f998172f8747e96dc",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 118,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getSummaryMeshJobs",
+        "description": "<p>Get jobs of summary mesh analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getSummaryMeshJobs",
+        "scope": "instance",
+        "___id": "T000002R000272",
+        "___s": true
+    },
+    {
+        "hash": "4b297e564dd701f7a60c7b4d918e47ba",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 139,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getSummaryMeshJob",
+        "description": "<p>Get a job of summary mesh analysis</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "string"
+                    ]
+                },
+                "description": "<p>id of summary mesh analysis.</p>",
+                "name": "id"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getSummaryMeshJob",
+        "scope": "instance",
+        "___id": "T000002R000283",
+        "___s": true
+    },
+    {
+        "hash": "76961b565e7cb799f67248bf7df135b9",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 161,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "addSummaryMeshJob",
+        "description": "<p>Add a job of summary mesh analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.SummaryMeshJobParameter"
+                    ]
+                },
+                "description": "<p>The SummaryMeshJobParameter class.</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "number"
+                    ]
+                },
+                "description": "<p>Time interval for obtaining successful results after the creation.</p>",
+                "name": "seconds"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#addSummaryMeshJob",
+        "scope": "instance",
+        "___id": "T000002R000294",
+        "___s": true
+    },
+    {
+        "hash": "9572cc3e45eae8dad8d79040a76f00da",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 185,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getSummaryMeshJobState",
+        "description": "<p>Get the state of summary mesh analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "string"
+                    ]
+                },
+                "description": "<p>id of summary mesh analysis.</p>",
+                "name": "id"
+            }
+        ],
+        "returns": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>The state of summary mesh analysis.</p>"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getSummaryMeshJobState",
+        "scope": "instance",
+        "___id": "T000002R000306",
+        "___s": true
+    },
+    {
+        "hash": "9e02d341256f158365db256bf218d4ff",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 195,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getQueryJobs",
+        "description": "<p>Get jobs of single object query analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getQueryJobs",
+        "scope": "instance",
+        "___id": "T000002R000308",
+        "___s": true
+    },
+    {
+        "hash": "ec450a61bc36c816af2e7f55227ad84e",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 216,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getQueryJob",
+        "description": "<p>Get a job of single object query analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "string"
+                    ]
+                },
+                "description": "<p>id of single object query analysis.</p>",
+                "name": "id"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getQueryJob",
+        "scope": "instance",
+        "___id": "T000002R000319",
+        "___s": true
+    },
+    {
+        "hash": "b5be9f3b00afd70a88e0662eccfda56b",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 238,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "addQueryJob",
+        "description": "<p>Add a job of single object query analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.SingleObjectQueryJobsParameter"
+                    ]
+                },
+                "description": "<p>The SingleObjectQueryJobsParameter class.</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "number"
+                    ]
+                },
+                "description": "<p>Time interval for obtaining successful results after the creation.</p>",
+                "name": "seconds"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#addQueryJob",
+        "scope": "instance",
+        "___id": "T000002R000330",
+        "___s": true
+    },
+    {
+        "hash": "d1d1405d02ef510d1e0e95d8c78adb93",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 264,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getQueryJobState",
+        "description": "<p>Get the state of single object query analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "string"
+                    ]
+                },
+                "description": "<p>id of single object query analysis.</p>",
+                "name": "id"
+            }
+        ],
+        "returns": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>The state of single object query analysis.</p>"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getQueryJobState",
+        "scope": "instance",
+        "___id": "T000002R000343",
+        "___s": true
+    },
+    {
+        "hash": "8d222bd7e289da4e37263ab8fa4c5c53",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 274,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getSummaryRegionJobs",
+        "description": "<p>Get jobs of summary region analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getSummaryRegionJobs",
+        "scope": "instance",
+        "___id": "T000002R000345",
+        "___s": true
+    },
+    {
+        "hash": "3181ddfed31bcf3d0806de36beeaa128",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 295,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getSummaryRegionJob",
+        "description": "<p>Get a job of summary region analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "string"
+                    ]
+                },
+                "description": "<p>id of summary region analysis.</p>",
+                "name": "id"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getSummaryRegionJob",
+        "scope": "instance",
+        "___id": "T000002R000356",
+        "___s": true
+    },
+    {
+        "hash": "2f0ff5976a153a6229756323951765c6",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 317,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "addSummaryRegionJob",
+        "description": "<p>Add a job of summary region analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.SummaryRegionJobParameter"
+                    ]
+                },
+                "description": "<p>The SummaryRegionJobParameter class.</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "number"
+                    ]
+                },
+                "description": "<p>Time interval for obtaining successful results after the creation.</p>",
+                "name": "seconds"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#addSummaryRegionJob",
+        "scope": "instance",
+        "___id": "T000002R000367",
+        "___s": true
+    },
+    {
+        "hash": "c6985972517c66bb3891e3eccbd0c520",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 341,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getSummaryRegionJobState",
+        "description": "<p>Get the state of summary region analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "string"
+                    ]
+                },
+                "description": "<p>id of summary region analysis.</p>",
+                "name": "id"
+            }
+        ],
+        "returns": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>The state of summary region analysis.</p>"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getSummaryRegionJobState",
+        "scope": "instance",
+        "___id": "T000002R000379",
+        "___s": true
+    },
+    {
+        "hash": "edd70d20ef30a60d3b2c5d5be59c9196",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 351,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getVectorClipJobs",
+        "description": "<p>Get jobs of vector clip analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getVectorClipJobs",
+        "scope": "instance",
+        "___id": "T000002R000381",
+        "___s": true
+    },
+    {
+        "hash": "bb86c0a9272a4a13be2f61b3a2b69269",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 372,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getVectorClipJob",
+        "description": "<p>Get a job of vector clip analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "string"
+                    ]
+                },
+                "description": "<p>id of vector clip analysis.</p>",
+                "name": "id"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getVectorClipJob",
+        "scope": "instance",
+        "___id": "T000002R000392",
+        "___s": true
+    },
+    {
+        "hash": "f047dcf6dc32864ffe7aae51e34bd5ea",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 394,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "addVectorClipJob",
+        "description": "<p>Add a job of vector clip analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.VectorClipJobsParameter"
+                    ]
+                },
+                "description": "<p>The VectorClipJobsParameter class.</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "number"
+                    ]
+                },
+                "description": "<p>Time interval for obtaining successful results after the creation.</p>",
+                "name": "seconds"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#addVectorClipJob",
+        "scope": "instance",
+        "___id": "T000002R000403",
+        "___s": true
+    },
+    {
+        "hash": "030b40854f7ea171e9fb1f4b3bf481e5",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 421,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getVectorClipJobState",
+        "description": "<p>Get the state of vector clip analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "string"
+                    ]
+                },
+                "description": "<p>id of vector clip analysis.</p>",
+                "name": "id"
+            }
+        ],
+        "returns": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>The state of vector clip analysis.</p>"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getVectorClipJobState",
+        "scope": "instance",
+        "___id": "T000002R000417",
+        "___s": true
+    },
+    {
+        "hash": "fcfaa701049d03c401ac37552b5f35d3",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 431,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getOverlayGeoJobs",
+        "description": "<p>Get jobs of overlay analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getOverlayGeoJobs",
+        "scope": "instance",
+        "___id": "T000002R000419",
+        "___s": true
+    },
+    {
+        "hash": "c5e5c60590083129cc9b350f4154fe56",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 452,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getOverlayGeoJob",
+        "description": "<p>Get a job of overlay analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "string"
+                    ]
+                },
+                "description": "<p>id of overlay analysis.</p>",
+                "name": "id"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getOverlayGeoJob",
+        "scope": "instance",
+        "___id": "T000002R000430",
+        "___s": true
+    },
+    {
+        "hash": "ba623390ad7e7c9ea6bb59812217395f",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 474,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "addOverlayGeoJob",
+        "description": "<p>Add a job of overlay analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.OverlayGeoJobParameter"
+                    ]
+                },
+                "description": "<p>The OverlayGeoJobParameter class.</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "number"
+                    ]
+                },
+                "description": "<p>Time interval for obtaining successful results after the creation.</p>",
+                "name": "seconds"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#addOverlayGeoJob",
+        "scope": "instance",
+        "___id": "T000002R000441",
+        "___s": true
+    },
+    {
+        "hash": "b0ab29e489bf08f623349b861b3c1071",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 500,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getoverlayGeoJobState",
+        "description": "<p>Get the state of overlay analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "string"
+                    ]
+                },
+                "description": "<p>id of overlay analysis.</p>",
+                "name": "id"
+            }
+        ],
+        "returns": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>The state of overlay analysis.</p>"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getoverlayGeoJobState",
+        "scope": "instance",
+        "___id": "T000002R000454",
+        "___s": true
+    },
+    {
+        "hash": "6ed58b45a9572c5842c2728d63bee8cd",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 510,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getBuffersJobs",
+        "description": "<p>Get jobs of buffers analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getBuffersJobs",
+        "scope": "instance",
+        "___id": "T000002R000456",
+        "___s": true
+    },
+    {
+        "hash": "b3b93cac8568c77962eae76f920166cc",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 531,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getBuffersJob",
+        "description": "<p>Get a job of buffers analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "string"
+                    ]
+                },
+                "description": "<p>id of buffers analysis.</p>",
+                "name": "id"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getBuffersJob",
+        "scope": "instance",
+        "___id": "T000002R000467",
+        "___s": true
+    },
+    {
+        "hash": "bdca08019cc70785612772e3e6bf34a2",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 553,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "addBuffersJob",
+        "description": "<p>Add a job of buffers analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.BuffersAnalystJobsParameter"
+                    ]
+                },
+                "description": "<p>The BuffersAnalystJobsParameter class</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "number"
+                    ]
+                },
+                "description": "<p>Time interval for obtaining successful results after the creation.</p>",
+                "name": "seconds"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#addBuffersJob",
+        "scope": "instance",
+        "___id": "T000002R000478",
+        "___s": true
+    },
+    {
+        "hash": "26f92469f00017f3e82b269190d9b59d",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 579,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getBuffersJobState",
+        "description": "<p>Get the state of buffers analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "string"
+                    ]
+                },
+                "description": "<p>id of buffers analysis.</p>",
+                "name": "id"
+            }
+        ],
+        "returns": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>The state of buffers analysis.</p>"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getBuffersJobState",
+        "scope": "instance",
+        "___id": "T000002R000491",
+        "___s": true
+    },
+    {
+        "hash": "d75e58128a3331d09eaa9c8a8ff864d4",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 589,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getTopologyValidatorJobs",
+        "description": "<p>Get jobs of topology validator analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getTopologyValidatorJobs",
+        "scope": "instance",
+        "___id": "T000002R000493",
+        "___s": true
+    },
+    {
+        "hash": "16372d0fae4154482440cc0f0cb815ec",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 610,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getTopologyValidatorJob",
+        "description": "<p>Get a job of topology validator analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "string"
+                    ]
+                },
+                "description": "<p>id of topology validator analysis</p>",
+                "name": "id"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getTopologyValidatorJob",
+        "scope": "instance",
+        "___id": "T000002R000504",
+        "___s": true
+    },
+    {
+        "hash": "62fc9d93c3833e16cac5b892639f1514",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 632,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "addTopologyValidatorJob",
+        "description": "<p>Add a job of topology validator analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.TopologyValidatorJobsParameter"
+                    ]
+                },
+                "description": "<p>The TopologyValidatorJobsParameter class.</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "number"
+                    ]
+                },
+                "description": "<p>Time interval for obtaining successful results after the creation.</p>",
+                "name": "seconds"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#addTopologyValidatorJob",
+        "scope": "instance",
+        "___id": "T000002R000515",
+        "___s": true
+    },
+    {
+        "hash": "f1dff3d8de779667e1c3a37565400d93",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 658,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getTopologyValidatorJobState",
+        "description": "<p>Get the state of topology validator analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "string"
+                    ]
+                },
+                "description": "<p>id of topology validator analysis.</p>",
+                "name": "id"
+            }
+        ],
+        "returns": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>The state of topology validator analysis.</p>"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getTopologyValidatorJobState",
+        "scope": "instance",
+        "___id": "T000002R000528",
+        "___s": true
+    },
+    {
+        "hash": "6a133896e1232b0b22a6fc1bec9e4f47",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 668,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getSummaryAttributesJobs",
+        "description": "<p>Get jobs of summary attributes analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getSummaryAttributesJobs",
+        "scope": "instance",
+        "___id": "T000002R000530",
+        "___s": true
+    },
+    {
+        "hash": "34afdd0c3c1e0431a457098c0f943c48",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 689,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getSummaryAttributesJob",
+        "description": "<p>Get a job of summary attributes analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "string"
+                    ]
+                },
+                "description": "<p>id of summary attributes analysis.</p>",
+                "name": "id"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getSummaryAttributesJob",
+        "scope": "instance",
+        "___id": "T000002R000541",
+        "___s": true
+    },
+    {
+        "hash": "740d98596d34a048ee06e31b5bc85677",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 711,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "addSummaryAttributesJob",
+        "description": "<p>Add a job of summary attributes analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.SummaryAttributesJobsParameter"
+                    ]
+                },
+                "description": "<p>The SummaryAttributesJobsParameter class.</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            },
+            {
+                "type": {
+                    "names": [
+                        "number"
+                    ]
+                },
+                "description": "<p>-</p>",
+                "name": "seconds"
+            },
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.DataFormat"
+                    ]
+                },
+                "description": "<p>The format of result data. The default format is GeoJSON.</p>",
+                "name": "resultFormat"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#addSummaryAttributesJob",
+        "scope": "instance",
+        "___id": "T000002R000552",
+        "___s": true
+    },
+    {
+        "hash": "4a254d81172b57d9d74378e7dfd11bbc",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "lineno": 737,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getSummaryAttributesJobState",
+        "description": "<p>Get the state of summary attributes analysis.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "string"
+                    ]
+                },
+                "description": "<p>id of summary attributes analysis.</p>",
+                "name": "id"
+            }
+        ],
+        "returns": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>The state of summary attributes analysis.</p>"
+            }
+        ],
+        "memberof": "SuperMap.REST.ProcessingService",
+        "longname": "SuperMap.REST.ProcessingService#getSummaryAttributesJobState",
+        "scope": "instance",
+        "___id": "T000002R000565",
+        "___s": true
+    },
+    {
+        "hash": "6a3209fa4adc6b7db376b22441d9bbd3",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 6,
+            "columnno": 0,
+            "code": {}
+        },
+        "kind": "class",
+        "name": "ElasticSearch",
+        "classdesc": "<p>The ElasticSearch services class</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "string"
+                    ]
+                },
+                "description": "<p>The url of the ElasticSearch service</p>",
+                "name": "url"
+            },
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>The optional parameters.For instance:</br>\n        change - {function} The callback of result data returned by the server side.</br>\n        openGeoFence - {boolean} Whether to open the geographical enclosure verification, the default is not open.</br>\n        outOfGeoFence - {function} The function that is executed after the data is beyond the geographical enclosure.</br>\n        geoFence - {Object} The  geographical enclosure</br></p>",
+                "name": "options"
+            }
+        ],
+        "memberof": "SuperMap",
+        "longname": "SuperMap.ElasticSearch",
+        "scope": "static",
+        "___id": "T000002R000586",
+        "___s": true
+    },
+    {
+        "hash": "8e72bb55e99f2b06869f216ec0bd7ff3",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 21,
+            "columnno": 8,
+            "code": {}
+        },
+        "kind": "member",
+        "name": "url",
+        "type": {
+            "names": [
+                "string"
+            ]
+        },
+        "description": "<p>The url of the ElasticSearch service</p>",
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#url",
+        "scope": "instance",
+        "___id": "T000002R000591",
+        "___s": true
+    },
+    {
+        "hash": "3587f1f58be446e131da39a32931837c",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 26,
+            "columnno": 8,
+            "code": {}
+        },
+        "kind": "member",
+        "name": "client",
+        "type": {
+            "names": [
+                "Object"
+            ]
+        },
+        "description": "<p>client ES</p>",
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#client",
+        "scope": "instance",
+        "___id": "T000002R000593",
+        "___s": true
+    },
+    {
+        "hash": "85160c10bf70d7becf4194277110a070",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 33,
+            "columnno": 8,
+            "code": {}
+        },
+        "kind": "member",
+        "name": "change",
+        "type": {
+            "names": [
+                "function"
+            ]
+        },
+        "description": "<p>The callback of result data returned by the server side</p>",
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#change",
+        "scope": "instance",
+        "___id": "T000002R000596",
+        "___s": true
+    },
+    {
+        "hash": "2620178ee980e1934372d6bd83e5d9d3",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 38,
+            "columnno": 8,
+            "code": {}
+        },
+        "kind": "member",
+        "name": "openGeoFence",
+        "type": {
+            "names": [
+                "boolean"
+            ]
+        },
+        "description": "<p>Whether to open the geographical enclosure verification, the default is not open.</p>",
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#openGeoFence",
+        "scope": "instance",
+        "___id": "T000002R000598",
+        "___s": true
+    },
+    {
+        "hash": "30ad9dbfb187dbe8e97a73f959f233ea",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 43,
+            "columnno": 8,
+            "code": {}
+        },
+        "kind": "member",
+        "name": "outOfGeoFence",
+        "type": {
+            "names": [
+                "function"
+            ]
+        },
+        "description": "<p>The function that is executed after the data is beyond the geographical enclosure.</p>",
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#outOfGeoFence",
+        "scope": "instance",
+        "___id": "T000002R000600",
+        "___s": true
+    },
+    {
+        "hash": "c0695e3b387108908edb5a0125f49e84",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 49,
+            "columnno": 8,
+            "code": {}
+        },
+        "kind": "member",
+        "name": "geoFence",
+        "type": {
+            "names": [
+                "Object"
+            ]
+        },
+        "description": "<p>The geographical enclosure</p>",
+        "examples": [
+            "{\r   radius: 1000,//The unit is m\r   center: [104.40, 30.43],\r   unit: 'meter|degree'\r }"
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#geoFence",
+        "scope": "instance",
+        "___id": "T000002R000602",
+        "___s": true
+    },
+    {
+        "hash": "865040fa05ad0df0fda24c69c57acdd8",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 68,
+            "columnno": 8,
+            "code": {}
+        },
+        "kind": "member",
+        "name": "events",
+        "type": {
+            "names": [
+                "SuperMap.Events"
+            ]
+        },
+        "description": "<p>Events</p>",
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#events",
+        "scope": "instance",
+        "___id": "T000002R000605",
+        "___s": true
+    },
+    {
+        "hash": "093d50cb39cd5a808dec4594bdb9df1b",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 74,
+            "columnno": 8,
+            "code": {}
+        },
+        "kind": "member",
+        "name": "eventListeners",
+        "type": {
+            "names": [
+                "Object"
+            ]
+        },
+        "description": "<p>The event listeners.Set the parameter in the constructor (optional). Listen processCompleted and processFailed events supported  by MapService,\nEquivalent to the call the SuperMap.Events.on(eventListeners).</p>",
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#eventListeners",
+        "scope": "instance",
+        "___id": "T000002R000607",
+        "___s": true
+    },
+    {
+        "hash": "239eb6c099f3690033edbf30275133b9",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 86,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "setGeoFence",
+        "description": "<p>Set the geographical enclosure,It's valid when the openGeoFence is true.</p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "SuperMap.Geometry"
+                    ]
+                },
+                "description": "<p>The geographical enclosure</p>",
+                "name": "geoFence"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#setGeoFence",
+        "scope": "instance",
+        "___id": "T000002R000609",
+        "___s": true
+    },
+    {
+        "hash": "8e275af7dd6a0e576205530c0310222f",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 96,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "bulk",
+        "description": "<p>Batch operation API, allowing to execute multiple index / delete operations</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-bulk</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#bulk",
+        "scope": "instance",
+        "___id": "T000002R000612",
+        "___s": true
+    },
+    {
+        "hash": "d1e6577f263b2b01e869d61cc0b409ab",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 108,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "clearScroll",
+        "description": "<p>Clear these scroll requests that have been created, this is by specify scroll parameter to query</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-clearscroll</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-scroll.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#clearScroll",
+        "scope": "instance",
+        "___id": "T000002R000614",
+        "___s": true
+    },
+    {
+        "hash": "950b5c86ef83b48258fdd0bd90315ce7",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 120,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "count",
+        "description": "<p>Get the counts of documents of cluster, index, type, or query</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-count</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#count",
+        "scope": "instance",
+        "___id": "T000002R000616",
+        "___s": true
+    },
+    {
+        "hash": "3ee1b7a262b3ba7517c60b8e2dc825b9",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 132,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "count",
+        "description": "<p>Add a typed JSON document in a specific index to make it searchable.If a already exists document that has the same index type or id, there will be an error.</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-create</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#count",
+        "scope": "instance",
+        "___id": "T000002R000618",
+        "___s": true
+    },
+    {
+        "hash": "c2c6b2a3146b28cddcbc3cb0ed7c6b62",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 144,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "delete",
+        "description": "<p>Delete the keyed JSON documents according to it's id from a specific index.</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-delete</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#delete",
+        "scope": "instance",
+        "___id": "T000002R000620",
+        "___s": true
+    },
+    {
+        "hash": "a990ae76494f713df20f7c574ef9821f",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 156,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "delete",
+        "description": "<p>Delete the keyed JSON documents according to it's id from a specific index.</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-deletebyquery</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete-by-query.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#delete",
+        "scope": "instance",
+        "___id": "T000002R000622",
+        "___s": true
+    },
+    {
+        "hash": "d9a5b83efc6681ea0b3472c8cf1ab0ff",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 168,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "delete",
+        "description": "<p>Delete the script according to it's id.</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-deletescript</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#delete",
+        "scope": "instance",
+        "___id": "T000002R000624",
+        "___s": true
+    },
+    {
+        "hash": "a3f3b5a46a553cab2ccdcbb8ebcb3588",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 180,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "deleteTemplate",
+        "description": "<p>Delete the template according to it's id.</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-deletetemplate</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#deleteTemplate",
+        "scope": "instance",
+        "___id": "T000002R000626",
+        "___s": true
+    },
+    {
+        "hash": "e6f45bb69b9c94c4b8bfbe13398182e0",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 192,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "exists",
+        "description": "<p>Check whether the specified document exists or not.</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-exists</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#exists",
+        "scope": "instance",
+        "___id": "T000002R000628",
+        "___s": true
+    },
+    {
+        "hash": "b6862e7c3637c9636abbad333c20706d",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 204,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "existsSource",
+        "description": "<p>Check whether the source exists or not.</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-existssource</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#existsSource",
+        "scope": "instance",
+        "___id": "T000002R000630",
+        "___s": true
+    },
+    {
+        "hash": "8588c5df79a0bb1c98387dbec283f6c7",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 217,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "explain",
+        "description": "<p>Provides detailed information about the specific document scores related to a specific query.It will tell you whether the document matches the specified query</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-explain</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/search-explain.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#explain",
+        "scope": "instance",
+        "___id": "T000002R000632",
+        "___s": true
+    },
+    {
+        "hash": "ebf9d9a4dca1ea0df371034cbce67485",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 229,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "fieldCaps",
+        "description": "<p>The function of allowing retrieval of fields between multiple indexes(Experimentation API，It may be deleted in the next versions)</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-fieldcaps</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/search-field-caps.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#fieldCaps",
+        "scope": "instance",
+        "___id": "T000002R000634",
+        "___s": true
+    },
+    {
+        "hash": "0f63e23f12fb76b402bfe8f8889e3e1e",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 242,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "get",
+        "description": "<p>Get a JSON document based on the type of it's ID from the index.</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-get</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#get",
+        "scope": "instance",
+        "___id": "T000002R000636",
+        "___s": true
+    },
+    {
+        "hash": "7eeaf9b5c9077c4a5e6bf221972bf0c3",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 254,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getScript",
+        "description": "<p>Get script</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-getscript</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#getScript",
+        "scope": "instance",
+        "___id": "T000002R000638",
+        "___s": true
+    },
+    {
+        "hash": "40f2d0406f645219311987de108c1569",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 266,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getSource",
+        "description": "<p>Get source by index,type and ID</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-getsource</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#getSource",
+        "scope": "instance",
+        "___id": "T000002R000640",
+        "___s": true
+    },
+    {
+        "hash": "ecbb927471c882ff287df2633db4f043",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 278,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "getTemplate",
+        "description": "<p>Get template</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-gettemplate</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#getTemplate",
+        "scope": "instance",
+        "___id": "T000002R000642",
+        "___s": true
+    },
+    {
+        "hash": "7593e6a29610ad4d1c9aa12973d3c4c4",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 290,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "index",
+        "description": "<p>Storage a keyed JSON documents in index to make it searchable.</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-index</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#index",
+        "scope": "instance",
+        "___id": "T000002R000644",
+        "___s": true
+    },
+    {
+        "hash": "09f5c31c7191a6a71a60f3c22140859a",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 302,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "info",
+        "description": "<p>Get the basic information from the current cluster.</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-info</br>\nMore information reference https://www.elastic.co/guide/index.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#info",
+        "scope": "instance",
+        "___id": "T000002R000646",
+        "___s": true
+    },
+    {
+        "hash": "0c72a8bae7d519ff44496acdafd3d943",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 314,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "mget",
+        "description": "<p>Get more than one document by index, type(option) and ids.The subject that mget need has two format:array of DOC positon or array of DOC ID.</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-mget</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-multi-get.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#mget",
+        "scope": "instance",
+        "___id": "T000002R000648",
+        "___s": true
+    },
+    {
+        "hash": "2650f39e9f740d5adb7c0f5017ca330f",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 326,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "msearch",
+        "description": "<p>Executing multiple search requests in the same request</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-msearch</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#msearch",
+        "scope": "instance",
+        "___id": "T000002R000650",
+        "___s": true
+    },
+    {
+        "hash": "a2f6a4bd8ae365cfd09de345130fdd96",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 346,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "msearchTemplate",
+        "description": "<p>Execution multiple search template requests in the same request.</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-msearchtemplate</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#msearchTemplate",
+        "scope": "instance",
+        "___id": "T000002R000654",
+        "___s": true
+    },
+    {
+        "hash": "b9a4b04ab4c9baf68ecf8f6381d989af",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 358,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "mtermvectors",
+        "description": "<p>Termvectors api allowed to get more than one at a time termvectors.</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-mtermvectors</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-multi-termvectors.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#mtermvectors",
+        "scope": "instance",
+        "___id": "T000002R000656",
+        "___s": true
+    },
+    {
+        "hash": "8580e0d9bf7c8eec5102fa1acf0e4256",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 370,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "ping",
+        "description": "<p>test the link.</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-ping</br>\nMore information reference https://www.elastic.co/guide/index.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#ping",
+        "scope": "instance",
+        "___id": "T000002R000658",
+        "___s": true
+    },
+    {
+        "hash": "7d61726fcbf9d07e9483ef0b0537045b",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 382,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "putScript",
+        "description": "<p>Add script.</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-putscript</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#putScript",
+        "scope": "instance",
+        "___id": "T000002R000660",
+        "___s": true
+    },
+    {
+        "hash": "2ad537f81e0ee23481c62d0446d90c23",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 394,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "putTemplate",
+        "description": "<p>Add template</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-puttemplate</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#putTemplate",
+        "scope": "instance",
+        "___id": "T000002R000662",
+        "___s": true
+    },
+    {
+        "hash": "f072a5cd8c1cde5af4531c28bfd1539e",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 406,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "reindex",
+        "description": "<p>reindex</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-reindex</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#reindex",
+        "scope": "instance",
+        "___id": "T000002R000664",
+        "___s": true
+    },
+    {
+        "hash": "a244b5bdc49656474695f590f1c0cd38",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 418,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "reindexRessrottle",
+        "description": "<p>Reindex</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-reindexrethrottle</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#reindexRessrottle",
+        "scope": "instance",
+        "___id": "T000002R000666",
+        "___s": true
+    },
+    {
+        "hash": "41668fe959f57d01ebe183a8ef2266ef",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 430,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "renderSearchTemplate",
+        "description": "<p>Search template</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-rendersearchtemplate</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/search-template.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#renderSearchTemplate",
+        "scope": "instance",
+        "___id": "T000002R000668",
+        "___s": true
+    },
+    {
+        "hash": "b999e51fe5cb0846d69440a0dab4bff5",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 442,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "scroll",
+        "description": "<p>Scrolling search requests (retrieving the next set of results) after the rolling parameter is specified in the search ().</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-scroll</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-scroll.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#scroll",
+        "scope": "instance",
+        "___id": "T000002R000670",
+        "___s": true
+    },
+    {
+        "hash": "b83b4f431a8cb52e1035a023e58e2968",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 454,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "search",
+        "description": "<p>Scrolling search requests (retrieving the next set of results) after the rolling parameter is specified in the search ().</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-search</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/search-search.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#search",
+        "scope": "instance",
+        "___id": "T000002R000672",
+        "___s": true
+    },
+    {
+        "hash": "722d4c4a189cef42b4d98156b9a04e67",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 474,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "searchShards",
+        "description": "<p>Returns the index and slice to execute the search request</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-searchshards</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/search-shards.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#searchShards",
+        "scope": "instance",
+        "___id": "T000002R000676",
+        "___s": true
+    },
+    {
+        "hash": "29279793387f13e9657c86d174fe79ad",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 486,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "searchTemplate",
+        "description": "<p>Search template。</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-searchtemplate</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/search-suggesters.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#searchTemplate",
+        "scope": "instance",
+        "___id": "T000002R000678",
+        "___s": true
+    },
+    {
+        "hash": "266003b1501265417481580c532a2ff5",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 498,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "suggest",
+        "description": "<p>The proposed function recommends similar terms based on the text provided by using specific advisers.</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-suggest</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/search-suggesters.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#suggest",
+        "scope": "instance",
+        "___id": "T000002R000680",
+        "___s": true
+    },
+    {
+        "hash": "4249950d6c5c433362cbe9d639ffa850",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 510,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "termvectors",
+        "description": "<p>Return the terminology information and statistical information about in the specific DOC fields.</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-termvectors</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-termvectors.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#termvectors",
+        "scope": "instance",
+        "___id": "T000002R000682",
+        "___s": true
+    },
+    {
+        "hash": "5de253e027ae1f313df001181ca41ed4",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 522,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "update",
+        "description": "<p>Update the part of the doc</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-update</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#update",
+        "scope": "instance",
+        "___id": "T000002R000684",
+        "___s": true
+    },
+    {
+        "hash": "d8703d28985ae1ce982fb6c036cf251c",
+        "meta": {
+            "filename": "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "lineno": 534,
+            "columnno": 4,
+            "code": {}
+        },
+        "kind": "function",
+        "name": "update",
+        "description": "<p>Update the doc by query api.</br>\nParameter setting reference https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/api-reference.html#api-updatebyquery</br>\nMore information reference https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update-by-query.html</br></p>",
+        "params": [
+            {
+                "type": {
+                    "names": [
+                        "Object"
+                    ]
+                },
+                "description": "<p>parameters</p>",
+                "name": "params"
+            },
+            {
+                "type": {
+                    "names": [
+                        "function"
+                    ]
+                },
+                "description": "<p>The callback of result data returned by the server side.</p>",
+                "name": "callback"
+            }
+        ],
+        "memberof": "SuperMap.ElasticSearch",
+        "longname": "SuperMap.ElasticSearch#update",
+        "scope": "instance",
+        "___id": "T000002R000686",
+        "___s": true
+    },
+    {
+        "kind": "package",
+        "files": [
+            "D:\\iClient9_English\\src\\classic\\index.js",
+            "D:\\iClient9_English\\src\\classic\\overlay\\index.js",
+            "D:\\iClient9_English\\src\\classic\\overlay\\mapv\\index.js",
+            "D:\\iClient9_English\\src\\classic\\overlay\\mapv\\MapVRenderer.js",
+            "D:\\iClient9_English\\src\\classic\\overlay\\MapVLayer.js",
+            "D:\\iClient9_English\\src\\classic\\services\\AddressMatchService.js",
+            "D:\\iClient9_English\\src\\classic\\services\\index.js",
+            "D:\\iClient9_English\\src\\classic\\services\\ProcessingService.js",
+            "D:\\iClient9_English\\src\\classic\\SuperMap.js",
+            "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\ElasticSearch.js",
+            "D:\\iClient9_English\\src\\common\\thirdparty\\elasticsearch\\index.js",
+            "D:\\iClient9_English\\src\\common\\thirdparty\\index.js"
+        ]
+    }
+]

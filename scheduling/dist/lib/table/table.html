@@ -1,0 +1,14 @@
+<div>
+    <i-table :border="showBorder" :stripe="showStripe" :show-header="showHeader" :height="fixedHeader ? 400 : ''" :size="tableSize"
+        @on-sort-change="onSortChange" 
+        @on-selection-change="onSelectionChange" 
+        :highlight-row="highlightRow"
+        @on-filter-change="onFilterChange" 
+        @on-current-change="onCurrentChange"
+        :data="tableData"
+        :columns="tableColumns"></i-table>
+</div>
+<div class="panel-footer panel">
+    <Page :total="queryParams.total" :page-size="queryParams.rows" :current="queryParams.page" @on-page-size-change="onPageSizeChange" @on-change="onChange" size="small" :show-total="true" placement="top"
+        show-elevator show-sizer></Page>
+</div>

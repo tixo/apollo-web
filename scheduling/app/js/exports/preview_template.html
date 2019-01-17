@@ -1,0 +1,32 @@
+<!-- 表头 -->
+<div class="row">
+    <div class="text-center" style="color:red;">
+        <h1>{{name}}</h1>
+        <h6>2017年11月</h6>
+    </div>
+    <div class="header-dividing">
+        <div class="row">
+            <div class="col-sm-6 text-left">
+                <small>{{author}}</small>
+            </div>
+            <div class="col-sm-6 text-right">
+                <small>{{create_date}}</small>
+            </div>
+        </div>
+    </div>
+</div>
+{{#each items}}  
+    {{#with this}}
+    <div class="row">
+        <div>
+            <h4>{{number}}、{{title}}}</h4>
+        </div>
+        <div contenteditable="true" id="{{id}}_tpl">
+            <p>{{tpl}}</p>
+        </div>
+        <div class="col-md-8 col-md-offset-3">
+            <img style="height:300px;" src="{{imgSrc}}" />
+        </div>
+    </div>
+    {{/with}} 
+{{/each}}

@@ -1,0 +1,414 @@
+<?xml version="1.0"?>
+<krpano version="1.19-pr7" clientVersion="1.3.62">
+	<include url="api_export.xml"/>
+	<displayMode export="true"/>
+	<scene name="scene_JYU0NCvpxUlvfZGD" pano_id="JYU0NCvpxUlvfZGD">
+		<preview url="pano/JYU0NCvpxUlvfZGD/pano.tiles/preview.jpg"/>
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop">
+			<level tiledimagewidth="5120" tiledimageheight="5120">
+				<cube url="pano/JYU0NCvpxUlvfZGD/pano.tiles/mres_%s/l3/%v/l3_%s_%v_%h.jpg"/>
+			</level>
+			<level tiledimagewidth="2560" tiledimageheight="2560">
+				<cube url="pano/JYU0NCvpxUlvfZGD/pano.tiles/mres_%s/l2/%v/l2_%s_%v_%h.jpg"/>
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="pano/JYU0NCvpxUlvfZGD/pano.tiles/mres_%s/l1/%v/l1_%s_%v_%h.jpg"/>
+			</level>
+		</image>
+		<image if="webvr.isenabled OR !device.desktop">
+			<cube url="pano/JYU0NCvpxUlvfZGD/pano.tiles/mobile_%s.jpg"/>
+		</image>
+		<hotspot name="hotspot_0"/>
+		<hotspot name="hotspot_1"/>
+		<hotspot name="hotspot_2"/>
+		<hotspot name="hotspot_3"/>
+		<hotspot name="hotspot_4"/>
+		<hotspot name="hotspot_5"/>
+		<hotspot name="hotspot_6"/>
+		<hotspot name="hotspot_7"/>
+	</scene>
+	<scene name="scene_OAczgKORhpnify6g" pano_id="OAczgKORhpnify6g">
+		<preview url="pano/OAczgKORhpnify6g/pano.tiles/preview.jpg"/>
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop">
+			<level tiledimagewidth="5120" tiledimageheight="5120">
+				<cube url="pano/OAczgKORhpnify6g/pano.tiles/mres_%s/l3/%v/l3_%s_%v_%h.jpg"/>
+			</level>
+			<level tiledimagewidth="2560" tiledimageheight="2560">
+				<cube url="pano/OAczgKORhpnify6g/pano.tiles/mres_%s/l2/%v/l2_%s_%v_%h.jpg"/>
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="pano/OAczgKORhpnify6g/pano.tiles/mres_%s/l1/%v/l1_%s_%v_%h.jpg"/>
+			</level>
+		</image>
+		<image if="webvr.isenabled OR !device.desktop">
+			<cube url="pano/OAczgKORhpnify6g/pano.tiles/mobile_%s.jpg"/>
+		</image>
+		<hotspot name="hotspot_0"/>
+		<hotspot name="hotspot_1"/>
+		<hotspot name="hotspot_2"/>
+		<hotspot name="hotspot_3"/>
+		<hotspot name="hotspot_4"/>
+		<hotspot name="hotspot_5"/>
+		<hotspot name="hotspot_6"/>
+		<hotspot name="hotspot_7"/>
+	</scene>
+	<scene name="scene_wsKU7B8EKGgHw3bj" pano_id="wsKU7B8EKGgHw3bj">
+		<preview url="pano/wsKU7B8EKGgHw3bj/pano.tiles/preview.jpg"/>
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop">
+			<level tiledimagewidth="5120" tiledimageheight="5120">
+				<cube url="pano/wsKU7B8EKGgHw3bj/pano.tiles/mres_%s/l3/%v/l3_%s_%v_%h.jpg"/>
+			</level>
+			<level tiledimagewidth="2560" tiledimageheight="2560">
+				<cube url="pano/wsKU7B8EKGgHw3bj/pano.tiles/mres_%s/l2/%v/l2_%s_%v_%h.jpg"/>
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="pano/wsKU7B8EKGgHw3bj/pano.tiles/mres_%s/l1/%v/l1_%s_%v_%h.jpg"/>
+			</level>
+		</image>
+		<image if="webvr.isenabled OR !device.desktop">
+			<cube url="pano/wsKU7B8EKGgHw3bj/pano.tiles/mobile_%s.jpg"/>
+		</image>
+		<hotspot name="hotspot_0"/>
+		<hotspot name="hotspot_1"/>
+		<hotspot name="hotspot_2"/>
+		<hotspot name="hotspot_3"/>
+		<hotspot name="hotspot_4"/>
+		<hotspot name="hotspot_5"/>
+		<hotspot name="hotspot_6"/>
+		<hotspot name="hotspot_7"/>
+	</scene>
+	<scene name="scene_BV0ZxWJvFYUPH6pt" pano_id="BV0ZxWJvFYUPH6pt">
+		<preview url="pano/BV0ZxWJvFYUPH6pt/pano.tiles/preview.jpg"/>
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop">
+			<level tiledimagewidth="5120" tiledimageheight="5120">
+				<cube url="pano/BV0ZxWJvFYUPH6pt/pano.tiles/mres_%s/l3/%v/l3_%s_%v_%h.jpg"/>
+			</level>
+			<level tiledimagewidth="2560" tiledimageheight="2560">
+				<cube url="pano/BV0ZxWJvFYUPH6pt/pano.tiles/mres_%s/l2/%v/l2_%s_%v_%h.jpg"/>
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="pano/BV0ZxWJvFYUPH6pt/pano.tiles/mres_%s/l1/%v/l1_%s_%v_%h.jpg"/>
+			</level>
+		</image>
+		<image if="webvr.isenabled OR !device.desktop">
+			<cube url="pano/BV0ZxWJvFYUPH6pt/pano.tiles/mobile_%s.jpg"/>
+		</image>
+		<hotspot name="hotspot_0"/>
+		<hotspot name="hotspot_1"/>
+		<hotspot name="hotspot_2"/>
+		<hotspot name="hotspot_3"/>
+		<hotspot name="hotspot_4"/>
+		<hotspot name="hotspot_5"/>
+		<hotspot name="hotspot_6"/>
+		<hotspot name="hotspot_7"/>
+	</scene>
+	<scene name="scene_AVO98CEkbuHWrQkz" pano_id="AVO98CEkbuHWrQkz">
+		<preview url="pano/AVO98CEkbuHWrQkz/pano.tiles/preview.jpg"/>
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop">
+			<level tiledimagewidth="5120" tiledimageheight="5120">
+				<cube url="pano/AVO98CEkbuHWrQkz/pano.tiles/mres_%s/l3/%v/l3_%s_%v_%h.jpg"/>
+			</level>
+			<level tiledimagewidth="2560" tiledimageheight="2560">
+				<cube url="pano/AVO98CEkbuHWrQkz/pano.tiles/mres_%s/l2/%v/l2_%s_%v_%h.jpg"/>
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="pano/AVO98CEkbuHWrQkz/pano.tiles/mres_%s/l1/%v/l1_%s_%v_%h.jpg"/>
+			</level>
+		</image>
+		<image if="webvr.isenabled OR !device.desktop">
+			<cube url="pano/AVO98CEkbuHWrQkz/pano.tiles/mobile_%s.jpg"/>
+		</image>
+		<hotspot name="hotspot_0"/>
+		<hotspot name="hotspot_1"/>
+		<hotspot name="hotspot_2"/>
+		<hotspot name="hotspot_3"/>
+		<hotspot name="hotspot_4"/>
+		<hotspot name="hotspot_5"/>
+		<hotspot name="hotspot_6"/>
+		<hotspot name="hotspot_7"/>
+	</scene>
+	<scene name="scene_Ib7UYGpS15gxaibJ" pano_id="Ib7UYGpS15gxaibJ">
+		<preview url="pano/Ib7UYGpS15gxaibJ/pano.tiles/preview.jpg"/>
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop">
+			<level tiledimagewidth="5120" tiledimageheight="5120">
+				<cube url="pano/Ib7UYGpS15gxaibJ/pano.tiles/mres_%s/l3/%v/l3_%s_%v_%h.jpg"/>
+			</level>
+			<level tiledimagewidth="2560" tiledimageheight="2560">
+				<cube url="pano/Ib7UYGpS15gxaibJ/pano.tiles/mres_%s/l2/%v/l2_%s_%v_%h.jpg"/>
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="pano/Ib7UYGpS15gxaibJ/pano.tiles/mres_%s/l1/%v/l1_%s_%v_%h.jpg"/>
+			</level>
+		</image>
+		<image if="webvr.isenabled OR !device.desktop">
+			<cube url="pano/Ib7UYGpS15gxaibJ/pano.tiles/mobile_%s.jpg"/>
+		</image>
+		<hotspot name="hotspot_0"/>
+		<hotspot name="hotspot_1"/>
+		<hotspot name="hotspot_2"/>
+		<hotspot name="hotspot_3"/>
+		<hotspot name="hotspot_4"/>
+		<hotspot name="hotspot_5"/>
+		<hotspot name="hotspot_6"/>
+		<hotspot name="hotspot_7"/>
+	</scene>
+	<scene name="scene_anhJWPWCyKl8WTYW" pano_id="anhJWPWCyKl8WTYW">
+		<preview url="pano/anhJWPWCyKl8WTYW/pano.tiles/preview.jpg"/>
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop">
+			<level tiledimagewidth="5120" tiledimageheight="5120">
+				<cube url="pano/anhJWPWCyKl8WTYW/pano.tiles/mres_%s/l3/%v/l3_%s_%v_%h.jpg"/>
+			</level>
+			<level tiledimagewidth="2560" tiledimageheight="2560">
+				<cube url="pano/anhJWPWCyKl8WTYW/pano.tiles/mres_%s/l2/%v/l2_%s_%v_%h.jpg"/>
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="pano/anhJWPWCyKl8WTYW/pano.tiles/mres_%s/l1/%v/l1_%s_%v_%h.jpg"/>
+			</level>
+		</image>
+		<image if="webvr.isenabled OR !device.desktop">
+			<cube url="pano/anhJWPWCyKl8WTYW/pano.tiles/mobile_%s.jpg"/>
+		</image>
+		<hotspot name="hotspot_0"/>
+		<hotspot name="hotspot_1"/>
+		<hotspot name="hotspot_2"/>
+		<hotspot name="hotspot_3"/>
+		<hotspot name="hotspot_4"/>
+		<hotspot name="hotspot_5"/>
+		<hotspot name="hotspot_6"/>
+		<hotspot name="hotspot_7"/>
+	</scene>
+	<scene name="scene_jkO9jXlKZbxLTCmj" pano_id="jkO9jXlKZbxLTCmj">
+		<preview url="pano/jkO9jXlKZbxLTCmj/pano.tiles/preview.jpg"/>
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop">
+			<level tiledimagewidth="5120" tiledimageheight="5120">
+				<cube url="pano/jkO9jXlKZbxLTCmj/pano.tiles/mres_%s/l3/%v/l3_%s_%v_%h.jpg"/>
+			</level>
+			<level tiledimagewidth="2560" tiledimageheight="2560">
+				<cube url="pano/jkO9jXlKZbxLTCmj/pano.tiles/mres_%s/l2/%v/l2_%s_%v_%h.jpg"/>
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="pano/jkO9jXlKZbxLTCmj/pano.tiles/mres_%s/l1/%v/l1_%s_%v_%h.jpg"/>
+			</level>
+		</image>
+		<image if="webvr.isenabled OR !device.desktop">
+			<cube url="pano/jkO9jXlKZbxLTCmj/pano.tiles/mobile_%s.jpg"/>
+		</image>
+		<hotspot name="hotspot_0"/>
+		<hotspot name="hotspot_1"/>
+		<hotspot name="hotspot_2"/>
+		<hotspot name="hotspot_3"/>
+		<hotspot name="hotspot_4"/>
+		<hotspot name="hotspot_5"/>
+		<hotspot name="hotspot_6"/>
+		<hotspot name="hotspot_7"/>
+	</scene>
+	<scene name="scene_Ja3Yrn2c0EgvMDSb" pano_id="Ja3Yrn2c0EgvMDSb">
+		<preview url="pano/Ja3Yrn2c0EgvMDSb/pano.tiles/preview.jpg"/>
+		<image type="CUBE" multires="true" tilesize="512" if="!webvr.isenabled AND device.desktop">
+			<level tiledimagewidth="5120" tiledimageheight="5120">
+				<cube url="pano/Ja3Yrn2c0EgvMDSb/pano.tiles/mres_%s/l3/%v/l3_%s_%v_%h.jpg"/>
+			</level>
+			<level tiledimagewidth="2560" tiledimageheight="2560">
+				<cube url="pano/Ja3Yrn2c0EgvMDSb/pano.tiles/mres_%s/l2/%v/l2_%s_%v_%h.jpg"/>
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="pano/Ja3Yrn2c0EgvMDSb/pano.tiles/mres_%s/l1/%v/l1_%s_%v_%h.jpg"/>
+			</level>
+		</image>
+		<image if="webvr.isenabled OR !device.desktop">
+			<cube url="pano/Ja3Yrn2c0EgvMDSb/pano.tiles/mobile_%s.jpg"/>
+		</image>
+		<hotspot name="hotspot_0"/>
+		<hotspot name="hotspot_1"/>
+		<hotspot name="hotspot_2"/>
+		<hotspot name="hotspot_3"/>
+		<hotspot name="hotspot_4"/>
+		<hotspot name="hotspot_5"/>
+		<hotspot name="hotspot_6"/>
+		<hotspot name="hotspot_7"/>
+	</scene>
+	<config>
+		<info pid="dqm3dqpdmms378o3tq" id="7759746" title="航天城全景" desc=""/>
+		<auth auth_name="航天分局" uid="9d7jOdkyeO1" status="0" link=""/>
+		<feature enable_comment="1" show_comment="1" enable_vr="1" enable_like="1" show_pv="1" enable_password="0" enable_intro="0" enable_selected="0" show_auth="1" enable_gyro="0" enable_littleplanet="1" enable_share="1" enable_autorotate="1"/>
+		<qr url="%$AVATAR_DOMAIN%/avatar/no_img.jpg"/>
+		<thumbs title="全景列表" show_thumb="1">
+			<category name="category0" title="默认分组" thumb="">
+				<pano name="pano_JYU0NCvpxUlvfZGD" title="航天大道+航天大道" thumb="pano/JYU0NCvpxUlvfZGD/pano.tiles/thumb.jpg" pano_id="JYU0NCvpxUlvfZGD"/>
+				<pano name="pano_OAczgKORhpnify6g" title="航开路+神舟四路" thumb="pano/OAczgKORhpnify6g/pano.tiles/thumb.jpg" pano_id="OAczgKORhpnify6g"/>
+				<pano name="pano_wsKU7B8EKGgHw3bj" title="零六七航天基地" thumb="pano/wsKU7B8EKGgHw3bj/pano.tiles/thumb.jpg" pano_id="wsKU7B8EKGgHw3bj"/>
+				<pano name="pano_BV0ZxWJvFYUPH6pt" title="管委会" thumb="pano/BV0ZxWJvFYUPH6pt/pano.tiles/thumb.jpg" pano_id="BV0ZxWJvFYUPH6pt"/>
+				<pano name="pano_AVO98CEkbuHWrQkz" title="航拓路+神舟六路" thumb="pano/AVO98CEkbuHWrQkz/pano.tiles/thumb.jpg" pano_id="AVO98CEkbuHWrQkz"/>
+				<pano name="pano_Ib7UYGpS15gxaibJ" title="高速路韦曲收费站" thumb="pano/Ib7UYGpS15gxaibJ/pano.tiles/thumb.jpg" pano_id="Ib7UYGpS15gxaibJ"/>
+				<pano name="pano_anhJWPWCyKl8WTYW" title="揽月阁" thumb="pano/anhJWPWCyKl8WTYW/pano.tiles/thumb.jpg" pano_id="anhJWPWCyKl8WTYW"/>
+				<pano name="pano_jkO9jXlKZbxLTCmj" title="航天寰宇大厦" thumb="pano/jkO9jXlKZbxLTCmj/pano.tiles/thumb.jpg" pano_id="jkO9jXlKZbxLTCmj"/>
+				<pano name="pano_Ja3Yrn2c0EgvMDSb" title="航天分局" thumb="pano/Ja3Yrn2c0EgvMDSb/pano.tiles/thumb.jpg" pano_id="Ja3Yrn2c0EgvMDSb"/>
+			</category>
+		</thumbs>
+		<links/>
+		<panos>
+			<pano name="scene_JYU0NCvpxUlvfZGD">
+				<info pano_id="JYU0NCvpxUlvfZGD" title="航天大道+航天大道"/>
+				<view hlookat="-200.9418013667033" vlookat="1.9747783024640027" fov="95" fovtype="MFOV" maxpixelzoom="2" fovmin="70" fovmax="120" vlookatmin="-90" vlookatmax="90" autorotatekeepview="0" loadscenekeepview="0"/>
+				<start_image_pc/>
+				<start_image_mobile/>
+				<hotspots>
+					<hotspot name="hotspot_0" style_id="new_spotd11" image_type="1" ath="-93.073" atv="8.713" show_txt="1" keep_view="0" type="0" title="航开路+神舟四路" url="OAczgKORhpnify6g" blend="0"/>
+					<hotspot name="hotspot_1" style_id="new_spotd11" image_type="1" ath="21.174" atv="8.657" show_txt="1" keep_view="0" type="0" title="零六七航天基地" url="wsKU7B8EKGgHw3bj" blend="0"/>
+					<hotspot name="hotspot_2" style_id="new_spotd11" image_type="1" ath="-30.526" atv="8.659" show_txt="1" keep_view="0" type="0" title="管委会" url="BV0ZxWJvFYUPH6pt" blend="0"/>
+					<hotspot name="hotspot_3" style_id="new_spotd11" image_type="1" ath="-94.997" atv="3.375" show_txt="1" keep_view="0" type="0" title="航拓路+神舟六路" url="AVO98CEkbuHWrQkz" blend="0"/>
+					<hotspot name="hotspot_4" style_id="new_spotd11" image_type="1" ath="-85.588" atv="1.735" show_txt="1" keep_view="0" type="0" title="高速路韦曲收费站" url="Ib7UYGpS15gxaibJ" blend="0"/>
+					<hotspot name="hotspot_5" style_id="new_spotd11" image_type="1" ath="-20.82" atv="2.623" show_txt="1" keep_view="0" type="0" title="揽月阁" url="anhJWPWCyKl8WTYW" blend="0"/>
+					<hotspot name="hotspot_6" style_id="new_spotd11" image_type="1" ath="-34.749" atv="11.157" show_txt="1" keep_view="0" type="0" title="航天分局" url="Ja3Yrn2c0EgvMDSb" blend="0"/>
+					<hotspot name="hotspot_7" style_id="new_spotd11" image_type="1" ath="-66.511" atv="5.052" show_txt="1" keep_view="0" type="0" title="航天寰宇大厦" url="jkO9jXlKZbxLTCmj" blend="0"/>
+				</hotspots>
+				<embeds/>
+				<sun/>
+			</pano>
+			<pano name="scene_OAczgKORhpnify6g">
+				<info pano_id="OAczgKORhpnify6g" title="航开路+神舟四路"/>
+				<view hlookat="-153.51232429353226" vlookat="1.33436592472254" fov="95" fovtype="MFOV" maxpixelzoom="2" fovmin="70" fovmax="120" vlookatmin="-90" vlookatmax="90" autorotatekeepview="0" loadscenekeepview="0"/>
+				<start_image_pc/>
+				<start_image_mobile/>
+				<hotspots>
+					<hotspot name="hotspot_0" style_id="new_spotd10" image_type="1" ath="98.53" atv="5.817" show_txt="1" keep_view="0" type="0" title="零六七航天基地" url="wsKU7B8EKGgHw3bj" blend="0"/>
+					<hotspot name="hotspot_1" style_id="new_spotd10" image_type="1" ath="147.158" atv="9.126" show_txt="1" keep_view="0" type="0" title="航天大道+航天大道" url="JYU0NCvpxUlvfZGD" blend="0"/>
+					<hotspot name="hotspot_2" style_id="new_spotd10" image_type="1" ath="67.172" atv="9.868" show_txt="1" keep_view="0" type="0" title="管委会" url="BV0ZxWJvFYUPH6pt" blend="0"/>
+					<hotspot name="hotspot_3" style_id="new_spotd10" image_type="1" ath="48.036" atv="1.648" show_txt="1" keep_view="0" type="0" title="揽月阁" url="anhJWPWCyKl8WTYW" blend="0"/>
+					<hotspot name="hotspot_4" style_id="new_spotd10" image_type="1" ath="-45.659" atv="6.804" show_txt="1" keep_view="0" type="0" title="航拓路+神舟六路" url="AVO98CEkbuHWrQkz" blend="0"/>
+					<hotspot name="hotspot_5" style_id="new_spotd10" image_type="1" ath="-26.861" atv="3.425" show_txt="1" keep_view="0" type="0" title="高速路韦曲收费站" url="Ib7UYGpS15gxaibJ" blend="0"/>
+					<hotspot name="hotspot_6" style_id="new_spotd10" image_type="1" ath="7.375" atv="9.925" show_txt="1" keep_view="0" type="0" title="航天寰宇大厦" url="jkO9jXlKZbxLTCmj" blend="0"/>
+					<hotspot name="hotspot_7" style_id="new_spotd10" image_type="1" ath="91.967" atv="8.492" show_txt="1" keep_view="0" type="0" title="航天分局" url="Ja3Yrn2c0EgvMDSb" blend="0"/>
+				</hotspots>
+				<embeds/>
+				<sun/>
+			</pano>
+			<pano name="scene_wsKU7B8EKGgHw3bj">
+				<info pano_id="wsKU7B8EKGgHw3bj" title="零六七航天基地"/>
+				<view hlookat="-79.04761207617052" vlookat="3.7132918011237996" fov="95" fovtype="MFOV" maxpixelzoom="2" fovmin="70" fovmax="120" vlookatmin="-90" vlookatmax="90" autorotatekeepview="0" loadscenekeepview="0"/>
+				<start_image_pc/>
+				<start_image_mobile/>
+				<hotspots>
+					<hotspot name="hotspot_0" style_id="new_spotd01" image_type="1" ath="-33.825" atv="6.657" show_txt="1" keep_view="0" type="0" title="航天大道+航天大道" url="JYU0NCvpxUlvfZGD" blend="0"/>
+					<hotspot name="hotspot_1" style_id="new_spotd01" image_type="1" ath="-14.299" atv="3.493" show_txt="1" keep_view="0" type="0" title="航开路+神舟四路" url="OAczgKORhpnify6g" blend="0"/>
+					<hotspot name="hotspot_2" style_id="new_spotd01" image_type="1" ath="20.979" atv="7.667" show_txt="1" keep_view="0" type="0" title="管委会" url="BV0ZxWJvFYUPH6pt" blend="0"/>
+					<hotspot name="hotspot_3" style_id="new_spotd01" image_type="1" ath="-10.297" atv="1.67" show_txt="1" keep_view="0" type="0" title="航拓路+神舟六路" url="AVO98CEkbuHWrQkz" blend="0"/>
+					<hotspot name="hotspot_4" style_id="new_spotd01" image_type="1" ath="24.067" atv="1.571" show_txt="1" keep_view="0" type="0" title="高速路韦曲收费站" url="Ib7UYGpS15gxaibJ" blend="0"/>
+					<hotspot name="hotspot_5" style_id="new_spotd01" image_type="1" ath="79.216" atv="0.947" show_txt="1" keep_view="0" type="0" title="揽月阁" url="anhJWPWCyKl8WTYW" blend="0"/>
+					<hotspot name="hotspot_6" style_id="new_spotd01" image_type="1" ath="18.297" atv="3.781" show_txt="1" keep_view="0" type="0" title="航天寰宇大厦" url="jkO9jXlKZbxLTCmj" blend="0"/>
+					<hotspot name="hotspot_7" style_id="new_spotd01" image_type="1" ath="5.701" atv="8.081" show_txt="1" keep_view="0" type="0" title="航天分局" url="Ja3Yrn2c0EgvMDSb" blend="0"/>
+				</hotspots>
+				<embeds/>
+				<sun/>
+			</pano>
+			<pano name="scene_BV0ZxWJvFYUPH6pt">
+				<info pano_id="BV0ZxWJvFYUPH6pt" title="管委会"/>
+				<view hlookat="-112.30853122543301" vlookat="6.6577978585238125" fov="95" fovtype="MFOV" maxpixelzoom="2" fovmin="70" fovmax="120" vlookatmin="-90" vlookatmax="90" autorotatekeepview="0" loadscenekeepview="0"/>
+				<start_image_pc/>
+				<start_image_mobile/>
+				<hotspots>
+					<hotspot name="hotspot_0" style_id="new_spotd09" image_type="1" ath="-125.387" atv="5.313" show_txt="1" keep_view="0" type="0" title="航天大道+航天大道" url="JYU0NCvpxUlvfZGD" blend="0"/>
+					<hotspot name="hotspot_1" style_id="new_spotd09" image_type="1" ath="-114.525" atv="23.161" show_txt="1" keep_view="0" type="0" title="航天分局" url="Ja3Yrn2c0EgvMDSb" blend="0"/>
+					<hotspot name="hotspot_2" style_id="new_spotd09" image_type="1" ath="-19.979" atv="5.816" show_txt="1" keep_view="0" type="0" title="航天寰宇大厦" url="jkO9jXlKZbxLTCmj" blend="0"/>
+					<hotspot name="hotspot_3" style_id="new_spotd09" image_type="1" ath="78.075" atv="2.328" show_txt="1" keep_view="0" type="0" title="揽月阁" url="anhJWPWCyKl8WTYW" blend="0"/>
+					<hotspot name="hotspot_4" style_id="new_spotd09" image_type="1" ath="-11.119" atv="0.634" show_txt="1" keep_view="0" type="0" title="高速路韦曲收费站" url="Ib7UYGpS15gxaibJ" blend="0"/>
+					<hotspot name="hotspot_5" style_id="new_spotd09" image_type="1" ath="-75.693" atv="1.357" show_txt="1" keep_view="0" type="0" title="航开路+神舟四路" url="OAczgKORhpnify6g" blend="0"/>
+					<hotspot name="hotspot_6" style_id="new_spotd09" image_type="1" ath="175.814" atv="3.897" show_txt="1" keep_view="0" type="0" title="零六七航天基地" url="wsKU7B8EKGgHw3bj" blend="0"/>
+					<hotspot name="hotspot_7" style_id="new_spotd09" image_type="1" ath="-45.311" atv="0.461" show_txt="1" keep_view="0" type="0" title="航拓路+神舟六路" url="AVO98CEkbuHWrQkz" blend="0"/>
+				</hotspots>
+				<embeds/>
+				<sun/>
+			</pano>
+			<pano name="scene_AVO98CEkbuHWrQkz">
+				<info pano_id="AVO98CEkbuHWrQkz" title="航拓路+神舟六路"/>
+				<view hlookat="125.42164017520868" vlookat="5.728834051412737" fov="95" fovtype="MFOV" maxpixelzoom="2" fovmin="70" fovmax="120" vlookatmin="-90" vlookatmax="90" autorotatekeepview="0" loadscenekeepview="0"/>
+				<start_image_pc/>
+				<start_image_mobile/>
+				<hotspots>
+					<hotspot name="hotspot_0" style_id="new_spotd07" image_type="1" ath="51.885" atv="5.724" show_txt="1" keep_view="0" type="0" title="航开路+神舟四路" url="OAczgKORhpnify6g" blend="0"/>
+					<hotspot name="hotspot_1" style_id="new_spotd07" image_type="1" ath="54.623" atv="2.831" show_txt="1" keep_view="0" type="0" title="航天大道+航天大道" url="JYU0NCvpxUlvfZGD" blend="0"/>
+					<hotspot name="hotspot_2" style_id="new_spotd07" image_type="1" ath="31.219" atv="1.18" show_txt="1" keep_view="0" type="0" title="零六七航天基地" url="wsKU7B8EKGgHw3bj" blend="0"/>
+					<hotspot name="hotspot_3" style_id="new_spotd07" image_type="1" ath="22.233" atv="3.619" show_txt="1" keep_view="0" type="0" title="管委会" url="BV0ZxWJvFYUPH6pt" blend="0"/>
+					<hotspot name="hotspot_4" style_id="new_spotd07" image_type="1" ath="27.375" atv="4.343" show_txt="1" keep_view="0" type="0" title="航天分局" url="Ja3Yrn2c0EgvMDSb" blend="0"/>
+					<hotspot name="hotspot_5" style_id="new_spotd07" image_type="1" ath="-3.016" atv="-0.199" show_txt="1" keep_view="0" type="0" title="揽月阁" url="anhJWPWCyKl8WTYW" blend="0"/>
+					<hotspot name="hotspot_6" style_id="new_spotd07" image_type="1" ath="10.322" atv="5.329" show_txt="1" keep_view="0" type="0" title="航天寰宇大厦" url="jkO9jXlKZbxLTCmj" blend="0"/>
+					<hotspot name="hotspot_7" style_id="new_spotd07" image_type="1" ath="-72.043" atv="6.521" show_txt="1" keep_view="0" type="0" title="高速路韦曲收费站" url="Ib7UYGpS15gxaibJ" blend="0"/>
+				</hotspots>
+				<embeds/>
+				<sun/>
+			</pano>
+			<pano name="scene_Ib7UYGpS15gxaibJ">
+				<info pano_id="Ib7UYGpS15gxaibJ" title="高速路韦曲收费站"/>
+				<view hlookat="158.74359227407865" vlookat="1.4206967296644555" fov="95" fovtype="MFOV" maxpixelzoom="2" fovmin="70" fovmax="120" vlookatmin="-90" vlookatmax="90" autorotatekeepview="0" loadscenekeepview="0"/>
+				<start_image_pc/>
+				<start_image_mobile/>
+				<hotspots>
+					<hotspot name="hotspot_0" style_id="new_spotd08" image_type="1" ath="140.486" atv="7.327" show_txt="1" keep_view="0" type="0" title="航拓路+神舟六路" url="AVO98CEkbuHWrQkz" blend="0"/>
+					<hotspot name="hotspot_1" style_id="new_spotd08" image_type="1" ath="100.334" atv="4.586" show_txt="1" keep_view="0" type="0" title="航开路+神舟四路" url="OAczgKORhpnify6g" blend="0"/>
+					<hotspot name="hotspot_2" style_id="new_spotd08" image_type="1" ath="96.253" atv="2.596" show_txt="1" keep_view="0" type="0" title="航天大道+航天大道" url="JYU0NCvpxUlvfZGD" blend="0"/>
+					<hotspot name="hotspot_3" style_id="new_spotd08" image_type="1" ath="87.013" atv="1.449" show_txt="1" keep_view="0" type="0" title="零六七航天基地" url="wsKU7B8EKGgHw3bj" blend="0"/>
+					<hotspot name="hotspot_4" style_id="new_spotd08" image_type="1" ath="85.093" atv="3.455" show_txt="1" keep_view="0" type="0" title="管委会" url="BV0ZxWJvFYUPH6pt" blend="0"/>
+					<hotspot name="hotspot_5" style_id="new_spotd08" image_type="1" ath="87.11" atv="3.425" show_txt="1" keep_view="0" type="0" title="航天分局" url="Ja3Yrn2c0EgvMDSb" blend="0"/>
+					<hotspot name="hotspot_6" style_id="new_spotd08" image_type="1" ath="50.933" atv="1.293" show_txt="1" keep_view="0" type="0" title="揽月阁" url="anhJWPWCyKl8WTYW" blend="0"/>
+					<hotspot name="hotspot_7" style_id="new_spotd08" image_type="1" ath="88.331" atv="6.034" show_txt="1" keep_view="0" type="0" title="航天寰宇大厦" url="jkO9jXlKZbxLTCmj" blend="0"/>
+				</hotspots>
+				<embeds/>
+				<sun/>
+			</pano>
+			<pano name="scene_anhJWPWCyKl8WTYW">
+				<info pano_id="anhJWPWCyKl8WTYW" title="揽月阁"/>
+				<view hlookat="-180.52802745883596" vlookat="-1.2952376541444828" fov="95" fovtype="MFOV" maxpixelzoom="2" fovmin="70" fovmax="120" vlookatmin="-90" vlookatmax="90" autorotatekeepview="0" loadscenekeepview="0"/>
+				<start_image_pc/>
+				<start_image_mobile/>
+				<hotspots>
+					<hotspot name="hotspot_0" style_id="new_spotd06" image_type="1" ath="173.627" atv="3.461" show_txt="1" keep_view="0" type="0" title="航天大道+航天大道" url="JYU0NCvpxUlvfZGD" blend="0"/>
+					<hotspot name="hotspot_1" style_id="new_spotd06" image_type="1" ath="-170.881" atv="7.037" show_txt="1" keep_view="0" type="0" title="管委会" url="BV0ZxWJvFYUPH6pt" blend="0"/>
+					<hotspot name="hotspot_2" style_id="new_spotd06" image_type="1" ath="-172.799" atv="5.337" show_txt="1" keep_view="0" type="0" title="航天分局" url="Ja3Yrn2c0EgvMDSb" blend="0"/>
+					<hotspot name="hotspot_3" style_id="new_spotd06" image_type="1" ath="152.05" atv="4.056" show_txt="1" keep_view="0" type="0" title="零六七航天基地" url="wsKU7B8EKGgHw3bj" blend="0"/>
+					<hotspot name="hotspot_4" style_id="new_spotd06" image_type="1" ath="-155.945" atv="3.601" show_txt="1" keep_view="0" type="0" title="航开路+神舟四路" url="OAczgKORhpnify6g" blend="0"/>
+					<hotspot name="hotspot_5" style_id="new_spotd06" image_type="1" ath="-143.312" atv="3.396" show_txt="1" keep_view="0" type="0" title="航拓路+神舟六路" url="AVO98CEkbuHWrQkz" blend="0"/>
+					<hotspot name="hotspot_6" style_id="new_spotd06" image_type="1" ath="-135.872" atv="4.95" show_txt="1" keep_view="0" type="0" title="航天寰宇大厦" url="jkO9jXlKZbxLTCmj" blend="0"/>
+					<hotspot name="hotspot_7" style_id="new_spotd06" image_type="1" ath="-117.463" atv="3.936" show_txt="1" keep_view="0" type="0" title="高速路韦曲收费站" url="Ib7UYGpS15gxaibJ" blend="0"/>
+				</hotspots>
+				<embeds/>
+				<sun/>
+			</pano>
+			<pano name="scene_jkO9jXlKZbxLTCmj">
+				<info pano_id="jkO9jXlKZbxLTCmj" title="航天寰宇大厦"/>
+				<view hlookat="-107.60157801546396" vlookat="1.4824072802103359" fov="95" fovtype="MFOV" maxpixelzoom="2" fovmin="70" fovmax="120" vlookatmin="-90" vlookatmax="90" autorotatekeepview="0" loadscenekeepview="0"/>
+				<start_image_pc/>
+				<start_image_mobile/>
+				<hotspots>
+					<hotspot name="hotspot_0" style_id="new_spotd05" image_type="1" ath="-3.307" atv="5.139" show_txt="1" keep_view="0" type="0" title="高速路韦曲收费站" url="Ib7UYGpS15gxaibJ" blend="0"/>
+					<hotspot name="hotspot_1" style_id="new_spotd05" image_type="1" ath="103.547" atv="1.304" show_txt="1" keep_view="0" type="0" title="揽月阁" url="anhJWPWCyKl8WTYW" blend="0"/>
+					<hotspot name="hotspot_2" style_id="new_spotd05" image_type="1" ath="161.968" atv="8.886" show_txt="1" keep_view="0" type="0" title="管委会" url="BV0ZxWJvFYUPH6pt" blend="0"/>
+					<hotspot name="hotspot_3" style_id="new_spotd05" image_type="1" ath="177.759" atv="9.29" show_txt="1" keep_view="0" type="0" title="航天分局" url="Ja3Yrn2c0EgvMDSb" blend="0"/>
+					<hotspot name="hotspot_4" style_id="new_spotd05" image_type="1" ath="169.186" atv="3.769" show_txt="1" keep_view="0" type="0" title="零六七航天基地" url="wsKU7B8EKGgHw3bj" blend="0"/>
+					<hotspot name="hotspot_5" style_id="new_spotd05" image_type="1" ath="-154.054" atv="3.52" show_txt="1" keep_view="0" type="0" title="航天大道+航天大道" url="JYU0NCvpxUlvfZGD" blend="0"/>
+					<hotspot name="hotspot_6" style_id="new_spotd05" image_type="1" ath="-126.182" atv="7.611" show_txt="1" keep_view="0" type="0" title="航开路+神舟四路" url="OAczgKORhpnify6g" blend="0"/>
+					<hotspot name="hotspot_7" style_id="new_spotd05" image_type="1" ath="-41.628" atv="6.479" show_txt="1" keep_view="0" type="0" title="航拓路+神舟六路" url="AVO98CEkbuHWrQkz" blend="0"/>
+				</hotspots>
+				<embeds/>
+				<sun/>
+			</pano>
+			<pano name="scene_Ja3Yrn2c0EgvMDSb">
+				<info pano_id="Ja3Yrn2c0EgvMDSb" title="航天分局"/>
+				<view hlookat="-107.70957350607995" vlookat="1.9591289961070664" fov="95" fovtype="MFOV" maxpixelzoom="2" fovmin="70" fovmax="120" vlookatmin="-90" vlookatmax="90" autorotatekeepview="0" loadscenekeepview="0"/>
+				<start_image_pc/>
+				<start_image_mobile/>
+				<hotspots>
+					<hotspot name="hotspot_0" style_id="new_spotd04" image_type="1" ath="-121.567" atv="9.95" show_txt="1" keep_view="0" type="0" title="航天大道+航天大道" url="JYU0NCvpxUlvfZGD" blend="0"/>
+					<hotspot name="hotspot_1" style_id="new_spotd04" image_type="1" ath="-63.798" atv="5.976" show_txt="1" keep_view="0" type="0" title="航开路+神舟四路" url="OAczgKORhpnify6g" blend="0"/>
+					<hotspot name="hotspot_2" style_id="new_spotd04" image_type="1" ath="165.811" atv="10.852" show_txt="1" keep_view="0" type="0" title="零六七航天基地" url="wsKU7B8EKGgHw3bj" blend="0"/>
+					<hotspot name="hotspot_3" style_id="new_spotd04" image_type="1" ath="61.654" atv="30.711" show_txt="1" keep_view="0" type="0" title="管委会" url="BV0ZxWJvFYUPH6pt" blend="0"/>
+					<hotspot name="hotspot_4" style_id="new_spotd04" image_type="1" ath="-0.607" atv="9.177" show_txt="1" keep_view="0" type="0" title="航天寰宇大厦" url="jkO9jXlKZbxLTCmj" blend="0"/>
+					<hotspot name="hotspot_5" style_id="new_spotd04" image_type="1" ath="79.941" atv="4.583" show_txt="1" keep_view="0" type="0" title="揽月阁" url="anhJWPWCyKl8WTYW" blend="0"/>
+					<hotspot name="hotspot_6" style_id="new_spotd04" image_type="1" ath="-4.494" atv="5.256" show_txt="1" keep_view="0" type="0" title="高速路韦曲收费站" url="Ib7UYGpS15gxaibJ" blend="0"/>
+					<hotspot name="hotspot_7" style_id="new_spotd04" image_type="1" ath="-49.723" atv="3.615" show_txt="1" keep_view="0" type="0" title="航拓路+神舟六路" url="AVO98CEkbuHWrQkz" blend="0"/>
+				</hotspots>
+				<embeds/>
+				<sun/>
+			</pano>
+		</panos>
+	</config>
+</krpano>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>警情分析</title>
+  <link href="../dist/css/zui.css?v=1.8" rel="stylesheet">
+  <link href="../dist/css/case.css" rel="stylesheet">
+  <style id="themeStyle"></style>
+
+  <link rel="shortcut icon" href="../docs/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../docs/favicon.ico" type="image/x-icon">
+
+  <link href="../dist/lib/datetimepicker/datetimepicker.min.css" rel="stylesheet">
+  <link href="../dist/lib/datagrid/zui.datagrid.min.css" rel="stylesheet">
+  <link href="../dist/lib/chosen/chosen.min.css" rel="stylesheet">
+
+  <!--[if lt IE 9]>
+    <script src="dist/lib/ieonly/html5shiv.js"></script>
+    <script src="dist/lib/ieonly/respond.js"></script>
+    <script src="dist/lib/ieonly/excanvas.js"></script>
+  <![endif]-->
+
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="cards">
+
+      <div class="col-md-4 col-sm-6 col-lg-3">
+        <div class="card card-actions" style="background-color: #83b8e2;">
+          <div class="infobox" style="background-color: #83b8e2;">
+            <div class="infobox-data">
+              <span class="infobox-data-number" id="total">0</span>
+              <div class="infobox-content" id="total_lable">接警总量</div>
+            </div>
+          </div>
+          <div class="card-icon pull-right">
+            <i class="icon icon-paste icon-3x"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6 col-lg-3">
+        <div class="card card-actions" style="background-color: #8acf9d;">
+          <div class="infobox" style="background-color: #8acf9d;">
+            <div class="infobox-data">
+              <span class="infobox-data-number" id="criminal">0</span>
+              <div class="infobox-content" id="criminal_lable">刑事案件</div>
+            </div>
+          </div>
+          <div class="card-icon pull-right">
+            <i class="icon icon-star icon-3x"></i>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+    <div class="panel">
+      <div class="panel-heading">
+        <span class="header">条件选择</span>
+        <div class="pull-right panel-actions" id="">
+          <button class="btn btn-sm btn-primary" type="button" id="previewModal">
+            <i class="icon icon-cloud-download"></i>
+            <small>导出</small>
+          </button>
+
+          <a href="#collapseExample" data-toggle="collapse" class="btn btn-sm btn-link">
+            <i class="icon icon-chevron-down"></i>&nbsp;
+            <small>更多查询</small>
+          </a>
+        </div>
+      </div>
+      <div class="panel-body" id="collapseExample">
+        <div class="row">
+          <div class="form-inline">
+            <div class="col-sm-6">
+              <span>选择单位:</span>
+              <label class="" id="dept">
+              
+            </label>
+            </div>
+          </div>
+        </div>
+        <div class="space"></div>
+        <div class="row">
+          <div class="form-inline">
+            <div class="col-sm-8">
+              <span>选择周期:</span>
+              <label class="radio-inline">
+                <input type="radio" id="week" name="period" value="1">周统计
+              </label>
+              <label class="radio-inline">
+                <input type="radio" checked id="month" name="period" value="2">月统计
+              </label>
+              <label class="radio-inline">
+                <input type="radio" id="quarter" name="period" value="3">季度统计
+              </label>
+              <label class="radio-inline">
+                <input type="radio" id="halfYear" name="period" value="4">半年统计
+              </label>
+              <label class="radio-inline">
+                <input type="radio" id="year" name="period" value="5">年统计
+              </label>
+            </div>
+            <div class="col-sm-4">
+              <form id="queryForm">
+                <lable class="checkbox-inline" id="_1" style="display:none;">
+                  <input class="form-control" style="width:100px;" id="week_widget" type="text" placeholder="请选择时间" readonly>
+                  <select id="sub_week" class="form-control" style="width:209px;">
+                  </select>
+                </lable>
+                <lable class="checkbox-inline" id="_2">
+                  <input class="form-control" style="width:100px;" id="month_widget" type="text" placeholder="请选择时间" readonly>
+                </lable>
+                <lable class="checkbox-inline" id="_3" style="display:none;">
+                  <input class="form-control" style="width:100px;" id="quarter_widget" type="text" placeholder="请选择时间" readonly>
+                  <select id="sub_quarter" class="form-control">
+                  </select>
+                </lable>
+                <lable class="checkbox-inline" id="_4" style="display:none;">
+                  <input class="form-control" style="width:100px;" id="half_widget" type="text" placeholder="请选择时间" readonly>
+                  <select id="sub_half" class="form-control">
+                  </select>
+                </lable>
+                <lable class="checkbox-inline" id="_5" style="display:none;">
+                  <input class="form-control" style="width:100px;" id="year_widget" type="text" placeholder="请选择时间" readonly>
+                </lable>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="space"></div>
+        <div class="row">
+          <div class="form-inline">
+            <div class="col-sm-6">
+              <span>选择方式:</span>
+              <label class="checkbox-inline">
+                <input type="checkbox" disabled checked name="mode" value="1">本期
+              </label>
+              <label class="checkbox-inline">
+                <input type="checkbox" name="mode" value="2">同比
+              </label>
+              <label class="checkbox-inline" id="mode_basis_lable">
+                <input type="checkbox" name="mode" value="3">环比
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="space"></div>
+        <div class="row">
+          <div class="form-inline">
+            <div class="col-sm-12">
+              <span>案件专项:</span>
+              <label class="" id="category_lable" >
+                <select id="category" name='category' data-placeholder="选择案件类别..." class="chosen-select form-control" tabindex="2" >
+                    
+                  </select>                  
+              </label>
+              <label class="" id="sub_category_lable" style="display:none;">
+                <select data-placeholder="选择刑事案件" class="chosen-select form-control" id="sub_category" tabindex="2" multiple style="display: none;">
+                  <option value="apple">盗窃民宅</option>
+                  <option value="banana">盗窃电动车</option>
+                </select>
+              </label>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <style>
+      .col-center-block {
+        float: none;
+        display: inline-block;
+        vertical-align: left;
+      }
+    </style>
+    <div class="modal fade" id="previewModal">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">×</span>
+              <span class="sr-only">关闭</span>
+            </button>
+            <h4 class="modal-title">选择导出数据</h4>
+          </div>
+          <div class="modal-body">
+            <div id="export_options" class=" col-center-block col-md-8 col-sm-offset-3 text-left">
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" id="preview">预览</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="heat_preview">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">×</span>
+              <span class="sr-only">关闭</span>
+            </button>
+            <h4 class="modal-title">案件分布</h4>
+          </div>
+          <div class="modal-body">
+            <img id="show_img" src="./js/heat/1quyu.jpg" />
+          </div>
+          <div class="modal-footer">
+            <ul class="pager" data-page="1" data-rec-total="9" id="pager">
+              <li>
+                <a class="pager-item" data-page="1" href="#page=1">1</a>
+              </li>
+              <li>
+                <a class="pager-item" data-page="2" href="#page=2">2</a>
+              </li>
+              <li>
+                <a class="pager-item" data-page="3" href="#page=3">3</a>
+              </li>
+              <li>
+                <a class="pager-item" data-page="4" href="#page=4">4</a>
+              </li>
+              <li>
+                <a class="pager-item" data-page="5" href="#page=5">5</a>
+              </li>
+              <li>
+                <a class="pager-item" data-page="6" href="#page=6">6</a>
+              </li>
+              <li>
+                <a class="pager-item" data-page="7" href="#page=7">7</a>
+              </li>
+              <li>
+                <a class="pager-item" data-page="8" href="#page=8">8</a>
+              </li>
+              <li>
+                <a class="pager-item" data-page="9" href="#page=9">9</a>
+              </li>
+              <li>
+                <a class="pager-item" data-page="10" href="#page=7">10</a>
+              </li>
+              <li>
+                <a class="pager-item" data-page="11" href="#page=8">11</a>
+              </li>
+              <li>
+                <a class="pager-item" data-page="12" href="#page=9">12</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="content" class="layer_notice">
+    </div>
+
+  </div>
+  <!-- jQuery (ZUI中的Javascript组件依赖于jQuery) -->
+  <script src="../assets/jquery.js?v=1.8"></script>
+  <!-- ZUI Javascript组件 -->
+  <script src="../dist/js/zui.min.js?v=1.8"></script>
+  <script src="../dist/lib/chart/zui.chart.min.js"></script>
+  <script src="../dist/plugins/echarts/echarts.js"></script>
+  <script src="../dist/plugins/echarts/shine.js"></script>
+  <script src="../dist/plugins/seajs/sea.js"></script>
+  <script src="../dist/plugins/seajs/seajs-text.js"></script>
+  <script src="../dist/plugins/seajs/handlebars-1.0.0.beta.6.js"></script>
+  <script src="../dist/plugins/axios/axios.min.js"></script>
+  <script src="../dist/plugins/laydate/laydate.js"></script>
+  <script src="../dist/plugins/layer/layer.js"></script>
+  <script src="../dist/plugins/bootbox/bootbox.min.js"></script>
+  <script src="../dist/plugins/babel/babel-browser.min.js"></script>
+  <script src="../dist/lib/datagrid/zui.datagrid.min.js"></script>
+  <script src="../dist/plugins/exports/jquery.base64.js"></script>
+  <script src="../dist/lib/chosen/chosen.min.js"></script>
+  <script type="text/javascript">
+    seajs.config({
+      base: "../dist/",
+      alias: {
+        "utilityForm": "utility/form.js"
+      },      
+      vars: {
+        requestFrontUrl: 'http://127.0.0.1/apollo-front/',
+      }
+    });
+    seajs.use('./js/case-stat.js');
+  </script>
+</body>
+
+</html>

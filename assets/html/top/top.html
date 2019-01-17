@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<title>顶部logo栏</title>
+		<link rel="stylesheet/less" type="text/css" href="css/style.less">
+		<link rel="stylesheet" type="text/css" href="../../../module/plugins/scrollbar/jquery.mCustomScrollbar.css">
+		<script type="text/javascript" src="../../../module/less/less-1.3.3.min.js"></script>
+		<script type="text/javascript" src="../../../module/jquery/jquery-1.8.1.min.js"></script>
+		<script type="text/javascript" src="../../../module/plugins/scrollbar/jquery.mCustomScrollbar.js"></script>
+		<script type="text/javascript" src="../../../module/plugins/scrollbar/minified/jquery.mousewheel-3.0.6.min.js"></script>
+		<script>
+			//判断ie版本选择加载angular,ie7及以下版本不兼容
+			if($.browser.msie){ 
+				if(Number($.browser.version)<9){
+					document.write('<script type="text/javascript" src="../../../module/angular/angular-1.2.4.js"><\/script>');
+				}else{
+					document.write('<script type="text/javascript" src="../../../module/angular/angular-1.4.3.min.js"><\/script>');
+				}
+			}else{
+				document.write('<script type="text/javascript" src="../../../module/angular/angular-1.4.3.min.js"><\/script>');
+			}
+		</script>
+		<!--<script type="text/javascript" src="js/topMain.js"></script>-->
+		<script type="text/javascript" src="js/topCtrl.js"></script>
+		<script>
+		$(function(){
+			showTime();
+			$("#userName").html(parent.window.userName);
+		});
+		</script>
+	</head>
+	<body onload="">
+		<div class="main_top_right">
+			<div class="main_top_right_middle" ng-app="MenusApp" ng-controller="MenusListCtrl">
+				<!--<div class="top-user"> 
+					<span id="userName"></span>
+					 &nbsp;|&nbsp;
+					<span id="date" ></span> &nbsp;|&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+				   				</div>-->
+				<div class="btn_menues" id="{{menu.id}}" ng-repeat="menu in menus" style="background:url(img/{{menu.name}}{{menu.screenValue}}.png) no-repeat center ;height: 60px;margin-top: 0px;" ng-class="{true:'menu_btn menu_btn_checked',false:'menu_btn'}[menu.show]" ng-click="menuBtnClick(menu)"><div class="menu_top">{{menu.name}}</div></div>
+			</div>
+		</div>
+		<!--<div class="main_top_bottomline"></div>-->
+	</body>
+</html>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>历史视频</title>
+    <link href="../../../scheduling/dist/css/zui.css?v=1.8" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../../config/common/camera/css/hisCamera.css" />
+</head>
+<body class="his">
+    <div class="mainContainer">
+       <div>
+            <div id="streamURL" class="" style="display: none;">
+                <div class="url-input">
+                    <input id="sURL" type="text" value="http://localhost/live?app=myapp&stream=1" disabled="" />
+                </div>
+            </div>
+        </div>
+        <div class="video-container">
+            <div>
+                <video id="videoElement" class="centeredVideo" >
+                    Your browser is too old which doesn't support HTML5 video.
+                </video>
+            </div>
+               <div class="ranger">
+            <input id="ranger" type="range" value="0" />
+        </div>
+        </div>
+        <div class="fluent-container hidden" id="f-container">
+        </div>
+        <div class="controls">
+            <button onclick="flv_reload()" class="critical"><i class="icon icon-repeat"></i></button>
+            <button id="speed" onclick="flv_speed()">x1.0</button>
+            <button id="live" style="display: none;" class="humble" onclick="flv_live()">Live:off</button>
+            <button onclick="flv_start()" class="critical"><i class="icon icon-play"></i></button>
+            <button onclick="flv_pause()" class="critical"><i class="icon icon-pause"></i></button> 
+            <!-- <button onclick="flv_destroy()">Destroy</button> -->
+            <!-- <input style="width:100px" type="text" name="seekpoint" /> -->
+            <input id="av_name" class="status" type="text" value="" disabled="" style="display: none;"/>
+            <input id="av_name2"  class="status" type="text" value="stream" disabled="" />
+            <button id="FullScreen" class="critical" onclick="FullScreen()" ><i class="icon icon-expand-full"></i></button>
+            <button id="exitFullscreen" class="critical" onclick="exitFullscreen()" style="display: none;"><i class="icon icon-collapse-full"></i></button>
+        </div>
+       <!-- <div class="clients">
+        <span>Online: </span> 
+        <div id="clients">
+            
+        </div>
+ 
+        </div>-->
+    </div>
+    	<script type="text/javascript" src="../../../config/common/camera/js/flv.js"></script>
+    <!-- <script src="./fluent.js"></script> -->
+    <!-- <script src="three.js"></script> -->
+    <script type="text/javascript" src="../../../module/jquery/jquery-1.8.1.min.js"></script>
+    <script>
+    var av_name;
+    var av_ticket;
+    var server_url;
+    var interval1, interval2;
+    var lastTime = -1;
+    var lastTime2 = -1;
+
+    function start_stream(name, ticket, url, flv_url) {
+        av_name = name;
+        av_ticket = ticket;
+        server_url = url;
+        document.getElementById('sURL').value = flv_url;
+        flv_load();
+        start_stat(); 
+        start_check();
+        $("#av_name").val(av_name);
+    }
+
+
+
+    function set_clients(clients) {
+        var all = $("<span></span>");
+        clients.forEach((el)=>{
+           var h =  $("<span></span>").addClass("client").attr("title",el.ip).html(el.alias);
+            all.append(h);
+        });
+          $("#clients").html(all);
+    }
+
+    var speed_arr =       [ 0, 1, 2, 3 ,2, 1, 0, -1, -2, -3, -2, -1];
+    var speed_value_arr = [ "1.0", "2.0", "4.0", "8.0" ,"4.0", "2.0", "1.0", "1/2", "1/4", "1/8", "1/4", "1/2"];
+    var cur_speed = 0;
+
+    function flv_speed(){
+        cur_speed = (cur_speed+1)%12;
+        var value = speed_arr[cur_speed];
+        var url = `${server_url}/stream/his/play?av_ticket=${av_ticket}&cmd=speed&value=${value}`;
+    
+          $.ajax({
+            url: url,
+            success: function(str) {
+                var res = JSON.parse(str);
+                if (res.res_code != 0) {
+                    cur_speed-=1;
+                    alert("更改速度失败！");
+                    return;
+                }
+                $("#speed").html(`x${speed_value_arr[cur_speed]}`);
+
+            }
+        });
+    }
+
+    function start_stat() {
+        setInterval(stat, 1000);
+    }
+
+    var last_rm = 0;
+    var last_push = 0;
+
+    function stat() {
+        var url = `${server_url}/stream/status?av_path=${av_ticket}`;
+        $.ajax({
+            url: url,
+            success: function(str) {
+                var res = JSON.parse(str);
+                if (res.res_code != 0) {
+                    check_stat($("#av_name"),-1);
+                    check_stat($("#av_name2"),-1);
+                    set_clients([]);
+                    return;
+                }
+
+
+                var rm = res.data.received_mounts;
+                var push = res.data.advanced.lib_status.working_mounts;
+                if (last_rm != 0) {
+                    check_stat($("#av_name"), rm - last_rm);
+                }
+                if(last_push != 0){
+                    check_stat($("#av_name2"), push - last_push);
+                }
+                last_rm = rm;
+                last_push = push;
+                set_clients(res.data.advanced.clients);
+
+                set_play(res.data.play);
+
+            }
+
+
+
+        });
+    }
+    var is_ranger_changing = false;
+
+    function set_play(data){
+        if(is_ranger_changing)
+            return;
+        $("#ranger").attr("max", data.last);
+        $("#ranger").attr("min", 0);
+        $("#ranger").attr("step", 0.1);
+        $("#ranger").val(data.current);
+    }
+    $("#ranger").change(val=>{
+        is_ranger_changing = true;
+        var value = $("#ranger").val()*1000;
+        var url = `${server_url}/stream/his/play?av_ticket=${av_ticket}&cmd=seek&value=${value}`;
+    
+          $.ajax({
+            url: url,
+            success: function(str) {
+                var res = JSON.parse(str);
+                if (res.res_code != 0) {
+                    cur_speed-=1;
+                    alert("更改播放位置失败！");
+                    return;
+                }
+             
+            },
+            complete: ()=>{is_ranger_changing = false;}
+        });
+    });
+
+    function check_stat( el, num){
+        if(num == -1) {
+             el.removeClass("green");
+             el.removeClass("yellow");
+            return;
+        }
+        if(num > 0) {
+             el.addClass("green");
+             el.removeClass("yellow");
+        } else {
+             el.addClass("yellow");
+             el.removeClass("green");
+
+        } 
+    }
+
+    function start_check() {
+
+        lastTime = -1;
+        lastTime2 = -1;
+        // interval1 = setInterval(flv_check, 5000);
+        interval2 = setInterval(flv_check2, 30000);
+    }
+
+    function stop_check() {
+        clearInterval(interval1);
+        clearInterval(interval2);
+    }
+
+
+    function flv_check() {
+        if (flvPlayer) {
+            console.info(av_name, "player check");
+
+            var now = flvPlayer.currentTime;
+            if (now - lastTime <= 0) {
+                console.warn(av_name, "player stopped recover===============================");
+                // flv_reload(); 
+
+                player_load();
+
+            }
+            lastTime = now;
+        }
+    }
+
+
+    function flv_check2() {
+        if (flvPlayer) {
+            console.info(av_name, "player check2");
+
+            var now = flvPlayer.currentTime;
+            if (now - lastTime2 <= 0 || flvPlayer.currentTime == 0) {
+                console.warn(av_name, "player stopped reload===============================");
+
+                flv_reload();
+                // player_load();
+            }
+            lastTime2 = now;
+        }
+    }
+
+    function player_load() {
+        if (flvPlayer) {
+            try {
+                lastTime = -1;
+                lastTime2 = -1;
+                // flvPlayer.pause(); 
+                flvPlayer.unload();
+                flvPlayer.load();
+                flv_start();
+            } catch (err) {
+
+                console.error(av_name, err, "player_load error catched===============================");
+
+            }
+        }
+    }
+
+    function stream_close() {
+        var url = `${server_url}/stream/close?av_ticket=${av_ticket}`;
+        $.ajax({
+            url: url,
+            success: function(str) {
+                flv_destroy();
+                stop_check();
+            }
+        });
+    }
+
+    var liveInterval;
+    var live = false;
+    function flv_live(){
+        live = !live;
+        if(live) {
+            stream_live();
+            liveInterval = setInterval(stream_live, 5000);
+        }else {
+            clearInterval(liveInterval);
+        }
+        $("#live").html(`Live:${live?'on':'off'}`);
+        $("#live").toggleClass("live");
+
+    }
+
+    function stream_live() {
+        var alias = "dashboard";
+        var ip = "";
+        var url = `${server_url}/stream/live?av_ticket=${av_ticket}&alias=${alias}&ip=${ip}`;
+        $.ajax({
+            url: url,
+            success: function(str) {
+             
+            }
+        });
+    }
+
+
+    var flvPlayer;
+
+
+
+    function flv_reload() {
+        try {
+            lastTime = -1;
+            lastTime2 = -1;
+            flv_destroy();
+            setTimeout(flv_load, 1000);
+        } catch (err) {
+
+            console.error(av_name, err, "flv_reload error catched===============================");
+
+        }
+    }
+
+    function flv_start() {
+
+        if (flvPlayer) {
+
+            flvPlayer.play();
+        }
+    }
+
+    function flv_pause() {
+
+        if (flvPlayer) {
+
+            flvPlayer.pause();
+        }
+    }
+
+    function flv_destroy() {
+        if (flvPlayer) {
+            flvPlayer.unload();
+            flvPlayer.detachMediaElement();
+            flvPlayer.destroy();
+        }
+        flvPlayer = null;
+    }
+
+    function flv_seekto() {
+        if (flvPlayer) {
+
+            var input = document.getElementsByName('seekpoint')[0];
+            flvPlayer.currentTime = parseFloat(input.value);
+        }
+    }
+
+    function flv_load() {
+        if (!flvjs.isSupported()) {
+            console.error(av_name, "not support===============================");
+
+            return;
+
+        }
+        var videoElement = document.getElementById('videoElement');
+        flvPlayer = flvjs.createPlayer({
+            type: 'flv',
+            isLive: true,
+            hasAudio: false,
+            hasVideo: true,
+            lazyLoad: false,
+            // accurateSeek: true,
+            // enableStashBuffer: true,
+            // stashInitialSize: 100,
+            // autoCleanupSourceBuffer: true,
+            // enableWorker: true,
+            url: document.getElementById('sURL').value
+        });
+        flvPlayer.attachMediaElement(videoElement);
+        flvPlayer.load();
+
+        flv_start();
+
+
+
+        flvPlayer.on(flvjs.Events.ERROR, () => {
+            console.warn(av_name, "ERROR reload===============================");
+
+            flv_reload();
+        });
+        // flvPlayer.on(flvjs.Events.LOADING_COMPLETE, () => {
+
+        //     console.warn(av_name, "LOADING_COMPLETE recover===============================");
+
+        //     player_load();
+        // });
+
+
+        flvjs.LoggingControl.enableAll = false; 
+    }
+    	//进入全屏
+function FullScreen() {
+	$("#exitFullscreen").show();
+	$("#FullScreen").hide();
+    var ele = document.documentElement;
+    if (ele .requestFullscreen) {
+        ele .requestFullscreen();
+    } else if (ele .mozRequestFullScreen) {
+        ele .mozRequestFullScreen();
+    } else if (ele .webkitRequestFullScreen) {
+        ele .webkitRequestFullScreen();
+    }
+}
+//退出全屏
+function exitFullscreen() {
+	$("#exitFullscreen").hide();
+	$("#FullScreen").show();
+    var de = document;
+    if (de.exitFullscreen) {
+        de.exitFullscreen();
+    } else if (de.mozCancelFullScreen) {
+        de.mozCancelFullScreen();
+    } else if (de.webkitCancelFullScreen) {
+        de.webkitCancelFullScreen();
+    }
+}
+    </script>
+</body>
+</html>
+<!-- 
+
+ffmpeg -re -i 2.raw -vcodec copy -acodec copy -f flv rtmp://localhost/myapp/1 
+http://localhost/live?app=myapp&stream=1 -->

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>绘制点、面</title>
+		<!--引入地图开发js包-->
+		<script type="text/javascript" src="./transformGcj02OrWgs84.js"></script>
+		<script type="text/javascript" exclude="iclient-classic" src="../../supermap/9D-leaflet/dist/include-classic.js"></script>
+		<script src="../assets/jquery.js?v=1.8"></script>
+	
+		<script type="text/javascript" src="./district.js"></script>
+		<!-- ZUI Javascript组件 -->
+		<script src="../dist/js/zui.min.js?v=1.8"></script>
+		<script src="../dist/plugins/laydate/laydate.js"></script>
+		<script src="../dist/plugins/layer/layer.js"></script>
+		<script src="../dist/lib/uploader/zui.uploader.min.js"></script>
+		<script src="../dist/plugins/axios/axios.min.js"></script>
+		<script src="../dist/plugins/seajs/sea.js"></script>
+		<script src="../dist/plugins/seajs/seajs-text.js"></script>
+		<script src="../dist/plugins/seajs/handlebars-1.0.0.beta.6.js"></script>
+		
+	</head>
+	<body style="position:absolute; top:0; bottom:0; left:0; right:0; margin:0; padding:0; overflow:hidden;">
+		<div style="position:absolute; top:10px; left:50px; z-index:3000;">
+			<input type="text" class="form-control" id="address" />
+			<input type='button' value="确定" onclick="ok()"/>
+			<input type='button' value="获取坐标" onclick="getPosition()"/>
+		</div>
+		<div id="map" style="margin:0 auto;width: 100%;height: 100%"></div>
+	</body>
+	<script>
+		var map, baseLayer, dragFeature,vecotrLayer;
+		var url = top.services.baseMap;
+		var x , y, position;
+		var alarmPosition = $('#alarmPosition',window.parent.document).val();
+		if('' == alarmPosition){
+			alarmPosition = "寰宇大厦";
+		}
+		var params = {
+                address: alarmPosition
+            };
+           
+		seajs.use('../app/common/ajax', function (ajax) {
+			ajax.post("map/info/resolve", params, function (response) {
+				var location = response.data.data.geocodes[0].location;
+				position =  location.split(',');
+				x = position[0];
+				y = position[1];
+				position =gcj02ToWgs84(Number(x),Number(y));
+				initMap();
+			});
+		});
+		function initMap(){
+		    //新建面矢量图层
+    		vecotrLayer = new SuperMap.Layer.Vector("drawVectorLayer");
+			//新建拖拽要素控件
+			dragFeature = new SuperMap.Control.DragFeature(vecotrLayer);
+			
+    		map = new SuperMap.Map("map", {
+    			controls: [
+    				new SuperMap.Control.Zoom(),
+    				new SuperMap.Control.Navigation(), 
+					dragFeature
+    			]
+    		});
+    		
+    		//初始化图层
+    		baseLayer = new SuperMap.Layer.TiledDynamicRESTLayer("baseLayer", url,
+    							{transparent: false, cacheEnabled:true}, {maxResolution:"auto"});
+    		baseLayer.events.on({"layerInitialized": addLayer});
+			//激活拖拽要素控件
+			dragFeature.activate();
+		};
+		
+		function addLayer() {
+			map.addLayers([baseLayer,vecotrLayer]);
+			//显示地图范围
+			map.setCenter(new SuperMap.LonLat(position.x , position.y), 1);
+			addVectorFeature(position);
+		}
+
+		//点击确定获取新的位置坐标
+		function ok(){
+			var params = {
+				address:$('#address').val()
+			};
+			seajs.use('../app/common/ajax', function (ajax) {
+                ajax.post("map/info/resolve", params, function (response) {
+                   	var location = response.data.data.geocodes[0].location;
+                    var position =  location.split(',');
+                    var x = position[0];
+					var y = position[1];
+					var new_position =gcj02ToWgs84(Number(x),Number(y));
+					map.setCenter(new SuperMap.LonLat(new_position.x , new_position.y), 1);
+					addVectorFeature(new_position);
+                });
+            });
+			
+		}
+
+		//添加标记点
+		function addVectorFeature(position){
+			vecotrLayer.removeAllFeatures();
+			var point = new SuperMap.Geometry.Point(position.x, position.y);
+			var feature = new SuperMap.Feature.Vector(point);
+			feature.style={
+				graphic: true,
+				externalGraphic: './tuding.png',
+				graphicWidth: 44,
+				graphicHeight: 33
+			};
+			vecotrLayer.addFeatures([feature]);
+		}
+
+		//获取标记点坐标
+		function getPosition(){
+			var feature = vecotrLayer.features[0];
+			var new_position = {
+				x: feature.geometry.x,
+				y: feature.geometry.y
+			};
+			
+			var gcjPosition = wgs84ToGcj02(new_position.x, new_position.y);
+			queryFeatureByGeometry(new_position.x, new_position.y);
+			var params = {
+				location : gcjPosition.x+','+gcjPosition.y
+			}
+			seajs.use('../app/common/ajax', function (ajax) {
+                ajax.post("map/info/reverse", params, function (response) {
+				   var a = response.data;
+				   var mapPosition = response.data.data.regeocode.formatted_address
+				   $('#mapPosition',window.parent.document).val(mapPosition);
+				   $('#mapLongitude',window.parent.document).val(new_position.x);
+				   $('#mapDimension',window.parent.document).val(new_position.y);
+                });
+			});
+		
+		}
+	</script>
+	
+</html>

@@ -1,0 +1,556 @@
+<div class="box-select">
+	<div class="police-select police-select1">
+		<a href="#" class="btn-police">警员</a>
+		<div class="content_wrap">  
+	        <div class="zTreeDemoBackground left treeScrollbar" >  
+	            <ul id="treePolice" class="ztree">  
+	            </ul>  
+	        </div>    
+	    </div>
+	</div>
+	<div class="police-select police-select2">
+		<a href="#" class="btn-police">车辆</a>
+		<div class="content_wrap">  
+	        <div class="zTreeDemoBackground left" >  
+	        	<div class="car-box">
+					<input type="text" class="car-ss" id="policeCarSeach"  placeholder="车牌号/部门名称...">
+					<button class="ss-btn" onclick="_rightResource.autoMatch()"><img src="../../config/common/rightResource/img/ss-col.png"></button>
+				</div>
+				<div class="scrollbarDiv treeScrollbar" id="treeScrollbar">
+		            <ul id="treePoliceCar" class="ztree">  
+		            </ul>  
+	            </div>
+	        </div>    
+	    </div>
+	</div>
+	<div class="police-select police-select3" >
+		<a href="#" class="btn-police">警用资源</a>
+		<div class="content_wrap">  
+	        <div class="zTreeDemoBackground left" id="scrollbar3" style="overflow:auto;">  
+	            <ul id="treePoliceRes" class="ztree ztreeRec">  
+	            	<!--<li>
+	            		<span class="rec"><input type="checkbox" id="gt" name="岗亭"/ data-img="gt.png"></span>	
+	            		<span class="rec"><img src="../../config/common/rightResource/img/gt.png"/></span>
+	            		<span class="rec">岗亭</span>
+	            	</li>-->
+	            	<li>
+	            		<span class="rec"><input type="checkbox" id="pcs" name="pcs" data-img="pcs.png"/></span>	
+	            		<span class="rec"><img src="../../config/common/rightResource/img/pcs.png"/></span>
+	            		<span class="rec">派出所</span>
+	            	</li>
+	            <!--	<li>
+	            		<span class="rec"><input type="checkbox" id="dzydp" name="电子诱导屏"/></span>	
+	            		<span class="rec"><img src="../../config/common/rightResource/img/dzydp.png"/></span>
+	            		<span class="rec">电子诱导屏</span>
+	            	</li>-->
+	            	<!--<li>
+	            		<span class="rec"><input type="checkbox" id="dzjc" name="电子警察" data-img="dzjc.png"/></span>	
+	            		<span class="rec"><img src="../../config/common/rightResource/img/dzjc.png"/></span>
+	            		<span class="rec">电子警察</span>
+	            	</li>-->
+	                <li>
+	            		<span class="rec"><input type="checkbox" id="dzwl" name="电子围栏" data-img="dzwl.png"/></span>	
+	            		<span class="rec"><img src="../../config/common/rightResource/img/dzwl.png"/></span>
+	            		<span class="rec">电子围栏</span>
+	            	</li>
+	            	<li>
+	            		<span class="rec"><input type="checkbox" id="bjz" name="校园报警终端" data-img="bjz.png"/></span>	
+	            		<span class="rec"><img src="../../config/common/rightResource/img/bjz.png"/></span>
+	            		<span class="rec">校园报警终端</span>
+	            	</li>
+	            	<!--<li>
+	            		<span class="rec"><input type="checkbox" id="qykzz" name="区域控制站"/></span>	
+	            		<span class="rec"><img src="../../config/common/rightResource/img/qykzz.png"/></span>
+	            		<span class="rec">区域控制站</span>
+	            	</li>-->
+	            	<!--<li>
+	            		<span class="rec"><input type="checkbox" id="" name="信号灯"/></span>	
+	            		<span class="rec"><img src="../../config/common/rightResource/img/xhd.png"/></span>
+	            		<span class="rec">信号灯</span>
+	            	</li>-->
+	            	<!--li>
+	            		<span class="rec"><input type="checkbox" id="xhj" name="信号机"/></span>	
+	            		<span class="rec"><img src="../../config/common/rightResource/img/xhj.png"/></span>
+	            		<span class="rec">信号机</span>
+	            	</li>-->
+	            </ul>  
+	        </div>    
+	    </div>
+	</div>
+	<div class="police-select police-select4">
+		<a href="#" class="btn-police">视频</a>
+		<div class="content_wrap">  
+	        <div class="zTreeDemoBackground left treeScrollbar" >  
+	            <ul id="treeVideo" class="ztree">  
+	            </ul>  
+	        </div>    
+	    </div>
+	</div>
+	<div class="police-select police-select5">
+		<a href="#" class="btn-police">重点区域</a>
+		<div class="content_wrap">  
+	        <div class="zTreeDemoBackground left treeScrollbar" >  
+	            <ul id="treeKeyArea" class="ztree">  
+	            </ul>  
+	        </div>    
+	    </div>
+	</div>
+	<div class="police-select police-select6">
+		<a href="#" class="btn-police">重点人员</a>
+		<div class="content_wrap">  
+	        <div class="zTreeDemoBackground left treeScrollbar">  
+	        	<ul id="zTreeKeyPersonnel" class="ztree">  
+	            </ul> 
+            </div>
+        </div>
+    </div>
+	<!-- 页面-->
+	<div id="flyscene"></div>
+		
+	<div class="police-select police-select7">
+		<a href="#" class="btn-police">兴趣点</a>
+		<div class="content_wrap">  
+	        <div class="zTreeDemoBackground left" id="interesPointScrollbar" >  
+	        	
+	          
+            </div>
+        </div>
+    </div>
+    <div class="police-select police-select8" style="display: none;">
+        <a href="#" class="btn-police" id="plot">动态标绘</a>
+        <div class="content_wrap">
+            <div class="zTreeDemoBackground left" id="scrollbar2" style="overflow-x:auto;width: 200px;">
+                <div class="div-plot">
+                    <button type="button" id="get-plantemps-btn" class="btn-plot">调取通用预案库</button>
+                </div>
+                <div id="sanwei" class="dongtaibiaohui" style="height: 194px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="guiji-panel" style="display: none;">
+	<span id="guijiImg" style="display: none;"></span>
+    <div class="guiji-panel-box">
+        <div class="left-panel-box">
+            <ul class="time-panel-box">
+                <li>
+                    <span>开始时间：</span>
+                    <span><input id="datetimepickerStart" type="text" class="ipt-panel"/></span>
+                </li>
+                <li>
+                    <span>结束时间：</span>
+                    <span><input id="datetimepickerEnd" type="text" class="ipt-panel"/></span>
+                </li>
+                <li>
+                    <span class="panel-btn" onclick="_rightResource.historyTrack.selectOrbit()">查询</span>
+                </li>
+            </ul>
+        </div>
+        <div class="right-panel-box">
+            <div class="right-panel-top">
+            	<div class="jingyuan-zs">
+            		<span id="nowName"></span>
+            	</div>
+                <span id="bfDate">00:00</span>/
+                <span id="totalDate">00:00</span>
+                <span>x<span id="sudu">1</span></span>
+                <span class="clert-guiji" onclick="_rightResource.historyTrack.closeOrbit()">x</span>
+            </div>
+            <div class="right-panel-ctn">
+                <div class="btm-col">
+                    <div class="time-col" style="width:0%">
+                        <span class="move-btn"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="right-panel-btm">
+                <div class="btn-pane-group">
+                    <!--<span class="kuaitui"><a href="javascript:void(0)" onClick="_rightResource.historyTrack.track(2)"></a></span>-->
+                    <span class="bofang"><a  href="javascript:void(0)" onClick="_rightResource.historyTrack.trackStart()"></a></span>
+                   <!-- <span class="zanting"><a  href="javascript:void(0)" onClick="_rightResource.mapEvent.historyTrack.trackPause()" ></a></span>-->
+                    <span class="tingzhi"><a href="javascript:void(0)" onClick="_rightResource.historyTrack.trackStop(this)"></a></span>
+                    <!--<span class="kuaijin"><a href="javascript:void(0)" onClick="_rightResource.historyTrack.track(1)"></a></span>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+	时间：2018-03-30
+	描述：视频播放器
+-->
+<div class="shipin-box">
+	 <div id="streamURL" style="display: none;">
+                <div class="url-input">
+                    <label for="sURL">Stream URL:</label>
+                    <input id="sURL" type="text" value="http://10.100.4.29/live?app=myapp&stream=1" />
+                    <button onclick="switch_mds()">Switch to MediaDataSource</button>
+                </div>
+                <div class="options">
+                    <input type="checkbox" id="isLive" onchange="saveSettings()" checked />
+                    <label for="isLive">isLive</label>
+                    <input type="checkbox" id="withCredentials" onchange="saveSettings()" />
+                    <label for="withCredentials">withCredentials</label>
+                    <input type="checkbox" id="hasAudio" onchange="saveSettings()"/>
+                    <label for="hasAudio">hasAudio</label>
+                    <input type="checkbox" id="hasVideo" onchange="saveSettings()" checked />
+                    <label for="hasVideo">hasVideo</label>
+                </div>
+            </div>
+    <div class="modal-title">
+        视频监控
+        <span onclick="_rightResource.video.closeVideoInfo()">x</span>
+    </div>
+    <div class="shipin-ctn ">
+        <div>
+            <video name="videoElement" class="centeredVideo" controls="controls" autoplay>
+                Your browser is too old which doesn't support HTML5 video.
+            </video>
+        </div>
+      <!-- <img src="../../config/common/rightResource/img/sp.jpg" style="width:100%;height:100%;" />-->
+    </div>
+   <!-- <a href="javascript:void(0)" style="" class="modal-ctn-btn modal-ctn-btn-col" onclick="flv_start()">播放</a>
+    <a href="javascript:void(0)" class="modal-ctn-btn modal-ctn-btn-col" onclick="flv_pause()">暂停</a>-->
+    <div class="shipin-btm">
+        <div class="left-sp">
+            <ul class="direction">
+                <li onclick="_rightResource.video.pitch('up')"><img src="../../config/common/rightResource/img/control-up.png" /></li>
+                <li onclick="_rightResource.video.direction('left')"><img src="../../config/common/rightResource/img/control-left.png" /></li>
+                <li onclick="_rightResource.video.direction('right')"><img src="../../config/common/rightResource/img/control-right.png" /></li>
+                <li onclick="_rightResource.video.and('leftUp')"><img src="../../config/common/rightResource/img/control-leftUp.png" /></li>
+                <li><img src="../../config/common/rightResource/img/control-center.png" /></li>
+                <li onclick="_rightResource.video.and('leftDown')"><img src="../../config/common/rightResource/img/control-leftDown.png" /></li>
+                <li onclick="_rightResource.video.and('rightDown')"><img src="../../config/common/rightResource/img/control-rightDown.png" /></li>
+                <li onclick="_rightResource.video.and('rightUp')"><img src="../../config/common/rightResource/img/control-rightUp.png" /></li>
+                <li onclick="_rightResource.video.pitch('down')"><img src="../../config/common/rightResource/img/control-down.png" /></li>
+            </ul>
+        </div>
+        <div class="ctn-sp">
+            <ul>
+               <!-- <li>
+                    <span><img src="../../config/common/rightResource/img/add.png"/></span>
+                    <span>速度</span>
+                    <span><img src="../../config/common/rightResource/img/subtract.png"/></span>
+                </li>-->
+                <li>
+                    <span><img src="../../config/common/rightResource/img/add.png"/></span>
+                    <span>光圈</span>
+                    <span><img src="../../config/common/rightResource/img/subtract.png"/></span>
+                </li>
+                <li>
+                    <span><img src="../../config/common/rightResource/img/add.png"/></span>
+                    <span>焦距</span>
+                    <span><img src="../../config/common/rightResource/img/subtract.png"/></span>
+                </li>
+                <li>
+                    <span><img src="../../config/common/rightResource/img/add.png"/></span>
+                    <span>焦点</span>
+                    <span><img src="../../config/common/rightResource/img/subtract.png"/></span>
+                </li>
+            </ul>
+        </div>
+        <div class="rit-sp">
+        	视频加载中...
+          <!--  <div><img src="../../config/common/rightResource/img/1.png" /></div>
+            <div><img src="../../config/common/rightResource/img/2.png" /></div>
+            <div><img src="../../config/common/rightResource/img/4.png" /></div>
+            <div><img src="../../config/common/rightResource/img/narrow.png" /></div>-->
+        </div>
+    </div>
+</div>
+<!--
+	时间：2018-04-03
+	描述：飞行按钮样式
+-->
+<!--onmousedown="_rightResource.fly.mouseDown(this,event)" onmousemove="_rightResource.fly.mouseMove(event)" 
+	onmouseup="mouseUp(event)"  title="点击拖动"-->
+<div class="fly-panel" id="mov" data-toggle="tooltip" data-placement="top"  >
+    <div class="fly-panel-box">
+        <div class="right-panel-top">
+            <span class="clert-guiji" style="height: 10px;color:#3387dd;" 
+            	data-toggle="tooltip" data-placement="top"  title="关闭" id="closeFly">✖</span>
+        </div>
+        <div class="flytitle"></div>
+        <div class="btn-pane-group btn-fly-group">
+            <span class="button black" id="play" data-toggle="tooltip" data-placement="top"  title="开始飞行"></span>
+            <span class="button black" id="pause" data-toggle="tooltip" data-placement="top"  title="暂停飞行"></span>
+            <span class="button black" id="stop" data-toggle="tooltip" data-placement="top"  title="停止飞行"></span>
+        </div>
+    </div>
+</div>
+<script id="policePopup" type="text/html">
+    <div id="popup" class="mypopup">
+        <div class="popup02-left-box">
+            <div class="modal-title">
+                警员信息
+                <span id="guanbi" onclick="_rightResource.mapEvent.mapInit.pluginsAPI.popup.clearPopup()">x</span>
+            </div>
+            <div class="popup_middle">
+                <table cellspacing="0" class="tab tab-renkou" id="tab-danwei">
+                    <tr>
+                        <td>编号：</td>
+                        <td>{{content.number}}</td>
+                    </tr>
+                    <tr>
+                        <td>姓名：</td>
+                        <td>{{content.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>所属单位：</td>
+                        <td>{{content.unit}}</td>
+                    </tr>
+                    <tr>
+                        <td>位置：</td>
+                        <td>{{content.seat}}</td>
+                    </tr>
+                    <tr>
+                        <td>时间：</td>
+                        <td>{{content.time}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-bottom-operate" data-name="警员" data-value="{{content.name}}" onclick="_rightResource.historyTrack.openOrbit(this,'{{content.id}}','map-police-gj')">
+                <a href="javascript:void(0)" class="modal-ctn-btn modal-ctn-btn-col" style="float: right;margin-right: 20px;">轨迹</a>
+            </div>
+            <div class="popup_bottom"></div>
+        </div>
+    </div>
+</script>
+<script id="policeCarPopup" type="text/html">
+    <div id="popup" class="mypopup">
+        <div class="popup02-left-box">
+            <div class="modal-title">
+            	    警车信息
+                <span id="guanbi" onclick="_rightResource.mapEvent.mapInit.pluginsAPI.popup.clearPopup()">x</span>
+            </div>
+            <div class="popup_middle">
+                <table cellspacing="0" class="tab tab-renkou" id="tab-danwei">
+                    <tr>
+                        <td>车牌号：</td>
+                        <td>{{content.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>型号：</td>
+                        <td>{{content.type}}</td>
+                    </tr>
+                    <tr>
+                        <td>所属单位：</td>
+                        <td>{{content.unit}}</td>
+                    </tr>
+                    <tr>
+                        <td>当前位置：</td>
+                        <td>{{content.seat}}</td>
+                    </tr>
+                    <tr>
+                        <td>时间：</td>
+                        <td>{{content.time}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-bottom-operate" data-name="车辆" data-value="{{content.name}}" onclick="_rightResource.historyTrack.openOrbit(this,'{{content.id}}','map-police-car-gj')">
+                <a href="javascript:void(0)" class="modal-ctn-btn modal-ctn-btn-col" style="float: right;margin-right: 20px;">轨迹</a>
+            </div>
+            <div class="popup_bottom"></div>
+        </div>
+    </div>
+</script>
+<script id="videoPopup" type="text/html">
+    <div id="popup" class="mypopup">
+        <div class="popup02-left-box">
+            <div class="modal-title">
+                	摄像头信息
+                <span id="guanbi" onclick="_rightResource.video.closeVideoInfo()">x</span>
+            </div>
+            <div class="popup_middle">
+                <table cellspacing="0" class="tab tab-renkou" id="tab-danwei">
+                    <tr>
+                        <td>设备编号：</td>
+                        <td>{{content.number}}</td>
+                    </tr>
+                    <tr>
+                        <td>类型：</td>
+                        <td>{{content.cameraType}}</td>
+                    </tr>
+                    <tr>
+                        <td>位置：</td>
+                        <td>{{content.address}}</td>
+                    </tr>
+                   <!-- <tr>
+                        <td>时间：</td>
+                        <td>{{content.time}}</td>
+                    </tr>-->
+                </table>
+            </div>
+            <div class="modal-bottom-operate">
+            	<div class="ksy">
+            		<span><input type="checkbox" id="ksyfx" name="ksy"></span>
+            		<span>可视域摄像头</span>
+            	</div>
+                <a href="javascript:void(0)" class="modal-ctn-btn modal-ctn-btn-col" style="float: right;margin-right: 20px;"  onclick="_rightResource.video.openVideo('{{content.dataAttr}}')">查看视频</a>
+            </div>
+           <!-- <div class="jilu-tiao" style="display: none;">
+            	共有特征记录<span>6</span>条
+            </div>-->
+            <div class="popup_bottom"></div>
+        </div>
+    </div>
+</script>
+<script id="policeResPopup" type="text/html">
+    <div id="popup" class="mypopup">
+        <div class="popup02-left-box">
+            <div class="modal-title">
+                {{content.NAME}}
+                <span id="guanbi" onclick="_rightResource.mapEvent.mapInit.pluginsAPI.popup.clearPopup()">x</span>
+            </div>
+            <div class="popup_middle">
+                <table cellspacing="0" class="tab tab-renkou" >
+                    <tr>
+                        <td>类型：</td>
+                        <td>{{content.TYPE}}</td>
+                    </tr>
+                    <tr>
+                        <td>名称：</td>
+                        <td>{{content.NAME}}</td>
+                    </tr>
+                    <tr>
+                        <td>位置：</td>
+                        <td>{{content.ADDRESS}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="popup_bottom"></div>
+        </div>
+    </div>
+</script>
+<script id="XQDPopup" type="text/html">
+    <div id="popup" class="mypopup">
+        <div class="popup02-left-box">
+            <div class="modal-title">
+                {{content.typeName}}
+                <span id="guanbi" onclick="_rightResource.mapEvent.mapInit.pluginsAPI.popup.clearPopup()">x</span>
+            </div>
+            <div class="popup_middle" style="height: 190px;overflow: auto;" id="interesPointDetail">
+                <table class="tab-detail">
+                   <tr>
+						<td>编号</td>
+						<td>{{content.no}}</td>
+					</tr>
+					<tr>
+						<td>名称</td>
+						<td>{{content.name}}</td>
+					</tr>
+					<tr>
+						<td>类型</td>
+						<td>{{content.typeName}}</td>
+					</tr>
+					<tr>
+						<td>地址</td>
+						<td>{{content.address}}</td>
+					</tr>
+					{{if content.classify == "九小场所" || content.classify == "单位"}} 
+					<tr>
+						<td>负责人</td>
+						<td>{{content.chargeName}}</td>
+					</tr>
+					<tr>
+						<td>负责人电话</td>
+						<td>{{content.telephone}}</td>
+					</tr>
+					<tr>
+						<td>身份证</td>
+						<td>{{content.idCard}}</td>
+					</tr>
+					{{if content.classify != "单位"}} 
+					<tr>
+						<td>是否签订责任书</td>
+						<td>{{if content.isSign==1}}
+						是
+						{{else}}
+						否
+						{{/if}}
+						</td>
+					</tr>
+					<tr>
+						<td>从业人员（人）</td>
+						<td>{{content.practitioners}}</td>
+					</tr>
+					<tr>
+						<td>城中村名称</td>
+						<td>{{content.village}}</td>
+					</tr>
+					{{/if}} 	
+				{{/if}} 
+					<tr>
+						<td>备注</td>
+						<td>{{content.remarks}}</td>
+					</tr>
+                </table>
+            </div>
+            <div class="popup_bottom"></div>
+        </div>
+    </div>
+</script>
+<script id="keyPersonnelPopup" type="text/html">
+    <div id="popup" class="mypopup">
+        <div class="popup02-left-box">
+            <div class="modal-title">
+               	 重点人员
+                <span id="guanbi" onclick="_rightResource.mapEvent.mapInit.pluginsAPI.popup.clearPopup()">x</span>
+            </div>
+            <div class="popup_middle" >
+                <table cellspacing="0" class="tab tab-renkou" >
+                   <tr>
+						<td>姓名</td>
+						<td>{{content.NAME}}</td>
+					</tr>
+					<tr>
+						<td>联系方式</td>
+						<td>{{content.IPHONE}}</td>
+					</tr>
+					<tr>
+						<td>住址</td>
+						<td>{{content.ADDRESS}}</td>
+					</tr>
+					<tr>
+						<td>所属分局派出所</td>
+						<td>{{content.PARENTORG}}{{content.ORG}}</td>
+					</tr>
+					<tr>
+						<td>社区民警</td>
+						<td>{{content.COMMUNITYPOLICE}}</td>
+					</tr>
+                </table>
+            </div>
+            <div class="popup_bottom"></div>
+        </div>
+    </div>
+</script>
+<script id="bjzPopup" type="text/html">
+    <div id="popup" class="mypopup">
+        <div class="popup02-left-box">
+            <div class="modal-title">
+               	校园报警终端
+                <span id="guanbi" onclick="_rightResource.mapEvent.mapInit.pluginsAPI.popup.clearPopup()">x</span>
+            </div>
+            <div class="popup_middle" >
+                <table cellspacing="0" class="tab tab-renkou" >
+                   <tr>
+						<td>编号</td>
+						<td>{{content.no}}</td>
+					</tr>
+					<tr>
+						<td>类型</td>
+						<td>{{content.cameraType}}</td>
+					</tr>
+					<tr>
+						<td>地址</td>
+						<td>{{content.address}}</td>
+					</tr>
+                </table>
+            </div>
+             <a href="javascript:void(0)" class="modal-ctn-btn modal-ctn-btn-col" style="float: right;margin-right: 20px;  margin-bottom: 10px;"  onclick="_rightResource.video.openVideo('{{content.dataAttr}}')">查看视频</a>
+            <div class="popup_bottom"></div>
+        </div>
+    </div>
+</script>

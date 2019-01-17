@@ -1,0 +1,257 @@
+/**************新建分组 gzq*************/
+
+.g-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+}
+
+.box-gmodal {
+    width: 300px;
+    min-height: 210px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -150px;
+    background: #fff;
+}
+
+.gmodal-title {
+    height: 30px;
+    line-height: 30px;
+    background: #34649e;
+    color: #fff;
+    text-indent: 1em;
+    font-size: 12px;
+    position: relative;
+}
+
+.gmodal-ctnt div span:nth-child(1) {
+    width: 80px;
+    float: left;
+    padding: 0;
+    line-height: 24px;
+}
+
+.gmodal-ctnt div span textarea {
+    resize: none;
+    min-width: 70px;
+    min-height: 50px;
+}
+
+.gmodal-ctnt div {
+    overflow: hidden;
+    padding-top: 15px;
+}
+
+.gmodal-tj-btn {
+    display: inline-block;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: #2d69a8;
+    font-size: 12px;
+    border-radius: 4px;
+    color: #fff;
+    float: right;
+    margin: 10px;
+    cursor: pointer;
+    margin-right: 32px;
+}
+
+.gmodal-ctnt {
+    width: 100%;
+    margin: 10px auto 0;
+    font-size: 14px;
+}
+
+.modal-clear {
+    float: right;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.gmodal-tab{
+	font-size: 12px;
+	padding:0 10px;
+	width: 100%;
+}
+.gmodal-tab td:nth-child(1){
+	width:105px;
+	line-height: 20px;
+	height:20px;
+	text-align: right;
+}
+.gmodal-tab td:nth-child(2){
+	width:175px !important;
+	line-height: 35px;
+}
+.gmodal-tab tr td{
+	padding-right:10px;
+}
+.gmodal-tab input{
+	width: 160px;
+	height:20px;
+}
+.gmodal-tab select {
+    width: 163px;
+    height: 28px;
+    margin: 0;
+    padding: 0;
+}
+
+/**********通用预案库**********948X660 44*/
+
+.g-modal .box-modal {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 310px;
+    left: 46%;
+    margin-top: -310px;
+    margin-left: -400px;
+    background: #fff;
+}
+
+.g-modal .box-modal .modal-title {
+    width: 98%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    text-align: left;
+    padding-left: 2%;
+    position: relative;
+}
+
+.g-modal .plans-box-modal .modal-content {
+    padding: 0;
+    background-color: #F0F0F0;
+    width: 100%;
+    height: 100%;
+}
+
+.g-modal .plans-box-modal .modal-content .select-box {
+    display: block;
+    width: 100%;
+    padding: 3% 3% 0;
+    float: none;
+}
+
+.g-modal .plans-box-modal .modal-content .plantemp-list {
+    margin-top: 20px;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+}
+
+.g-modal .footer {
+    width: 100%;
+    height: 60px;
+    background-color: #F0F0F0;
+}
+
+.g-modal .footer span {
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.g-modal .plans-box-modal .modal-content .plantemp-list .plan-img {
+    display: inline-block;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.g-modal .plans-box-modal .modal-content .plantemp-list .plan-img span {
+    width: 100%;
+    display: inline-block;
+    float: left;
+    text-align: center;
+}
+
+.g-modal .plans-box-modal .modal-content .plantemp-list ul {
+    display: inline-block;
+    margin: 3% 0 0 3%;
+}
+
+.g-modal .plans-box-modal .modal-content .plantemp-list li {
+    display: inline-block;
+    margin: 2.8px 0.8%;
+    width: 30%;
+    cursor: pointer;
+}
+
+.g-modal .plans-box-modal .modal-content .plantemp-list img {
+    vertical-align: middle;
+}
+
+.g-modal .plans-box-modal .modal-content .plantemp-list .img-thumbnail {
+    display: inline-block;
+    max-width: 100%;
+    /*height: 155px;*/
+    padding: 4px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+
+
+/**********打印面板**********948X660 44*/
+
+.g-modal .planimg-box-modal .modal-content {
+    padding: 0;
+    background-color: #F0F0F0;
+    width: 100%;
+    height:
+}
+
+.g-modal .planimg-box-modal .modal-content .planimg {
+    margin-top: 20px;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+}
+
+.g-modal .planimg-box-modal .modal-content .planimg img {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+}
+
+
+.g-modal .center {
+    display: block;
+    width: 32px;
+    height: 32px;
+    margin: 0 auto;
+    margin-top: 200px;
+}
+
+.plan-item {
+    background-color: #f0f6ff;
+}
+
+.plan-item p input {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+}
+
+
+.selected {
+    background-color: #f0f0f0;
+}
+

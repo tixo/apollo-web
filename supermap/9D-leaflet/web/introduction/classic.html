@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>iClient Classic 产品介绍</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <script type="text/javascript" include='g6,iclient8c,mapv,iclient9-classic,isIntroduction'
+            src="../js/include.js"></script>
+</head>
+<body class="hold-transition skin-blue">
+
+<!--顶部导航-->
+<header class="header-wrapper main-header icl-header"></header>
+<script>
+    var identification = {
+        name: "iClient Classic"
+    };
+    var navigation = {
+        nav: {
+            title: "SuperMap iClient 9D",
+            version: "",
+            path: "../"
+        }
+    };
+    utils.loadTemplate(".icl-header", "../template/header.html", navigation);
+</script>
+<!--顶部导航 end-->
+
+<!--内容区-->
+<div class="container icl-docs-container">
+    <div class="row">
+        <!--左侧导航-->
+        <div class="col-md-3" role="complementary">
+            <nav class="icl-docs-sidebar hidden-print hidden-xs hidden-sm affix-top">
+                <ul class="nav icl-docs-sidenav">
+                    <li><a href="#introduce">产品介绍</a>
+
+                    </li>
+                    <li><a href="#download">下载</a>
+
+                    </li>
+
+                    <li><a href="#guide">开发指南</a>
+                        <ul class="nav">
+                            <li><a href="#update">iClient 8C 升级</a></li>
+                        </ul>
+                        <ul class="nav">
+                            <li><a href="#entry">快速入门</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#modules">模块说明</a>
+
+                    </li>
+                    <li><a href="#dependence">相关依赖</a>
+
+                    </li>
+                    <li><a href="#license">许可说明</a>
+
+                    </li>
+                </ul>
+                <a class="back-to-top" href="#top">
+                    返回顶部
+                </a>
+            </nav>
+        </div>
+        <!--右侧内容区-->
+        <div class="col-md-9" id="main-content" role="main">
+            <div class="icl-docs-header">
+                <h1 class="product">SuperMap iClient Classic</h1>
+            </div>
+            <div class="section icl-docs-section">
+
+                <h2 id="introduce" class="section-title">产品介绍</h2>
+                <p class="lead">SuperMap iClient Classic 是一套基于SuperMap iClient 8C(2017) for
+                    JavaScript的GIS客户端应用程序开发工具，通过它用户可以在SuperMap iClient 8C(2017) for JavaScript的基础上使用最新的SuperMap服务功能。
+                </p>
+                <p class="lead">GitHub托管地址：<a href="https://github.com/SuperMap/iClient-JavaScript/tree/master/src/classic"
+                                              target="_blank">https://github.com/SuperMap/iClient-JavaScript/tree/master/src/classic</a>
+                </p>
+                <p class="lead">OSChina托管地址：<a href="https://gitee.com/isupermap/iClient9/tree/master/src/classic"
+                                               target="_blank">https://gitee.com/isupermap/iClient9/tree/master/src/classic</a>
+                </p>
+                <p class="lead">更多内容请参考：<a href="http://iclient.supermap.io/web/libs/iclient8c/index.html"
+                                           target="_blank">SuperMap iClient 8C(2017) for JavaScript产品介绍</a>
+                </p>
+            </div>
+
+            <div class="section icl-docs-section">
+                <h2 id="download" class="section-title">下载</h2>
+                <div style="text-align:center;margin:0 auto;margin-top: 30px">
+                    <a target="_blank"
+                       href="../download/Download.html"
+                       class="btn btn-outline-inverse btn-lg">进入下载页</a>
+                </div>
+            </div>
+
+            <div class="section icl-docs-section">
+                <h2 id="guide" class="section-title">开发指南</h2>
+                <div class="section section-level-1">
+                    <p class="lead"></p>
+                    <h3 id="update" class="section-title">iClient 8C 升级</h3>
+                    <p class="lead">本章节主要介绍如何让SuperMap iClient 8C(2017) for JavaScript使用最新的SuperMap服务功能。</p>
+                    <div class="section section-level-2">
+                        <p>首先引入SuperMap iClient 8C(2017) for JavaScript(<a
+                                href="https://github.com/SuperMap/iClient-JavaScript/tree/master/libs/iclient8c"
+                                target="_blank">下载地址</a>)</p>
+                        <figure class="highlight">
+                            <pre class="javascript"><code class="html">&lt;script type=&quot;text/javascript&quot; src=&quot;http://iclient.supermap.io/web/libs/iclient8c/libs/SuperMap.Include.js&quot;&gt;&lt;/script&gt;</code></pre>
+                        </figure>
+                        <p>引入iclient-classic.js 或 iclient-classic.min.js使SuperMap iClient 8C(2017) for
+                            JavaScript产品能使用最新的SuperMap服务功能</p>
+                        <figure class="highlight">
+                            <pre class="javascript"><code class="html">&lt;script type=&quot;text/javascript&quot; src=&quot;http://iclient.supermap.io/dist/iclient-classic.js&quot;&gt;&lt;/script&gt;</code></pre>
+                        </figure>
+                    </div>
+                    <h3 id="entry" class="section-title">快速入门</h3>
+                    <p class="lead">在完成SuperMap iClient 8C(2017) for
+                        JavaScript升级以后，下面介绍如何使用SuperMap iClient Classic进行快速开发：</p>
+                    <div class="section section-level-2">
+                        <p>引入相关js文件</p>
+                        <figure class="highlight">
+                            <pre class="javascript"><code class="html">&lt;script type="text/javascript" src="http://iclient.supermap.io/web/libs/iclient8c/libs/SuperMap.Include.js"&gt;&lt;/script&gt;</code></pre>
+                            <pre class="javascript"><code class="html">&lt;script type="text/javascript" src="http://mapv.baidu.com/build/mapv.js"&gt;&lt;/script&gt;</code></pre>
+                            <pre class="javascript"><code class="html">&lt;script type=&quot;text/javascript&quot; src=&quot;http://iclient.supermap.io/dist/iclient-classic.js&quot;&gt;&lt;/script&gt;</code></pre>
+                        </figure>
+                    </div>
+                    <div class="section section-level-2">
+                        <p style="margin-top: 19px">将 iServer 发布的地图加载至SuperMap iClient 8C(2017) for
+                            JavaScript的 map 中：</p>
+                        <figure class="highlight">
+                        <pre class="javascript"><code>var map = new SuperMap.Map("map", {
+	controls: [
+        new SuperMap.Control.Attribution(),
+        new SuperMap.Control.ScaleLine(),
+        new SuperMap.Control.Zoom(),
+        new SuperMap.Control.Navigation({
+             dragPanOptions: {
+                enableKinetic: true
+            }
+        })]
+});
+//此处省略数据构造过程。
+var mapvLayer = new SuperMap.Layer.MapVLayer("mapv", {dataSet: dataSet, options: options});
+map.addLayer(mapvLayer);<a href="../../examples/classic/editor.html#mapVLayerHoneycomb"
+                           style="font-size: 10px;float:right">查看源码&nbsp;&raquo;</a></code></pre>
+                        </figure>
+                        <p>运行效果</p>
+                        <div id="map" style="margin:0 auto;width: 100%;height:300px"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="section icl-docs-section">
+                <h2 id="modules" class="section-title">模块说明</h2>
+                <p class="lead"></p>
+                <div class="highlight">
+                    <div id="moduleIntro"></div>
+                </div>
+            </div>
+            <div class="section icl-docs-section">
+                <h2 id="dependence" class="section-title">相关依赖</h2>
+                <!--相关依赖-->
+                <div class="logos">
+                    <div class="col-md-6 col-sm-6 bundle text-center bundle-region bundle-region-hl">
+                        <div class="bundle-wrapper">
+                            <a href="http://iclient.supermap.io/web/libs/iclient8c/index.html" target="_blank">
+                                <img src="../img/iclient-blue.png" style="height: 50px"/>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 bundle text-center bundle-region bundle-region-hl">
+                        <div class="bundle-wrapper">
+                            <a href="http://mapv.baidu.com/" target="_blank">
+                                <img style="height:50px" src="../img/lib/MapV.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--相关依赖end-->
+            </div>
+            <div class="section icl-docs-section">
+                <h2 id="license" class="section-title">许可说明</h2>
+                <a href="https://github.com/SuperMap/iClient-JavaScript/blob/master/LICENSE" target="_blank">
+                    <p class="lead">Apache License 2.0</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--内容区 end-->
+
+<!--footer-->
+<footer class="icl-footer"></footer>
+<script>
+    utils.loadTemplate(".icl-footer", "../template/footer.html");
+</script>
+<!--footer end-->
+
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript">
+    var host = window.isLocal ? window.server : "http://support.supermap.com.cn:8090";
+    var map, baseLayer, mapvLayer,
+        url = host + "/iserver/services/map-china400/rest/maps/China_4326";
+
+    init();
+
+    function init() {
+        if (!document.createElement('canvas').getContext) {
+            alert('您的浏览器不支持 canvas，请升级');
+            return;
+        }
+
+        map = new SuperMap.Map("map", {
+            controls: [
+                new SuperMap.Control.Attribution(),
+                new SuperMap.Control.ScaleLine(),
+                new SuperMap.Control.Zoom(),
+                new SuperMap.Control.Navigation({
+                    dragPanOptions: {
+                        enableKinetic: true
+                    }
+                })]
+        });
+        baseLayer = new SuperMap.Layer.TiledDynamicRESTLayer("China", url, {
+            transparent: true,
+            cacheEnabled: true
+        }, {maxResolution: "auto"});
+        baseLayer.events.on({"layerInitialized": addLayer});
+    }
+
+    function addLayer() {
+        map.addLayers([baseLayer]);
+        map.setCenter(new SuperMap.LonLat(104, 34.7), 2);
+        createMapVLayer();
+    }
+
+    //示例数据来源为百度MapV的加偏数据，iClient9未做纠偏处理
+    function createMapVLayer() {
+        var randomCount = 1000;
+
+        var data = [];
+
+        var citys = ["北京", "天津", "上海", "重庆", "石家庄", "太原", "呼和浩特", "哈尔滨", "长春", "沈阳", "济南",
+            "南京", "合肥", "杭州", "南昌", "福州", "郑州", "武汉", "长沙", "广州", "南宁", "西安", "银川", "兰州",
+            "西宁", "乌鲁木齐", "成都", "贵阳", "昆明", "拉萨", "海口"];
+
+        // 构造数据
+        while (randomCount--) {
+            var cityCenter = mapv.utilCityCenter.getCenterByCityName(citys[parseInt(Math.random() * citys.length)]);
+            data.push({
+                geometry: {
+                    type: 'Point',
+                    coordinates: [cityCenter.lng - 2 + Math.random() * 4, cityCenter.lat - 2 + Math.random() * 4]
+                },
+                count: 30 * Math.random()
+            });
+        }
+
+        var dataSet = new mapv.DataSet(data);
+
+        var options = {
+            fillStyle: 'rgba(55, 50, 250, 0.8)',
+            shadowColor: 'rgba(255, 250, 50, 1)',
+            shadowBlur: 20,
+            max: 100,
+            size: 50,
+            label: {
+                show: true,
+                fillStyle: 'white',
+            },
+            globalAlpha: 0.5,
+            gradient: {0.25: "rgb(0,0,255)", 0.55: "rgb(0,255,0)", 0.85: "yellow", 1.0: "rgb(255,0,0)"},
+            draw: 'honeycomb'
+        };
+
+        mapvLayer = new SuperMap.Layer.MapVLayer("mapv", {dataSet: dataSet, options: options});
+        map.addLayer(mapvLayer);
+
+        setTimeout(function () {
+            openToolTip("示例数据来源为百度MapV的加偏数据，iClient9未做纠偏处理", map.getCenter());
+        }, 1000);
+
+    }
+
+    function openToolTip(text, latLng) {
+        var contentHTML = "<div style='width:216px; font-size:12px;font-weight:bold ; opacity: 0.8'>";
+        contentHTML += text;
+        contentHTML += "</div>";
+        framedCloud = new SuperMap.Popup.FramedCloud(
+            "chicken",
+            latLng,
+            null,
+            contentHTML,
+            null,
+            true,
+            null,
+            true
+        );
+        map.addPopup(framedCloud);
+    }
+</script>
+<script>
+    var data = NodesConversionTool.depsToNodes("classic");
+
+    var Util = G6.Util;
+    // 准备布局配置
+    var layoutCfg = {
+        "direction": "LR",
+        "nodeSep": 20,
+        "nodeSize": 20,
+        "rankSep": 200
+    };
+    // 自定义树节点
+    var DEFAULT_NODE_SIZE = 5;
+    G6.registNode('treeNode', {
+        draw(cfg, group) {
+            var origin = cfg.origin;
+            var r = layoutCfg.nodeSize ? layoutCfg.nodeSize / 2 : DEFAULT_NODE_SIZE;
+            var shapeCfg = {
+                attrs: {
+                    x: cfg.x,
+                    y: cfg.y,
+                    r: r,
+                    stroke: '#003380',
+                    fill: 'white',
+                    fillOpacity: 1,
+                },
+            };
+            if (origin.children && origin.children.length) {
+                shapeCfg.class = origin.isCollapsed ? 'spreadoutButton' : 'collapseButton';
+                shapeCfg.attrs.fill = '#044A9A';
+                shapeCfg.attrs.stroke = '#003380';
+                shapeCfg.attrs.fillOpacity = 0.4;
+            }
+            if (origin.root) {
+                shapeCfg.attrs.fill = '#044A9A';
+                shapeCfg.attrs.stroke = '#003380';
+                shapeCfg.attrs.fillOpacity = 0.7;
+            }
+            shapeCfg.attrStash = Util.mix({}, shapeCfg.attrs);
+            return group.addShape('circle', shapeCfg);
+        },
+        afterDraw(cfg, group) {
+            var origin = cfg.origin;
+            var r = layoutCfg.nodeSize ? layoutCfg.nodeSize / 2 : DEFAULT_NODE_SIZE;
+            var align = origin.align;
+            var labelAttrs = {
+                text: origin.name,
+                fill: '#666',
+                textBaseline: 'middle',
+                fontSize: 35,
+                x: cfg.x + r + DEFAULT_NODE_SIZE,
+                y: cfg.y,
+                textAlign: 'left',
+            };
+            if (align === 'R') {
+                Util.mix(labelAttrs, {
+                    x: cfg.x - r - DEFAULT_NODE_SIZE,
+                    y: cfg.y,
+                    textAlign: 'right',
+                });
+            } else if (align === 'T' || align === 'CH') {
+                Util.mix(labelAttrs, {
+                    x: cfg.x,
+                    y: cfg.y + r + DEFAULT_NODE_SIZE,
+                    textAlign: 'right',
+                    rotate: -Math.PI / 2,
+                });
+            } else if (align === 'B') {
+                Util.mix(labelAttrs, {
+                    x: cfg.x,
+                    y: cfg.y - r - DEFAULT_NODE_SIZE,
+                    textAlign: 'left',
+                    rotate: -Math.PI / 2,
+                });
+            }
+            var label = group.addShape('text', {
+                attrs: labelAttrs,
+            });
+            return label;
+        }
+    });
+    // 生成树图实例
+    var tree = new G6.Tree({
+        id: 'moduleIntro',                            // 容器ID
+        height: 300,                         // 画布高
+        fitView: 'autoZoom',                 // 自动缩放
+        layoutFn: G6.Layout.LayeredTidyTree, // 布局类型
+        layoutCfg: layoutCfg,                // 布局配置
+        showButton: false,
+    });
+    // 加载数据
+    tree.source(data);
+    tree.node().shape('treeNode');
+    tree.edge()
+        .shape('smooth')
+        .style({
+            stroke: '#A9BCD3'
+        });
+    tree.tooltip(true);
+    tree.tooltip({split: ''});
+    tree.node().tooltip(function (obj) {
+        return [
+            [obj.des]
+        ]
+    });
+    // 渲染树图
+    tree.render();
+    // 添加事件
+    tree.on('itemclick', function (ev) {
+        if (ev.shape.__cfg.type !== 'circle' && ev.shape.__cfg.type !== 'path' && !ev.item.get('model').children && ev.item.get('model').name) {
+            window.open("http://" + window.location.host + "/docs/classic/" + ev.item.get('model').name + ".html");
+        }
+    });
+    tree.on('mouseenter', function (ev) {
+        if (ev.itemType === 'edge') {
+            return;
+        }
+        var shape = ev.shape;
+        if (shape.__cfg.type !== 'circle') {
+            shape._setAttr("fill", "#3C8DBC");
+            tree.refresh();
+        }
+    });
+    tree.on('mousemove', function (ev) {
+        $('#canvas_2').css('cursor', 'pointer');
+    });
+    tree.on('mouseleave', function (ev) {
+        if (ev.itemType === 'edge') {
+            return;
+        }
+        var shape = ev.shape;
+        if (shape.__cfg.type !== 'circle') {
+            shape._setAttr("fill", "#666");
+            tree.refresh();
+        }
+    });
+</script>
+</body>
+</html>

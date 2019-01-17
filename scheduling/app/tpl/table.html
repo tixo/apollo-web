@@ -1,0 +1,53 @@
+<table class="table">
+    <thead>
+        <tr class="datatable-row datatable-row-left text-center">
+            <th></th>
+            {{#each col}}
+            <th>{{this}}</th>
+            {{/each}}
+        </tr>
+    </thead>
+    <tbody>
+        {{#each tableData}}  
+        <tr>                                       
+            {{#each this}}
+                <td class="datatable-cell">{{this}}</td>
+             {{/each}}          
+        </tr>
+        {{/each}}
+
+        {{#if isBasis}}
+        <tr>  
+            <td>{{basisLable}}</td>
+            {{#each basisPercent}}        
+            <td nowrap>                               
+            {{#with this}}
+                {{#if icon}}
+                <i class="icon icon-long-arrow-up"></i>{{data}}  
+                {{else}}
+                <i class="icon icon-long-arrow-down"></i>{{data}}  
+                {{/if}}                                                                                                        
+             {{/with}}  
+            </td> 
+            {{/each}}       
+        </tr>
+        {{/if}}  
+        
+        {{#if isRelative}}
+        <tr>  
+            <td>{{relativeLable}}</td>
+            {{#each relativePercent}}        
+            <td nowrap>                               
+            {{#with this}}
+                {{#if icon}}
+                <i class="icon icon-long-arrow-up"></i>{{data}}  
+                {{else}}
+                <i class="icon icon-long-arrow-down"></i>{{data}}  
+                {{/if}}                                                                                                        
+             {{/with}}  
+            </td> 
+            {{/each}}       
+        </tr>
+        {{/if}}          
+    </tbody>
+</table>

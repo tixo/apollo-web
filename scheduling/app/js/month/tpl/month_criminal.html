@@ -1,0 +1,113 @@
+<div class="row">
+    <div>
+        <h2>一、警情综述 </h2>
+    </div>
+    <div contenteditable="true" id="caseAffairsCategory_text">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                    本月刑事类案件{{criminalAffairs.sumary.period}}起，
+                    比上月{{criminalAffairs.sumary.relative}}起{{criminalAffairs.sumary.percent}}。
+                    {{criminalAffairs.sumary.description}}            
+            </span>
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div>
+        <h2>二、警情分析</h2>
+    </div>
+    <div contenteditable="true" id="caseAnalysisText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                {{criminal.comparsion}}{{criminal.detail}}。{{criminal.percent}}
+            </span>
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <h3>（一）刑事类案件报警时段分析</h3>
+    <div class="col-md-10">
+        <div style="width:800px;">
+            <table class="table">
+                <thead>
+                    <tr class="datatable-row datatable-row-left text-center">
+                        <th>案发时间段</th>
+                        <th>案件数（起）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each criminalCaseTowHour.table}}
+                    <tr>
+                        <td class="datatable-cell">{{DIC_NAME}}</td>
+                        <td class="datatable-cell">{{TOTAL}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <div id="criminalCaseTowHour" style="height:250px;"></div>
+    </div>
+</div>
+
+<div class="row">
+    <h3>（二）盗窃案件主要分布情况</h3>
+    <div class="col-md-10">
+        <div style="width:800px;">
+            <table class="table">
+                <thead>
+                    <tr class="datatable-row datatable-row-left text-center">
+                        <th>地域</th>
+                        <th>案件数（起）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="datatable-cell">北里王村</td>
+                        <td class="datatable-cell">4</td>
+                    </tr>
+                    <tr>
+                        <td class="datatable-cell">东韦村</td>
+                        <td class="datatable-cell">4</td>
+                    </tr>
+                    <tr>
+                        <td class="datatable-cell">北里王村</td>
+                        <td class="datatable-cell">4</td>
+                    </tr>
+                    <tr>
+                        <td class="datatable-cell">富力城小区</td>
+                        <td class="datatable-cell">4</td>
+                    </tr>
+                    <tr>
+                        <td class="datatable-cell">曲江澜山小区</td>
+                        <td class="datatable-cell">4</td>
+                    </tr>
+                    <tr>
+                        <td class="datatable-cell">天浩上元郡小区</td>
+                        <td class="datatable-cell">4</td>
+                    </tr>
+                    <tr>
+                        <td class="datatable-cell">龙湖花千树小区</td>
+                        <td class="datatable-cell">4</td>
+                    </tr>
+                    <tr>
+                        <td class="datatable-cell">工地</td>
+                        <td class="datatable-cell">4</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div>
+        <h2>三、预警提示</h2>
+    </div>
+    <div contenteditable="true" id="warningTips">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                    请秦宇派出所、神舟路派出所加强对天浩上元郡小区及工地的治安防范管理工作，有效遏制盗窃民宅案件的高发。           </span>
+        </p>
+    </div>
+</div>

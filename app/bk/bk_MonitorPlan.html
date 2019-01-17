@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../../module/plugins/scrollbar/jquery.mCustomScrollbar.css" type="text/css">
+		<link rel="stylesheet" href="css/bk.css" />
+		<link rel="stylesheet" href="../yibiaosanshi/css/ybss.css" />
+		<script type="text/javascript" src="../../supermap/webgl/module/jquery/jquery-1.11.2.min.js" ></script>
+		<script type="text/javascript" src="../bk/js/bk_monitorPlan.js"></script>
+		<script type="text/javascript" src="../../module/plugins/scrollbar/jquery.mCustomScrollbar.js"></script>
+		<script type="text/javascript" src="../../module/plugins/scrollbar/minified/jquery.mousewheel-3.0.6.min.js"></script>
+		<script type="text/javascript" src="../../config/common/jqueryPager/jquery.z-pager.js"></script>
+	</head>
+	<body style="overflow: hidden;">
+		<div class="tab-bk-box">
+        	<div class="bk-fa-box" style="height: 520px; overflow:auto ;">
+        		<!--<div class="bk-list-box">
+					<div class="bk-top">
+						<span class="left-col"></span>
+						<span class="center-title">
+							布控方案1
+						</span>
+						<span class="right-btn"></span>
+					</div>
+					<div class="bk-list-ctn">
+						<div class="bk-list-ctn-top">
+							<div class="bk-list-ctn-top-name">布控时间：</div>
+							<div class="bk-list-ctn-top-time">
+								<p>
+									<span>起始：</span>
+									<span>2017-07-03-00:00</span>
+								</p>
+								<p>
+									<span>结束：</span>
+									<span>2017-07-03-00:00</span>
+								</p>
+							</div>
+						</div>
+					</div>
+        		</div>-->
+        	</div>
+        	<!--<div class="fenye-box">
+        		
+        	</div>-->
+        	<div class="fenye-box pager clearfix" id="planPage" style="margin-bottom: 0px;  bottom: 0px;">
+        		
+            </div>
+        </div>
+	</body>
+	<script>
+		var bodyH = $("body").height();
+		$(".bk-fa-box").height(bodyH-40);
+		$(window).resize(function(){
+		    var bodyH = $("body").height();
+			$(".bk-fa-box").height(bodyH-40);
+		});
+	</script>
+</html>

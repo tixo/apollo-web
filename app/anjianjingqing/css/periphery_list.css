@@ -1,0 +1,70 @@
+.police-resource-list-box{
+	width:280px;
+	position:absolute;
+	top:0px;
+	right:20px;
+	bottom:0;
+	background:#fff;
+	z-index: 888;
+	height: calc(100% - 50px);
+	display: none;
+}
+.police-resource-top{
+	width:100%;
+	height:36px;
+	background:#cce3ff;
+	line-height: 36px;
+	font-size: 14px;
+	text-indent: 1em;
+	position:relative;
+	color:#606060;
+}
+.police-resource-clear{
+	width:50px;
+	height:26px;
+	line-height: 26px;
+	font-size: 12px;
+	background:#538dd5;
+	position:absolute;
+	right:10px;
+	margin-top:4px;
+	color:#fff;
+	border-radius: 8px;
+	cursor: pointer;
+}
+.police-resource-ctn{
+	width:100%;
+	position:absolute;
+	top:37px;
+	bottom:0;
+	overflow: hidden;
+	overflow-y:auto;
+}
+.tab-police{
+	width:100%;
+	font-size: 12px;
+	text-align: center;
+	border-collapse:collapse;
+}
+.tab-police tr th{
+	background:#e1ebfa;
+	border:none;
+	height:30px;
+	padding:0 !important;
+	margin:0 !important;
+	border:1px solid #c5cbd3;
+	color:#6d7179;
+	text-align: center;
+}
+.tab-police tr th:nth-child(1) {
+   width: 40%;
+}
+.tab-police tr td{
+	border:1px solid #ccc;
+	height:30px;
+	color:#6d7179;
+	cursor: pointer;
+}
+.bg-col{
+	background:#f00 !important;
+}

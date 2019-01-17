@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>信息查询与检索</title>
+    <link rel="stylesheet" type="text/css" href="../../app/yibiaosanshi/css/ybss.css" />
+    <link rel="stylesheet" href="../../module/plugins/layui/css/layui.css" type="text/css">
+    <link rel="stylesheet" href="css/tooltip-classic.css" type="text/css">
+    <link rel="stylesheet" href="../../config/common/mapTools/css/map_tools.css" type="text/css">
+    <link rel="stylesheet" href="../../config/common/camera/css/camera.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../../app/anjianjingqing/css/periphery_list.css" />
+    <link rel="stylesheet" href="../../config/common/rightResource/css/right_resource.css" type="text/css">
+    <link rel="stylesheet" href="css/sjtj.css" type="text/css">
+    <link rel="stylesheet" href="../../module/plugins/scrollbar/jquery.mCustomScrollbar.css" type="text/css">
+    <script type="text/javascript" src="../../module/jquery/jquery-1.8.1.min.js"></script>
+	<script type="text/javascript" src="../../module/plugins/zTree/js/jquery.ztree.core.min.js"></script>
+	<script type="text/javascript" src="../../module/plugins/zTree/js/jquery.ztree.excheck.js"></script>
+	<script type="text/javascript" src="../../module/plugins/zTree/js/jquery.ztree.exhide.js"></script>
+    <script type="text/javascript" src="../../module/template.js"></script>
+    <script type="text/javascript" src="../../module/less/less-1.3.3.min.js"></script>
+    <script type="text/javascript" src="../../module/plugins/scrollbar/jquery.mCustomScrollbar.js"></script>
+    <script type="text/javascript" src="../../module/plugins/scrollbar/minified/jquery.mousewheel-3.0.6.min.js"></script>
+    <script type="text/javascript" src="../../module/sea/sea.js"></script>
+    <script type="text/javascript" src="../../module/angular/angular-1.4.3.min.js"></script>
+    <script type="text/javascript" src="../../module/plugins/JsonExportExcel.min.js"></script>
+    <script type="text/javascript" src="../../supermap/webgl/supermap/3D/webgl.Include3D.js"></script>
+    <script type="text/javascript" include="iclient-classic" src="../../supermap/9D-leaflet/dist/include-classic.js"></script>
+    <script type="text/javascript" src="../../config/common/camera/js/flv.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../app/yibiaosanshi/css/zTreeStyle.css" />
+	<script src="../../scheduling/dist/plugins/layer/layer.js"></script>
+	<script type="text/javascript" src="../../scheduling/case/transformGcj02OrWgs84.js"></script>
+</head>
+<body>
+    <div class="box-index">
+    	<div class="addressSearch" style="top:2px;">
+    		<div class="car-box">
+				<input type="text" class="car-ss address-input" id="addressMapSearch"  placeholder="地址搜索...">
+				<button class="ss-btn address-button" onclick="mysjtj.mapAddressSearch.ok()"><img src="../../config/common/rightResource/img/search-1.png"></button>
+			</div>
+    	</div>
+        <div id="bj"></div>
+        <div id="map" ></div>
+        <!--加载3维场景模块-->
+        <div id="cesiumContainer" style="width: 100%;height: 100%;left:0px;position: initial;"></div>
+        <!--加载map cut 地图切换  zhangai     start -->
+       <div id="map_cut" style="position: absolute;bottom:50px;right:10px;z-index: 8998;"></div>
+      <!--加载map tools  zhangai  	start -->
+		 <!-- <span id="map-tools3D" style="z-index: 9999;top:0px;position: absolute;height: 32px;width: 100%;"></span>
+		<div id="map-tools" style="display: none;z-index: 9999;top:0px;position: absolute;height: 32px;width: 100%;"></div>
+       --> <div class="box-select">
+			<div class="police-select police-select2" style="z-index: 9999;top:50px;">
+				<a href="#" class="btn-police titleName">预案</a>
+				<div class="content_wrap">  
+			        <div class="zTreeDemoBackground left" >  
+						<div class="scrollbarDiv treeScrollbar" id="treeScrollbar" style="height: 236px;">
+				            <ul id="treePlan" class="ztree">  
+				            </ul>  
+			            </div>
+			        </div>    
+			    </div>
+			</div>
+		<div class="police-select police-select3" style="z-index: 9999;top:102px;">
+		<a href="#" class="btn-police titleName">警用资源</a>
+		<div class="content_wrap">  
+	        <div class="zTreeDemoBackground left" id="scrollbar3" style="overflow:auto;"> 
+	           <div class="box-ctn-box">
+	          <ul class="ul" style="width: 150px;">
+                    <li class="level1" id="level1">
+                        <a href="#" class="current">
+                                <span class="sp-f">
+                                <input type="checkbox" class="ipt">
+                                </span>
+                                <span class="sp-f"></span>
+                                <span class="sp-f">摄像头</span>
+                            </a>
+                       <ul id="level2">
+                            <li>
+                                <a href="javascript:void(0)" onClick="mysjtj.getAllVideo()" class="video-btn"></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="level1">
+                        <a href="#">
+                                <span class="sp-f">
+                                    <input type="checkbox" checked class="ipt">
+                                </span>
+                                <span class="sp-f police"></span>
+                                <span class="sp-f shexiang">警员</span>
+                            </a>
+                    </li>
+                    <li class="level1">
+                        <a href="#">
+                                <span class="sp-f">
+                                    <input type="checkbox" checked  class="ipt">
+                                </span>
+                                <span class="sp-f police-car"></span>
+                                <span class="sp-f shexiang">警车</span>
+                            </a>
+                    </li>
+                    <li class="level1">
+                        <a href="#">
+                                <span class="sp-f">
+                                    <input type="checkbox"  class="ipt">
+                                </span>
+                                <span class="sp-f bjz"></span>
+                                <span class="sp-f shexiang">校园报警终端</span>
+                            </a>
+                    </li>
+                    <!--<li class="level1">
+                        <a href="#">
+                                <span class="sp-f">
+                                    <input type="checkbox" checked  class="ipt">
+                                </span>
+                                <span class="sp-f sentry"></span>
+                                <span class="sp-f shexiang">岗亭</span>
+                            </a>
+                    </li>-->
+                </ul>
+                  </div>  
+	         </div>   
+	    </div>
+		
+	</div>
+	<div class="police-select police-select4" style="z-index: 9999;top:182px;">
+		<a href="#" class="btn-police titleName">重点人员</a>
+		<div class="content_wrap">  
+	        <div class="zTreeDemoBackground left treeScrollbar">  
+	        	<ul id="zTreeKeyPersonnel" class="ztree">  
+	            </ul> 
+            </div>
+        </div>
+    </div>
+	<div class="police-select police-select5" style="z-index: 9999;top:266px;">
+		<a href="#" class="btn-police titleName">兴趣点</a>
+		<div class="content_wrap">  
+	        <div class="zTreeDemoBackground left" id="interesPointScrollbar" >  
+	        	
+	          
+            </div>
+        </div>
+    </div>
+	</div>
+        <div class="time-box">
+            <ul class="shuxian">
+                <span class="lft"></span>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li><span></span></li>
+            </ul>
+            <div class="bg-zhou" id="zhuWz">
+                <div class="modal-time" id="now">
+                    <div class="modal-time-an"></div>
+                </div>
+            </div>
+            <ul class="shu" id="timelineAdd">
+            </ul>
+        </div>
+    </div>
+    <div id="camera-resource">
+    </div>
+    <div class="police-resource-list-box" style="z-index:8888 ;">
+		<div class="police-resource-top">
+			周边搜索列表
+			<span class="police-resource-clear" onclick="mysjtj.closeZhoubian()">关闭</span>
+		</div>
+		<div class="police-resource-ctn">
+			<table class="tab-police">
+
+			</table>
+		</div>
+	</div>
+	<ul id="treePoliceCarHide" class="ztree" style="display: none;"></ul> 
+</body>
+<script type="text/javascript">
+var mysjtj, websocketHandle, _rightResource,mbuilding;
+var services = parent.window.services;
+seajs.config({
+    base: "./js/"
+});
+seajs.use(["sjtj.js"], function(sjtj) {
+    mysjtj = sjtj;
+    mbuilding = sjtj;
+    mbuilding.queryFeature = mysjtj.sjtjSceneEvent;
+    websocketHandle = mysjtj.websocketHandle;
+    _rightResource = mysjtj.rightResource;
+    mysjtj.sjtjSceneEvent.initScene(services);
+    mysjtj.init();
+    mysjtj.mapCut.cut2D();
+});
+var menuLeft = document.getElementById('cbp-spmenu-s1'),
+    showLeftPush = document.getElementById('showLeftPush'),
+    body = document.body;
+var parentDoc = parent.document;
+/* 定义一个接收元素的变量 */
+var thisIframe = null;
+$("iframe", parentDoc).each(function(index, e) {
+    if(e.src.indexOf("sjtj.html") > 0) {
+        thisIframe = e;
+        thisIframe.sjtj = true;
+        return false;
+    }
+});
+//加载地图切换 zhangai
+$.get("../../config/common/mapCut/map_cut.html", function(data) {
+    $("#map_cut").html(data);
+});
+//加载地图工具栏 zhangai
+/*$.get("../../config/common/mapTools/map_tools3D.html", function(data) {
+    $("#map-tools3D").html(data);
+});*/
+/*$.get("../../config/common/mapTools/map_tools.html", function(data) {
+    $("#map-tools").html(data);
+});*/
+$.get("../../app/yibiaosanshi/buildingPopup.html", function(data) {
+    $("body").append(data);
+});
+</script>
+<script type="text/javascript" src="../../config/common/camera/js/camera.js"></script>
+ <!-- 案件模板 -->
+<script id="jqPopup" type="text/html">
+    <span id="popup" class="tooltip-content clearfix mypopup" style="height: 260px;width: 300px;"> 
+            <span class="tooltip-text" style="height: 72%;">
+                <a id="popupCloseBtn" class="tooltip-close" href="#" onclick="mysjtj.sjtjMapEvent.mapInit.pluginsAPI.popup.clearPopup()">X</a>
+                <ul>
+                    <li>时间： {{content.time  }}  </li>
+                    <li>类型： {{content.type  }}  </li>
+                    <li title="{{content.place }}">警情地点：
+                    {{if content.place.length<=29}}
+                    	{{content.place}} 
+                    {{else}}
+                       {{content.place.substring(0,29)}}...
+                    {{/if}}</li>
+                    <li>报警人： {{content.caseDetail.name }} </li>
+                    <li>报警人联系方式： {{content.caseDetail.telephone }} </li>
+                    <li title="{{content.caseDetail.detail}}">描述：
+                    {{if content.caseDetail.detail.length<=22}}
+                    	{{content.caseDetail.detail}} 
+                    {{else}}
+                       {{content.caseDetail.detail.substring(0,22)}}...
+                    {{/if}}</li>
+                </ul>
+            </span>
+            <a href="javascript:void(0)" class="modal-ctn-btn modal-ctn-btn-col" style="float: right; margin-right:20px ;" data-x="{{content.X}}"
+                   data-y="{{content.Y}}" onclick="mysjtj.drawPolygon(this)">周边搜索</a>
+           <!-- <a href="javascript:void(0)" class="modal-ctn-btn modal-ctn-btn-col" style="float: right;;margin-top: 10px;"  onclick="mysjtj.drawPolygon(this)">案件详情</a>
+            <a href="javascript:void(0)" class="modal-ctn-btn modal-ctn-btn-col" style="float: right;margin-top: 10px;"  onclick="mysjtj.drawPolygon(this)">已读</a>-->
+    	<div class="popup_bottom"></div>
+    </span>
+    <!-- </div> -->
+</script>
+<script id="bjzPopup" type="text/html">
+    <span id="popup" class="tooltip-content clearfix mypopup" style="height: 180px;width: 300px;"> 
+            <span class="tooltip-text" style="height: 60%;">
+                <a id="popupCloseBtn" class="tooltip-close" href="#" onclick="mysjtj.sjtjMapEvent.mapInit.pluginsAPI.popup.clearPopup()">X</a>
+                <ul>
+                    <li>时间： {{content.time}}</li>
+                    <li>编号： {{content.no}}</li>
+                    <li>类型： {{content.cameraType}}</li>
+                    <li title="{{content.address }}">警情地点：
+                       {{content.address}}
+                    </li>
+                </ul>
+            </span>
+            <a href="javascript:void(0)" class="modal-ctn-btn modal-ctn-btn-col" style="float: right; margin-right:20px ;" data-x="{{content.X}}"
+                   data-y="{{content.Y}}" onclick="mysjtj.drawPolygon(this)">周边搜索</a>
+             <a href="javascript:void(0)" class="modal-ctn-btn modal-ctn-btn-col" style="float: right;"  onclick="mysjtj.planVideo('{{content.dataStr}}')">查看视频</a>
+    	<div class="popup_bottom"></div>
+    </span>
+    <!-- </div> -->
+</script>
+<script id="bjzRecPopup" type="text/html">
+    <div id="popup" class="mypopup">
+        <div class="popup02-left-box">
+            <div class="modal-title">
+               	校园报警终端
+                <span id="guanbi" onclick="mysjtj.sjtjMapEvent.mapInit.pluginsAPI.popup.clearPopup()">x</span>
+            </div>
+            <div class="popup_middle" >
+                <table cellspacing="0" class="tab tab-renkou" >
+                   <tr>
+						<td>编号</td>
+						<td>{{content.no}}</td>
+					</tr>
+					<tr>
+						<td>类型</td>
+						<td>{{content.cameraType}}</td>
+					</tr>
+					<tr>
+						<td>地址</td>
+						<td>{{content.address}}</td>
+					</tr>
+                </table>
+            </div>
+             <a href="javascript:void(0)" class="modal-ctn-btn modal-ctn-btn-col" style="float: right;margin-right: 20px;  margin-bottom: 10px;"  onclick="mysjtj.planVideo('{{content.dataStr}}')">查看视频</a>
+            <div class="popup_bottom"></div>
+        </div>
+    </div>
+</script>
+ <!-- 布控模板 -->
+<script id="bkPopup" type="text/html">
+    <span id="popup" class="tooltip-content clearfix mypopup" style="height: 230px;width: 500px;"> 
+         <span class="tooltip-text" >
+        	<div>
+        		<span class="bktitle">布控对象报警</span>
+            	<a id="popupCloseBtn" class="tooltip-close" href="#" style="color: #5392C7;"
+            		 data-toggle="tooltip" data-placement="top"  title="关闭" onclick="mysjtj.sjtjMapEvent.mapInit.pluginsAPI.popup.clearPopup()">✖</a>
+            </div>
+        	<div class="bktable" style="width: auto;">
+        		<table >
+                    <tr> 
+                    	<td>报警时间：</td><td>  {{content.date}} </td> 
+                    </tr>
+                    <tr>
+                    	<td>布控任务名称：</td><td> {{content.rwname }} </td>
+                    </tr>
+                   <!--<tr>
+                    	<td>布控级别：</td><td> {{content.surveillanceInfo.levels }} </td>
+                    </tr>-->
+                    <tr>
+                    	<td>布控时间：</td><td> {{content.surveillanceInfo.createTime.substring(0,16)  }}  {{content.surveillanceInfo.beginTime.substring(0,16)  }}</td> 
+                    </tr>
+              	</table>
+        	</div>
+            <div class="bkimg" style="width: 20%;" float: right; margin: 6px;>
+                <img src="{{content.img}}" width="100" height="110" align="right"/>
+            </div>
+            <!--<div class="bkimg" style="width: 20%;">
+                <img src="{{content.img}}" width="100" height="110" align="right"/>
+            </div>-->
+             <a href="javascript:void(0)" class="modal-ctn-btn modal-ctn-btn-col" style="float: right;margin-top: 10px; margin-right:20px ;" data-x="{{content.X}}"
+                   data-y="{{content.Y}}" onclick="mysjtj.drawPolygon(this)">周边搜索</a>
+             <a href="javascript:void(0)" class="modal-ctn-btn modal-ctn-btn-col" style="float: right;margin-top: 10px; margin-right:20px ;"  onclick="mysjtj.planVideo('{{content.dataStr}}')">查看视频</a>
+             <div class="popup_bottom"></div>
+        </span>
+    </span>
+    <!-- </div> -->
+</script>
+ <!-- 摄像头模板 -->
+<script id="sxtPopup" type="text/html">
+    <span id="popup" class="tooltip-content clearfix mypopup" style="width: 200px;height: 200px;"> 
+            <span class="tooltip-text">
+                <a id="popupCloseBtn" class="tooltip-close" href="#" onclick="mysjtj.sjtjMapEvent.mapInit.pluginsAPI.popup.clearPopup()">X</a>
+                <ul>
+                	<li>摄像头编号：    {{content.no }} </li>
+                	<li>摄像头类型：    {{content.cameraType }} </li>
+                    <li>摄像头地址：  {{content.address }} </li>
+                </ul>
+            </span>
+             <a href="javascript:void(0)" class="modal-ctn-btn modal-ctn-btn-col" style="float: right;margin-right: 20px;"  onclick="mysjtj.video.openVideo('{{content.dataAttr}}')">查看视频</a>
+    <div class="popup_bottom"></div>
+    </span>
+    
+     <!-- </div> -->
+</script>
+<script id="policeCarPopup" type="text/html">
+    <div id="popup" class="mypopup">
+        <div class="popup02-left-box">
+            <div class="modal-title">
+            	    警车信息
+                <span id="guanbi" onclick="mysjtj.sjtjMapEvent.mapInit.pluginsAPI.popup.clearPopup()">x</span>
+            </div>
+            <div class="popup_middle">
+                <table cellspacing="0" class="tab tab-renkou" id="tab-danwei">
+                    <tr>
+                        <td>车牌号：</td>
+                        <td>{{content.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>型号：</td>
+                        <td>{{content.type}}</td>
+                    </tr>
+                    <tr>
+                        <td>所属单位：</td>
+                        <td>{{content.unit}}</td>
+                    </tr>
+                    <tr>
+                        <td>当前位置：</td>
+                        <td>{{content.seat}}</td>
+                    </tr>
+                    <tr>
+                        <td>时间：</td>
+                        <td>{{content.time}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="popup_bottom"></div>
+        </div>
+    </div>
+</script>
+<script id="policePopup" type="text/html">
+    <div id="popup" class="mypopup">
+        <div class="popup02-left-box">
+            <div class="modal-title">
+                警员信息
+                <span id="guanbi" onclick="mysjtj.sjtjMapEvent.mapInit.pluginsAPI.popup.clearPopup()">x</span>
+            </div>
+            <div class="popup_middle">
+                <table cellspacing="0" class="tab tab-renkou" id="tab-danwei">
+                    <tr>
+                        <td>编号：</td>
+                        <td>{{content.number}}</td>
+                    </tr>
+                    <tr>
+                        <td>姓名：</td>
+                        <td>{{content.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>联系方式：</td>
+                        <td>{{content.detail.telephone}}</td>
+                    </tr>
+                    <tr>
+                        <td>所属单位：</td>
+                        <td>{{content.unit}}{{content.detail.department}}</td>
+                    </tr>
+                    <tr>
+                        <td>位置：</td>
+                        <td>{{content.seat}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="popup_bottom"></div>
+        </div>
+    </div>
+</script>
+<script id="XQDPopup" type="text/html">
+    <div id="popup" class="mypopup">
+        <div class="popup02-left-box">
+            <div class="modal-title">
+                {{content.typeName}}
+                <span id="guanbi" onclick="_rightResource.mapEvent.mapInit.pluginsAPI.popup.clearPopup()">x</span>
+            </div>
+            <div class="popup_middle" style="height: 190px;overflow: auto;" id="interesPointDetail">
+                <table class="tab-detail">
+                   <tr>
+						<td>编号</td>
+						<td>{{content.no}}</td>
+					</tr>
+					<tr>
+						<td>名称</td>
+						<td>{{content.name}}</td>
+					</tr>
+					<tr>
+						<td>类型</td>
+						<td>{{content.typeName}}</td>
+					</tr>
+					<tr>
+						<td>地址</td>
+						<td>{{content.address}}</td>
+					</tr>
+					{{if content.classify == "九小场所" || content.classify == "单位"}} 
+					<tr>
+						<td>负责人</td>
+						<td>{{content.chargeName}}</td>
+					</tr>
+					<tr>
+						<td>负责人电话</td>
+						<td>{{content.telephone}}</td>
+					</tr>
+					<tr>
+						<td>身份证</td>
+						<td>{{content.idCard}}</td>
+					</tr>
+					{{if content.classify != "单位"}} 
+					<tr>
+						<td>是否签订责任书</td>
+						<td>{{if content.isSign==1}}
+						是
+						{{else}}
+						否
+						{{/if}}
+						</td>
+					</tr>
+					<tr>
+						<td>从业人员（人）</td>
+						<td>{{content.practitioners}}</td>
+					</tr>
+					<tr>
+						<td>城中村名称</td>
+						<td>{{content.village}}</td>
+					</tr>
+					{{/if}} 	
+				{{/if}} 
+					<tr>
+						<td>备注</td>
+						<td>{{content.remarks}}</td>
+					</tr>
+                </table>
+            </div>
+            <div class="popup_bottom"></div>
+        </div>
+    </div>
+</script>
+<script id="keyPersonnelPopup" type="text/html">
+    <div id="popup" class="mypopup">
+        <div class="popup02-left-box">
+            <div class="modal-title">
+               	 重点人员
+                <span id="guanbi" onclick="_rightResource.mapEvent.mapInit.pluginsAPI.popup.clearPopup()">x</span>
+            </div>
+            <div class="popup_middle" >
+                <table cellspacing="0" class="tab tab-renkou" >
+                   <tr>
+						<td>姓名</td>
+						<td>{{content.NAME}}</td>
+					</tr>
+					<tr>
+						<td>联系方式</td>
+						<td>{{content.IPHONE}}</td>
+					</tr>
+					<tr>
+						<td>住址</td>
+						<td>{{content.ADDRESS}}</td>
+					</tr>
+					<tr>
+						<td>所属分局派出所</td>
+						<td>{{content.PARENTORG}}{{content.ORG}}</td>
+					</tr>
+					<tr>
+						<td>社区民警</td>
+						<td>{{content.COMMUNITYPOLICE}}</td>
+					</tr>
+                </table>
+            </div>
+            <div class="popup_bottom"></div>
+        </div>
+    </div>
+</script>
+</html>

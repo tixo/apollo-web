@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>下载</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <script type="text/javascript" include='isIntroduction' src="../js/include.js"></script>
+</head>
+<body class="hold-transition skin-blue">
+<!--顶部导航-->
+<header class="header-wrapper main-header icl-header"></header>
+<!--顶部导航 end-->
+<!--header-->
+<script>
+    var identification = {};
+    var navigation = {
+        nav: {
+            title: "SuperMap iClient 9D",
+            version: "",
+            path: "../"
+        }
+    };
+    utils.loadTemplate(".icl-header", "../template/header.html", navigation);
+</script>
+<!--header end-->
+
+<!--内容区-->
+<div class="container icl-docs-container">
+    <div class="row">
+        <!--左侧导航-->
+        <div class="col-md-3" role="complementary">
+            <nav class="icl-docs-sidebar hidden-print hidden-xs hidden-sm affix-top">
+                <ul class="nav icl-docs-sidenav">
+                    <li><a href="#stable">稳定版</a>
+                    </li>
+                    <li><a href="#releases">Releases</a>
+                    </li>
+                    <li><a href="#source">源码</a>
+                    </li>
+                    <li><a href="#npm">npm</a>
+                    </li>
+                    <li><a href="#versions">历史版本</a>
+                    </li>
+                </ul>
+                <a class="back-to-top" href="#top">
+                    返回顶部
+                </a>
+            </nav>
+        </div>
+        <!--右侧内容区-->
+        <div class="col-md-9" id="main-content" role="main">
+            <div class="icl-docs-header">
+                <h1 class="product" id="icl-docs-overview">下载</h1>
+            </div>
+            <p class="lead">在这里，可以下载到所有您需要的 SuperMap iClient for JavaScript 产品。</p>
+            <div class="section icl-docs-section">
+                <h2 id="stable" class="section-title">稳定版</h2>
+                <div style="margin:30px auto ">
+                    <a target="_blank" style="margin-right: 10px;"
+                       href="http://iclient.supermap.io/web/libs/iClientforJavaScript/9.0.1/supermap_iclient_901.zip"
+                       class="btn btn-outline-inverse btn-lg">v9.0.1</a>
+                    <a target="_blank" style="margin-right: 10px;" title="三方地图库和可视化库"
+                       href="http://iclient.supermap.io/web/libs/iClientforJavaScript/9.0.1/map_and_viz_libs.rar"
+                       class="btn btn-outline-inverse btn-lg">三方库</a>
+                </div>
+            </div>
+            <div class="section icl-docs-section">
+                <h2 id="releases" class="section-title">Releases</h2>
+                <p class="lead">GitHub 地址：
+                    <a href="https://github.com/SuperMap/iClient-JavaScript/releases" target="_blank">
+                        https://github.com/SuperMap/iClient-JavaScript/releases
+                    </a>
+                </p>
+            </div>
+            <div class="section icl-docs-section">
+                <h2 id="source" class="section-title">源码</h2>
+                <p class="lead">GitHub托管地址：<a
+                        href="https://github.com/SuperMap/iClient-JavaScript"
+                        target="_blank">https://github.com/SuperMap/iClient-JavaScript</a>
+                </p>
+                <p class="lead">OSChina托管地址：<a href="https://gitee.com/isupermap/iClient9"
+                                               target="_blank">https://gitee.com/isupermap/iClient9</a>
+                </p>
+            </div>
+            <div class="section icl-docs-section">
+                <h2 id="npm" class="section-title">npm</h2>
+                <p class="lead">
+                    安装&nbsp;<a target="_blank"
+                               href="https://www.npmjs.com/package/@supermap/iclient-leaflet"
+                               class="lead">@supermap/iclient-leaflet</a>
+                </p>
+                <pre><code> npm install @supermap/iclient-leaflet</code></pre>
+                <p class="lead">
+                    安装&nbsp;<a target="_blank"
+                               href="https://www.npmjs.com/package/@supermap/iclient-openlayers"
+                               class="lead">@supermap/iclient-openlayers</a>
+                </p>
+                <pre><code> npm install @supermap/iclient-openlayers</code></pre>
+                <p class="lead">
+                    安装&nbsp;<a target="_blank"
+                               href="https://www.npmjs.com/package/@supermap/iclient-mapboxgl"
+                               class="lead">@supermap/iclient-mapboxgl</a>
+                </p>
+                <pre><code> npm install @supermap/iclient-mapboxgl</code></pre>
+                <p class="lead">
+                    安装&nbsp;<a target="_blank"
+                               href="https://www.npmjs.com/package/@supermap/iclient-classic"
+                               class="lead">@supermap/iclient-classic</a>
+                </p>
+                <pre><code> npm install @supermap/iclient-classic</code></pre>
+            </div>
+            <div class="section icl-docs-section">
+                <h2 id="versions" class="section-title">历史版本</h2>
+                <div style="margin:30px auto">
+                    <a target="_blank" style="margin-right: 10px;"
+                       href="http://iclient.supermap.io/web/libs/iClientforJavaScript/9.0.0/supermap_iclient_900.zip"
+                       class="btn btn-outline-inverse btn-lg">v9.0.0</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--内容区 end-->
+
+<!--footer-->
+<footer class="icl-footer"></footer>
+
+<script type="text/javascript" src="../js/common.js"></script>
+<script>
+    utils.loadTemplate(".icl-footer", "../template/footer.html");
+</script>
+<!--footer end-->
+</body>
+</html>

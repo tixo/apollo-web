@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>人口信息添加</title>
+    <link href="../dist/css/zui.css?v=1.8" rel="stylesheet">
+    <link href="../dist/css/case.css" rel="stylesheet">
+    <link href="../dist/lib/uploader/zui.uploader.min.css" rel="stylesheet">
+    <link href="../dist/lib/chosen/chosen.min.css" rel="stylesheet">
+
+    <script type="text/javascript" src="../case/transformGcj02OrWgs84.js"></script>
+    <script type="text/javascript" exclude="iclient-classic" src="../../supermap/9D-leaflet/dist/include-classic.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="dist/lib/ieonly/html5shiv.js"></script>
+    <script src="dist/lib/ieonly/respond.js"></script>
+    <script src="dist/lib/ieonly/excanvas.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="panel">
+            <div class="panel-heading-top-blue">
+                <span style="color:#3280fc;">人口信息录入</span>
+                <div class="pull-right panel-actions">
+                    <a id="pageClose" style="cursor:pointer;">
+                        <i class="icon icon-times"></i>关闭
+                    </a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="populationForm" name="populationForm">
+                    <input type="hidden" id="id" name="id" />
+                    <fieldset>
+                        <legend>基本信息</legend>
+                        <div class="form-group">
+                            <label for="alarmTime" class="col-sm-2 required">姓名</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="姓名">
+                            </div>
+                            <label for="alarmMode" class="col-sm-2 required">性别</label>
+                            <div class="col-sm-3">
+                                <select class="form-control" id="gender" name="gender">
+                                    <option value="1">男</option>
+                                    <option value="2">女</option>
+                                    <option value="9">未知</option>
+                                </select>
+                                <input type="hidden" id="sex" name="sex" value="" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 required">年龄</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="age" name="age" placeholder="年龄">
+                            </div>
+                            <label for="telephone" class="col-sm-2">出生日期</label>
+                            <div class="col-sm-3">
+                                <input type="text" readonly class="form-control" id="birthDate" name="birthDate" placeholder="出生日期">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nation" class="col-sm-2 required">民族</label>
+                            <div class="col-sm-3">
+                                <select id="nation" name="nation" class="chosen-select form-control">
+                                </select>
+                                <input type="hidden" id="nationName" name="nationName" value="" />
+                            </div>
+                            <label for="cardNumber" class="col-sm-2">身份证号码</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="身份证号码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nativePlace" class="col-sm-2">籍贯</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="nativePlace" name="nativePlace" placeholder="籍贯">
+                            </div>
+                            <label for="telephone" class="col-sm-2">联系电话</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="telephone" name="telephone" placeholder="联系电话">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="education" class="col-sm-2 required">学历</label>
+                            <div class="col-sm-3">
+                                <select class="chosen-select form-control" name="education" id="education"></select>
+                                <input type="hidden" id="educationName" name="educationName" value="" />
+                            </div>
+                            <label for="politication" class="col-sm-2 required">政治面貌</label>
+                            <div class="col-sm-3" id="subCategoryDiv">
+                                <select class="form-control" name="politication" id="politication"></select>
+                                <input type="hidden" id="politicationName" name="politicationName" value="" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="household" class="col-sm-2">户口类型</label>
+                            <div class="col-sm-3">
+                                <select class="chosen-select form-control" id="household" name="household">
+                                </select>
+                                <input type="hidden" id="householdName" name="householdName" value="" />
+                            </div>
+                            <label for="domicile" class="col-sm-2">住所类别</label>
+                            <div class="col-sm-3">
+                                <select class="form-control" name="domicile" id="domicile"></select>
+                                <input type="hidden" id="domicileName" name="domicileName" value="" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="structureNo" class="col-sm-2 required">所属建筑物</label>
+                            <div class="col-sm-3">
+                                <input type="text" readonly class="form-control" id="structureNo" name="structureNo" placeholder="请点击选择所属建筑物" />
+                                <input type="hidden" id="structureId" name="structureId" value="" />
+                                <label for="structureNo" class="input-control-icon-right">
+                                    <i class="icon icon-building"></i>
+                                </label>
+                            </div>
+                            <label for="alarmMode" class="col-sm-2 required">楼层</label>
+                            <div class="col-sm-3">
+                                <select id="floorId" name="floorId" class="chosen-select form-control">
+                                </select>
+                                <input type="hidden" id="floorNo" name="floorNo" value="" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="structureNo" class="col-sm-2 required">所属单位</label>
+                            <div class="col-sm-3">
+                                <input type="text" readonly class="form-control" id="unitName" name="unitName" placeholder="请点击选择所属单位" />
+                                <input type="hidden" id="unitId" name="unitId" value="" />
+                                <label for="structureNo" class="input-control-icon-right">
+                                    <i class="icon icon-building"></i>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="col-sm-2">住址</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="address" name="address" placeholder="住址" />
+                                <!-- <input type="hidden" id="address" name="address" value="" /> -->
+                                <input type="hidden" id="longtitude" name="longtitude" value="" />
+                                <input type="hidden" id="latitude" name="latitude" value="" />
+                                <input type="hidden" id="district" name="district" value="" />
+                                <input type="hidden" id="community" name="community" value="" />
+                            </div>
+                        </div>
+                        <div class="form-group" style="display:none;" id="choiceAddress">
+                            <label for="address" class="col-sm-2"></label>
+                            <div class="col-sm-8">
+                                <select id="address_input" class="form-control">
+                                    <!-- <option>ewew</option> -->
+                                </select>
+
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>房屋信息</legend>
+                        <div class="row panel-group">
+                            <div class="panel-heading-top-blue panel">
+                                <span>
+                                    <i class="icon icon-list"></i>&nbsp;
+                                    <small>房屋列表</small>
+                                </span>
+                                <div class="pull-right" id="floor_actions">
+                                    <a id="house_add" style="cursor:pointer;" title="添加">
+                                        <i class="icon icon-plus"></i>
+                                    </a>
+                                    <a id="house_delete" style="cursor:pointer;" title="删除">
+                                        <i class="icon icon-trash"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <table class="table table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <input type="checkbox" class="xcheckgroup2 checkAllCurrent" name="chk" value="1"> </th>
+                                        <th>产权证号</th>                                      
+                                        <th>面积(平方米)</th>
+                                        <th>类型</th>
+                                        <th>地址</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="house_tableView">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </fieldset>
+                    <!-- <div class="form-group">
+                        <label for="exampleInputAccount9" class="col-sm-2">头像</label>
+                        <div class="col-md-6 col-sm-10">
+                            <div id='uploaderPhoto' class="uploader">
+                                <div class="uploader-message text-center">
+                                    <div class="content"></div>
+                                    <button type="button" class="close">×</button>
+                                </div>
+                                <div class="uploader-files file-list file-list-grid"></div>
+                                <div>
+                                    <hr class="divider">
+                                    <div class="uploader-status pull-right text-muted"></div>
+                                    <button type="button" class="btn btn-link uploader-btn-browse">
+                                        <i class="icon icon-plus"></i> 选择文件</button>
+                                    <button type="button" class="btn btn-link uploader-btn-start">
+                                        <i class="icon icon-cloud-upload"></i> 开始上传</button>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden"  id="icon" name="icon" value="">
+                    </div> -->
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" id="save" name="save" class="btn btn-primary">提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- jQuery (ZUI中的Javascript组件依赖于jQuery) -->
+        <script src="../assets/jquery.js?v=1.8"></script>
+        <!-- ZUI Javascript组件 -->
+        <script src="../dist/js/zui.min.js?v=1.8"></script>
+        <script src="../dist/plugins/laydate/laydate.js"></script>
+        <script src="../dist/plugins/layer/layer.js"></script>
+        <script src="../dist/lib/uploader/zui.uploader.min.js"></script>
+        <script src="../dist/plugins/axios/axios.min.js"></script>
+        <script src="../dist/plugins/seajs/sea.js"></script>
+        <script src="../dist/plugins/seajs/seajs-text.js"></script>
+        <script src="../dist/plugins/seajs/handlebars-1.0.0.beta.6.js"></script>
+        <script src="../dist/lib/chosen/chosen.min.js"></script>
+        <script src="../dist/plugins/jquery-check/template.js"></script>
+        <script src="../dist/plugins/jquery-check/XCheck.js"></script>
+        <script type="text/javascript">
+            seajs.config({
+                base: "../dist/",
+                alias: {
+                    "utilityForm": "utility/form.js",
+                    "validate": "plugins/jquery-validate/jquery.validate.min.js",
+                    "validation": "plugins/jquery-validate/additional-methods.js",
+                    "localization": "plugins/jquery-validate/localization/messages_zh.min.js"
+                }
+            });
+
+            if (0 == $.trim(window.location.search).length) {
+                seajs.use('./add.js');
+            } else {
+                seajs.use('./edit.js');
+            }
+        </script>
+</body>
+
+</html>

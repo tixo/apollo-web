@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>布控任务管理</title>
+    <link href="../dist/css/zui.css?v=1.8" rel="stylesheet">
+    <link href="../dist/lib/uploader/zui.uploader.min.css" rel="stylesheet">
+    <link href="../dist/lib/chosen/chosen.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="dist/lib/ieonly/html5shiv.js"></script>
+    <script src="dist/lib/ieonly/respond.js"></script>
+    <script src="dist/lib/ieonly/excanvas.js"></script>
+  <![endif]-->
+    <style>
+        .img {
+            margin-top: 0px;
+            height: 81px;
+            background: #32e4fc; 
+            width:70px
+        }
+        .rectangle { 
+            width: 75px; 
+            height: 18px; 
+            text-align: center;
+            font-weight: normal;
+            font-style: normal;
+            z-index: 9;
+            opacity: 1;
+            background: #3280fc; 
+            color: #ffffff;
+        }
+        .carNoDiv {
+            width: 80px; 
+            height: 30px; 
+            float:left
+        }
+        .faceImgDiv{
+            width: 80px; 
+            height: 100px;
+            float:left
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="panel">
+            <div class="panel-heading-top-blue">
+                <span style="color:#3280fc;">预案文档</span>
+                <div class="pull-right panel-actions">
+                    <a id="pageClose" class="">
+                        <i class="icon icon-times"></i>关闭
+                    </a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="surveillanceForm">
+                    <div class="form-group">
+                        <label for="title" class="col-sm-2 required">预案名称</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="planName" name="planName" placeholder="请输入任务名称">
+                        </div>
+                        <label for="level" class="col-sm-2 required">预案分类</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="categoryId" name="categoryId">
+
+                            </select>
+                            <input type="hidden"  id="categoryName" name="categoryName" value="" />
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="name" class="col-sm-2 required">布控时间</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" id="beginTime" name="beginTime" type="text" placeholder="开始时间" readonly />
+                        </div>
+                        <div class="col-sm-2">
+                            <input class="form-control" id="endTime" name="endTime" type="text" placeholder="结束时间" readonly />
+                        </div>
+                    </div> -->
+                    <div class="form-group">
+                        
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="reason" class="col-sm-2 required">布控原因</label>
+                        <div class="col-md-6 col-sm-10">
+                            <input type="text" class="form-control" id="reason" name="reason" placeholder="请输入布控原因">
+                        </div>
+                    </div> -->
+                    <!-- <div class="form-group">
+                        <label for="carNo" class="col-sm-2">车牌号码</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="carNo" name="carNo" placeholder="请输入车牌号码">
+                        </div>
+                        <div class="col-sm-1">
+                            <button type="button" class="btn btn-primary" id="getCarNoImg">确定</button>
+                        </div>
+                    </div> -->
+                    <!-- <div class="form-group">
+                        <label for="carNO" class="col-sm-2"></label>
+                        <div class="col-md-6 col-sm-10" id="carImgDiv"></div>
+                    </div> -->
+                    <div class="form-group">
+                        <label for="exampleInputAccount9" class="col-sm-2">预案图片</label>
+                        <div class="col-md-6 col-sm-10">
+                            <div id='uploaderPhoto' class="uploader">
+                                <div class="uploader-message text-center">
+                                    <div class="content"></div>
+                                    <button type="button" class="close">×</button>
+                                </div>
+                                <div class="uploader-files file-list file-list-grid"></div>
+                                <div>
+                                    <div class="uploader-status pull-right text-muted"></div>
+                                    <button type="button" class="btn btn-link uploader-btn-browse">
+                                        <i class="icon icon-plus"></i> 选择文件</button>
+                                    <button type="button" class="btn btn-link uploader-btn-start">
+                                        <i class="icon icon-cloud-upload"></i> 开始上传</button>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden"  id="planPicUrl" name="planPicUrl" value="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="carNO" class="col-sm-2"></label>
+                        <div class="col-md-6 col-sm-10" id="faceDiv"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputAccount9" class="col-sm-2">预案文档</label>
+                        <div class="col-md-6 col-sm-10">
+                            <div id='uploaderDoc' class="uploader">
+                                <div class="uploader-message text-center">
+                                    <div class="content"></div>
+                                    <button type="button" class="close">×</button>
+                                </div>
+                                <div class="uploader-files file-list file-list-grid"></div>
+                                <div>
+                                    <div class="uploader-status pull-right text-muted"></div>
+                                    <button type="button" class="btn btn-link uploader-btn-browse">
+                                        <i class="icon icon-plus"></i> 选择文件</button>
+                                    <button type="button" class="btn btn-link uploader-btn-start">
+                                        <i class="icon icon-cloud-upload"></i> 开始上传</button>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden"  id="planDocumentUrl" name="planDocumentUrl" value="" />
+                        <input type="hidden"  id="isTemplate" name="isTemplate" value="2" />
+                    </div>                    
+                    <div class="form-group">
+                        <label for="remark" class="col-sm-2">备注</label>
+                        <div class="col-md-6 col-sm-10">
+                            <textarea class="form-control" rows="3" id="remark" name="remark" placeholder="可以输入多行文本"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" id="save" name="save" class="btn btn-primary">提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- jQuery (ZUI中的Javascript组件依赖于jQuery) -->
+        <script src="../assets/jquery.js?v=1.8"></script>
+        <!-- ZUI Javascript组件 -->
+        <script src="../dist/js/zui.min.js?v=1.8"></script>
+        <script src="../dist/lib/uploader/zui.uploader.min.js"></script>
+        <script src="../dist/plugins/axios/axios.min.js"></script>
+        <script src="../dist/plugins/seajs/sea.js"></script>
+        <script src="../dist/plugins/seajs/seajs-text.js"></script>
+        <script src="../dist/plugins/laydate/laydate.js"></script>
+        <script src="../dist/plugins/seajs/handlebars-1.0.0.beta.6.js"></script>
+        <script src="../dist/lib/chosen/chosen.min.js"></script>
+        <script type="text/javascript">
+            seajs.config({
+                base: "../dist/",
+                alias: {
+                    "utilityForm": "utility/form.js",
+                    "validate": "plugins/jquery-validate/jquery.validate.min.js",
+                    "validation": "plugins/jquery-validate/additional-methods.js",
+                    "localization": "plugins/jquery-validate/localization/messages_zh.min.js"
+                },
+                vars: {
+                    imageUrl:'http://180.76.135.26/apollo/upload/',
+                    api:'http://127.0.0.1:8021',
+                    requestFrontUrl: 'http://127.0.0.1/apollo-front/',
+                }
+            });
+
+            if(0==$.trim(window.location.search).length){
+                seajs.use('./add.js');
+            }else{
+                seajs.use('./edit.js');
+            }
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>警员信息</title>
+    <link href="../dist/css/zui.css?v=1.8" rel="stylesheet">
+    <link href="../dist/css/case.css" rel="stylesheet">
+    <link href="../dist/lib/uploader/zui.uploader.min.css" rel="stylesheet">
+    <link href="../dist/plugins/zTree_v3/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 9]>
+    <script src="dist/lib/ieonly/html5shiv.js"></script>
+    <script src="dist/lib/ieonly/respond.js"></script>
+    <script src="dist/lib/ieonly/excanvas.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="panel">
+            <div class="panel-heading-top-blue">
+                <span style="color:#3280fc;">警员信息</span>
+                <div class="pull-right panel-actions">
+                    <a id="pageClose" class="">
+                        <i class="icon icon-times"></i>关闭
+                    </a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="policeForm">
+                    <div class="form-group">
+                        <label for="no" class="col-sm-2 required">警员编号</label>
+                        <div class="col-md-6 col-sm-10">
+                            <input type="text" class="form-control" id="no" name="no" placeholder="警员编号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 required">警员姓名</label>
+                        <div class="col-md-6 col-sm-10">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="警员姓名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender" class="col-sm-2">性别</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="gender" name="gender">
+                                <option value="1">男</option>
+                                <option value="2">女</option>
+                            </select>
+                        </div>
+                        <label for="telephone" class="col-sm-1">联系方式</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="telephone" name="telephone" placeholder="联系方式">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender" class="col-sm-2">警员类别</label>
+                        <div class="col-sm-2">
+                            <label class="radio-inline">
+                            <input type="radio" value="1" checked name="isBackup" /> 警员
+                            </label>
+                            <label class="radio-inline">
+                            <input type="radio" value="0" name="isBackup" /> 辅警
+                            </label>
+                        </div>
+                        <label for="telephone" class="col-sm-1">身份证号</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="card" name="card" placeholder="身份证号" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="station" class="col-sm-2">岗位</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="stationId" name="stationId">
+                                <option value="1">警察</option>
+                                <option value="2">人事</option>
+                            </select>
+                        </div>
+                        <label for="duty" class="col-sm-1">职责</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" id="duty" name="duty" placeholder="职责">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="unitId" class="col-sm-2 required">所属单位</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="unit" name="unit" value="" readonly="readonly">
+                            <input type="text" id="unitId" name="unitId" style="display: none;">
+                        </div>
+                        <label for="departmentId" class="col-sm-1">所属部门</label>
+                        <div class="col-sm-3">
+                            <select class="form-control" id="departmentId" name="departmentId">        
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2">备注</label>
+                        <div class="col-md-6 col-sm-10">
+                            <textarea class="form-control" rows="3" id="remark" name="remark" placeholder="可以输入多行文本"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputAccount9" class="col-sm-2">照片</label>
+                        <div class="col-md-6 col-sm-10">
+                            <div id='uploaderPhoto' class="uploader">
+                                <div class="uploader-message text-center">
+                                    <div class="content"></div>
+                                    <button type="button" class="close">×</button>
+                                </div>
+                                <div class="uploader-files file-list file-list-grid"></div>
+                                <div>
+                                    <hr class="divider">
+                                    <div class="uploader-status pull-right text-muted"></div>
+                                    <button type="button" class="btn btn-link uploader-btn-browse">
+                                        <i class="icon icon-plus"></i> 选择文件</button>
+                                    <button type="button" class="btn btn-link uploader-btn-start">
+                                        <i class="icon icon-cloud-upload"></i> 开始上传</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="photo" name="photo" value="">
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" id="save" name="save" class="btn btn-primary">提交</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <!-- jQuery (ZUI中的Javascript组件依赖于jQuery) -->
+        <script src="../assets/jquery.js?v=1.8"></script>
+        <!-- ZUI Javascript组件 -->
+        <script src="../dist/js/zui.min.js?v=1.8"></script>
+        <script src="../dist/lib/uploader/zui.uploader.min.js"></script>
+        <script src="../dist/plugins/axios/axios.min.js"></script>
+        <script src="../dist/plugins/seajs/sea.js"></script>
+        <script src="../dist/plugins/seajs/seajs-text.js"></script>
+        <script src="../dist/plugins/seajs/handlebars-1.0.0.beta.6.js"></script>
+        <script src="../dist/plugins/zTree_v3/js/jquery.ztree.all.js"></script>
+        <script src="../app/common/organization_tree.js"></script>
+        <script type="text/javascript">
+            seajs.config({
+                base: "../dist/",
+                alias: {
+                    "utilityForm": "utility/form.js",
+                    "validate": "plugins/jquery-validate/jquery.validate.min.js",
+                    "validation": "plugins/jquery-validate/additional-methods.js",
+                    "localization": "plugins/jquery-validate/localization/messages_zh.min.js"
+                },
+                vars: {
+                    imageUrl: 'http://180.76.135.26/apollo/upload/',
+                    api: 'http://127.0.0.1:8021',
+                    requestFrontUrl: 'http://127.0.0.1/apollo-front/',
+                }
+            });
+
+            if (0 == $.trim(window.location.search).length) {
+                seajs.use('./add.js');
+            } else {
+                seajs.use('./edit.js');
+            }
+        </script>
+</body>
+
+</html>

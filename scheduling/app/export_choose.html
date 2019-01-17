@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>警情分析</title>
+  <link href="../dist/css/zui.css?v=1.8" rel="stylesheet">
+  <link href="../dist/css/case.css" rel="stylesheet">
+  <style id="themeStyle"></style>
+
+  <link rel="shortcut icon" href="../docs/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../docs/favicon.ico" type="image/x-icon">
+
+  <link href="../dist/lib/datetimepicker/datetimepicker.min.css" rel="stylesheet">
+  <link href="../dist/lib/datagrid/zui.datagrid.min.css" rel="stylesheet">
+  <link href="../dist/lib/chosen/chosen.min.css" rel="stylesheet">
+
+  <!--[if lt IE 9]>
+    <script src="dist/lib/ieonly/html5shiv.js"></script>
+    <script src="dist/lib/ieonly/respond.js"></script>
+    <script src="dist/lib/ieonly/excanvas.js"></script>
+  <![endif]-->
+
+</head>
+
+<body>
+  <div class="container-fluid">
+    <br />
+    <form class="form-horizontal" id="chooseForm">
+        <fieldset>
+            <legend>导出条件</legend>
+
+      <div class="form-group">
+        <label for="exampleInputAccount4" class="col-sm-3">统计单位</label>
+        <div class="col-md-6">
+            <label class="" id="dept"> </label>
+        </div>
+      </div>
+      <div class="form-group">
+          <label for="exampleInputAccount4" class="col-sm-3">统计周期</label>
+          <div class="col-md-6">
+              <label class="radio-inline"> <input
+                type="radio" id="week" name="period" value="1">周统计
+              </label> <label class="radio-inline"> <input type="radio" checked
+                id="month" name="period" value="2">月统计
+              </label> <label class="radio-inline"> <input type="radio"
+                id="quarter" name="period" value="3">季度统计
+              </label> <label class="radio-inline"> <input type="radio"
+                id="halfYear" name="period" value="4">半年统计
+              </label> <label class="radio-inline"> <input type="radio" id="year"
+                name="period" value="5">年统计
+              </label>
+          </div>
+        </div>   
+        
+        <div class="form-group">
+            <label for="exampleInputAccount4" class="col-sm-3">统计时间</label>
+            <div class="col-md-8">
+                <div class="form-inline">
+                    <lable class="" id="_1" style="display:none;">
+                    <input class="form-control" style="width: 100px;" id="week_widget"
+                      type="text" placeholder="请选择时间" readonly> <select
+                      id="sub_week" class="form-control" style="width: 209px;">
+                    </select> </lable>
+                    <lable class="" id="_2"> <input
+                      class="form-control" style="width: 100px;" id="month_widget"
+                      type="text" placeholder="请选择时间" readonly> </lable>
+                    <lable class="" id="_3" style="display:none;">
+                    <input class="form-control" style="width: 100px;"
+                      id="quarter_widget" type="text" placeholder="请选择时间" readonly>
+                    <select id="sub_quarter" class="form-control">
+                    </select> </lable>
+                    <lable class="" id="_4" style="display:none;">
+                    <input class="form-control" style="width: 100px;" id="half_widget"
+                      type="text" placeholder="请选择时间" readonly> <select
+                      id="sub_half" class="form-control">
+                    </select> </lable>
+                    <lable class="" id="_5" style="display:none;">
+                    <input class="form-control" style="width: 100px;" id="year_widget"
+                      type="text" placeholder="请选择时间" readonly> </lable>
+                </div>
+            </div>
+          </div>
+          <!-- <div class="form-group">
+              <label for="exampleInputAccount4" class="col-sm-3">统计方式</label>
+              <div class="col-md-6">
+                  <label class="checkbox-inline"> <input
+                    type="checkbox" disabled checked name="mode" value="1">本期
+                  </label> <label class="checkbox-inline"> <input type="checkbox"
+                    name="mode" value="2">同比
+                  </label> <label class="checkbox-inline" id="mode_basis_lable"> <input
+                    type="checkbox" name="mode" value="3">环比
+                  </label>
+              </div>
+            </div> -->
+          </fieldset>
+          <fieldset>
+              <legend>导出项</legend>
+              <div class="form-group">
+                  <label for="exampleInputAccount4" class="col-sm-3">导出类别</label>
+                  <div class="col-md-6">
+                      <label class="radio-inline"> <input checked
+                        type="radio" id="category_1" name="issue" value="1">警情分析
+                      </label> 
+                      <label class="radio-inline" id="issueShow"> <input type="radio"
+                        id="category_2" name="issue" value="2">专刊统计
+                      </label> 
+                  </div>
+              </div>
+              <div class="form-group" id="criminalItems" style="display:none">
+                  <label for="exampleInputAccount4" class="col-sm-3">案件专项</label>
+                  <div class="col-md-6">
+                      <select id="category" style="width:150px;" name='category' data-placeholder="选择案件类别..." class="chosen-select form-control" tabindex="2" >
+                          <option>选择案件类别</option>
+                      </select>  
+                  </div>
+              </div>
+              <div class="form-group" id="subCriminal" style="display:none">
+                  <label for="exampleInputAccount4" class="col-sm-3"></label>
+                  <div class="col-md-6">
+                      <select data-placeholder="选择刑事案件" style="width:500px;" class="chosen-select form-control" id="sub_category" tabindex="2" multiple>
+                       
+                        </select>
+                  </div>
+              </div>                                                     
+            </fieldset>
+    </form>
+
+    <style>
+      .col-center-block {
+        float: none;
+        display: inline-block;
+        vertical-align: left;
+      }
+    </style>
+
+
+
+  </div>
+  <!-- jQuery (ZUI中的Javascript组件依赖于jQuery) -->
+  <script src="../assets/jquery.js?v=1.8"></script>
+  <!-- ZUI Javascript组件 -->
+  <script src="../dist/js/zui.min.js?v=1.8"></script>
+  <script src="../dist/lib/chart/zui.chart.min.js"></script>
+  <script src="../dist/plugins/echarts/echarts.js"></script>
+  <script src="../dist/plugins/echarts/shine.js"></script>
+  <script src="../dist/plugins/seajs/sea.js"></script>
+  <script src="../dist/plugins/seajs/seajs-text.js"></script>
+  <script src="../dist/plugins/seajs/handlebars-1.0.0.beta.6.js"></script>
+  <script src="../dist/plugins/axios/axios.min.js"></script>
+  <script src="../dist/plugins/laydate/laydate.js"></script>
+  <script src="../dist/plugins/layer/layer.js"></script>
+  <script src="../dist/plugins/bootbox/bootbox.min.js"></script>
+  <script src="../dist/plugins/babel/babel-browser.min.js"></script>
+  <script src="../dist/lib/datagrid/zui.datagrid.min.js"></script>
+  <script src="../dist/plugins/exports/jquery.base64.js"></script>
+  <script src="../dist/lib/chosen/chosen.min.js"></script>
+  <script type="text/javascript">
+    seajs.config({
+      base: "../dist/",
+      alias: {
+          "utilityForm": "utility/form.js"
+      },
+      vars: {
+        requestFrontUrl: 'http://127.0.0.1/apollo-front/',
+      }
+    });
+    seajs.use('./js/exports/export_choose.js');
+  </script>
+</body>
+
+</html>

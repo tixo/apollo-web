@@ -1,0 +1,478 @@
+<!DOCTYPE html >
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>驾驶舱</title>
+	<link rel="stylesheet/less" type="text/css" href="css/style.less">
+	<link rel="stylesheet" href="../../module/plugins/scrollbar/jquery.mCustomScrollbar.css" type="text/css">
+	<link rel="stylesheet" href="../../module/plugins/layui/css/layui.css" type="text/css">
+	<link rel="stylesheet" href="css/lzy-style.css" type="text/css">
+	<style>
+		/* 修改滚动条样式宽度 开始 */
+		.mCSB_dragger_bar {
+			width: 5px !important;
+		}
+		/* 修改滚动条样式 颜色 */
+		.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
+			background-color: rgba(120, 172, 236,0.75);
+		}
+		.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar{
+			background-color: rgba(120, 172, 236,0.85);
+		}
+		.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+		.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar{
+			background-color: rgba(120, 172, 236,0.9);
+		}
+		/* 修改滚动条样式 结束*/
+	</style>
+
+	<link rel="stylesheet" href="css/flipclock.css">
+	<script type="text/javascript" src="../../module/jquery/jquery-1.8.1.min.js"></script>
+	<script type="text/javascript" src="js/flipclock.js"></script>
+	<script type="text/javascript">
+        var clock;
+        var now=new Date();
+		var _year=now.getFullYear();
+        $(document).ready(function() {
+            // Instantiate a counter
+            clock = new FlipClock($('.clock'), _year, {
+                clockFace: 'Counter'
+            });
+            //下一年
+            $('.increment').click(function() {
+                clock.increment();
+                _year = clock.time.time
+                toHeat(clock.time.time);
+            });
+            //上一年
+            $('.decrement').click(function() {
+                clock.decrement();
+                 _year = clock.time.time
+                toHeat(clock.time.time);
+            });
+
+            $('.reset').click(function() {
+                clock.reset();
+            });
+        });
+	</script>
+
+	<script type="text/javascript" src="../../module/less/less-1.3.3.min.js"></script>
+	<script type="text/javascript" src="../../module/plugins/scrollbar/minified/jquery.mousewheel-3.0.6.min.js"></script>
+	<script type="text/javascript" src="../../module/sea/sea.js"></script>
+	<script type="text/javascript" src="../../module/plugins/layui/layui.js"></script>
+	<script type="text/javascript" src="../../module/angular/angular-1.2.2.js"></script>
+	<!--<script type="text/javascript" src="../../supermap/9D-leaflet/dist/include-leaflet.js"></script>-->
+	<script type="text/javascript" exclude="iclient-classic" include="Bar3D" src="../../supermap/9D-leaflet/dist/include-classic.js"></script>
+	<!--<script type="text/javascript" include="widgets.alert" src="../../supermap/webgl/supermap/3D/js/include-web.js"></script>-->
+	<script type="text/javascript" src="../../supermap/webgl/supermap/3D/webgl.Include3D.js"></script>
+	<script type="text/javascript" src="../../module/plugins/JsonExportExcel.min.js"></script>
+	<script type="text/javascript" src="../../module/plugins/echarts4.1/echarts.min.js"></script>
+	<script type="text/javascript" src="js/lzy-echarts.js"></script>
+	<script type="text/javascript" src="../../module/plugins/scrollbar/jquery.mCustomScrollbar.js"></script>
+	<script type="text/javascript" src="../../config/common/websocket/js/sockjs.min.js"></script>
+	<script type="text/javascript" src="../../config/common/websocket/js/stomp.min.js"></script>
+</head>
+<body>
+<div class="box-ctn">
+	<div class="map" id="map" style="position: absolute;z-index: 1; background: url(../img/jiashicang.png) 0% 0% / 100% 100% no-repeat !important;">
+	</div>
+	<div class="tuli" style="z-index: 99999999999;left: 45%;">
+			<form  action="" method="post">
+				<div id="divselect1" class="divselect" onclick="toHeat()">
+					<cite>热力专题图</cite>
+				</div>
+				<input name="" type="hidden" value="" id="inputselect"/>
+			</form>
+			</div>
+			<div class="tuli" style="z-index: 99999999999;left: 55%;">
+			<form  action="" method="post">
+				<div id="divselect2" class="divselect" onclick="addThemeLayer()">
+					<cite>分段专题图</cite>
+				</div>
+				<input name="" type="hidden" value="" id="inputselect"/>
+			</form>
+		</div>
+		<div class="tuli" style="z-index: 99999999999;left: 65%;">
+			<form  action="" method="post">
+				<div id="divselect2" class="divselect" onclick="openPillar()">
+					<cite>全景地图</cite>
+				</div>
+				<input name="" type="hidden" value="" id="inputselect"/>
+			</form>
+		</div>
+	<div class="time" style="left:20%">
+			<div class="btnLeft">
+				<button type="button" class="decrement" >
+					<img style="width: 20px;height: 20px;" src="img/before.gif">
+				</button>
+			</div>
+			<div class="clock" style="margin:-18px 0px 10px 0px; float:left"></div>
+			<div class="btnRight">
+				<button type="button" class="increment" >
+					<img style="width: 20px;height: 20px;" src="img/next.gif">
+				</button>
+			</div>
+
+		</div>
+	<div id="mapLegend" class="legend" >
+		<!--<div class="legendTitle">
+			<span style="color: white" >案件分布图例</span>
+		</div>
+		<div class="legendContent">
+			<table style="background-color：rgba(fff,fff,000,0)">
+				<tr style="margin-bottom: 100%">
+					<td class="legendItemHeader" style="">范围</td>
+					<td class="legendItemValue" style="text-align: left; height: 25px;">颜色</td>
+				</tr>
+				<tr> 
+					<td class="legendItemHeader">0-5</td>
+					<td class="legendItemValue" style="background: rgb(0,0,255)"></td>
+				</tr>
+				<tr>
+					<td class="legendItemHeader">5-10</td>
+					<td class="legendItemValue" style="background: rgb(0,255,0)"></td>
+				</tr>
+				<tr>
+					<td class="legendItemHeader">10-15</td>
+					<td class="legendItemValue" style="background: yellow"></td>
+				</tr>
+				<tr>
+					<td class="legendItemHeader">>15</td>
+					<td class="legendItemValue" style="background: rgb(255,0,0)"></td>
+				</tr>
+			</table>
+		</div>-->
+	</div>
+	<div class="ctn-left">
+		<div class="ctn-left-1">
+			<div class="date-total">
+				<p>实有人口：<span id="generalPopulationTotal"></span>人</p>
+			</div>
+			<div class="chart-box">
+				<div id="generalPopulation" style="width:100%; height:100%;"></div>
+			</div>
+		</div>
+		<div class="ctn-margin-top"></div>
+		<div class="ctn-left-2">
+			<div class="date-total">
+				<p>实有房屋：<span id="generalHouseTotal"></span>户</p>
+			</div>
+			<div class="chart-box">
+				<div id="generalHouse" style="width:100%; height:100%;"></div>
+			</div>
+		</div>
+		<div class="ctn-margin-top"></div>
+		<div class="ctn-left-3">
+			<div class="date-total">
+				<p>实有单位：<span id="generalCompanyTotal"></span>个</p>
+			</div>
+			<div class="chart-box">
+				<div id="generalCompany" style="width:100%; height:100%;"></div>
+			</div>
+		</div>
+	</div>
+
+	<div id="infoBox">
+		<div style="text-align: center;">场所统计</div>
+		<div id="infoContent" style="overflow-y: auto; padding: 5px;">
+		</div>
+		<table id="infoContentTotal" border="0" cellspacing="0" cellpadding="0" style="position: relative;width: 100%;float: left">
+		</table>
+	</div>
+	<div class="ctn-con">
+			<div style="margin-bottom: 1px">
+				<div id="" style="margin:0 auto;width: 100%;height: 100%"></div>
+				<!--<div id="mapLegend" class="legend">
+					<div class="legendTitle">
+						<span style="color: white" >图例</span>
+					</div>
+					<div class="legendContent">
+						<table style="background-color：rgba(fff,fff,000,0)">
+							<tr style="margin-bottom: 100%">
+								<td class="legendItemHeader">案件数</td>
+								<td class="legendItemValue">颜色</td>
+							</tr>
+							<tr>
+								<td class="legendItemHeader">0 - 10</td>
+								<td class="legendItemValue" style="background: #c4eafb"></td>
+							</tr>
+							<tr>
+								<td class="legendItemHeader">10 - 15</td>
+								<td class="legendItemValue" style="background: #7bd0f6"></td>
+							</tr>
+							<tr>
+								<td class="legendItemHeader">15 - 20</td>
+								<td class="legendItemValue" style="background: #72acec"></td>
+							</tr>
+							<tr>
+								<td class="legendItemHeader">20 - 25</td>
+								<td class="legendItemValue" style="background: #2d73be"></td>
+							</tr>
+							<tr>
+								<td class="legendItemHeader">25 - 40</td>
+								<td class="legendItemValue" style="background: #0957ac"></td>
+							</tr>
+						</table>
+					</div>
+				</div>-->
+			</div>
+			<script type="text/javascript">
+				var ajax,utils,websocketHandle;
+		        seajs.config({base: "./js/"});
+		        seajs.use(["jscMain.js"],function(jsc){
+		            ajax = jsc.ajax;
+		            utils = jsc.utils;
+		            toHeat(_year);
+		            websocketHandle=jsc.websocketHandle;
+		        });
+                var url1 = parent.window.services.jscMap;
+                var url2 = parent.window.services.queryUrl;
+                var map, layer, themeLayer,resultDatas,BarLayer,heatLayer;
+                // 检测是否支持 Canvas
+                if (!document.createElement('canvas').getContext) {
+                    widgets.alert.showAlert("您的浏览器不支持 Canvas，请升级！",false);
+                }
+                //定义底图
+                map = new SuperMap.Map("map", {
+                    controls: [
+                        new SuperMap.Control.Navigation({
+                            dragPanOptions: {
+                                enableKinetic: true
+                            }
+                        })]
+                });
+                layer = new SuperMap.Layer.TiledDynamicRESTLayer("HTC02", url1, {
+                    transparent: true,
+                    cacheEnabled: true
+                }, {maxResolution: "auto"});
+                layer.events.on({"layerInitialized": addLayer});
+
+                // 定义 Range 分段专题图层
+                themeLayer = new SuperMap.Layer.Range("ThemeLayer");
+                // 创建一个三维柱状统计专题图图层
+                BarLayer= new SuperMap.Layer.Graph("ThemeLayer3D", "Bar3D");
+                //创建一个热力图层
+                heatLayer = new SuperMap.Layer.HeatMapFastLayer(
+                    "heatLayer",
+                    {
+                        "featureWeight": "value"
+                    }
+                );
+                themeLayer.setOpacity(0.8);
+                // 图层基础样式
+                themeLayer.style = {
+                    shadowBlur: 16,
+                    shadowColor: "#000000",
+                    fillColor: "#FFFFFF"
+                };
+                // 开启 hover 高亮效果
+                themeLayer.isHoverAble = true;
+                // hover高亮样式
+                themeLayer.highlightStyle = {
+                    stroke: true,
+                    strokeWidth: 4,
+                    strokeColor: 'blue',
+                    fillColor: "#00EEEE",
+                    //shadowBlur: 6,
+                    //shadowColor: "#000000",
+                    //shadowOffsetX: 6,
+                    //shadowOffsetY: 6,
+                    fillOpacity: 0.8
+                };
+                // 用于范围分段的属性字段名称
+                themeLayer.themeField = "场所统计";
+                // 风格数组，设定分段范围对应的样式
+                themeLayer.styleGroups = [
+                    {
+                        start: 0,
+                        end: 20,
+                        style: {
+                            color: '#c4eafb'
+                        }
+                    },
+                    {
+                        start: 20,
+                        end: 40,
+                        style: {
+                            color: '#12b6ff'
+                        }
+                    },
+                    {
+                        start: 40,
+                        end: 60,
+                        style: {
+                            color: '#72acec'
+                        }
+                    },
+                    {
+                        start: 60,
+                        end: 80,
+                        style: {
+                            color: '#2d73be'
+                        }
+                    },
+                    {
+                        start: 80,
+                        end: 100,
+                        style: {
+                            color: '#0957ac'
+                        }
+                    }
+                ];
+                // 指定用于专题图制作的属性字段
+                BarLayer.themeField = ["场所统计"];
+                BarLayer.isOverLay= false;
+                //压盖处理权重
+                //themeLayer.overlayWeightField = "案件数";
+                // 配置图表参数
+                BarLayer.chartsSetting = {
+                    // width，height，codomain 分别表示图表宽、高、数据值域；此三项参数为必设参数
+                    width: 30,
+                    height: 300,
+                    codomain: [0, 45],        // 允许图表展示的值域范围，此范围外的数据将不制作图表
+                    xShapeBlank: [0, 0, 0],   // 水平方向上的空白间距参数
+                    YOffset: -150,         // 向上偏移 150 像素
+                    useAxis: false,       // 不显示坐标轴
+                    useBackground: false      // 不显示背景框
+                };
+
+                //添加底图，分段专题图
+                function addLayer() {
+                    map.addLayers([layer, themeLayer, BarLayer, heatLayer]);
+					//map.setCenter(new SuperMap.LonLat(parent.window.services.mapconfig.x, parent.window.services.mapconfig.y), 1);
+                    map.setCenter(new SuperMap.LonLat(108.9722056044, 34.160076961786),1);
+                }
+
+                //调用分段专题图
+                function addThemeLayer() {
+                    clearLayer();
+                    setTopLayer("ThemeLayer");
+                    $("#mapLegend").css("background","url(./img/tulics.png) no-repeat");
+                    getThemeData();
+                    // 注册 mousemove 事件
+                    themeLayer.on("mousemove", evn);
+                }
+                
+                function openPillar(){
+                	window.open("../../pillar/index.html");
+                }
+                //获取 feature 数据, 专题图的数据必须是 SuperMap.Feature.Vector
+                function getThemeData() {
+                    var getFeatureParam, getFeatureBySQLService, getFeatureBySQLParams;
+                    getFeatureParam = new SuperMap.REST.FilterParameter({
+                        name: "HTC02",
+                        attributeFilter: "SMID > -1"
+                    });
+                    getFeatureBySQLParams = new SuperMap.REST.GetFeaturesBySQLParameters({
+                        queryParameter: getFeatureParam,
+                        toIndex: 500000,
+                        fromIndex: 0,
+                        datasetNames: ["HTC02:片区面_1"]
+                    });
+                    getFeatureBySQLService = new SuperMap.REST.GetFeaturesBySQLService(url2, {
+                        eventListeners: {"processCompleted": processCompleted, "processFailed": processFailed}
+                    });
+                    getFeatureBySQLService.processAsync(getFeatureBySQLParams);
+                }
+
+                var anjianData;
+                var interestCensusParam  = ["秦宇派出所一组2","神舟路派出所一组","神舟路派出所二组",
+                							"神舟路派出所三组","神舟路派出所四组1","神舟路派出所四组2",
+                							"秦宇派出所四组","秦宇派出所三组2","秦宇派出所三组1",
+                							"秦宇派出所二组2","秦宇派出所二组1","秦宇派出所一组1"];
+                function processCompleted(getFeaturesEventArgs) {
+                    var result = getFeaturesEventArgs.result;
+                    if (result && result.features) {
+						ajax.post('api/interest/census', interestCensusParam, function(response) {
+                        	anjianData = response.data.data;
+                        	$.each(result.features,function(i,item){
+                                $.each(anjianData,function(j,data){
+                                    if(j==item.attributes.LAYER){
+                                        var csTotal = 0;
+                                        $.each(data,function(a,total){
+                                        	csTotal+=total.value;
+                                        });
+                                        item.attributes.场所统计= csTotal;
+                                        item.data = data;
+                                    }
+                                });
+                            });
+	                        resultDatas = result;
+	                        themeLayer.addFeatures(result.features);
+                        },processFailed);
+                    }
+                }
+                function processFailed(e) {
+                	console.log(e);
+                   /* widgets.alert.showAlert(e.error.errorMsg,false);*/
+                }
+			</script>
+			<script type="text/javascript" src="js/LayerSwitch.js"></script>
+	</div>
+	<div class="ctn-right">
+		<div class="ctn-right-2">
+			<div class="right-resource-box">
+				<div class="right-resource">
+					<div class="img-cop"></div>
+					<div class="jindu">
+						<div class="jindu-box">
+									<span class="jindu-zs" id="zx1" >
+										<span class="zaixian">在线<span id="jc_zx"></span>人</span>
+									</span>
+						</div>
+						<span class="zomgji" id="jc_total"></span>
+					</div>
+				</div>
+				<div class="right-resource">
+					<div class="img-cop2"></div>
+					<div class="jindu">
+						<div class="jindu-box">
+									<span class="jindu-zs jindu-zs2" id="zx2" >
+										<span class="zaixian" >在线<span id="jch_zx"></span>辆</span>
+									</span>
+						</div>
+						<span class="zomgji" id="jch_total"></span>
+					</div>
+				</div>
+				<div class="right-resource">
+					<div class="img-cop3"></div>
+					<div class="jindu">
+						<div class="jindu-box">
+									<span class="jindu-zs jindu-zs3" id="zx3" >
+										<span class="zaixian" >在线<span  id="sxt_zx"></span>个</span>
+									</span>
+						</div>
+						<span class="zomgji" id="sxt_total"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ctn-margin-top"></div>
+		<div class="ctn-right-1">
+			<div class="date-total">
+				<p>布控任务：<span id="bkTotal"></span>个</p>
+			</div>
+			<div class="chart-box right-task-box" id="surveillance" style="overflow:auto">
+			</div>
+		</div>
+		<div class="ctn-margin-top"></div>
+		<div class="ctn-right-3 ">
+			<div class="right-message-box" id="scrollbar2" style="overflow:auto">
+
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+    $(function(){
+        $.divselect("#divselect","#inputselect");
+        if(window.screen.width>=1920){
+        	$("#mapLegend").css("top","79%")
+        }
+        	
+    });
+</script>
+
+</html>

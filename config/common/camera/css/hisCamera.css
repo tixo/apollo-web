@@ -1,0 +1,235 @@
+html{
+	height: 100%;
+	width: 100%;
+}
+body{
+	margin: 0;
+	padding:0 ;
+	height: 100%;
+	width: 100%;
+	background: #EFEFEF;
+}
+button{
+	background-color: #626262;
+    border: 2px outset #716e6e;
+    outline:none;
+}
+.his {
+	height: 100%;
+    background: #5d5d5d;
+}
+
+.mainContainer {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (min-width: 1152px) {
+    .mainContainer {
+        display: block;
+        width: 1152px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.video-container {
+    position: relative;
+    margin-top: 8px;
+    height: calc(100% - 40px);
+}
+
+.video-container:before {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 100%;
+    /*padding-bottom: 56.25%;*/
+}
+
+.video-container>div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: black;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+}
+
+.urlInput {
+    display: block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.centeredVideo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+}
+
+.controls {
+    display: flex;
+    width: 100%;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8px;
+    margin-bottom: 10px;
+}
+
+.logcatBox {
+    border-color: #CCCCCC;
+    font-size: 11px;
+    font-family: Menlo, Consolas, monospace;
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.url-input,
+.options {
+    font-size: 13px;
+}
+
+.url-input {
+    display: flex;
+}
+
+.url-input label {
+    flex: initial;
+}
+
+.url-input input {
+    flex: auto;
+    
+    font-size: 8px;
+}
+
+.url-input button {
+    flex: initial;
+    margin-left: 8px;
+}
+
+.options {
+    margin-top: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.fluent-container {
+    width: 100%;
+    height: fit-content;
+    margin: 10px 0;
+    
+}
+
+.fluent {
+    background: grey;
+    height: 20px;
+
+}
+ 
+ .status { 
+    display: inline-flex;
+    flex: 1;
+    text-align: center;
+    color:white;
+    background: gray;
+    border: none;
+    width: 20px;
+ }
+
+.humble{
+    color : #c5c5c5;
+}
+ .live{
+    color:green;
+ }
+
+.critical{
+    color:#65F6F6;
+ }
+
+ .clients{
+        display: flex;
+    width: 100%;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    font-size: 10px;
+ }
+ .client {
+    margin-left:4px;
+    text-decoration: underline;
+    color: blue;
+ }
+
+ .green {
+    background:  green!important;
+ }
+
+ .yellow {
+    background: orange!important;
+ }
+
+ .ranger{
+      top: auto!important;
+    bottom: 2%!important;
+    left: 2%!important;
+    right: 2%!important;
+    /* height: 5px; */
+    z-index: 31;
+    position: absolute;
+    background: none!important;
+ }
+
+ .ranger input[type=range]{
+     -webkit-appearance: none;
+     width: 99%;
+     height: 5px;
+     opacity: 0.7;
+
+ }
+
+ .ranger input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+} 
+
+ .ranger input[type=range]::-webkit-slider-runnable-track {
+    height: 5px;
+    background: #999999;
+}
+
+ .ranger input[type=range]:focus {
+    outline: none;
+}
+
+ .ranger input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 5px;
+    width: 5px;
+    /*margin-top: -2px;*/
+    background: #ffffff; 
+}

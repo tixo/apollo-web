@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>轨迹分析任务管理</title>
+    <link href="../dist/css/zui.css?v=1.8" rel="stylesheet">
+    <link href="../dist/css/case.css" rel="stylesheet">
+    <link href="../dist/lib/chosen/chosen.min.css" rel="stylesheet">
+    <link href="../dist/lib/uploader/zui.uploader.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="dist/lib/ieonly/html5shiv.js"></script>
+    <script src="dist/lib/ieonly/respond.js"></script>
+    <script src="dist/lib/ieonly/excanvas.js"></script>
+  <![endif]-->
+    <style>
+
+        .rectangle { 
+            width: 75px; 
+            height: 18px; 
+            text-align: center;
+            font-weight: normal;
+            font-style: normal;
+            z-index: 9;
+            opacity: 1;
+            background: #3280fc; 
+            color: #ffffff;
+        }
+        .carNoDiv {
+            width: 80px; 
+            height: 30px; 
+            float:left
+        }
+        .faceImgDiv{
+            width: 80px; 
+            height: 100px;
+            float:left
+        }
+
+        .space2 {
+      padding-top: 10px;
+    }
+    .hot {
+      width: 100%;
+      height: 20px;
+      text-align: center;
+      color: #000;
+      font-size: 12px;
+      line-height: 20px;
+      position: relative;
+    }
+
+    .hot:after {
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-color: #f5f5f5;
+      position: absolute;
+      bottom: 50%;
+      z-index: 1;
+      left: 0;
+      background-image: -webkit-linear-gradient(top, hsla(0, 0%, 100%, .1), hsla(0, 0%, 0%, .1));
+      background-image: -moz-linear-gradient(top, hsla(0, 0%, 100%, .1), hsla(0, 0%, 0%, .1));
+      background-image: -ms-linear-gradient(top, hsla(0, 0%, 100%, .1), hsla(0, 0%, 0%, .1));
+      background-image: -o-linear-gradient(top, hsla(0, 0%, 100%, .1), hsla(0, 0%, 0%, .1));
+      background-image: linear-gradient(top, hsla(0, 0%, 100%, .1), hsla(0, 0%, 0%, .1));
+    }
+
+    .hot span {
+      z-index: 2;
+      position: relative;
+      background-color: #f2f2f2;
+      padding: 0 10px;
+      float: left;
+    }
+
+    img {
+      position: relative;
+      margin: auto;
+      top: 2px;
+      left: 1px;
+      bottom: 0;
+      right: 0;
+      width: 60.7px;
+      height: 55px;
+      border-radius: 1px;
+      box-shadow: 0 0 0 4px #fff;
+      cursor: pointer;
+      animation: unselected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+      -o-animation: unselected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+      -ms-animation: unselected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+      -moz-animation: unselected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+      -webkit-animation: unselected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+    }
+
+    @keyframes unselected {
+      0% {
+        box-shadow: 0 0 0 4px #3280fc;
+      }
+      50% {
+        transform: scale(0.5);
+        opacity: 0.8;
+        box-shadow: 0 0 0 4px #fff;
+      }
+      80%,
+      100% {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 0 4px #fff;
+      }
+    }
+
+    @-o-keyframes unselected {
+      0% {
+        box-shadow: 0 0 0 4px #3280fc;
+      }
+      50% {
+        -o-transform: scale(0.5);
+        opacity: 0.8;
+        box-shadow: 0 0 0 4px #fff;
+      }
+      80%,
+      100% {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 0 4px #fff;
+      }
+    }
+
+    @-ms-keyframes unselected {
+      0% {
+        box-shadow: 0 0 0 4px #3280fc;
+      }
+      50% {
+        width: 45%;
+        height: 45%;
+        opacity: 0.8;
+        box-shadow: 0 0 0 4px #fff;
+      }
+      80%,
+      100% {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 0 4px #fff;
+      }
+    }
+
+    @-moz-transition unselected {
+      0% {
+        box-shadow: 0 0 0 4px #3280fc;
+      }
+      50% {
+        -moz-transform: scale(0.5);
+        opacity: 0.8;
+        box-shadow: 0 0 0 4px #fff;
+      }
+      80%,
+      100% {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 0 4px #fff;
+      }
+    }
+
+    @-webkit-keyframes unselected {
+      0% {
+        box-shadow: 0 0 0 4px #3280fc;
+      }
+      50% {
+        -webkit-transform: scale(0.5);
+        opacity: 0.8;
+        box-shadow: 0 0 0 4px #fff;
+      }
+      80%,
+      100% {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 0 4px #fff;
+      }
+    }
+
+    a {
+      position: relative;
+      margin: 3px;
+      width: 60.7px;
+      height: 55px;
+      float: left;
+    }
+
+    a:before {
+      content: "\2714";
+      display: block;
+      position: absolute;
+      top: 8px;
+      left: 12px;
+      bottom: 0;
+      right: 0;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      background: #3280fc;
+      border-radius: 50px;
+      color: #fff;
+      text-align: center;
+      font-size: 16px;
+      z-index: 10;
+      opacity: 0;
+      transition: 0.3s linear;
+      -o-transition: 0.3s linear;
+      -ms-transition: 0.3s linear;
+      -moz-transition: 0.3s linear;
+      -webkit-transition: 0.3s linear;
+      -o-user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      cursor: pointer;
+    }
+
+    a.selected:before {
+      opacity: 1;
+    }
+
+    /* img selection */
+
+    a.selected img {
+      box-shadow: 0 0 0 2px #3280fc;
+      animation: selected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+      -o-animation: selected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+      -ms-animation: selected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+      -moz-animation: selected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+      -webkit-animation: selected 0.3s cubic-bezier(0.250, 0.100, 0.250, 1.000);
+    }
+
+    @keyframes selected {
+      0% {
+        border-color: #fff;
+      }
+      50% {
+        transform: scale(0.5);
+        opacity: 0.8;
+        box-shadow: 0 0 0 4px #3280fc;
+      }
+      80%,
+      100% {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 0 4px #3280fc;
+      }
+    }
+
+    @-o-keyframes selected {
+      0% {
+        box-shadow: 0 0 0 4px #fff;
+      }
+      50% {
+        -o-transform: scale(0.5);
+        opacity: 0.8;
+        box-shadow: 0 0 0 4px #3280fc;
+      }
+      80%,
+      100% {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 0 4px #3280fc;
+      }
+    }
+
+    @-ms-keyframes selected {
+      0% {
+        box-shadow: 0 0 0 4px #fff;
+      }
+      50% {
+        width: 45%;
+        height: 45%;
+        opacity: 0.8;
+        box-shadow: 0 0 0 4px #3280fc;
+      }
+      80%,
+      100% {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 0 4px #3280fc;
+      }
+    }
+
+    @-moz-transition selected {
+      0% {
+        box-shadow: 0 0 0 4px #fff;
+      }
+      50% {
+        -moz-transform: scale(0.5);
+        opacity: 0.8;
+        box-shadow: 0 0 0 4px #3280fc;
+      }
+      80%,
+      100% {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 0 4px #3280fc;
+      }
+    }
+
+    @-webkit-keyframes selected {
+      0% {
+        box-shadow: 0 0 0 4px #fff;
+      }
+      50% {
+        -webkit-transform: scale(0.5);
+        opacity: 0.8;
+        box-shadow: 0 0 0 4px #3280fc;
+      }
+      80%,
+      100% {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 0 4px #3280fc;
+      }
+    }
+
+
+    /* container */
+
+    #econtainer {
+      position: relative;
+      width: 100%;
+      margin: 0 auto 25px;
+      padding-bottom: 10px;
+
+    }
+
+    .econtainer {
+      height: 30px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+
+    }
+
+    .grid {
+      width: 80px;
+      height: 80px;
+      padding: 10px;
+      background: #fff;
+      margin: 5px;
+      font-size: 12px;
+      float: left;
+      box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+      -moz-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+      -webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+
+      -webkit-transition: top 1s ease, left 1s ease;
+      -moz-transition: top 1s ease, left 1s ease;
+      -o-transition: top 1s ease, left 1s ease;
+      -ms-transition: top 1s ease, left 1s ease;
+    }
+
+    .border {
+      box-shadow: 2px 2px 3px rgba(34, 25, 25, 0.4);
+      -moz-box-shadow: 2px 2px 3px rgba(34, 25, 25, 0.4);
+      -webkit-box-shadow: 2px 2px 3px rgba(34, 25, 25, 0.4);
+      cursor: pointer;
+    }
+
+
+    .grid .closeimg {
+      position: relative;
+      top: -25px;
+      right: -16px;
+      width: 30px;
+      height: 30px;
+      display: block;
+    }
+
+    .grid .imgholder img {
+      max-width: 100%;
+      top: -20px;
+
+      background: #ccc;
+      display: block;
+    }
+
+    .sapn {
+      position: relative;
+      top: 1px;
+      bottom: 10px;
+      width: 100px;
+      color: #3280fc;
+      display: block;
+      font-size: 1px;
+    }
+
+    .button-wrapper {
+      width: 100%;
+      height: 100%;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: inherit;
+      -webkit-justify-content: inherit;
+      -ms-flex-pack: inherit;
+      justify-content: inherit;
+      -webkit-box-align: inherit;
+      -webkit-align-items: inherit;
+      -ms-flex-align: inherit;
+      align-items: inherit;
+    }
+
+    .widget {
+      width: 185px;
+      height: 63px;
+      left: 95px;
+      top: 332px;
+      color: #ffffff;
+      background-color: #4492e1;
+      border-color: #ffffff;
+      transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      font-size: 12.0px;
+      border-radius: 2px;
+      border-width: 0px;
+      border-style: solid;
+      text-align: center;
+      font-weight: normal;
+      font-style: normal;
+      z-index: 9;
+      opacity: 1;
+    }
+
+    .rectangle {
+      width: 75px;
+      height: 18px;
+      text-align: center;
+      font-weight: normal;
+      font-style: normal;
+      z-index: 9;
+      opacity: 1;
+      background: #3280fc;
+      color: #ffffff;
+    }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="panel">
+            <div class="panel-heading-top-blue">
+                <span style="color:#3280fc;">轨迹分析任务</span>
+                <div class="pull-right panel-actions">
+                    <a id="pageClose" class="">
+                        <i class="icon icon-times"></i>关闭
+                    </a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="surveillanceForm">
+                    <div class="form-group">
+                        <label for="reason" class="col-sm-2 required">任务名称</label>
+                        <div class="col-md-6 col-sm-10">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="请输入轨迹分析任务名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 required">开始时间</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" id="startTime" name="startTime" type="text" placeholder="开始时间" readonly />
+                        </div>
+                        <label for="name" class="col-sm-2 required">结束时间</label>
+                        <div class="col-sm-2">
+                            <input class="form-control" id="endTime" name="endTime" type="text" placeholder="结束时间" readonly />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="level" class="col-sm-2">摄像头</label>
+                        <div class="col-sm-2 checkbox">
+                            <button class="btn btn-sm btn-primary" type="button" id="mapSelect">
+                              <i class="icon icon-map-marker"></i>地图选择
+                            </button>
+                            <label>已选择<span id="count">0</span>个设备</label>
+                            <!-- <input type="hidden" id="cameraId" name="cameraId" /> -->
+                        </div>
+                        <label for="treshold" class="col-sm-2 required">比对阈值</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="treshold" name="treshold" placeholder="请输入小于或者等于1的数字">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="level" class="col-sm-2 required">对象类型</label>
+                        <div class="col-sm-2">
+                            <select id="type" name="type" class="chosen-select form-control" tabindex="2">
+                                <option value="face">人脸</option>
+                                <option value="car">车辆</option>
+                              </select>
+                        </div>
+                        <label for="source" class="col-sm-2">对象来源</label>
+                        <div class="col-sm-2">
+                          <select id="source" name="source" class="chosen-select form-control" tabindex="2">
+                            <option value="local">本地</option>                            
+                            <option value="capture">抓拍库</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="carNO" class="col-sm-2"></label>
+                        <div class="col-md-6 col-sm-10" id="carImgDiv"></div>
+                    </div>
+                    <div class="form-group" id="localFace">
+                        <label for="exampleInputAccount9" class="col-sm-2">人脸识别</label>
+                        <div class="col-md-6 col-sm-10">
+                            <div id='uploaderPhoto' class="uploader">
+                                <div class="uploader-message text-center">
+                                    <div class="content"></div>
+                                    <button type="button" class="close">×</button>
+                                </div>
+                                <div class="uploader-files file-list file-list-grid"></div>
+                                <div>
+                                    <div class="uploader-status pull-right text-muted"></div>
+                                    <button type="button" class="btn btn-link uploader-btn-browse">
+                                        <i class="icon icon-plus"></i> 选择文件</button>
+                                    <button type="button" class="btn btn-link uploader-btn-start">
+                                        <i class="icon icon-cloud-upload"></i> 开始上传</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="carNO" class="col-sm-2"></label>
+                        <div class="col-md-6 col-sm-10" id="faceDiv"></div>
+                    </div>
+                    <div class="form-group" id="capturelFace" style="display:none;">
+                        <label for="carNO" class="col-sm-2">抓拍库人脸</label>
+                        <div class="col-md-6 col-sm-10">
+                            <div class="row panel-group" id="viewSelected">
+                                <div class="panel-heading-top-blue panel">
+                                  <span>
+                                    <i class="icon icon-list"></i>&nbsp;
+                                    <small>已选择图片列表</small>
+                                  </span>
+                    
+                                </div>
+                                <div class="panel-body panel" id="imageSelectedList">
+                                  <div id="econtainer">
+                    
+                    
+                                  </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" id="save" name="save" class="btn btn-primary">提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- jQuery (ZUI中的Javascript组件依赖于jQuery) -->
+        <script src="../assets/jquery.js?v=1.8"></script>
+        <!-- ZUI Javascript组件 -->
+        <script src="../dist/js/zui.min.js?v=1.8"></script>
+        <script src="../dist/lib/uploader/zui.uploader.min.js"></script>
+        <script src="../dist/plugins/axios/axios.min.js"></script>
+        <script src="../dist/plugins/seajs/sea.js"></script>
+        <script src="../dist/plugins/seajs/seajs-text.js"></script>
+        <script src="../dist/plugins/laydate/laydate.js"></script>
+        <script src="../dist/plugins/layer/layer.js"></script>
+        <script src="../dist/lib/chosen/chosen.min.js"></script>
+        <script src="../dist/plugins/seajs/handlebars-1.0.0.beta.6.js"></script>
+        <script type="text/javascript">
+            seajs.config({
+                base: "../dist/",
+                alias: {
+                    "utilityForm": "utility/form.js",
+                    "validate": "plugins/jquery-validate/jquery.validate.min.js",
+                    "validation": "plugins/jquery-validate/additional-methods.js",
+                    "localization": "plugins/jquery-validate/localization/messages_zh.min.js"
+                }
+            });
+
+            if(0==$.trim(window.location.search).length){
+                seajs.use('./add.js');
+            }else{
+                seajs.use('./edit.js');
+            }
+        </script>
+</body>
+
+</html>

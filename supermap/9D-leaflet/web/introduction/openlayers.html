@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>iClient for OpenLayers 产品介绍</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <script type="text/javascript" include='openlayers,iclient9-openlayers,g6,isIntroduction'
+            src="../js/include.js"></script>
+</head>
+<body class="hold-transition skin-blue">
+
+<!--顶部导航-->
+<header class="header-wrapper main-header icl-header"></header>
+<script>
+    var identification = {
+        name: "OpenLayers"
+    };
+    var navigation = {
+        nav: {
+            title: "SuperMap iClient 9D",
+            version: "",
+            path: "../"
+        }
+    };
+    utils.loadTemplate(".icl-header", "../template/header.html", navigation);
+</script>
+<!--顶部导航 end-->
+
+<!--内容区-->
+<div class="container icl-docs-container">
+    <div class="row">
+        <!--左侧导航-->
+        <div class="col-md-3" role="complementary">
+            <nav class="icl-docs-sidebar hidden-print hidden-xs hidden-sm affix-top">
+                <ul class="nav icl-docs-sidenav">
+                    <li><a href="#introduce">产品介绍</a>
+
+                    </li>
+                    <li><a href="#download">下载</a>
+
+                    </li>
+                    <li><a href="#modules">模块说明</a>
+
+                    </li>
+                    <li><a href="#dependence">相关依赖</a>
+
+                    </li>
+                    <li><a href="#license">许可说明</a>
+
+                    </li>
+                </ul>
+                <a class="back-to-top" href="#top">
+                    返回顶部
+                </a>
+            </nav>
+        </div>
+        <!--右侧内容区-->
+        <div class="col-md-9" id="main-content" role="main">
+            <div class="icl-docs-header">
+                <h1 class="product">SuperMap iClient for OpenLayers</h1>
+            </div>
+            <div class="section icl-docs-section">
+                <h2 id="introduce" class="section-title">产品介绍</h2>
+                <p class="lead">SuperMap iClient for OpenLayers 是一套基于OpenLayers的云GIS网络客户端开发平台，
+                    支持访问SuperMap iServer / iExpress / iPortal / iManager / Online的地图、服务和资源，为用户提供了完整专业的GIS能力，
+                    同时提供了优秀的可视化功能。
+                </p>
+                <p class="lead">GitHub托管地址：<a href="https://github.com/SuperMap/iClient-JavaScript/tree/master/src/openlayers"
+                                              target="_blank">https://github.com/SuperMap/iClient-JavaScript/tree/master/src/openlayers</a>
+                </p>
+                <p class="lead">OSChina托管地址：<a href="https://gitee.com/isupermap/iClient9/tree/master/src/openlayers"
+                                               target="_blank">https://gitee.com/isupermap/iClient9/tree/master/src/openlayers</a>
+                </p>
+            </div>
+            <div class="section icl-docs-section">
+                <h2 id="download" class="section-title">下载</h2>
+                <div style="text-align:center;margin:0 auto;margin-top: 30px">
+                    <a target="_blank"
+                       href="../download/Download.html"
+                       class="btn btn-outline-inverse btn-lg">进入下载页</a>
+                </div>
+            </div>
+            <div class="section icl-docs-section">
+                <h2 id="modules" class="section-title">模块说明</h2>
+                <p class="lead"></p>
+                <div class="highlight">
+                    <div id="moduleIntro"></div>
+                </div>
+            </div>
+            <div class="section icl-docs-section">
+                <h2 id="dependence" class="section-title">相关依赖</h2>
+                <!--相关依赖-->
+                <div class="logos">
+                    <div class="col-md-4 col-sm-4 bundle text-center bundle-region bundle-region-hl">
+                        <div class="bundle-wrapper">
+                            <a href="http://openlayers.org/" target="_blank">
+                                <img style="height:40px" src="../img/lib/OpenLayers.png">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 bundle text-center bundle-region bundle-region-hl">
+                        <div class="bundle-wrapper">
+                            <a href="http://echarts.baidu.com/" target="_blank">
+                                <img style="height:40px" src="../img/lib/ECharts.png">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 bundle text-center bundle-region bundle-region-hl">
+                        <div class="bundle-wrapper">
+                            <a href="http://mapv.baidu.com/" target="_blank">
+                                <img style="height:50px" src="../img/lib/MapV.png">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 bundle text-center bundle-region bundle-region-hl">
+                        <div class="bundle-wrapper">
+                            <a href="http://turfjs.org/" target="_blank">
+                                <img style="height:50px;margin-top: 17px" src="../img/lib/Turfjs.png">
+                            </a>
+                        </div>
+                    </div>
+                    <!--暂时无此示例-->
+                    <!--<div class="col-md-4 col-sm-4 bundle text-center bundle-region bundle-region-hl">-->
+                    <!--<div class="bundle-wrapper">-->
+                    <!--<a href="https://www.elastic.co/products/elasticsearch/" target="_blank">-->
+                    <!--<img src="../img/lib/elasticsearch.png">-->
+                    <!--</a>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <div class="col-md-4 col-sm-4 bundle text-center bundle-region bundle-region-hl">
+                        <div class="bundle-wrapper">
+                            <a href="https://osmbuildings.org/" target="_blank">
+                                <img style="margin-top: 20px" src="../img/lib/osmbuidings.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--相关依赖end-->
+            </div>
+            <div class="section icl-docs-section">
+                <h2 id="license" class="section-title">许可说明</h2>
+                <a href="https://github.com/SuperMap/iClient-JavaScript/blob/master/LICENSE" target="_blank">
+                    <p class="lead">Apache License 2.0</p>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--内容区 end-->
+
+<!--footer-->
+<footer class="icl-footer"></footer>
+<script>
+    utils.loadTemplate(".icl-footer", "../template/footer.html");
+</script>
+<!--footer end-->
+
+<script type="text/javascript" src="../js/common.js"></script>
+<script>
+    /*Base Map*/
+    var host = window.isLocal ? window.server : "http://support.supermap.com.cn:8090";
+    var url = host + "/iserver/services/map-world/rest/maps/World";
+    var olMap = new ol.Map({
+        target: 'map',
+        /* interactions: ol.interaction.defaults({
+         mouseWheelZoom: false
+         }),*/
+        view: new ol.View({
+            center: [100.94, 35.49],
+            zoom: 4,
+            maxZoom: 10,
+            minZoom: 0,
+            projection: 'EPSG:4326'
+        }),
+        layers: [new ol.layer.Tile({
+            source: new ol.source.TileSuperMapRest({
+                url: url
+            }),
+            projection: 'EPSG:4326'
+        })]
+    });
+</script>
+<script>
+    var data = NodesConversionTool.depsToNodes("openlayers");
+
+    var Util = G6.Util;
+    // 准备布局配置
+    var layoutCfg = {
+        "direction": "LR",
+        "nodeSep": 20,
+        "nodeSize": 20,
+        "rankSep": 200
+    };
+    // 自定义树节点
+    var DEFAULT_NODE_SIZE = 5;
+    G6.registNode('treeNode', {
+        draw(cfg, group) {
+            var origin = cfg.origin;
+            var r = layoutCfg.nodeSize ? layoutCfg.nodeSize / 2 : DEFAULT_NODE_SIZE;
+            var shapeCfg = {
+                attrs: {
+                    x: cfg.x,
+                    y: cfg.y,
+                    r: r,
+                    stroke: '#003380',
+                    fill: 'white',
+                    fillOpacity: 1,
+                },
+            };
+            if (origin.children && origin.children.length) {
+                shapeCfg.class = origin.isCollapsed ? 'spreadoutButton' : 'collapseButton';
+                shapeCfg.attrs.fill = '#044A9A';
+                shapeCfg.attrs.stroke = '#003380';
+                shapeCfg.attrs.fillOpacity = 0.4;
+            }
+            if (origin.root) {
+                shapeCfg.attrs.fill = '#044A9A';
+                shapeCfg.attrs.stroke = '#003380';
+                shapeCfg.attrs.fillOpacity = 0.7;
+            }
+            shapeCfg.attrStash = Util.mix({}, shapeCfg.attrs);
+            return group.addShape('circle', shapeCfg);
+        },
+        afterDraw(cfg, group) {
+            var origin = cfg.origin;
+            var r = layoutCfg.nodeSize ? layoutCfg.nodeSize / 2 : DEFAULT_NODE_SIZE;
+            var align = origin.align;
+            var labelAttrs = {
+                text: origin.name,
+                fill: '#666',
+                textBaseline: 'middle',
+                fontSize: 35,
+                x: cfg.x + r + DEFAULT_NODE_SIZE,
+                y: cfg.y,
+                textAlign: 'left',
+            };
+            if (align === 'R') {
+                Util.mix(labelAttrs, {
+                    x: cfg.x - r - DEFAULT_NODE_SIZE,
+                    y: cfg.y,
+                    textAlign: 'right',
+                });
+            } else if (align === 'T' || align === 'CH') {
+                Util.mix(labelAttrs, {
+                    x: cfg.x,
+                    y: cfg.y + r + DEFAULT_NODE_SIZE,
+                    textAlign: 'right',
+                    rotate: -Math.PI / 2,
+                });
+            } else if (align === 'B') {
+                Util.mix(labelAttrs, {
+                    x: cfg.x,
+                    y: cfg.y - r - DEFAULT_NODE_SIZE,
+                    textAlign: 'left',
+                    rotate: -Math.PI / 2,
+                });
+            }
+            var label = group.addShape('text', {
+                attrs: labelAttrs,
+            });
+            return label;
+        }
+    });
+    // 生成树图实例
+    var tree = new G6.Tree({
+        id: 'moduleIntro',                            // 容器ID
+        height: 600,                         // 画布高
+        fitView: 'autoZoom',                 // 自动缩放
+        layoutFn: G6.Layout.LayeredTidyTree, // 布局类型
+        layoutCfg: layoutCfg,                // 布局配置
+        showButton: false,
+    });
+    // 加载数据
+    tree.source(data);
+    tree.node().shape('treeNode');
+    tree.edge()
+        .shape('smooth')
+        .style({
+            stroke: '#A9BCD3'
+        });
+    tree.tooltip(true);
+    tree.tooltip({split: ''});
+    tree.node().tooltip(function (obj) {
+        return [
+            [obj.des]
+        ]
+    });
+    // 渲染树图
+    tree.render();
+    //添加事件
+    tree.on('itemclick', function (ev) {
+        if (ev.shape.__cfg.type !== 'circle' && ev.shape.__cfg.type !== 'path' && !ev.item.get('model').children && ev.item.get('model').name) {
+            window.open("http://" + window.location.host + "/docs/openlayers/" + ev.item.get('model').name + ".html");
+        }
+    });
+    tree.on('mouseenter', function (ev) {
+        if (ev.itemType === 'edge') {
+            return;
+        }
+        var shape = ev.shape;
+        if (shape.__cfg.type !== 'circle') {
+            shape._setAttr("fill", "#3C8DBC");
+            tree.refresh();
+        }
+    });
+    tree.on('mousemove', function (ev) {
+        $('#canvas_2').css('cursor', 'pointer');
+    });
+    tree.on('mouseleave', function (ev) {
+        if (ev.itemType === 'edge') {
+            return;
+        }
+        var shape = ev.shape;
+        if (shape.__cfg.type !== 'circle') {
+            shape._setAttr("fill", "#666");
+            tree.refresh();
+        }
+    });
+</script>
+</body>
+</html>

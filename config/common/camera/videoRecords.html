@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>历史视频</title>
+    <link href="../../../scheduling/dist/css/zui.css?v=1.8" rel="stylesheet">
+    <link rel="stylesheet" href="../../../config/common/camera/css/cameraRecords.css" type="text/css">
+    <script type="text/javascript" src="../../../module/jquery/jquery-1.8.1.min.js"></script>
+    <script type="text/javascript" src="../../../module/template.js"></script>
+    <script type="text/javascript" src="../../../config/common/camera/js/daterangepicker.js"></script>
+    <script type="text/javascript" src="../../../config/common/jqueryPager/jquery.z-pager.js"></script>
+    <script type="text/javascript" src="../../../module/plugins/art-dialog/dist/dialog-plus.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../module/plugins/datetimepicker/jquery.datetimepicker.css">
+    <script type="text/javascript"src="../../../module/plugins/datetimepicker/build/jquery.datetimepicker.full.js"></script>
+     <script src="../../../scheduling/dist/js/zui.min.js?v=1.8"></script>
+        <script src="../../../scheduling/dist/plugins/laydate/laydate.js"></script>
+</head>
+<body>
+<div class="box-index">
+    <div class="ctn-yj-list-box">
+        <table class="tab-shipin-log">
+            <thead>
+            <tr>
+                <th>记录时间</th>
+                <th>可用时间</th>
+                <th>特征点</th>
+                <th>编辑</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+    </div>
+    <div class="fenye-box pager clearfix" id="planPage" style="bottom: 50px;margin: 0 10px;">
+
+    </div>
+    <div style="bottom: 0px;position: relative;margin: 32px;">
+   	   <button class="btn btn-primary btn-sm" type="button" onclick="addVideoRecord()"><i class="icon icon-plus"></i>添加记录</button>
+   	   <button class="btn btn-info btn-sm" type="button" onclick="clearVideoRecords()"><i class="icon icon-trash"></i>清空记录</button>
+	</div>
+</div>
+</body>
+<script>
+    var ajax, JK, paramObject = new Object(), video, selectData = {},listData = {};
+    parent.seajs.use([parent.window.services.frontHttpUrl + "/scheduling/app/common/ajax.js", parent.window.services.frontHttpUrl + '/config/common/utils.js'], function (_ajax, _JK) {
+        ajax = _ajax;
+        JK = _JK;
+        getCategory();
+    });
+    function findByPage() {
+        paramObject.video = parent.window.cameraId;
+        video = parent.window.cameraId;
+        $("#planPage").zPager({
+            url: "/api/video/history/findPage",
+            btnShow: false,
+            functionName: videoInfoList,
+            paramObject: paramObject,
+            paramOrder:'createTime',
+            paramSort:'desc'
+        });
+    }
+    function videoInfoList(data) {
+        listData.list = data;
+        listData.select = selectData.video_features;
+        var html = template('videoRecord', {
+            listData: listData
+        });
+        $('#tbody').html(html);
+    }
+    //添加视频记录
+    function addVideoRecord() {
+    	var recordTime= nowData();
+        var data = {
+            video: video,
+            recordTime: recordTime,
+            startTime: '',
+            endTime: '',
+            features: ''
+        }
+        listData.list = [data];
+        listData.select = selectData.video_features;
+        console.log(selectData);
+        var html = template('videoRecord', {
+            listData: listData
+        });
+        
+        var $one = $("#tbody tr").eq(0);
+        if($one.size()==0){
+        	$("#tbody").append(html);
+        }else{
+        	//$one.after(html);
+        	$one.before(html);
+        }
+        saveVideoRecord(recordTime);
+    }
+    //添加视频记录
+    function saveVideoRecord(recordTime) {
+        var data = {
+            video: video,//摄像头标识
+            recordTime: recordTime,//当前页
+            startTime: recordTime,//开始时间
+            endTime: recordTime,//结束时间
+            features: '证人'//特征点
+        }
+        ajax.post('/api/video/history/save', data, function (response) {
+        	findByPage();
+        });
+    }
+    //更新视频记录
+    function updateVideoRecord(obj,id) {
+        var $td= $(obj).parents('tr').children('td');
+		var recordTime = $td.eq(0).text();
+		var startTime = $td.eq(1).find("input").first().val();
+		var endTime = $td.eq(1).find("input").eq(1).val();
+		var features = $td.eq(2).find("select option:selected").val();
+        var paramData = {
+        	id:id,
+            video: video,
+            recordTime: recordTime,
+            startTime: startTime,
+            endTime: endTime,
+            features: features
+        }
+        var d = dialog({
+            content: '确定要修改该条记录？',
+            okValue: '修改',
+            ok: function () {
+                ajax.post('/api/video/history/update', paramData, function (response) {
+                    console.log("修改记录");
+                    findByPage();
+                    return true;
+                });
+            },
+            cancelValue: '取消',
+            cancel: function () {
+            }
+        });
+        d.show();
+    }
+    //清除单条记录
+    function deleteVideoRecord(id) {
+        var d = dialog({
+            content: '确定要删除该条记录？',
+            okValue: '删除',
+            ok: function () {
+                ajax.post('/api/video/history/delete', [id], function (response) {
+                    console.log("删除记录");
+                    console.log(response);
+                    findByPage();
+                    return true;
+                });
+            },
+            cancelValue: '取消',
+            cancel: function () {
+            }
+        });
+        d.show();
+    }
+    //清空所有记录
+    function clearVideoRecords() {
+        var d = dialog({
+            content: '确定要清空所有记录？',
+            okValue: '清空',
+            ok: function () {
+                ajax.post('/api/video/history/delete/'+video, {}, function (response) {
+                    console.log("清空记录");
+                    findByPage();
+                    return true;
+                });
+            },
+            cancelValue: '取消',
+            cancel: function () {
+            }
+        });
+        d.show();
+    }
+    //查询数据字典
+    function getCategory() {
+        var dics = ['video_features'];
+        ajax.post('dic/info/findItemsBatch', dics, function (response) {
+            var result = response.data;
+            selectData = result;
+            findByPage();
+        }, processFailed);
+    }
+    //动态添加下拉框
+    function selectOption(data, selectedId) {
+        var selectCheck = "";
+        $.each(data, function (index, d) {
+            var selected = "";
+            if (selectedId != undefined && d.DIC_IDENT == selectedId) {
+                selected = "selected";
+            }
+            selectCheck += '<option value="' + d.DIC_IDENT + '" ' + selected + '>' + d.DIC_NAME + '</option>';
+        });
+        return selectCheck;
+    }
+	/**
+	 * 获取当前时间
+	 */
+	function nowData(){
+		var myDate = new Date();
+		//获取当前年
+		var year=myDate.getFullYear();
+		//获取当前月
+		var month=myDate.getMonth()+1;
+		//获取当前日
+		var date=myDate.getDate(); 
+		var h=myDate.getHours();       //获取当前小时数(0-23)
+		var m=myDate.getMinutes();     //获取当前分钟数(0-59)
+		var s=myDate.getSeconds();  
+		return year+'-'+p(month)+"-"+p(date)+" "+p(h)+':'+p(m)+":"+p(s);
+	}
+	function p(s) {
+	    return s < 10 ? '0' + s: s;
+	}
+    function processFailed(e) {
+        console.log("查询失败"+e);
+    }
+</script>
+<script id="videoRecord" type="text/html">
+        {{each listData.list as value index}}
+        <tr>
+            <td>{{value.recordTime}}</td>
+            <td>
+                <input type="text" class="ipt-stime" value="{{value.startTime}}"> 至
+                <input type="text" class="ipt-stime" value="{{value.endTime}}">
+            </td>
+            <td>
+                <select class="ipt-sect">
+                    {{each listData.select as val}}
+                    <option value="{{val.DIC_IDENT}}" {{value.features==val.DIC_IDENT?'selected':''}}>{{val.DIC_IDENT}}</option>
+                    {{/each}}
+                </select>
+            </td>
+            <td class="tb-btn">
+                <a href="javascript:;" onclick="updateVideoRecord(this,'{{value.id}}')">
+                    <i class="icon icon-edit"></i>
+                </a>
+                <a href="javascript:;" onclick="deleteVideoRecord('{{value.id}}')">
+                    <i class="icon icon-trash"></i>
+                </a>
+            </td>
+        </tr>
+        {{/each}}
+</script>
+ <!--<a href="javascript:;" onclick="saveVideoRecord(this)">
+                    <i class="icon icon-save"></i>
+                </a>-->
+</html>

@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link rel="stylesheet" type="text/css" href="simplePagination.css">
+<script type="text/javascript" src="jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="jquery.simplePagination.js"></script>
+<title>无标题 1</title>
+<script type="text/javascript">
+	$(function(){
+		$("#page").pagination({
+	        items: 100,
+	        itemsOnPage: 10,
+	        cssStyle: 'light-theme',
+	        onPageClick:function(page){
+	        	alert(page);
+	        }
+	    });
+	});
+</script>
+</head>
+
+<body>
+	<div id="page"></div>
+	
+</body>
+
+</html>

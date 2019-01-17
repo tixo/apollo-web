@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>轨迹分析</title>
+	<link href="./ybss.css" rel="stylesheet">
+    <link href="./popup.css" rel="stylesheet">
+</head>
+
+<body style="position:absolute; top:0; bottom:0; left:0; right:0; margin:0; padding:0; overflow:hidden;">
+	<div id="map" style="margin:0 auto;width: 100%;height: 100%"></div>
+
+	<script src="../assets/jquery.js?v=1.8"></script>
+	<script src="../dist/plugins/seajs/sea.js"></script>
+	<script src="../dist/plugins/seajs/seajs-text.js"></script>
+	<script src="../dist/plugins/seajs/handlebars-1.0.0.beta.6.js"></script>
+	<script src="./customPopup.js"></script>
+	<!--引入地图开发js包-->
+	<script type="text/javascript" exclude="iclient-classic" src="../../supermap/9D-leaflet/dist/include-classic.js"></script>
+	<script type="text/javascript">
+		var map, baseLayer, selectControl, vector, vecotrLayer, infowin, elementsLayer;
+		var url = top.services.baseMap;
+		var position = {
+			x: 108.9762056044,
+			y: 34.158376961785
+		};
+	
+		//人脸图片id集合
+		var captureList = parent.window.captureList;
+		// 上图数据
+		var mapDrawData = parent.window.mapDrawData;
+	
+		console.log(captureList[0]);
+		console.log(mapDrawData[captureList[0]]);
+
+		function initMap() {
+			map = new SuperMap.Map("map", {
+				controls: [
+					new SuperMap.Control.Zoom(),
+					new SuperMap.Control.Navigation()
+				]
+			});
+	
+			//初始化图层
+			baseLayer = new SuperMap.Layer.TiledDynamicRESTLayer("baseLayer", url, {
+				transparent: false,
+				cacheEnabled: true
+			}, {
+				maxResolution: "auto"
+			});
+			baseLayer.events.on({
+				"layerInitialized": addLayer
+			});
+			vector = new SuperMap.Layer.Vector("vector");
+			selectControl = new SuperMap.Control.SelectFeature(vector, {
+				repeat: true, //可以重复选中
+				onSelect: onFeatureSelect,
+				onUnselect: onUnFeatureSelect
+			});
+	
+			elementsLayer = new SuperMap.Layer.Elements("elementsLayer");
+	
+			map.addControl(selectControl);
+			selectControl.activate();
+			popup.popupInit(map, elementsLayer);
+			addData();
+		};
+	
+		window.initMap=initMap;
+	
+		//选中回调
+		function onFeatureSelect(feature) {
+	
+			closeInfoWin();
+			var attributes = feature.attributes;
+	
+			var contentTemplate = '<div id="popup" class="mypopup" style="background-color:white">' +
+				'<div class="modal-title" style="background-color:rgb(122, 132, 223)">{{cameraName}}' +
+				'<span id="guanbi" onclick="popup.clearPopup()">x</span>' +
+				'</div>' +
+				'<div class="popup02-left-box" style="display:inline-block;width:60%;margin-top:5%">' +
+				'<table class="tab tab-renkou tab-">' +
+				'<tr>' +
+				'<td>设备ID：</td>' +
+				'<td>{{cameraId}}</td>' +
+				'</tr>' +
+				'<tr>' +
+				'<td>类型：</td>' +
+				'<td>{{cameraType}}</td>' +
+				'</tr>' +
+				'<tr>' +
+				'<td>位置：</td>' +
+				'<td>{{position}}</td>' +
+				'</tr>' +
+				'<tr>' +
+				'<td>时间：</td>' +
+				'<td>{{time}}</td>' +
+				'</tr>' +
+				'</table>' +
+				'</div>' +
+				'<div style="display:inline-block;width:30%;margin-top:5%">' +
+				'<img src="{{imgPath}}" style="width:100%;height:100%">' +
+				'</div>' +
+				'<div class="modal-bottom-operate">' +
+				'<a href="#" class="modal-ctn-btn modal-ctn-btn-col" style="float: right;margin-right: 20px;">查看视频</a>' +
+				'</div>' +
+				'<div class="popup_bottom"></div>' +
+				'</div>';
+			var template = Handlebars.compile(contentTemplate);
+			var content = template(attributes);
+	
+			var config = {
+				x: feature.geometry.x,
+				y: feature.geometry.y,
+				contentHTML: content,
+				width: 302,
+				height: 188,
+				offsetX: 0,
+				offsetY: -40,
+				center: false
+			};
+	
+			popup.showPopup(config);
+	
+			setLayerZindex("elementsLayer", 9999);
+	
+			infowin = popup;
+		}
+	
+		//取消选中
+		function onUnFeatureSelect(feature) {
+			closeInfoWin();
+		}
+	
+		//关闭气泡
+		function closeInfoWin() {
+			if (infowin) {
+				try {
+					infowin.hide();
+					infowin.destroy();
+				} catch (e) {}
+			}
+		}
+	
+		function addLayer() {
+			map.addLayers([baseLayer, vector, elementsLayer]);
+			//显示地图范围
+			map.setCenter(new SuperMap.LonLat(position.x, position.y), 1);
+		}
+		//定义一个obj，用来存储画在地图上的capture对象
+		var obj = {};
+	
+		//修改图层的z-index
+		function setLayerZindex(name, zindex) {
+			var layer = map.getLayersByName(name);
+			if (layer.length > 0) {
+				var layerId = layer[0].id;
+				$(".smLayerDiv[id='" + layerId + "']").css("z-index", zindex);
+			}
+		}
+	
+		//初始化，把所有照片轨迹全部画在地图上，把人脸轨迹对象保存在obj对象中
+		function addData() {
+			$.each(captureList, function (index, id) {
+				var data1 = mapDrawData[id];
+				var pointVectorList = [];
+				var pointList = [];
+				$.each(data1, function (index, d) {
+					var point = new SuperMap.Geometry.Point(d.x, d.y);
+					pointList.push(point);
+					var pointVector = new SuperMap.Feature.Vector(point);
+					pointVector.attributes = {
+						cameraId: d.cameraId,
+						cameraType: d.cameraType,
+						position: d.position,
+						cameraName: d.cameraName,
+						time: d.capturetime,
+						imgPath: d.imgPath
+					};
+					pointVector.style = {
+						graphic: true,
+						externalGraphic: './tantou.gif',
+						graphicWidth: 44,
+						graphicHeight: 33
+					};
+					pointVectorList.push(pointVector);
+				});
+				var line1 = new SuperMap.Geometry.LineString(pointList);
+				var linecVector = new SuperMap.Feature.Vector(line1);
+				linecVector.style = {
+					strokeColor: "red",
+					strokeWidth: 2
+				};
+				var featureList = [];
+				featureList.push(linecVector);
+				featureList = featureList.concat(pointVectorList);
+				vector.addFeatures(featureList);
+				obj[id] = featureList;
+			})
+		}
+	
+	
+		//眼睛打开时把人脸轨迹画在地图上
+		function addCapture(captureId) {
+			closeInfoWin();
+			vector.addFeatures(obj[captureId]);
+		}
+	
+		//眼睛关闭时移除人脸轨迹
+		function removeCapture(captureId) {
+			closeInfoWin();
+			vector.removeFeatures(obj[captureId]);
+		}
+	
+		initMap();
+	</script>	
+</body>
+</html>

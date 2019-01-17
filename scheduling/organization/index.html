@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>组织机构管理</title>
+  <link href="../dist/css/zui.css?v=1.8" rel="stylesheet">
+  <link href="../dist/css/case.css" rel="stylesheet">
+  <link rel="stylesheet" href="../dist/plugins/iview/iview.css">
+  <link href="../dist/lib/treemap/zui.treemap.min.css" rel="stylesheet">
+  <!-- <link href="../dist/plugins/zTree_v3/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css" /> -->
+  <link rel="stylesheet" type="text/css" href="../dist/plugins/zTree_v3/css/metroStyle/metroStyle.css" />
+  <!--[if lt IE 9]>
+    <script src="dist/lib/ieonly/html5shiv.js"></script>
+    <script src="dist/lib/ieonly/respond.js"></script>
+    <script src="dist/lib/ieonly/excanvas.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+          <ul class="ztree" id="myTree" >
+
+          </ul>
+        </div> 
+        <div class="col-sm-10 " id="content">
+          <iframe frameborder="0" src="../organize/index.html" id="orgRender" width="100%"  ></iframe>
+        </div>
+    </div>
+</div>
+    <!-- jQuery (ZUI中的Javascript组件依赖于jQuery) -->
+    <script src="../assets/jquery.js?v=1.8"></script>
+    <!-- ZUI Javascript组件 -->
+    <script src="../dist/js/zui.min.js?v=1.8"></script>
+    <script src="../dist/lib/treemap/zui.treemap.min.js"></script>
+    <script src="../dist/plugins/vue/vue.min.js"></script>
+    <script src="../dist/plugins/iview/iview.min.js"></script>
+    <script src="../dist/plugins/axios/axios.min.js"></script>
+    <script src="../dist/plugins/seajs/sea.js"></script>
+    <script src="../dist/plugins/seajs/seajs-text.js"></script>
+    <script src="../dist/plugins/seajs/handlebars-1.0.0.beta.6.js"></script>
+    <script src="../dist/plugins/zTree_v3/js/jquery.ztree.all.js"></script>
+    <script type="text/javascript">
+      seajs.config({
+        base: "../dist/",
+        alias: {
+            "utilityForm": "utility/form.js"
+        },
+        vars: {
+          requestFrontUrl: 'http://127.0.0.1/apollo-front/',
+        }
+      });
+      //seajs.use('./tree.js');
+      seajs.use('./organization.js');
+    </script>
+</body>
+
+</html>

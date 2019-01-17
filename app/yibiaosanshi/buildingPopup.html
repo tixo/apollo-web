@@ -1,0 +1,591 @@
+<!--放大气泡-->
+<div class="modal-fangda">
+	<div class="modal-fangda-top">
+		<span id="maxName">人口详情</span>
+		<span class="modal-fangda-clear">关闭</span>
+	</div>
+	<div class="modal-fangda-ctn" id="fada-data-ctn" style="overflow: auto;height: 90%;">
+		
+	</div>
+</div>
+<!--气泡模板-->
+<div class="louceng-box">
+    <!--<span class="top-btn" data-f="0" data-num="18" data-nownum=""></span>-->
+    <span class="top-btn" id="top-btn">整栋</span>
+    <div class="louceng-ctn">
+        <ul id="dianji">
+        </ul>
+    </div>
+    <!--<span class="btm-btn"></span>-->
+</div>
+<div class="modal-backdrop-box">
+    <div class="modal-backdrop-top">人口信息
+        <span class="fd clear-win">x</span>
+        <span class="fd maximize"><img src="../../app/yibiaosanshi/img/big.png"/></span>
+    </div>
+</div>
+<div class="modal-maximize-box">
+    <div class="modal-maximize-box-top">人口详情
+        <span class="modal-maximize-box-clear">关闭</span>
+    </div>
+    <div class="modal-maximize-box-ctn">
+        <ul class="tab-title">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+ <script id="featurePopupBuilding" type="text/html">
+        <div id="popup" class="mypopup">
+            <div class="popup02-left-box">
+                <div class="modal-title">
+                   	 建筑物信息
+                    <span id="guanbi" onclick="mbuilding.queryFeature.closeBuilding()">x</span>
+                </div>
+                <table cellspacing="0" class="tab">
+                    <tbody>
+                        <tr>
+                            <td>建筑名称：</td>
+                            <!--<td>{{content.strutctureName}}</td>-->
+                            {{if content.name=="无"}}
+	            				<td></td>
+	            			{{else}}
+	            				 <td>{{content.name}}</td>
+	            			{{/if}}
+                        </tr>
+                        <tr>
+                            <td>建筑年代：</td>
+                            <td>{{content.years}}</td>
+                        </tr>
+                        <tr>
+                            <td>建筑类型：</td>
+                            <td>{{content.typeName}}</td>
+                        </tr>
+                        <tr>
+                            <td>建筑性质：</td>
+                            <td>{{content.propertyName}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="modal-bottom-operate">
+                    <a href="#" class="modal-ctn-btn clck-lou-ren"  data-rightid="strutcture"  onclick="mbuilding.queryFeature.modalRight(this,{{content.objStr}})">实有人口</a>
+                    <a href="#" class="modal-ctn-btn"　 data-rightid="strutcture"   onclick="mbuilding.queryFeature.modalRight(this,{{content.objStr}})">实有房屋</a>
+                    <a href="#" class="modal-ctn-btn"　 data-rightid="strutcture"  onclick="mbuilding.queryFeature.modalRight(this,{{content.objStr}})">实有单位</a>
+                </div>
+                <div class="popup_bottom"></div>
+            </div>
+            <div class="popup02-right-box">
+                <div class="modal-title">
+                	<div id="strutctureRightTitle"></div>
+                    <span id="guanbi" class="popup02-right-box-clear" onclick="mbuilding.queryFeature.rightModalClear()">x</span>
+         	    	<span class="fangda" onclick="mbuilding.queryFeature.fangda()"><img src="../../app/yibiaosanshi/img/big.png"></span>
+                </div>
+                <div class="youce-modal" id="popup02-renkou">
+                    <table cellspacing="0" class="tab tab-strutcture" id="strutcture">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script id="featurePopup" type="text/html">
+        <div id="popup" class="mypopup">
+            <div class="popup02-left-box">
+                <div class="modal-title">
+                   	 楼层信息
+                    <span id="guanbi" onclick="mbuilding.queryFeature.closeBuilding()">x</span>
+                </div>
+                <ul class="tab tab-renkou tab-ul" >
+            		<li>
+            			<span>所属建筑：</span>
+            			{{if content.name=="无"}}
+            				<span></span>
+            			{{else}}
+            				<span>{{content.name}}</span>
+            			{{/if}}
+            		</li>
+            		<li>
+            			<span>楼层户数：</span>
+            			<span>{{content.house.length}}</span>
+            		</li>
+            		<li>
+            			<span>楼层 ：</span>
+						<span>{{content.floor.layer}}</span>
+            		</li>
+            	</ul>
+                <div class="modal-bottom-operate">
+                    <a href="#" class="modal-ctn-btn clck-lou-ren" data-rightid="floor" onclick="mbuilding.queryFeature.modalRight(this,{{content.objStr}})">实有人口</a>
+                    <a href="#" class="modal-ctn-btn" data-rightid="floor" onclick="mbuilding.queryFeature.modalRight(this,{{content.objStr}})">实有房屋</a>
+                    <a href="#" class="modal-ctn-btn" data-rightid="floor" onclick="mbuilding.queryFeature.modalRight(this,{{content.objStr}})">实有单位</a>
+                </div>
+                <div class="popup_bottom"></div>
+            </div>
+            <div class="popup02-right-box">
+                <div class="modal-title">
+                    <div id="floorRightTitle"></div>
+                    <span class='fangda' onclick='mbuilding.queryFeature.fangda()'><img src='../../app/yibiaosanshi/img/big.png'></span>
+        	        <span id='guanbi' class='popup02-right-box-clear' onclick='mbuilding.queryFeature.rightModalClear()'>x</span>
+                </div>
+                <div class="youce-modal">
+                    <table cellspacing="0" class="tab tab-strutcture" id="floor">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script id="featurePopup02" type="text/html">
+        <div id="popup02" class="mypopup">
+            <div class="popup02-left-box">
+                <div class="modal-title">
+                  	  人口信息
+                    <span id="guanbi" onclick="mbuilding.queryFeature.closeBuilding()">x</span>
+                </div>
+                <div class="popup_middle">
+                	<ul class="tab tab-renkou tab-ul" id="tab-renkou">
+                		<!--<div class="rentou">
+                			<img src="img/poty02.png" />
+                		</div>-->
+                		<li>
+                			<span>姓名：</span>
+                			<span>{{content.name}}</span>
+                		</li>
+                		<li>
+                			<span>性别：</span>
+                			<span>{{content.sex}}</span>
+                		</li>
+                		<li>
+                			<span>身份证：</span>
+                			<span>{{content.cardNumber}}</span>
+                		</li>
+                		<li>
+                			<span>联系方式：</span>
+                			<span>{{content.telephone}}</span>
+                		</li>
+                		<li>
+                			<span>住址：</span>
+                			<span>{{content.address}}</span>
+                		</li>
+                	</ul>
+                </div>
+                <div class="modal-bottom-operate">
+                    <a href="#" class="modal-ctn-btn renkou-ctn" onclick="mbuilding.queryFeature.renkouXQ(this,{{content.objStr}})">人口详情</a>
+                    <a href="#" class="modal-ctn-btn renkou-house" onclick="mbuilding.queryFeature.renkouFW(this,{{content.objStr}})">实有房屋</a>
+                    <a href="#" class="modal-ctn-btn renkou-unit" onclick="mbuilding.queryFeature.renkouDW(this,{{content.objStr}})">实有单位</a>
+                </div>
+                <div class="popup_bottom"></div>
+            </div>
+            <div class="popup02-right-box">
+                <div class="modal-title" id="popup02-modal-title">
+                	<div id="populationRightTitle"></div>
+                    <span class='fangda' onclick='mbuilding.queryFeature.fangda()'><img src='../../app/yibiaosanshi/img/big.png'></span>
+        	        <span id='guanbi' class='popup02-right-box-clear' onclick='mbuilding.queryFeature.rightModalClear()'>x</span>
+                </div>
+                <div class="youce-modal" id="popup02-renkou" style="height: 200px;">
+                    <table cellspacing="0" class="tab renkouXQ" id="tab-renkou">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </script>
+    <!--房屋-->
+    <script id="featurePopup03" type="text/html">
+        <div id="popup03" class="mypopup">
+            <div class="popup02-left-box">
+                <div class="modal-title">
+                    	房屋信息
+                    <span id="guanbi" onclick="mbuilding.queryFeature.closeBuilding()">x</span>
+                </div>
+                <div class="popup_middle">
+                    <table cellspacing="0" class="tab tab-renkou" id="tab-host">
+                    	 <tr>
+                            <td>房屋地址：</td>
+                            <td>{{content.address}}</td>
+                        </tr>
+                        <tr>
+                            <td>产权人姓名：</td>
+                            <td>{{content.lordName}}</td>
+                        </tr>
+                        <tr>
+                            <td>产权人身份证：</td>
+                            <td>{{content.lordNo}}</td>
+                        </tr>
+                        <tr>
+                            <td>产权人联系方式：</td>
+                            <td>{{content.lordTelephone}}</td>
+                        </tr>
+                        <tr>
+                            <td>房屋类型：</td>
+                            <td>{{content.categoryName}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-bottom-operate">
+                    <a href="#" class="modal-ctn-btn" onclick="mbuilding.queryFeature.fangWuXQ(this,{{content.objStr}})">房屋详情</a>
+                    <a href="#" class="modal-ctn-btn" onclick="mbuilding.queryFeature.fangwuRK(this,{{content.objStr}})">实有人口</a>
+                    <a href="#" class="modal-ctn-btn" onclick="mbuilding.queryFeature.fangwuDW(this,{{content.objStr}})">实有单位</a>
+                </div>
+                <div class="popup_bottom"></div>
+            </div>
+            <div class="popup02-right-box">
+                <div class="modal-title" id="popup-right-fw">
+                	<div id="houseRightTitle"></div>
+                	<span class='fangda' onclick='mbuilding.queryFeature.fangda()'><img src='../../app/yibiaosanshi/img/big.png'></span>
+        	        <span id='guanbi' class='popup02-right-box-clear' onclick='mbuilding.queryFeature.rightModalClear()'>x</span>
+                </div>
+                <div class="youce-modal" id="popup02-fangWu" style="height: 240px;">
+                    <table cellspacing="0" class="tab FangWu" id="tab-renkou">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script id="featurePopup04" type="text/html">
+        <div id="popup02" class="mypopup">
+            <div class="popup02-left-box">
+                <div class="modal-title">
+               		    单位信息
+                    <span id="guanbi" onclick="mbuilding.queryFeature.closeBuilding()">x</span>
+                </div>
+                <div class="popup_middle">
+                    <table cellspacing="0" class="tab tab-renkou" id="tab-danwei">
+                        <tr>
+                            <td>单位名称：</td>
+                            <td>{{content.name}}</td>
+                        </tr>
+                        <tr>
+                            <td>单位地址：</td>
+                            <td>{{content.address}}</td>
+                        </tr>
+                         <tr>
+                            <td>法人姓名：</td>
+                            <td>{{content.chargeName}}</td>
+                        </tr>
+                        <tr>
+                            <td>法人联系方式：</td>
+                            <td>{{content.telephone}}</td>
+                        </tr>
+                        <tr>
+                            <td>单位类别：</td>
+                            <td>{{content.typeName}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-bottom-operate">
+                    <a href="#" class="modal-ctn-btn" onclick="mbuilding.queryFeature.danweiXQ(this,{{content.objStr}})">单位详情</a>
+                    <a href="#" class="modal-ctn-btn" onclick="mbuilding.queryFeature.danweiRY(this,{{content.objStr}})">从业人员</a>
+                    <a href="#" class="modal-ctn-btn" onclick="mbuilding.queryFeature.danweiFW(this,{{content.objStr}})">实有房屋</a>
+                </div>
+                <div class="popup_bottom"></div>
+            </div>
+            <div class="popup02-right-box">
+                <div class="modal-title" id="popup-right-DW">
+                	<div id="workplaceRightTitle"></div>
+                	<span class='fangda' onclick='mbuilding.queryFeature.fangda()'><img src='../../app/yibiaosanshi/img/big.png'></span>
+        	        <span id='guanbi' class='popup02-right-box-clear' onclick='mbuilding.queryFeature.rightModalClear()'>x</span>")
+                </div>
+                <div class="youce-modal" id="popup02-danwei" style="height: 290px;">
+                    <table cellspacing="0" class="tab Danwei" id="tab-renkou">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </script>
+<script id="populationDetailsPopup" type="text/html">
+	<div class="popup_middle" id="populationDetailsTable" style="height: 90%;">
+		<table class="tab-detail" style="height:100%;">
+			<tr>
+				<td>姓名</td>
+				<td>{{content.name}}</td>
+			</tr>
+			<tr>
+				<td>性别</td>
+				<td>{{content.sex}}</td>
+			</tr>
+			<tr>
+				<td>年龄</td>
+				<td>{{content.age}}</td>
+			</tr>
+			<tr>
+				<td>籍贯</td>
+				<td>{{content.nativePlace}}</td>
+			</tr>
+			<tr>
+				<td>出生日期</td>
+				<td>{{content.birthDate}}</td>
+			</tr>
+			<tr>
+				<td>民族</td>
+				<td>{{content.nationName}}</td>
+			</tr>
+			<tr>
+				<td>身份证</td>
+				<td>{{content.cardNumber}}</td>
+			</tr>
+			<tr>
+				<td>学历</td>
+				<td>{{content.educationName}}</td>
+			</tr>
+			<tr>
+				<td>政治面貌</td>
+				<td>{{content.politicationName}}</td>
+			</tr>
+			<tr>
+				<td>类型</td>
+				<td>{{content.householdName}}</td>
+			</tr>
+			<tr>
+				<td>区域</td>
+				<td>{{content.district}}</td>
+			</tr>
+			<tr>
+				<td>住址</td>
+				<td>{{content.address}}</td>
+			</tr>
+		</table>
+	</div>
+</script>
+<script id="houseDetailsPopup" type="text/html">
+	<div class="popup_middle" id="houseDetailsTable" style="height: 90%;">
+		<table class="tab-detail" style="height:100%;">
+			<tr>
+				<td>产权人姓名</td>
+				<td>{{content.lordName}}</td>
+			</tr>
+			<tr>
+				<td>产权人身份证</td>
+				<td>{{content.lordNo}}</td>
+			</tr>
+			<tr>
+				<td>产权人联系方式</td>
+				<td>{{content.lordTelephone}}</td>
+			</tr>
+			<tr>
+				<td>房屋名称</td>
+				<td>{{content.name}}</td>
+			</tr>
+			<tr>
+				<td>房屋类型</td>
+				<td>{{content.categoryName}}</td>
+			</tr>
+			<tr>
+				<td>房屋用途</td>
+				<td>{{content.purposeName}}</td>
+			</tr>
+			<tr>
+				<td>房屋间数</td>
+				<td>{{content.room}}</td>
+			</tr>
+			<tr>
+				<td>房屋面积</td>
+				<td>{{content.area}}</td>
+			</tr>
+			<tr>
+				<td>房屋托管人</td>
+				<td>{{content.trustName}}</td>
+			</tr>
+			<tr>
+				<td>地址</td>
+				<td>{{content.address}}</td>
+			</tr>
+		</table>
+	</div>
+</script>
+<script id="workplaceDetailsPopup" type="text/html">
+	<div class="popup_middle" id="populationDetailsTable" style="height: 90%;">
+		<table class="tab-detail" style="height:100%;">
+			<tr>
+				<td>单位名称</td>
+				<td>{{content.name}}</td>
+			</tr>
+			<tr>
+				<td>单位法人</td>
+				<td>{{content.chargeName}}</td>
+			</tr>
+			<tr>
+				<td>单位地址</td>
+				<td>{{content.address}}</td>
+			</tr>
+			<tr>
+				<td>单位类别</td>
+				<td>{{content.typeName}}</td>
+			</tr>
+			<tr>
+				<td>联系电话</td>
+				<td>{{content.telephone}}</td>
+			</tr>
+			<tr>
+				<td>是否“低慢小”</td>
+				<td>
+					{{if content.isSlowSmall == 1}}
+					是
+					{{else}}
+					否
+					{{/if}}
+				</td>
+			</tr>
+			<tr>
+				<td>是否有员工宿舍</td>
+				<td>
+					{{if content.isDormitory == 1}}
+					是
+					{{else}}
+					否
+					{{/if}}</td>
+			</tr>
+			<tr>
+				<td>是否有外来人员</td>
+				<td>
+					{{if content.isMigrant == 1}}
+					是
+					{{else}}
+					否
+					{{/if}}</td>
+			</tr>
+		</table>
+	</div>
+</script>
+<script id="houseListPopup" type="text/html">
+	<tr>
+		<th>房屋名称</th>
+		<th>产权人姓名</th>
+		<th>产权人身份证</th>
+		<th>产权人联系方式</th>
+		<th>房屋类型</th>
+		<th>房屋用途</th>
+		<th>房屋间数</th>
+		<th>房屋面积</th>	
+		<th>房屋托管人</th>
+	</tr>
+	{{each list}}
+	<tr>
+		<td>{{$value.name}}</td>
+		<td>{{$value.lordName}}</td>
+		<td>{{$value.lordNo}}</td>
+		<td>{{$value.lordTelephone}}</td>
+		<td>{{$value.categoryName}}</td>
+		<td>{{$value.purposeName}}</td>
+		<td>{{$value.room}}</td>
+		<td>{{$value.area}}</td>
+		<td>{{$value.trustName}}</td>
+	</tr>
+	{{/each}}
+</script>
+<script id="populationListPopup" type="text/html">
+	<tr>
+		<th>姓名</th>
+		<th>性别</th>
+		<th>民族</th>
+		<th>身份证</th>
+		<th>出生年月</th>
+		<th>政治面貌</th>
+		<th>文化程度</th>
+		<th>人口类型</th>
+		<th>联系方式</th>
+	</tr>
+	{{each list}}
+	<tr>
+		<td>{{$value.name}}</td>
+		<td>{{$value.sex}}</td>
+		<td>{{$value.nation}}</td>
+		<td>{{$value.cardNumber}}</td>
+		<td>{{$value.birthDate}}</td>
+		<td>{{$value.politication}}</td>
+		<td>{{$value.educationName}}</td>
+		<td>{{$value.householdName}}</td>
+		<td>{{$value.telephone}}</td>
+	</tr>
+	{{/each}}
+</script>
+<script id="companyListPopup" type="text/html">
+	<tr>
+		<th>单位名称</th>
+		<th>单位法人</th>
+		<th>单位地址</th>
+		<th>单位类别</th>
+		<th>联系电话</th>
+		<th>是否“低慢小”</th>
+		<th>是否有员工宿舍</th>
+		<th>是否有外来人员</th>
+	</tr>
+	{{each list}}
+	<tr>
+		<td>{{$value.name}}</td>
+		<td>{{$value.chargeName}}</td>
+		<td>{{$value.address}}</td>
+		<td>{{$value.typeName}}</td>
+		<td>{{$value.telephone}}</td>
+		<td>
+			{{if $value.isSlowSmall == 1}}
+			是
+			{{else}}
+			否
+			{{/if}}
+		</td>
+		<td>
+			{{if $value.isDormitory == 1}}
+			是
+			{{else}}
+			否
+			{{/if}}
+		</td>
+		<td>
+			{{if $value.isMigrant == 1}}
+			是
+			{{else}}
+			否
+			{{/if}}
+		</td>
+	</tr>
+	{{/each}}
+</script>
+ <!--房屋-->
+    <script id="jxcsPopup" type="text/html">
+        <div id="popup03" class="mypopup">
+            <div class="popup02-left-box">
+                <div class="modal-title">
+                    	{{content.NAME}}
+                    <span id="guanbi" onclick="mbuilding.queryFeature.closeBuilding()">x</span>
+                </div>
+                <div class="popup_middle">
+                    <table cellspacing="0" class="tab tab-renkou" id="tab-host">
+                    	 <tr>
+                            <td>名称：</td>
+                            <td>{{content.NAME}}</td>
+                        </tr>
+                        <tr>
+                            <td>负责人：</td>
+                            <td>{{content.LEADER}}</td>
+                        </tr>
+                        <tr>
+                            <td>身份证号：</td>
+                            <td>{{content.IDCARD}}</td>
+                        </tr>
+                        <tr>
+                            <td>联系方式：</td>
+                            <td>{{content.TEL}}</td>
+                        </tr>
+                        <tr>
+                            <td>类型：</td>
+                            <td>{{content.TYPENAME}}</td>
+                        </tr>
+                        <tr>
+                            <td>地址：</td>
+                            <td>{{content.ADDRESS}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="popup_bottom"></div>
+            </div>
+            <div class="popup02-right-box">
+                <div class="modal-title" id="popup-right-fw">
+                	<div id="houseRightTitle"></div>
+                	<span class='fangda' onclick='mbuilding.queryFeature.fangda()'><img src='../../app/yibiaosanshi/img/big.png'></span>
+        	        <span id='guanbi' class='popup02-right-box-clear' onclick='mbuilding.queryFeature.rightModalClear()'>x</span>
+                </div>
+                <div class="youce-modal" id="popup02-fangWu" style="height: 240px;">
+                    <table cellspacing="0" class="tab FangWu" id="tab-renkou">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </script>

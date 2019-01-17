@@ -1,0 +1,215 @@
+<div class="row">
+    <div>
+        <h2>一、接处警综合统计情况 </h2>
+    </div>
+    <div contenteditable="true" id="caseAffairsCategory_text">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                {{caseAffairsCategory.year}}分局共接处警{{caseAffairsCategory.total}}起，日均接处警{{caseAffairsCategory.averageDay}}起，同比去年{{caseAffairsCategory.basis}}起{{caseAffairsCategory.percent}}。其中刑事案件{{caseAffairsCategory.criminal.period}}起，日均{{caseAffairsCategory.criminal.average}}起，同比去年{{caseAffairsCategory.criminal.basis}}起{{caseAffairsCategory.criminal.percent}}；治安案件{{caseAffairsCategory.security.period}}起，日均{{caseAffairsCategory.security.average}}起，同比去年{{caseAffairsCategory.security.basis}}起{{caseAffairsCategory.security.percent}}；调解纠纷与救助{{caseAffairsCategory.help.period}}起，日均{{caseAffairsCategory.help.average}}起，同比去年{{caseAffairsCategory.help.basis}}起{{caseAffairsCategory.help.percent}}。               
+            </span>
+        </p>    
+    </div>
+    <div class="col-md-10">
+        <div id="caseAffairsCategory" style="height:400px;"></div>
+    </div>
+</div>
+<div class="row">
+    <div>
+        <h2>二、刑事案件综合分析</h2>
+    </div>
+    <h3>（一）刑事案件走势</h3>
+    <div contenteditable="true" id="criminalCaseTrendText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">               
+                    {{criminalCaseTrend.year}}年刑事案件{{criminalCaseTrend.period}}起，月均{{criminalCaseTrend.averageMonth}}起。从每月走势情况看，相比去年刑事案件( )月-( )月有所( )，其中( )月出现高峰值（( )起）；( )月-( )月有所下降，其中( )月降幅较大。                            
+            </span>
+        </p>
+    </div>
+    <div class="">
+        <div id="criminalCaseTrend" style="height:250px;width:1000px;"></div>
+    </div>
+</div>
+<div class="row">
+    <h3>（二）刑事案件类型与对比</h3>
+    <div class="col-md-10">
+        <div style="width:800px;">
+            <table class="table">
+                <thead>
+                    <tr class="datatable-row datatable-row-left text-center">  
+                        <th rowspan="2">案件类型</th>  
+                        <th colspan="2">报警数（起）</th>  
+                    </tr>  
+                    <tr class="datatable-row datatable-row-left text-center">  
+                        <th>{{criminalAffairs.year}}年</th>  
+                        <th>{{criminalAffairs.basisYear}}年</th>  
+                        <th>同比</th>  
+                    </tr> 
+                    
+
+                    
+                </thead>
+                <tbody>
+                        {{#each criminalAffairs.criminalAffairsTable}}  
+                        <tr>                                                                 
+                            <td class="datatable-cell">{{name}}</td>
+                            <td class="datatable-cell">{{period}}</td>
+                            <td class="datatable-cell">{{basis}}</td>
+                            <td class="datatable-cell">{{percent}}</td>                                     
+                        </tr>
+                        {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <div id="criminalAffairs" style="height:250px;"></div>
+    </div>
+  
+</div>
+
+<div class="row">
+    <h3>（三）“平安家园”降控指标对比</h3>
+    <div class="col-md-10">
+            <div style="width:1000px;">
+                <table class="table">
+                    <thead>
+                        <tr class="datatable-row datatable-row-left text-center">  
+                            <th rowspan="2">月份</th>  
+                            <th colspan="3">月刑事案件总数</th>  
+                            <th colspan="3">盗窃民宅</th>
+                            <th colspan="3">盗窃电动车</th>
+                            <th colspan="3">两抢</th>
+                        </tr>  
+                        <tr class="datatable-row datatable-row-left text-center">  
+                            <th>发案数</th>  
+                            <th>降控指标</th>  
+                            <th>对比</th>  
+                            <th>发案数</th>  
+                            <th>降控指标</th>  
+                            <th>对比</th>         
+                            <th>发案数</th>  
+                            <th>降控指标</th>  
+                            <th>对比</th>        
+                            <th>发案数</th>  
+                            <th>降控指标</th>  
+                            <th>对比</th>                                                                        
+                        </tr> 
+                    </thead>
+                    <tbody>
+                            {{#each safe}}  
+                            <tr>                                                                 
+                                <td class="datatable-cell">{{name}}</td>
+                                <td class="datatable-cell">{{total}}</td>   
+                                <td class="datatable-cell"></td>   
+                                
+                                <td class="datatable-cell"></td>
+                                <td class="datatable-cell">{{min}}</td>   
+                                <td class="datatable-cell"></td>    
+                                
+                                <td class="datatable-cell"></td>
+                                <td class="datatable-cell">{{em}}</td>   
+                                <td class="datatable-cell"></td>  
+                                
+                                <td class="datatable-cell"></td>
+                                <td class="datatable-cell">{{lq}}</td>   
+                                <td class="datatable-cell"></td>   
+                                <td class="datatable-cell"></td>                                 
+                            </tr>
+                            {{/each}}
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</div>    
+
+<div class="row">
+    <h3>（四）刑事类案件报警时段分析</h3>
+    <div contenteditable="true" id="criminalCaseTowHourText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                    {{criminalAffairs.year}}年刑事报警共{{criminalCaseTowHour.total}}起（日均{{criminalCaseTowHour.averageDay}}起），报警时间主要集中在6时-8时、10时-12时、16时-18时、20时-22时共11起，占69%。
+            </span>
+        </p>
+    </div>
+    
+    <div class="col-md-10">
+            <div style="width:800px;">
+                    <table class="table">
+                        <thead>
+                            <tr class="datatable-row datatable-row-left text-center">
+                                <th>案发时间段</th>
+                                <th>案件数（起）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                {{#each criminalCaseTowHour.table}}  
+                                <tr>                                                                 
+                                    <td class="datatable-cell">{{DIC_NAME}}</td>
+                                    <td class="datatable-cell">{{TOTAL}}</td>                                    
+                                </tr>
+                                {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+        <div id="criminalCaseTowHour" style="height:250px;"></div>
+    </div>
+</div>
+<div class="row">
+    <h3>（五）盗窃案件主要分布情况</h3>
+    <div class="col-md-10">
+            <div style="width:800px;">
+                <table class="table">
+                    <thead>
+                        <tr class="datatable-row datatable-row-left text-center">
+                            <th>地域</th>
+                            <th>案件数（起）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each criminalCaseTowHour.table}}  
+                        <tr>                                                                 
+                            <td class="datatable-cell">{{DIC_NAME}}</td>
+                            <td class="datatable-cell">{{TOTAL}}</td>                                    
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</div>
+
+<div class="row">
+    <h3>（六）刑事案件分析</h3>
+    <div contenteditable="true" id="caseAnalysisText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                    {{criminalAffairs.year}}年辖区刑事案件与去年相比呈上升趋势，从“平安家园”建设降控指标看：刑事案件总量未突破2016年降控指标，其中两抢案件控制在降控指标范围内；从刑事案件分类情况看：两抢案件占刑案总量的1%、盗窃民宅案件占刑案总量的21%、盗窃电动车案件占刑案总量的21%、其他类盗窃案件占刑案总量的39%、诈骗案件占刑案总量的17%；从发案区域情况看：两抢案件分布零散（东韦村、航天西路、韦曲老街附近各2起，皇子坡村、领秀长安小区附近、北里王村、航天大道龙门学校附近、航天中路、航天医院南门附近、曲江观山悦工地各1起），盗窃民宅发案较高区域：北里王村32起、富力城小区19起、东韦村18起、南里王村11起、东兆余村10起，盗窃电动车发案较高区域：北里王村33起，其他类盗窃案件数额较大的有：陕西中小企业产品展示中心工地，航天城中铁信号厂、增源地产工地、航都绿洲工地、龙湖花千树工地，诈骗案件143起（电信诈骗122起）；从发案路段看：韦曲老街、凤栖东路、航天西路、航天大道、航天中路、神舟二路、雁南路发案较高。
+            </span>
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div>
+        <h2>三、治安类案件</h2>
+    </div>
+    <div contenteditable="true" id="securityAffairsText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                    {{criminalAffairs.year}}年治安案件共{{securityAffairs.period.security}}起，同比去年{{securityAffairs.basis.security}}起{{securityAffairs.percent.security}}。调解纠纷与救助共{{securityAffairs.period.help}}起，同比去年{{securityAffairs.basis.help}}起{{securityAffairs.percent.help}}。治安案件仍以纠纷打架为主。        
+            </span>
+        </p>    
+    </div>
+    <div class="col-md-8 col-md-offset-2">
+        <div id="securityAffairs" style="height:250px;"></div>
+    </div>
+</div>
+<div class="row">
+    <div>
+        <h2>四、预警提示</h2>
+    </div>
+    <div contenteditable="true" id="AlaramText">
+        <p style="margin-top:0;margin-right:183px;margin-bottom: 0;margin-bottom:0;text-align:justify;text-justify:inter-ideograph;text-indent:43px;line-height:37px">
+            <span style="font-size:21px;font-family:仿宋_GB2312;color:black">
+                根据{{criminalAffairs.year}}度警情，为确保辖区社会治安大局平稳，有效降控发案，将2017年度“平安家园”专项活动控制在指标范围内，请秦宇派出所加大对北里王村、东韦村和施工工地的治安整治工作，同时加强治安联防措施，有效遏制案件的高发；请秦宇派出所社区民警深入富力城小区、航天城小区、龙湖花千树小区，督促物业管理部门做好内部治安防范管理工作，同时教育群众提高防范意识，不给犯罪分子可乘之机；请各部门结合日常工作，加大对群众防范诈骗的宣传教育，提高群众自我防骗意识，从而降低诈骗案件的高发；请治安巡逻队加大对韦曲老街、凤栖东路、航天西路、航天大道、雁南路的巡逻频次，提高见警率，有效遏制街面侵财案件发生。         
+            </span>
+        </p>    
+    </div>
+</div>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>设备信息</title>
+    <link href="../dist/css/zui.css?v=1.8" rel="stylesheet">
+    <link href="../dist/css/case.css" rel="stylesheet">
+    <link rel="stylesheet" href="../dist/plugins/iview/iview.css">
+    <link href="../dist/lib/uploader/zui.uploader.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="dist/lib/ieonly/html5shiv.js"></script>
+    <script src="dist/lib/ieonly/respond.js"></script>
+    <script src="dist/lib/ieonly/excanvas.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="panel">
+            <div class="panel-heading-top-blue">
+                <span style="color:#3280fc;">添加警用资源</span>
+                <div class="pull-right panel-actions">
+                    <a id="pageClose" class="">
+                        <i class="icon icon-times"></i>关闭
+                    </a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="instrumentForm">
+                    <div class="form-group">
+                        <label for="no" class="col-sm-2 required">编号</label>
+                        <div class="col-md-6 col-sm-10">
+                            <input type="text" class="form-control" id="no" name="no" placeholder="请输入设备编号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="imei" class="col-sm-2 required">设备IMEI</label>
+                        <div class="col-md-6 col-sm-10">
+                            <input type="text" class="form-control" id="imei" name="imei" placeholder="请输入设备IMEI">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="vender" class="col-sm-2">品牌</label>
+                        <div class="col-md-6 col-sm-10">
+                            <input type="text" class="form-control" id="vender" name="vender" placeholder="请输入资源品牌">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="model" class="col-sm-2">型号</label>
+                        <div class="col-md-6 col-sm-10">
+                            <input type="text" class="form-control" id="model" name="model" placeholder="请输入资源型号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="params" class="col-sm-2">主要参数</label>
+                        <div class="col-md-6 col-sm-10">
+                            <input type="text" class="form-control" id="params" name="params" placeholder="主要参数信息">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="remark" class="col-sm-2">备注</label>
+                        <div class="col-md-6 col-sm-10">
+                            <textarea class="form-control" id="remark" name="remark" rows="3" ></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" id="save" name="save" class="btn btn-primary">提交</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <!-- jQuery (ZUI中的Javascript组件依赖于jQuery) -->
+        <script src="../assets/jquery.js?v=1.8"></script>
+        <!-- ZUI Javascript组件 -->
+        <script src="../dist/js/zui.min.js?v=1.8"></script>
+        <script src="../dist/lib/uploader/zui.uploader.min.js"></script>
+        <script src="../dist/plugins/axios/axios.min.js"></script>
+        <script src="../dist/plugins/seajs/sea.js"></script>
+        <script src="../dist/plugins/seajs/seajs-text.js"></script>
+        <script src="../dist/plugins/seajs/handlebars-1.0.0.beta.6.js"></script>
+        <script type="text/javascript">
+            seajs.config({
+                base: "../dist/",
+                alias: {
+                    "utilityForm": "utility/form.js",
+                    "validate": "plugins/jquery-validate/jquery.validate.min.js",
+                    "validation": "plugins/jquery-validate/additional-methods.js",
+                    "localization": "plugins/jquery-validate/localization/messages_zh.min.js"
+                },
+                vars: {
+                    requestFrontUrl: 'http://127.0.0.1/apollo-front/',
+                }
+            });
+            seajs.use('./router.js',function(router){
+                router.routes();
+            });
+        </script>
+</body>
+
+</html>

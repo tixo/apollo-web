@@ -1,0 +1,136 @@
+/*
+ * 顶部样式组
+ * @author zjc
+ * 2016.7.6
+ */
+/*配置系统初始化参数*/
+/*系统默认字体大小*/
+@default_fontsize:16px;
+/*顶部logo栏高度*/
+@logo_min_height:74px;
+@logo_max_height:@logo_min_height+1;
+@min_width:1450px;
+html,body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: "微软雅黑";
+    font-size: @default_fontsize;
+    background: url(../img/backstage_bg.png) no-repeat;
+    background-color: #1e5598;
+    height:74px;
+}
+.main_top_left{
+    position: absolute;
+    left: 0px;
+    top: 0;
+    height: 100%;
+    img{
+        margin-top: 3%;
+    }
+}
+.main_top_right{
+    position: absolute;
+    right: 0px;
+    width: 100%;
+    top: 0;
+    height:100%;
+    overflow: hidden;
+}
+.main_top_right_middle{
+    vertical-align: middle;
+    height: 100%;
+}
+//.menu_btn{
+//  float: right;
+//  width: 8%;
+//  height: 38%;
+//  vertical-align: middle;
+//  cursor: pointer;
+//  padding: 2px;
+//  margin-top:40px;
+//  text-align: center !important;
+//  font-size: 14px !important;
+//  color:#FFF !important;
+//}
+.menu_btn_checked{
+    background:url(../img/home.png) no-repeat !important; 
+    background-size:100% 100% !important;
+    height: 38% !important;
+}
+.main_top_bottomline{
+    position: absolute;
+    z-index: 2;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 4px;
+    background-color: rgb(62,102,150);
+}
+.box-ctn{
+    width:100%;
+    height:100%;
+}
+/*顶部高度小于等于*/ 
+@media screen and (max-height: @min_width) { 
+    body{font-size: 16px;}
+    .menu_btn{
+    float: right;
+    width: 8%;
+    height: 38%;
+    vertical-align: middle;
+    cursor: pointer;
+    padding: 2px;
+    margin-top:40px;
+    line-height: 38px;
+    text-align: center !important;
+    font-size: 14px !important;
+    color:#FFF !important;
+}
+} 
+/*顶部高度大于等于*/ 
+@media screen and (min-height: @min_width) {
+    body{font-size: 18px;}
+    .menu_btn{
+        float: right;
+        width: 8%;
+        height: 38%;
+        line-height: 38px;
+        vertical-align: middle;
+        cursor: pointer;
+        padding: 2px;
+        margin-top:46px;
+        text-align: center !important;
+        font-size: 14px !important;
+        color:#FFF !important;
+    }
+    html, body{
+        background-size:100% 74px;
+    }
+}
+.top-user{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: rgb(255,255,255);
+    font-size: 14px;
+}
+.top-user p span{
+    margin: 0;
+    padding: 0;
+    position:relative;
+    line-height: 20px;
+}
+.right{
+    float: right;
+}
+button.setting{background: transparent;border:none;}
+.setting{
+    cursor: pointer;
+}
+.setting img{
+   width: 20px;
+}
+button {
+    outline:none;
+}

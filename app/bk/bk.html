@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,IE=EmulateIE7,IE=9,IE=10,IE=11,chrome=1">
+    <link rel="stylesheet" type="text/css" href="../yibiaosanshi/css/ybss.css" />
+     <link rel="stylesheet" href="../../config/common/mapTools/css/map_tools.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/bk.css" />
+    <link rel="stylesheet" href="../bk/css/bk_fight.css" />
+    <link rel="stylesheet" href="../../config/common/rightResource/css/right_resource.css" type="text/css">
+    <link rel="stylesheet" href="../../module/plugins/scrollbar/jquery.mCustomScrollbar.css" type="text/css">
+    <link rel="stylesheet" href="../../config/common/camera/css/camera.css" type="text/css">
+    <script type="text/javascript" src="../../supermap/webgl/module/jquery/jquery-1.8.1.min.js"></script>
+    <script type="text/javascript" src="../../module/plugins/scrollbar/jquery.mCustomScrollbar.js"></script>
+    <script type="text/javascript" src="../../module/plugins/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="../../module/template.js"></script>
+    <script type="text/javascript" src="../../config/common/classie.js"></script>
+    <script type="text/javascript" src="../../supermap/webgl/supermap/3D/webgl.Include3D.js"></script>
+    <script type="text/javascript" exclude="iclient-classic" src="../../supermap/9D-leaflet/dist/include-classic.js"></script>
+    <script type="text/javascript" src="../../module/sea/sea.js"></script>
+    <link rel="stylesheet" type="text/css" href="../yibiaosanshi/css/zTreeStyle.css" />
+    <script type="text/javascript" src="../../module/plugins/zTree/js/jquery.ztree.core.min.js"></script>
+    <script type="text/javascript" src="../../module/plugins/zTree/js/jquery.ztree.excheck.js"></script>
+    <script type="text/javascript" src="../../module/plugins/zTree/js/jquery.ztree.exhide.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../module/plugins/datetimepicker/jquery.datetimepicker.css">
+    <script type="text/javascript" src="../../module/plugins/datetimepicker/build/jquery.datetimepicker.full.js"></script>
+    <script type="text/javascript" src="../../module/plugins/art-dialog/dist/dialog-plus.js"></script>
+    <script type="text/javascript" src="../../config/common/websocket/js/sockjs.min.js"></script>
+	<script type="text/javascript" src="../../config/common/websocket/js/stomp.min.js"></script>
+	<script type="text/javascript" src="../../config/common/camera/js/flv.js"></script>
+	<script src="../../scheduling/dist/plugins/layer/layer.js"></script>
+    <title>布控管理</title>  
+</head>
+<body class="cbp-spmenu-push">
+    <iframe id="myFrameName_gl" class="aj-manage-ctn" name="myFrameName_gl"  frameborder="0"></iframe>
+    <div class="main-content">
+        <div class="sidebar left-panel" role="navigation">
+            <div class="navbar-collapse">
+                <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right dev-page-sidebar " id="cbp-spmenu-s1">
+                    <div class="left-box">
+                        <button id="showLeftPush" class="showLeftPushBg"></button>
+                        <div class="zuoce-box">
+                            <div class="main">
+                                <ul class="tab_nav">
+                                </ul>
+                                <iframe id="myFrameId" class="myFrameId" src="" name="myFrameName" scrolling="no" frameborder="0"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div id="page-wrapper">
+            <!--加载map tools  zhangai    start -->
+           <!-- <span id="map-tools3D"></span>
+            <span id="map-tools" style="display: none;"></span>-->
+            <!--end -->
+            <div id="clearSymbolDiv"  style="z-index:9999;position:relative;left:10px;display: none;">
+                <span style="position: relative;float: left;" class="time-tj-btn" id="clearSymbol">清除标号</span>
+                <!--<input type="button" value="清除标号" id="clearSymbol"/>-->
+            </div>
+            <!--加载3维场景模块-->
+            <div id="cesiumContainer"></div>
+            <!--加载2维场景模块-->
+            <div id="map"  class="map-background" style="width:100%;height:100%;position: absolute;bottom: 0px;display: none;"></div>
+            <div class="time-xuanze" style="display: none;">
+                <div class="time-xz-left">
+                    时间段
+                </div>
+                <div class="time-xz-ctn">
+                    <div class="qi" id="startTime">2017/10/11-10:14</div>
+                    <div class="zhi" id="endTime">2017/10/12-10:14</div>
+                </div>
+                <div class="time-xz-right">
+                    <button class="time-btn">时间选择</button>
+                </div>
+            </div>
+            <div class="time-modal">
+                <div class="time-box-modal">
+                    <div class="time-title">
+                        时间选择
+                        <span class="time-clear">x</span>
+                    </div>
+                    <div class="time-ctnt">
+                        <div class="time-ctnt-box">
+                            <div>
+                                <span>起始时间：</span>
+                                <span><input id="datetimepickerStart-bk1" type="text" class="ipt-panel" ></span>
+                            </div>
+                            <div>
+                                <span>终止时间：</span>
+                                <span><input id="datetimepickerStart-bk2" type="text" class="ipt-panel" ></span>
+                            </div>
+                        </div>
+                        <span class="time-tj-btn">详情</span>
+                    </div>
+                </div>
+            </div>
+            <div class="time-box" style="display: none;">
+                <ul class="shuxian">
+                   <span class="lft"></span>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li><span></span></li>
+                </ul>
+                <div class="bg-zhou" id="zhuWz">
+                    <div class="modal-time" id="now">
+                        <div class="modal-time-an"></div>
+                    </div>
+                </div>
+                <ul class="shu" id="timelineAdd">
+                </ul>
+            </div>
+            <!--右侧资源-->
+            <span id="right-resource"></span>
+            <!--加载map cut 地图切换  zhangai     start -->
+            <span id="map_cut" style="position:absolute ;right:10px;bottom:0px;"></span>
+        </div>
+    </div>
+    <!-- 布控信息报警框 -->
+    <div class="tableanjian" id="latestBk">
+    </div>
+    <!-- 新建分组  GZQ -->
+    <div id="fenzu-modal" data-id="0" class="g-modal">
+        <div class="box-gmodal">
+            <div class="gmodal-title">
+                <span> 新建分组 </span>
+                <span class="modal-clear">x</span>
+            </div>
+            <div class="gmodal-ctnt">
+            	<table  cellspacing="0" class="gmodal-tab" style="height:100%;">
+            		<tr>
+						<td>预案分类：</td>
+						<td>
+							<select id="planCategory" class="plan_category" >
+                    		</select>
+						</td>
+					</tr>
+					<tr>
+						<td>预案分组名称：</td>
+						<td><input id="planGroupName" type="text" ></td>
+					</tr>
+					<!--<tr>
+						<td>添加人：</td>
+						<td><input id="userName" type="text" ></td>
+					</tr>-->
+					<tr>
+						<td>预案分组描述：</td>
+						<td><textarea id="description" name="detail"  style="height: 50px;margin-top: 5px;"></textarea></td>
+					</tr>
+					</table>
+                <span class="gmodal-tj-btn" id='saveBtn'>保存</span>
+                <span class="gmodal-tj-btn" id='updateBtn'>保存</span>
+            </div>
+        </div>
+    </div>
+    <!-- 调用通用预案库  GZQ -->
+    <div id="plans-g-modal" class="g-modal">
+        <div class="box-modal plans-box-modal">
+            <div class="modal-title">
+                通用预案库
+                <span class="modal-clear">x</span>
+            </div>
+            <div class="modal-content">
+                <div class="select-box">
+                    <select class="select-ctn plan_category" id="plantempCategory">
+                    	<option value="">全部</option>
+                    </select>
+                </div>
+                <div id="plantemp-list" class="plantemp-list">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Loading  GZQ -->
+    <div id="JLoading" class="g-modal">
+        <div class="center">
+            <h4><img alt="loading" src="./img/loading.gif"/></h4>
+        </div>
+    </div>
+    <iframe src="print.html" frameborder="0" id="printIframe" name="printIframe" style="width: 595px;height: 842px;display: none;"></iframe>
+    <!-- 打印 modal  GZQ -->
+    <div id="planimg-g-modal" class="g-modal" data-id="0">
+        <div class="box-modal planimg-box-modal">
+            <div class="modal-title">
+                打印面板
+                <span class="modal-clear">x</span>
+            </div>
+            <div class="modal-content">
+                <div id="planImgPrint" class="planimg">
+                    <img src="" />
+                </div>
+                <div class="footer">
+                    <span class="gmodal-tj-btn" id='savePlanTem'>保存为模板</span>
+                    <span class="gmodal-tj-btn"  onclick="mbk.doPrint()">打印</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    //              $('#datetimepickerStart-bk1').datetimepicker({
+    //                  lang:"ch", //语言选择中文 注：旧版本 新版方法：$.datetimepicker.setLocale('ch');
+    //                  format:"Y-m-d H:i",      //格式化日期
+    //                  timepicker:false,    //关闭时间选项
+    //                  yearStart："2017-03-03",     //设置最小年份
+    //                  yearEnd:"2050",        //设置最大年份
+    //                  todayButton:false    //关闭选择今天按钮
+    //              });
+    </script>
+</body>
+<script>
+//获取场景配置信息
+var services = parent.window.services;
+var mbk,_rightResource,param="",_mapCut,mbuilding;
+var src = $(window.parent.document).find("#left_iframe").attr("src");
+seajs.config({ base: "./js/" });
+seajs.use(["bk.js"], function(bk) {
+    mbk = bk;
+    mbuilding = mbk;
+    mbuilding.queryFeature = mbk.bkSceneEvent;
+    mbk.bkSceneEvent.initScene(services);
+    $('#myFrameId').attr('src', $('#myFrameId').attr('src'));
+    mbk.initUi();
+    mbk.bkMapEvent.initSelectFeature();
+    _rightResource = mbk.rightResource;
+    _mapCut = mbk.mapCut;
+    _mapCut.cut2D();
+    if(param!=""){
+		$("#myFrameId").contents().find("#"+param).find(".ren-rit").click();
+		param="";
+	}
+});
+var menuLeft = document.getElementById('cbp-spmenu-s1'),
+    showLeftPush = document.getElementById('showLeftPush'),
+    body = document.body;
+var parentDoc = parent.document;
+/* 定义一个接收元素的变量 */
+var thisIframe = null;
+$("iframe", parentDoc).each(function(index, e) {
+    if (e.src.indexOf("bk.html") > 0) {
+        thisIframe = e;
+        return false;
+    }
+});
+showLeftPush.onclick = function() {
+    classie.toggle(this, 'active');
+    classie.toggle(body, 'cbp-spmenu-push-toright');
+    classie.toggle(menuLeft, 'cbp-spmenu-open');
+    $(this).toggleClass('showRightPushBg');
+    var left = $("#cesiumContainer").css("left");
+    if ($(".showRightPushBg").length > 0) {
+        $("#cesiumContainer").css({ "left": "0", "width": "100%" });
+        $("#map").css({ "left": "0", "width": "100%" });
+        $(".time-box").css({ "width": "100%" });
+        window.plot.updateSize();
+    } else {
+        $("#cesiumContainer").css({ "left": "293px", "width": "calc(100% - 293px)" });
+        $("#map").css({ "left": "293px", "width": "calc(100% - 293px)" });
+        $(".time-box").css({ "width": "calc(100% - 293px)" });
+        window.plot.updateSize();
+    }
+};
+
+//子菜单动态加载
+var zcdHtml = "";
+$.each(services.new_menus, function(i, item) {
+    var select = "unsel";
+    if (i == 0) {
+        select = "select";
+        if (item.id == "s_bkya" || item.id == "s_bkzz") {
+	    		$("#myFrameId").attr("src", item.href);
+        } else {
+            $("#myFrameName_gl").attr("src", item.href);
+            $("#myFrameName_gl").show();
+            $("#myFrameId", "#page-wrapper").hide();
+        }
+    } else {
+        select = "unsel";
+    }
+    if (item.id == "s_bkya" || item.id == "s_bkzz") {
+        zcdHtml += '<li class="tab ' + select + '" data-id="' + item.id + '"><a href="' + item.href + '" class="a" target="myFrameName">' + item.name + '</a></li>';
+    } else {
+        zcdHtml += '<li class="tab ' + select + '" data-id="' + item.id + '"><a href="' + item.href + '" class="a" target="myFrameName_gl">' + item.name + '</a></li>';
+    }
+});
+if(src.indexOf("?")!= -1){
+	var arraytemp = src.split('?'); 
+	arraytemp = arraytemp[1].split('=');
+	param = arraytemp[1];
+	$("#myFrameId").attr("src","bk_MonitorPlan.html");
+}
+$(".tab_nav").html(zcdHtml);
+//首页案件连接到布控作战
+if(src.indexOf("?")!= -1){
+	$('li[data-id="s_bkzz"]').addClass("select").siblings().removeClass('select');
+}
+/*$(".clear-win").click(function(){
+    $(".modal-backdrop-box").hide();
+});*/
+$(".maximize").click(function() {
+    $(".modal-maximize-box").show();
+});
+$(".modal-maximize-box-clear").click(function() {
+    $(".modal-maximize-box").hide();
+});
+//加载右侧资源 zhangai
+$.get("../../config/common/rightResource/right_resource.html", function(data) {
+    $("#right-resource").html(data);
+    $(".police-select8").show();
+});
+//加载地图切换 zhangai
+$.get("../../config/common/mapCut/map_cut.html", function(data) {
+    $("#map_cut").html(data);
+});
+$.get("../../app/yibiaosanshi/buildingPopup.html", function(data) {
+    $("body").append(data);
+});
+/*$("#datetimepickerStart-bk1").flatpickr({
+    disable: [{
+            from: "2016-08-16",
+            to: today
+        },
+        "2016-08-24",
+        new Date().fp_incr(30) // 30 days from now
+    ],
+    maxDate: today
+});*/
+$('#datetimepickerStart-bk1').datetimepicker({format:"Y-m-d H:i"});
+$('#datetimepickerStart-bk2').datetimepicker({format:"Y-m-d H:i"});
+$.datetimepicker.setLocale('ch');//设置中文
+/*$("#datetimepickerStart-bk2").flatpickr({
+    disable: [{
+            from: "2016-08-16",
+            to: today
+        },
+        "2016-08-24",
+        new Date().fp_incr(30) // 30 days from now
+    ],
+    maxDate: today
+});*/
+</script>
+<script type="text/javascript" src="../../config/common/camera/js/camera.js"></script>
+<script id="policeCarPopup_camera" type="text/html">
+    <div id="popup" class="mypopup" style="height: 190px;width: 332px;">
+        <div class="modal-title">
+           	 报警摄像头信息
+            <span id="guanbi" onclick="mbk.bkMapEvent.mapInit.pluginsAPI.popup.clearPopup()">x</span>
+        </div>
+        <div class="popup02-left-box" style="width: 75%;height: 65%;">
+            <table class="tab tab-renkou" style="padding: 0px 10px !important;">
+                <tr>
+                    <td>报警时间：</td>
+                    <td>{{content.captureTime}}</td>
+                </tr>
+                <tr>
+                    <td>类型：</td>
+                    <td>{{content.cameraDetail.cameraType}}</td>
+                </tr>
+                <tr>
+                    <td>位置：</td>
+                    <td>{{content.cameraDetail.installationAddress}}</td>
+                </tr>
+                <!--<tr>
+                    <td>时间：</td>
+                    <td>{{content.time}}</td>
+                </tr>-->
+            </table>
+        </div>
+        <div class="bkimg" style="width: 20%;float: right;margin: 6px;">
+            <img src="data:image/jpg;base64,{{content.captureImg}}" width="100" height="110" align="right"/>
+        </div>
+        <div class="modal-bottom-operate" onclick="_rightResource.video.openVideo('{{content.dataStr}}')">
+            <a href="#" class="modal-ctn-btn modal-ctn-btn-col" style="float: right;margin-right: 20px;" >查看视频</a>
+        </div>
+        <div class="popup_bottom"></div>
+    </div>
+</script>
+<!-- 布控预案模板 START-->
+<script id="bkplanTemp" type="text/html">
+	<div  style="height:280px ;overflow-x: auto;">
+    <ul>
+        {{each}}
+        <li onclick="mbk.symbolLib.openSmlTemp('{{$value.id}}')">
+            <div class="plan-img">
+                <img src="{{$value.planPicBase64}}" class="img-thumbnail">
+                <span>
+                    {{$value.planName}}
+                </span>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+   </div>
+</script>        
+<!-- 布控预案模板 END-->
+<script id="latestBkPopup" type="text/html">
+<!--案件报警信息框-->
+		<div class="right-panel-top">
+			<span class="clert-guiji" style="height: 10px;" data-toggle="tooltip" data-placement="top" title="关闭" id="closebktable">x</span>
+		</div>
+		<table class="anjiantablepanel tab tab-renkou" cellspacing="0">
+			<tr>
+				<td colspan="2" style="color:steelblue;text-align: center !important;">实时最新布控提醒</td>
+			</tr>
+			<tr>
+				<td>布控名称</td>
+				<td>{{content.name}}</td>
+			</tr>
+			<tr>
+				<td>布控时间</td>
+				<td>开始时间：{{content.BeginTime}}
+					</br>
+				结束时间：{{content.EndTime}}
+				</td>
+			</tr>
+			<tr></tr>
+		</table>
+	</div>
+</script>
+</html>

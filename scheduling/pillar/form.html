@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>报警柱信息</title>
+    <link href="../dist/css/zui.css?v=1.8" rel="stylesheet">
+    <link href="../dist/css/case.css" rel="stylesheet">
+    <link href="../dist/lib/uploader/zui.uploader.min.css" rel="stylesheet">
+    <link href="../dist/plugins/zTree_v3/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 9]>
+    <script src="dist/lib/ieonly/html5shiv.js"></script>
+    <script src="dist/lib/ieonly/respond.js"></script>
+    <script src="dist/lib/ieonly/excanvas.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="panel">
+            <div class="panel-heading-top-blue">
+                <span style="color:#3280fc;">报警柱信息</span>
+                <div class="pull-right panel-actions">
+                    <a id="pageClose" class="">
+                        <i class="icon icon-times"></i>关闭
+                    </a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="policeForm">
+                    <div class="form-group">
+                        <label for="no" class="col-sm-2 required">编号</label>
+                        <div class="col-md-6 col-sm-10">
+                            <input type="text" class="form-control" id="no" name="no" placeholder="报警柱编号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 required">位置</label>
+                        <div class="col-md-6 col-sm-10">
+                            <input type="text" class="form-control" id="address" name="address" placeholder="报警柱位置">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 required">经度</label>
+                        <div class="col-md-6 col-sm-10">
+                            <input type="text" class="form-control" id="mapLongitude" name="nmapLongitudeme" placeholder="报警柱位置经度">
+                        </div>
+                    </div>                       
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 required">纬度</label>
+                        <div class="col-md-6 col-sm-10">
+                            <input type="text" class="form-control" id="mapDimension" name="mapDimension" placeholder="报警柱位置纬度">
+                        </div>
+                    </div> 
+                    <!-- <div class="form-group">
+                        <label for="name" class="col-sm-2 required">纬度</label>
+                        <div class="col-md-6 col-sm-10">
+                            <input type="text" class="form-control" id="mapDimension" name="mapDimension" placeholder="报警柱位置">
+                        </div>
+                    </div>                                              -->
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2">备注</label>
+                        <div class="col-md-6 col-sm-10">
+                            <textarea class="form-control" rows="3" id="remark" name="remark" placeholder="可以输入多行文本"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" id="save" name="save" class="btn btn-primary">提交</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <!-- jQuery (ZUI中的Javascript组件依赖于jQuery) -->
+        <script src="../assets/jquery.js?v=1.8"></script>
+        <!-- ZUI Javascript组件 -->
+        <script src="../dist/js/zui.min.js?v=1.8"></script>
+        <script src="../dist/lib/uploader/zui.uploader.min.js"></script>
+        <script src="../dist/plugins/axios/axios.min.js"></script>
+        <script src="../dist/plugins/seajs/sea.js"></script>
+        <script src="../dist/plugins/seajs/seajs-text.js"></script>
+        <script src="../dist/plugins/seajs/handlebars-1.0.0.beta.6.js"></script>
+        <script src="../dist/plugins/zTree_v3/js/jquery.ztree.all.js"></script>
+        <script src="../app/common/organization_tree.js"></script>
+        <script type="text/javascript">
+            seajs.config({
+                base: "../dist/",
+                alias: {
+                    "utilityForm": "utility/form.js",
+                    "validate": "plugins/jquery-validate/jquery.validate.min.js",
+                    "validation": "plugins/jquery-validate/additional-methods.js",
+                    "localization": "plugins/jquery-validate/localization/messages_zh.min.js"
+                },
+                vars: {
+                    imageUrl: 'http://180.76.135.26/apollo/upload/',
+                    api: 'http://127.0.0.1:8021',
+                    requestFrontUrl: 'http://127.0.0.1/apollo-front/',
+                }
+            });
+
+            if (0 == $.trim(window.location.search).length) {
+                seajs.use('./add.js');
+            } else {
+                seajs.use('./edit.js');
+            }
+        </script>
+</body>
+
+</html>

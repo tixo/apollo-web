@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>加载三维场景</title>
+		<script type="text/javascript" src="../module/jquery/jquery-1.8.1.min.js" ></script>
+		<script type="text/javascript" src="../supermap/3D/webgl.Include3D.js" ></script>
+		<script type="text/javascript" src="../../libs/SuperMap.Include.js" ></script>
+		<script type="text/javascript" src="../module/sea/sea.js" ></script>
+	</head>
+	<body style="padding: 0;margin: 0;overflow: hidden;">
+		<div id="cesiumContainer"></div>
+	</body>
+	<script>
+		var supermap3DUtils;
+		var sceneUrl="http://118.190.145.178:8070/iserver/services/3D-apollo-service/rest/realspace";
+		$(document).ready(function(){
+			seajs.use(['../supermap/3D/supermap3DUtils.js'], function(supermap3DUtils){
+//				全局的三维接口对象，为气泡模板关闭事件使用
+				this.supermap3DUtils = supermap3DUtils;
+//				气泡所需要的经纬度
+				var popuplonlat;
+				//初始化场景，id为加载场景所需要的div ID
+				var config={
+					cesium: Cesium,
+					id: "cesiumContainer"
+				};
+				//所使用的是：scene.js的 initScene方法
+				supermap3DUtils.sceneUtil.initScene(config);
+				//再打开场景url：场景地址    center:定位到场景的配置信息
+				var json = {
+					url: sceneUrl,
+					center: {
+						x: 104.90036772571641,
+						y: 33.33523142291564, 
+						height: 971.1160413874313,
+						heading: 0.0002141084319855795,
+						pitch: -1.5707953113269526,
+						roll:0,
+						type:"setView"
+					},
+					callbackOpenedScene:function(){
+						queryFeature();
+						//移除加载动画
+						$('#loadingbar').css("display","none");
+					}
+				};
+				//所使用的是：scene.js的 openScene方法
+				supermap3DUtils.sceneUtil.openScene(json);
+				
+				/**
+				 * 设置单体数据，激活模型选择事件方法
+				 */
+				function queryFeature(){
+					//获取所有的非影像图层
+					var layers = supermap3DUtils.sceneUtil.viewer.scene.layers._layers._array;
+					//循环所有的非影像图层，将场景图层与二维矢量面绑定
+					if(layers.length>0){
+						for(item in layers){
+							var config = {
+								layers:layers[item],
+								dataUrl:top.services.queryUrl;
+								dataSourceName: 'HTC02',
+						        dataSetName: 'Layere',
+						        keyWord: 'SmID'
+							};
+							//所使用的是：scene.js的 setQueryParam方法
+							supermap3DUtils.sceneUtil.setQueryParam(config);
+							break;
+						}
+					}
+					//注册监听选择到要素的事件   所使用的是：scene.js的 selectEntityListener方法
+					supermap3DUtils.sceneUtil.selectEntityListener(successSelectedEntity);
+				}
+				/**
+				 * 实体要素选择成功的回调函数
+				 * @param {Object} entity
+				 */
+				function successSelectedEntity(result){
+					debugger;
+					var buildNumber = result.entity.建筑编码;
+					popuplonlat = result.lonlat;
+					//根据点选查询建筑物编码，进行数据查询需要的数据
+		        	var config={
+						dataName:"HTC02:" + "单位信息",
+						sql:"建筑编码='" +buildNumber+ "'",
+						url:top.services.queryUrl,
+						successCallback:onQueryComplete,
+						failCallback:processFailed
+					};
+					//所使用的是：query.js的getSqlBydata方法   数据查询方法
+		        	supermap3DUtils.query3DUtil.getSqlBydata(config);
+		        	
+				}
+				
+				//查询成功返回结果
+				function onQueryComplete(queryEventArgs){
+					
+					debugger;
+					var selectedFeatures = queryEventArgs.originResult.features;
+					
+					//气泡配置及显示
+					var config = {
+						supermap3DUtils:supermap3DUtils,
+						tempId:"featurePopup",
+						popupId:"popup",
+						lonlat:popuplonlat,
+						offsetX:0,
+						offsetY:-30,
+						data:{
+							content:{
+								name:"asdf"
+							}
+						}
+					};
+					supermap3DUtils.popup3DUtil.showPopup(config);
+		        }
+				//查询失败返回
+				function processFailed(error){
+		        	
+		       }
+		        
+			});
+			
+		});
+	</script>
+	<!--气泡模板-->
+	<script id="featurePopup" type="text/html">
+		<div id="popup">
+			<div class="popup_top">
+				<div class="popup_close" onclick="supermap3DUtils.popup3DUtil.closePopup()"></div>
+				<div class="popup_title">{{content.name}}</div>
+			</div>
+			<div class="popup_middle">
+				<table cellspacing="0">
+					<col style="width: 15%" />
+					<col style="width: 35%" />
+					<col style="width: 15%" />
+					<col style="width: 35%" />
+					<tbody>
+						<tr>
+							<td class="popup_titleStyle">名称</td>
+							<td class="popup_normalStyle">{{content.name}}</td>
+						</tr>
+						<tr>
+							<td class="popup_titleStyle">位置</td>
+							<td colspan="3" class="popup_normalStyle">{{content.name}}</td>
+						</tr>
+						<tr>
+							<td class="popup_titleStyle">类别</td>
+							<td class="popup_normalStyle">{{content.name}}</td>
+						</tr>
+						<tr>
+							<td class="popup_titleStyle">年代</td>
+							<td class="popup_normalStyle">{{content.name}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="popup_bottom"></div>
+		</div>
+	</script>
+</html>

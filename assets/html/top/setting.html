@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>设置 </title>
+		<link href="../../../scheduling/dist/css/zui.css?v=1.8" rel="stylesheet">
+		<script type="text/javascript" src="../../../module/jquery/jquery-1.8.1.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../../../app/yibiaosanshi/css/zTreeStyle.css" />
+		<script type="text/javascript" src="../../../module/plugins/zTree/js/jquery.ztree.core.min.js"></script>
+		<script type="text/javascript" src="../../../module/plugins/zTree/js/jquery.ztree.excheck.js"></script>
+		<script type="text/javascript" src="../../../module/plugins/zTree/js/jquery.ztree.exhide.js"></script>
+		<script type="text/javascript" src="../../../module/sea/sea.js"></script>
+		<script type="text/javascript" src="../../../scheduling/dist/utility/form.js"></script>
+	</head>
+	<body >
+		<div class="container-fluid" style="margin-right: 0px;">
+		<!--	<ul class="nav nav-tabs"  style="margin-top: 6px;">
+		   <li class="active"><a data-tab href="#tabContent1">分组</i></a></li>
+		   <!--<li><a data-tab href="#tabContent2">标签2</a></li>
+		   <li><a data-tab href="#tabContent3">标签3</a></li>-->
+		<div class="tab-content">
+		  <div class="tab-pane active" id="tabContent1">
+		   <div class="panel-body">
+		        <div class="row panel-heading panel">
+		          <form class="form-horizontal" id="queryForm">
+		            <div class="form-group">
+		            	<ul id="treePoliceGroup" class="ztree">  
+				        </ul> 
+		              <div class="col-sm-2">
+		              	<button class="btn btn-primary " type="button" style="float: right;"onclick="updateStatus();">
+		              		 <i class="icon icon-save"></i>
+		              		 <small>保存</small>
+		              	</button>
+		              </div>
+		            </div>
+		          </form>
+		        </div>
+		      </div>
+		  </div>
+		</div>
+	</body>
+</html>
+<script>
+var _ajax;
+(function(){
+	seajs.use(["../../../scheduling/app/common/ajax.js"],function(ajax){
+		_ajax = ajax;
+		policeGroup();
+ 	});
+})();
+function policeGroup() {
+	// zTree 参数配置，
+    var setting = {
+        check: {
+            enable: true, //显示复选框
+            chkboxType: {"Y": "ps","N": "ps"}
+        },
+        data: {
+            simpleData: {
+                enable: true
+            }
+        },
+        callback: {
+            beforeClick: function(treeId, treeNodes) {
+                //用于捕获 勾选 或 取消勾选 之前的事件回调函数，并且根据返回值确定是否允许 勾选 或 取消勾选
+            },
+            onClick: function(event, treeId, treeNodes) {
+                return true;
+            },
+            onCheck: function(event, treeId, treeNodes) {
+                return true;
+            },
+            onExpand: function(event, treeId, treeNodes) {}
+        }
+    };
+	_ajax.post("force/info/findAll",{},function(response){
+		var result = response.data.data;
+        var treeNodes = {"id":"parent1","pid":"0","name":"警员分组","open":true};
+        treeNodes.nocheck = true;
+        $.each(result, function(i,item) {
+        	if(item.status != null && item.status == 1){
+        		item.checked = true;
+        	}
+        });
+		treeNodes.children =  result;
+        $.fn.zTree.init($("#treePoliceGroup"), setting,treeNodes);
+	},function(e){
+		console.log(e);
+	});
+}
+//设置警员值班组
+function updateStatus(){
+	var zTree = $.fn.zTree.getZTreeObj("treePoliceGroup");
+	var nodes = zTree.getCheckedNodes();
+	if(nodes.length==0){
+		return;
+	}
+	var parm = [];
+	$.each(nodes, function(i,item) {
+		parm.push(item.id);
+	});
+	_ajax.post("force/info/updateStatus",parm,function(response){
+		var result = response.data;
+		if(result.code <= 0) {
+            $.showErrorInfo(result.message);
+        }else{
+        	$.showSuccessTipAndGo("设置成功！");
+        	//刷新首页警员状态
+        	setTimeout(function(){
+	    		parent.layer.closeAll();
+	    	},1000);
+        }
+	},function(e){
+		console.log(e);
+	});
+}
+</script>

@@ -1,0 +1,121 @@
+<div class="row">
+  <div class="col-sm-4">
+    <div class="panel">
+      <div class="panel-heading-top-blue">
+        <span class="">辖区人口总数</span>
+      </div>
+      <div class="panel-body">
+        <div id="populationCount" style="height:180px;">
+          <div style='margin-top:70px;text-align:center;'>
+            <span style="font-size:80px;font-style:oblique;">{{all}}}</span>人
+            <!-- |italic|normal|oblique -->
+          </div>
+          <div style="width:420px;text-align:center;">
+            {{#if add}}
+              <span>年度增加:</span>
+              <span>{{add}}</span>
+              <span>人 </span>
+              <i class="icon icon-arrow-up" style="color:red"></i>
+              <span>{{rate}}</span>
+            {{else}}
+              <span>年度同比减少:</span>
+              <span>{{plus}}</span>
+              <span>人 </span>
+              <i class="icon icon-arrow-down" style="color:red"></i>
+              <span>{{rate}}</span>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="panel">
+      <div class="panel-heading-top-blue">
+        <span class="">人口民族构成</span>
+      </div>
+      <div class="panel-body">
+        <div id="populationNation" style="height:250px;"></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="panel">
+      <div class="panel-heading-top-blue">
+        <span class="">性别分布</span>
+      </div>
+      <div class="panel-body">
+        <div id="sexDistribution" style="height:250px;">
+          <div>
+            <img src='./female.png' style='width:45px;height:60px;margin-top:80px' />
+            <img src='./female.png' style='width:45px;height:60px;margin-top:80px' />
+            <img src='./female.png' style='width:45px;height:60px;margin-top:80px' />
+            <img src='./female.png' style='width:45px;height:60px;margin-top:80px' />
+            <img src='./male.png' style='width:45px;height:60px;margin-top:80px' />
+            <img src='./male.png' style='width:45px;height:60px;margin-top:80px' />
+            <img src='./male.png' style='width:45px;height:60px;margin-top:80px' />
+            <img src='./male.png' style='width:45px;height:60px;margin-top:80px' />
+          </div>
+          <div style="margin-top:30px">
+            <div class="progress" id="sexProgress">
+              <!-- 堆叠效果 -->
+              <div class="progress">
+                <div class="progress-bar progress-bar-danger" style="width: {{female}};">
+                  <span class="sr-only">{{female}}</span>
+                </div>
+                <div class="progress-bar progress-bar" style="width: {{male}};">
+                  <span class="sr-only">{{male}}</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel">
+        <div class="panel-heading-top-blue">
+          <span class="">年龄分布</span>
+        </div>
+        <div class="panel-body">
+          <div id="ageDistribution" style="height:250px;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel">
+        <div class="panel-heading-top-blue">
+          <span class="">学历情况</span>
+        </div>
+        <div class="panel-body">
+          <div id="education" style="height:250px;"></div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel">
+        <div class="panel-heading-top-blue">
+          <span class="">政治面貌</span>
+        </div>
+        <div class="panel-body">
+          <div id="political" style="height:250px;"></div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-heading-top-blue">
+      <span class="">人口密度</span>
+    </div>
+    <div class="panel-body">
+      <div style="height:400px;">
+        <iframe frameborder="0" src="./heatmap.html" id="deviceRender" width="100%" height="100%"></iframe>
+      </div>
+    </div>
+  </div>

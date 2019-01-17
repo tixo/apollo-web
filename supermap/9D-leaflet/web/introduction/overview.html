@@ -1,0 +1,2725 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>SuperMap iClient 9D 产品概览</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=yes">
+    <script type="text/javascript" include='leaflet,iclient9-leaflet,g6,isIntroduction'
+            src="../js/include.js"></script>
+    <link rel="stylesheet" href="../css/overview.css">
+</head>
+
+<body class="hold-transition skin-blue">
+
+<!--顶部导航-->
+<header class="header-wrapper main-header icl-header">
+</header>
+<script>
+    var identification = {};
+    var navigation = {
+        nav: {
+            title: "SuperMap iClient 9D",
+            version: "",
+            path: "../"
+        }
+    };
+    utils.loadTemplate(".icl-header", "../template/header.html", navigation);
+</script>
+<!--顶部导航 end-->
+
+<!--内容区-->
+<div class="container icl-docs-container">
+    <div class="row">
+        <div role="main" class="col-md-1"></div>
+        <div role="main" class="col-md-10">
+            <div class="icl-docs-header">
+                <h1 class="product" id="icl-docs-overview">SuperMap iClient 9D 产品概览</h1>
+            </div>
+
+            <div class="section icl-docs-section">
+                <img class="feature-image img-fluid" src="../img/overview/product_overview.png">
+            </div>
+
+            <div class="section icl-docs-section">
+                <h2 class="section-title" id="functions">主要功能服务</h2>
+
+                <p class="lead">本章介绍 SuperMap iClient for JavaScript 9D 的各地图基础库所支持的主要功能和服务。</p>
+                <!--Function Table-->
+                <table class="table" id="functionTable">
+                    <thead>
+                    <tr>
+                        <th scope="col" rowspan="12" colspan="2" style="width:20%">主要功能和服务</th>
+                        <th scope="col" colspan="4">地图基础库</th>
+                    </tr>
+                    <tr>
+                        <!--products-->
+                        <th scope="col" style="width: 15%">for Leaflet</th>
+                        <th scope="col" style="width: 15%">for OpenLayers</th>
+                        <th scope="col" style="width: 15%">for MapboxGL</th>
+                        <th scope="col" style="width: 15%">iClient Classic</th>
+                        <!--<th scope="col" style="width: 15%">3D-WebGL</th>-->
+                        <!--products End-->
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <!-- iServer 服务模块-->
+                    <tr class="mainTr warning" onclick="onClick(this)">
+                        <td colspan="2">SuperMap iServer</td>
+                        <td class="check_big">√</td>
+                        <td class="check_big">√</td>
+                        <td class="checkHalf_big">√</td>
+                        <td class="checkHalf_big">√</td>
+                    </tr>
+                    <tr style="display: none">
+                        <td colspan="6" style="padding: 0">
+                            <!--地图服务table-->
+                            <table class="table in">
+                                <thead>
+                                <tr>
+                                    <th scope="col" colspan="2" class="service">地图服务</th>
+                                </tr>
+                                </thead>
+                                <tbody class="tb">
+                                <!--底图服务-->
+                                <tr class="">
+                                    <th rowspan="4">底图</th>
+                                    <td>4326坐标系</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>3857坐标系</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>平面坐标系</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>自定义比例尺</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--底图服务 End-->
+                                <!--图层-->
+                                <tr class="">
+                                    <th>图层叠加</th>
+                                    <td>图层叠加</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--图层叠加 End-->
+                                <!--量算服务-->
+                                <tr class="">
+                                    <th rowspan="2">量算服务</th>
+                                    <td rowspan="1">距离量算</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td rowspan="1">面积量算</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--量算服务 End-->
+                                <!--查询服务-->
+                                <tr class="">
+                                    <th rowspan="6">地图查询</th>
+                                    <td>地图信息查询</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>图层信息查询</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>范围查询</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>距离查询</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>几何查询</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>SQL查询</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--查询服务 End-->
+                                </tbody>
+                            </table>
+                            <!--地图服务table End-->
+
+                            <!--数据服务table-->
+                            <table class="table in">
+                                <thead>
+                                <tr>
+                                    <th scope="col" colspan="2" class="service">数据服务</th>
+                                </tr>
+                                </thead>
+                                <tbody class="tb">
+                                <!--数据编辑-->
+                                <tr class="">
+                                    <th rowspan="1">数据编辑</th>
+                                    <td>数据编辑</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--数据编辑 End-->
+                                <!--查询服务-->
+                                <tr class="">
+                                    <th rowspan="7">数据查询</th>
+                                    <td>栅格查询</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>字段查询</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>缓冲区查询</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>范围查询</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>几何查询</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>SQL查询</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>ID查询</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--查询服务 End-->
+                                </tbody>
+                            </table>
+                            <!--数据服务table End-->
+
+                            <!--空间分析服务table-->
+                            <table class="table in">
+                                <thead>
+                                <tr>
+                                    <th scope="col" colspan="2" class="service">空间分析服务</th>
+                                </tr>
+                                </thead>
+                                <tbody class="tb">
+                                <!--缓冲区分析服务-->
+                                <tr class="">
+                                    <th rowspan="2">缓冲区分析</th>
+                                    <td>几何</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>数据集</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--缓冲区分析服务 End-->
+                                <!--泰森多边形-->
+                                <tr class="">
+                                    <th rowspan="2">泰森多边形</th>
+                                    <td>几何</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>数据集</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--泰森多边形 End-->
+                                <!--叠加分析-->
+                                <tr class="">
+                                    <th>叠加分析</th>
+                                    <td>叠加分析</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--叠加分析 End-->
+                                <!--表面分析-->
+                                <tr class="">
+                                    <th>表面分析</th>
+                                    <td>表面分析</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--表面分析 End-->
+                                <!--动态分段-->
+                                <tr class="">
+                                    <th>动态分段</th>
+                                    <td>动态分段</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--动态分段 End-->
+                                <!--地形曲率计算-->
+                                <tr class="">
+                                    <th>地形曲率计算</th>
+                                    <td>地形曲率计算</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--地形曲率计算 End-->
+                                <!--栅格代数运算-->
+                                <tr class="">
+                                    <th>栅格代数运算</th>
+                                    <td>栅格代数运算</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--栅格代数运算 End-->
+                                <!--核密度分析-->
+                                <tr class="">
+                                    <th>核密度分析</th>
+                                    <td>核密度分析</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--核密度分析 End-->
+                                <!--插值分析-->
+                                <tr class="">
+                                    <th rowspan="5">插值分析</th>
+                                    <td>点密度</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>反距离加权</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>克吕金</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>径向基函数</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>离散点</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--插值分析 End-->
+                                <!--里程分析-->
+                                <tr class="">
+                                    <th rowspan="2">里程分析</th>
+                                    <td>点/线定里程</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>里程定点/线</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--里程分析 End-->
+                                </tbody>
+                            </table>
+                            <!--空间分析服务table End-->
+
+                            <!--网络分析服务table-->
+                            <table class="table in">
+                                <thead>
+                                <tr>
+                                    <th scope="col" class="service">网络分析服务</th>
+                                </tr>
+                                </thead>
+                                <tbody class="tb">
+                                <tr class="">
+                                    <td style="width: 25%">服务区分析</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td style="width: 25%">最近设施分析</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td style="width: 25%">选址分区分析</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td style="width: 25%">旅行商分析</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td style="width: 25%">多旅行商分析</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td style="width: 25%">最佳路径分析</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!--网络分析服务table End-->
+
+                            <!--交通换乘分析服务table-->
+                            <table class="table in">
+                                <thead>
+                                <tr>
+                                    <th scope="col" class="service">交通换乘分析服务</th>
+                                </tr>
+                                </thead>
+                                <tbody class="tb">
+                                <tr class="">
+                                    <td style="width: 25%">交通换乘分析</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!--交通换乘分析服务table End-->
+
+                            <!--分布式分析服务table-->
+                            <table class="table in">
+                                <thead>
+                                <tr>
+                                    <th scope="col" colspan="2" class="service">分布式分析服务</th>
+                                </tr>
+                                </thead>
+                                <tbody class="tb">
+                                <!--密度分析-->
+                                <tr class="">
+                                    <th rowspan="2">密度分析</th>
+                                    <td>简单点密度</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>核密度</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--密度分析 End-->
+                                <!--点聚合分析-->
+                                <tr class="">
+                                    <th rowspan="2">点聚合分析</th>
+                                    <td>网格面聚合</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>多边形聚合</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--点聚合分析 End-->
+                                <!--点聚合分析-->
+                                <tr class="">
+                                    <th rowspan="1">单对象查询分析</th>
+                                    <td>单对象查询</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--点聚合分析 End-->
+                                <!--区域汇总分析-->
+                                <tr class="">
+                                    <th rowspan="2">区域汇总分析</th>
+                                    <td>网格面汇总</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>多边形汇总</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--区域汇总分析 End-->
+                                <!--矢量裁剪分析-->
+                                <tr class="">
+                                    <th rowspan="2">矢量裁剪分析</th>
+                                    <td>内部裁剪</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>外部裁剪</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--矢量裁剪分析 End-->
+                                <!--缓冲区分析-->
+                                <tr class="">
+                                    <th rowspan="1">缓冲区分析</th>
+                                    <td></td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--缓冲区分析 End-->
+                                <!--拓扑检查分析-->
+                                <tr class="">
+                                    <th rowspan="1">拓扑检查分析</th>
+                                    <td></td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--拓扑检查分析 End-->
+                                <!--叠加分析-->
+                                <tr class="">
+                                    <th rowspan="1">叠加分析</th>
+                                    <td></td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--叠加分析 End-->
+                                <!--属性汇总分析-->
+                                <tr class="">
+                                    <th rowspan="1">属性汇总分析</th>
+                                    <td></td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--属性汇总分析 End-->
+                                </tbody>
+                            </table>
+                            <!--分布式分析服务table End-->
+
+                            <!--地址匹配服务table-->
+                            <table class="table in">
+                                <thead>
+                                <tr>
+                                    <th scope="col" colspan="2" class="service">地址匹配服务</th>
+                                </tr>
+                                </thead>
+                                <tbody class="tb">
+                                <tr class="">
+                                    <th rowspan="2">地址匹配</th>
+                                    <td>正向匹配</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>反向匹配</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!--地址匹配服务table End-->
+
+                            <!--实时数据分析服务table-->
+                            <table class="table in">
+                                <thead>
+                                <tr>
+                                    <th scope="col" class="service">数据流服务</th>
+                                </tr>
+                                </thead>
+                                <tbody class="tb">
+                                <tr class="">
+                                    <td style="width: 25%">实时数据</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!--实时数据分析服务table End-->
+
+                            <!--服务器专题图table-->
+                            <table class="table in">
+                                <thead>
+                                <tr>
+                                    <th scope="col" class="service">服务器专题图</th>
+                                </tr>
+                                </thead>
+                                <tbody class="tb">
+                                <tr class="">
+                                    <td style="width: 25%">点密度专题图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td style="width: 25%">等级符号专题图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td style="width: 25%">统计专题图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td style="width: 25%">矩阵标签专题图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td style="width: 25%">单值专题图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td style="width: 25%">分段专题图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td style="width: 25%">栅格单值专题图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td style="width: 25%">栅格分段专题图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!--服务器专题图table End-->
+
+                            <!--安全认证服务table-->
+                            <table class="table in">
+                                <thead>
+                                <tr>
+                                    <th scope="col" class="service">服务器安全认证</th>
+                                </tr>
+                                </thead>
+                                <tbody class="tb">
+                                <tr class="">
+                                    <td style="width: 25%">安全认证</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!--安全认证服务table End-->
+                        </td>
+                    </tr>
+                    <!-- iServer服务模块 End-->
+
+                    <!-- iPortal 服务模块-->
+                    <tr class="mainTr warning" onclick="onClick(this)">
+                        <td colspan="2">SuperMap iPortal</td>
+                        <td class="check_big">√</td>
+                        <td class="check_big">√</td>
+                        <td class="error_big">-</td>
+                        <td class="check_big">√</td>
+                    </tr>
+                    <tr style="display: none">
+                        <td colspan="6" style="padding: 0">
+                            <!--地图服务table-->
+                            <table class="table in">
+                                <tbody>
+                                <tr class="sgtr">
+                                    <td style="width: 25%">地图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="sgtr">
+                                    <td style="width: 25%">安全</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- iPortal服务模块 End-->
+
+                    <!-- Online 服务模块-->
+                    <tr class="mainTr warning" onclick="onClick(this)">
+                        <td colspan="2">SuperMap Online</td>
+                        <td class="check_big">√</td>
+                        <td class="check_big">√</td>
+                        <td class="error_big">-</td>
+                        <td class="check_big">√</td>
+                    </tr>
+                    <tr style="display: none">
+                        <td colspan="6" style="padding: 0">
+                            <!--地图服务table-->
+                            <table class="table in">
+                                <tbody>
+                                <tr class="sgtr">
+                                    <td style="width: 25%">地图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="sgtr">
+                                    <td style="width: 25%">安全</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- Online 服务模块 End-->
+
+                    <!-- iManager 服务模块-->
+                    <tr class="mainTr warning" onclick="onClick(this)">
+                        <td colspan="2">SuperMap iManager</td>
+                        <td class="check_big">√</td>
+                        <td class="error_big">-</td>
+                        <td class="error_big">-</td>
+                        <td class="error_big">-</td>
+                    </tr>
+                    <tr style="display: none">
+                        <td colspan="6" style="padding: 0">
+                            <!--地图服务table-->
+                            <table class="table in">
+                                <tbody>
+                                <tr class="sgtr">
+                                    <td style="width: 25%">节点管理</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                    <td class="error_small">-</td>
+                                    <td class="error_small">-</td>
+                                </tr>
+                                <tr class="sgtr">
+                                    <td style="width: 25%">安全</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                    <td class="error_small">-</td>
+                                    <td class="error_small">-</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- iManager服务模块 End-->
+
+                    <!--    Elasticsearch 服务模块-->
+                    <tr class="mainTr warning" onclick="onClick(this)">
+                        <td colspan="2"> Elasticsearch</td>
+                        <td class="check_big">√</td>
+                        <td class="check_big">√</td>
+                        <td class="check_big">√</td>
+                        <td class="check_big">√</td>
+                    </tr>
+                    <tr style="display: none">
+                        <td colspan="6" style="padding: 0">
+                            <!--地图服务table-->
+                            <table class="table in">
+                                <tbody>
+                                <tr class="sgtr">
+                                    <td style="width: 25%">数据检索</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="sgtr">
+                                    <td style="width: 25%">数据聚合</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="sgtr">
+                                    <td style="width: 25%">地理围栏</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- Elasticsearch 服务模块 End -->
+
+                    <!-- 客户端可视化模块 -->
+                    <tr class="mainTr warning" onclick="onClick(this)">
+                        <td colspan="2">客户端可视化</td>
+                        <td class="checkHalf_big">√</td>
+                        <td class="checkHalf_big">√</td>
+                        <td class="checkHalf_big">√</td>
+                        <td class="checkHalf_big">√</td>
+                    </tr>
+                    <tr style="display: none">
+                        <td colspan="6" style="padding: 0">
+                            <!-- Echarts Table -->
+                            <table class="table in">
+                                <thead>
+                                <tr>
+                                    <th scope="col" class="service">ECharts</th>
+                                </tr>
+                                </thead>
+                                <tbody class="tb">
+                                <!--折线图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">折线图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                </tr>
+                                <!--柱状图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">柱状图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                </tr>
+                                <!--散点图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">散点图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                </tr>
+                                <!--饼图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">饼图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                </tr>
+                                <!--散点地图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">散点地图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                </tr>
+                                <!--迁徙图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">迁徙图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                </tr>
+                                <!--热力图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">热力图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                </tr>
+                                <!--线路图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">线路图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                </tr>
+                                <!--线特效图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">线特效图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!-- Echarts Table End -->
+                            <!-- EchartsGL Table -->
+                            <table class="table in">
+                                <thead>
+                                <tr>
+                                    <th scope="col" class="service">EChartsGL</th>
+                                </tr>
+                                </thead>
+                                <tbody class="tb">
+                                <!--三维柱状图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">三维柱状图</td>
+                                    <td class="check_small">-</td>
+                                    <td class="check_small">-</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                </tr>
+                                <!--三维飞线图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">三维飞线图</td>
+                                    <td class="check_small">-</td>
+                                    <td class="check_small">-</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                </tr>
+                                <!--三维地图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">三维地图</td>
+                                    <td class="check_small">-</td>
+                                    <td class="check_small">-</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                </tr>
+                                <!--WebGL关系图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">WebGL关系图</td>
+                                    <td class="check_small">-</td>
+                                    <td class="check_small">-</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!-- EchartsGL Table End -->
+                            <!-- MapV Table -->
+                            <table class="table in">
+                                <thead>
+                                <tr>
+                                    <th scope="col" class="service">MapV</th>
+                                </tr>
+                                </thead>
+                                <tbody class="tb">
+                                <!--蜂巢图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">蜂巢图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--通勤图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">通勤图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--强边界图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">强边界图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--迁徙图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">迁徙图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--动态轨迹图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">动态轨迹图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--简单线图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">简单线图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--强度线图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">强度线图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--简单面图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">简单面图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!-- MapV Table End -->
+                            <!-- D3 Table -->
+                            <table class="table in">
+                                <thead>
+                                <tr>
+                                    <th scope="col" class="service">D3</th>
+                                </tr>
+                                </thead>
+                                <tbody class="tb">
+                                <!--D3蜂巢图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">svg可视化</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">-</td>
+                                    <td class="error_small">-</td>
+                                    <td class="check_small">-</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!-- D3 Table End -->
+                            <!-- OSMBuildings Table -->
+                            <table class="table in">
+                                <thead>
+                                <tr>
+                                    <th scope="col" class="service">OSMBuildings</th>
+                                </tr>
+                                </thead>
+                                <tbody class="tb">
+                                <tr class="sgtr">
+                                    <td style="width: 25%">建筑立体效果</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!-- OSMBuildings Table End -->
+                            <!-- 矢量瓦片 Table -->
+                            <table class="table in">
+                                <thead>
+                                <tr>
+                                    <th scope="col" class="service">矢量瓦片</th>
+                                </tr>
+                                </thead>
+                                <tbody class="tb">
+                                <tr class="sgtr">
+                                    <td style="width: 25%">SuperMap标准</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="sgtr">
+                                    <td style="width: 25%">MVT标准</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!-- 矢量瓦片 Table End -->
+                            <!-- 客户端专题图 Table -->
+                            <table class="table in">
+                                <thead>
+                                <tr>
+                                    <th scope="col" colspan="2" class="service">客户端专题图</th>
+                                </tr>
+                                </thead>
+                                <tbody class="tb">
+                                <!--二维客户端专题图-->
+                                <tr class="">
+                                    <th rowspan="4">二维客户端专题图</th>
+                                    <td>单值专题图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>分段专题图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>等级符号专题图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>标签专题图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>统计图表</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!-- 二维客户端专题图 End -->
+                                <!-- 三维客户端专题图 -->
+                                <tr class="">
+                                    <th rowspan="2">三维客户端专题图</th>
+                                    <td>单值专题图</td>
+                                    <td class="error_small">-</td>
+                                    <td class="error_small">-</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                </tr>
+                                <tr class="">
+                                    <td>分段专题图</td>
+                                    <td class="error_small">-</td>
+                                    <td class="error_small">-</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                </tr>
+                                <!-- 三维客户端专题图 End-->
+                                </tbody>
+                            </table>
+                            <!-- 客户端专题图 Table End -->
+                            <!-- 其它可视化效果 Table -->
+                            <table class="table in">
+                                <thead>
+                                <tr>
+                                    <th scope="col" class="service">其它可视化效果</th>
+                                </tr>
+                                </thead>
+                                <tbody class="tb">
+                                <!--热力图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">热力图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--动画闪烁点-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">动画闪烁点</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--点聚合图-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">点聚合图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <!--高效率点图层-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">高效率点图层</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!-- 其它可视化效果 Table End -->
+                        </td>
+                    </tr>
+                    <!-- 客户端可视化模块 End -->
+
+                    <!-- 标绘模块-->
+                    <tr class="mainTr warning" onclick="onClick(this)">
+                        <td colspan="2">标绘</td>
+                        <td class="check_big">√</td>
+                        <td class="check_big">√</td>
+                        <td class="check_big">√</td>
+                        <td class="check_big">√</td>
+                    </tr>
+                    <tr style="display: none">
+                        <td colspan="6" style="padding: 0">
+                            <table class="table in">
+                                <tbody>
+                                <tr class="sgtr">
+                                    <td style="width: 25%">绘制</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="sgtr">
+                                    <td style="width: 25%">捕捉</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="sgtr">
+                                    <td style="width: 25%">修改</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="sgtr">
+                                    <td style="width: 25%">拖拽</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- 标绘模块 End-->
+
+                    <!-- 客户端分析模块 -->
+                    <tr class="mainTr warning" onclick="onClick(this)">
+                        <td colspan="2">客户端分析</td>
+                        <td class="check_big">√</td>
+                        <td class="check_big">√</td>
+                        <td class="check_big">√</td>
+                        <td class="error_big">-</td>
+                    </tr>
+                    <tr style="display: none">
+                        <td colspan="6" style="padding: 0">
+                            <!-- Turf Table -->
+                            <table class="table in">
+                                <thead>
+                                <tr>
+                                    <!--<tr data-toggle="collapse" href="#a">-->
+                                    <th scope="col" class="service">Turf</th>
+                                </tr>
+                                </thead>
+                                <tbody class="tb">
+                                <!--空间分析-->
+                                <tr class="sgtr">
+                                    <td style="width: 25%">空间分析</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                    <!--<td class="error_small">-</td>-->
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!-- Turf Table End -->
+                        </td>
+                    </tr>
+                    <!-- 客户端分析模块 End-->
+
+                    <!-- 控件模块-->
+                    <tr class="mainTr warning" onclick="onClick(this)">
+                        <td colspan="2">控件</td>
+                        <td class="check_big">√</td>
+                        <td class="check_big">√</td>
+                        <td class="error_big">-</td>
+                        <td class="check_big">√</td>
+                    </tr>
+                    <tr style="display: none">
+                        <td colspan="6" style="padding: 0">
+                            <table class="table in">
+                                <tbody>
+                                <tr class="sgtr">
+                                    <td style="width: 25%">底图切换控件</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- 控件模块 End-->
+
+                    <!-- OGC 服务模块-->
+                    <tr class="mainTr warning" onclick="onClick(this)">
+                        <td colspan="2">OGC</td>
+                        <td class="check_big">√</td>
+                        <td class="check_big">√</td>
+                        <td class="checkHalf_big">√</td>
+                        <td class="check_big">√</td>
+                    </tr>
+                    <tr style="display: none">
+                        <td colspan="6" style="padding: 0">
+                            <!--地图服务table-->
+                            <table class="table in">
+                                <tbody>
+                                <tr class="sgtr">
+                                    <td style="width: 25%">WMS</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="sgtr">
+                                    <td style="width: 25%">WMTS</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="sgtr">
+                                    <td style="width: 25%">WFS</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- OGC 服务模块 End-->
+
+                    <!-- 互联网地图 服务模块-->
+                    <tr class="mainTr warning" onclick="onClick(this)">
+                        <td colspan="2">互联网地图</td>
+                        <td class="check_big">√</td>
+                        <td class="check_big">√</td>
+                        <td class="checkHalf_big">√</td>
+                        <td class="check_big">√</td>
+                    </tr>
+                    <tr style="display: none">
+                        <td colspan="6" style="padding: 0">
+                            <!--百度地图-->
+                            <table class="table in">
+                                <tbody class="tb">
+                                <tr class="">
+                                    <th style="width: 14.5%">百度地图</th>
+                                    <td style="width: 10.5%">百度地图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!--百度地图 End-->
+                            <!--天地图-->
+                            <table class="table in">
+                                <tbody class="tb">
+                                <tr class="">
+                                    <th rowspan="2" style="width: 14.5%">天地图</th>
+                                    <td style="width: 10.5%">经纬度</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="error_small">-</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                <tr class="">
+                                    <td>墨卡托</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!--天地图 End-->
+                            <!--超图云-->
+                            <table class="table in">
+                                <tbody class="tb">
+                                <tr class="">
+                                    <th style="width: 14.5%">超图云</th>
+                                    <td style="width: 10.5%">超图云地图</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                    <td class="check_small">√</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!--超图云 End-->
+                        </td>
+                    </tr>
+                    <!-- 互联网 服务模块 End-->
+
+                    </tbody>
+                </table>
+                <!--Function Table End-->
+                <p style="font-size: 10px;margin-bottom: 0">注：<span class="check_big"> √ </span>为支持，<span
+                        class="checkHalf_big"> √ </span>为部分支持，<span class="error_big"> - </span>为开发中</p>
+            </div>
+
+            <div class="section icl-docs-section">
+                <h2 class="section-title" id="compatibility">浏览器兼容性</h2>
+
+                <p class="lead">本章介绍 SuperMap iClient for JavaScript 9D 在PC端和移动端对主流浏览器的兼容性。</p>
+                <!-- Browser Table -->
+                <table class="table" id="browserTable">
+                    <thead>
+                    <tr>
+                        <th scope="col" rowspan="2">地图基础库</th>
+                        <th scope="col" colspan="5">Desktop</th>
+                        <th scope="col" colspan="5">Mobile</th>
+                    </tr>
+                    <tr>
+                        <!-- Desktop Title-->
+                        <th scope="col"><span class="chromeIcon"></span>
+
+                            <p style="margin: 0;font-size: 12px">Chrome</p>
+                        </th>
+                        <th scope="col">
+                            <span class="firefoxIcon"></span>
+
+                            <p style="margin: 0;font-size: 12px">Firefox</p>
+                        </th>
+                        <th scope="col">
+                            <span class="ieIcon"></span>
+
+                            <p style="margin: 0;font-size: 12px">IE</p>
+                        </th>
+                        <th scope="col">
+                            <span class="operaIcon"></span>
+
+                            <p style="margin: 0;font-size: 12px">Opera</p>
+                        </th>
+                        <th scope="col">
+                            <span class="safariIcon"></span>
+
+                            <p style="margin: 0;font-size: 12px">Safari</p>
+                        </th>
+                        <!-- Desktop Title End-->
+                        <!-- Mobile Title -->
+                        <th scope="col"><span class="chromeIcon"></span>
+
+                            <p style="margin: 0;font-size: 12px">Chrome</p>
+                        </th>
+                        <th scope="col">
+                            <span class="firefoxIcon"></span>
+
+                            <p style="margin: 0;font-size: 12px">Firefox</p>
+                        </th>
+                        <th scope="col">
+                            <span class="ieIcon"></span>
+
+                            <p style="margin: 0;font-size: 12px">IE</p>
+                        </th>
+                        <th scope="col">
+                            <span class="safariIcon"></span>
+
+                            <p style="margin: 0;font-size: 12px">Safari</p>
+                        </th>
+                        <th scope="col">
+                            <p style="margin: 0;font-size: 12px">Android Browser</p>
+                        </th>
+                        <!-- Mobile Title End-->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Leaflet Browser-->
+                    <tr>
+                        <td class="productName">for Leaflet</td>
+                        <!--desktop-->
+                        <td class="browser_yes">26.0+</td>
+                        <td class="browser_yes">23.0+</td>
+                        <td class="browser_yes">7-11</td>
+                        <td class="browser_yes">12.0+</td>
+                        <td class="browser_yes">5.0+</td>
+                        <!--mobile-->
+                        <td class="browser_yes">Chrome Mobile 47+</td>
+                        <td class="browser_yes">55+</td>
+                        <td class="browser_yes">10+ for Win8</td>
+                        <td class="browser_yes">for iOS 7+</td>
+                        <td class="browser_yes">2.2+, 3.1+, 4.0+</td>
+                    </tr>
+
+                    <!-- Leaflet Browser End -->
+                    <!-- Openlayers Browser-->
+                    <tr>
+                        <td class="productName">for OpenLayers</td>
+                        <!--desktop-->
+                        <td class="browser_yes">26.0+</td>
+                        <td class="browser_yes">23.0+</td>
+                        <td class="browser_yes">10.0+</td>
+                        <td class="browser_yes">20.0+</td>
+                        <td class="browser_yes">5.0+</td>
+                        <!--mobile-->
+                        <td class="browser_yes">Chrome Mobile 47+</td>
+                        <td class="browser_yes">55+</td>
+                        <td class="browser_yes">10+ for WP7+</td>
+                        <td class="browser_yes">Mobile Safari 9.0+<p style="margin: 0">for iOS 9+</p></td>
+                        <td class="browser_yes">4.4+</td>
+                    </tr>
+                    <!-- Openlayers Browser End-->
+                    <!-- MapboxGL Browser-->
+                    <tr>
+                        <td class="productName">for MapboxGL</td>
+                        <!--desktop-->
+                        <td class="browser_yes">23.0+</td>
+                        <td class="browser_yes">38.0+</td>
+                        <td class="browser_yes">11 on XBOX One</td>
+                        <td class="browser_yes">20.0+</td>
+                        <td class="browser_yes">12 alpha+</td>
+                        <!--mobile-->
+                        <td class="browser_yes">Chrome Mobile 47+</td>
+                        <td class="browser_yes">55+</td>
+                        <td class="browser_yes">11 for WP 7+</td>
+                        <td class="browser_yes">Mobile Safari 9.0+<p style="margin: 0">for iOS 9+</p></td>
+                        <td class="browser_yes">4.4+</td>
+                    </tr>
+                    <!-- MapboxGL Browser End -->
+                    <!-- iClient Classic -->
+                    <tr>
+                        <td class="productName">iClient Classic</td>
+                        <!--desktop-->
+                        <td class="browser_yes">26.0+</td>
+                        <td class="browser_yes">23.0+</td>
+                        <td class="browser_yes">9.0+</td>
+                        <td class="browser_yes">20.0+</td>
+                        <td class="browser_yes">5.0+</td>
+                        <!--mobile-->
+                        <td class="browser_yes">Chrome Mobile 47+</td>
+                        <td class="browser_yes">55+</td>
+                        <td class="browser_yes">for WP 7.5</td>
+                        <td class="browser_yes">for iOS 4+</td>
+                        <td class="browser_yes">2.1+</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!-- Browser Table结束-->
+                <p>
+                <div>注： Leaflet 主要功能在IE下的兼容性情况(1.2.0暂时还不支持IE8,请使用1.0.3)</div>
+                <table class="table" style="border:1px solid #dddddd;table-layout : fixed">
+                    <thead>
+                    <tr>
+                        <th class="lib_name">GIS服务</th>
+                        <th class="lib_name">GIS服务(data flow)</th>
+                        <th class="lib_name">可视化<br>(客户端专题图)</th>
+                        <th class="lib_name">可视化<br>(ECharts)</th>
+                        <th class="lib_name">可视化<br>(MapV)</th>
+                        <th class="lib_name">可视化<br>(D3)</th>
+                        <th class="lib_name">客户端分析<br>(Turf)</th>
+                        <th class="lib_name">三方服务<br>(Elasticsearch)</th>
+                    </tr>
+                    </thead>
+                    <tbody class="tb">
+                    <tr>
+                        <td class="browser_version">IE8+</td>
+                        <td class="browser_version">IE10+</td>
+                        <td class="browser_version">IE9+</td>
+                        <td class="browser_version">IE8+</td>
+                        <td class="browser_version">IE10+</td>
+                        <td class="browser_version">IE9+</td>
+                        <td class="browser_version">IE9+</td>
+                        <td class="browser_version">IE11+</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </p>
+            </div>
+
+            <div class="section icl-docs-section">
+                <h2 class="section-title" id="thirdpatry">第三方插件</h2>
+
+                <p class="lead">本章介绍 SuperMap iClient for JavaScript 9D 的第三方插件使用情况。</p>
+                <!--table-->
+                <table class="table" id="plugsTable">
+                    <thead>
+                    <tr>
+                        <th scope="col" rowspan="2">第三方插件</th>
+                        <th scope="col" colspan="4">地图基础库</th>
+                        <th scope="col" colspan="3">插件版本信息</th>
+                    </tr>
+                    <tr>
+                        <!--products-->
+                        <th scope="col">for Leaflet</th>
+                        <th scope="col">for OpenLayers</th>
+                        <th scope="col">for MapboxGL</th>
+                        <th scope="col">iClient Classic</th>
+                        <th scope="col">最新版本</th>
+                        <th scope="col">发布/最新提交时间</th>
+                        <th scope="col">当前使用版本</th>
+                        <!--products End-->
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <!--Leaflet插件-->
+                    <tr class="">
+                        <td>
+                            <a href="http://leafletjs.com/" target="_blank">Leaflet</a>
+                        </td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>v1.2.0</td>
+                        <td>2017-12-26</td>
+                        <td>v1.2.0</td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="http://leaflet.github.io/Leaflet.heat/demo/" target="_blank">Leaflet.heat</a>
+                        </td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>v0.2.0</td>
+                        <td>2016-09-30</td>
+                        <td>v0.2.0</td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/Leaflet/Leaflet.markercluster" target="_blank">Leaflet.markercluster</a>
+                        </td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>v1.2.0</td>
+                        <td>2017-12-19</td>
+                        <td>v1.0.3</td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href=" https://leaflet.github.io/Leaflet.draw/docs/leaflet-draw-latest.html"
+                               target="_blank">Leaflet.draw</a>
+                        </td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>v0.4.13</td>
+                        <td>2017-12-18</td>
+                        <td>v0.4.12</td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/codeofsumit/leaflet.pm" target="_blank">leaflet.pm</a>
+                        </td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>v0.23.0</td>
+                        <td>2017-12-14</td>
+                        <td>v0.16.0</td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/mapshakers/leaflet-icon-pulse" target="_blank">leaflet-icon-pulse</a>
+                        </td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>v0.1.0</td>
+                        <td>2017-09-06</td>
+                        <td>v0.1.0</td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/SuperMap/Leaflet.D3SvgOverlay" target="_blank">Leaflet.D3SvgOverlay</a>
+                        </td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>v2.2</td>
+                        <td>2017-10-13</td>
+                        <td>v2.2</td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/Norkart/Leaflet-MiniMap" target="_blank">Leaflet-MiniMap</a>
+                        </td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>v3.6.0</td>
+                        <td>2017-11-23</td>
+                        <td>v3.6.0</td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/digidem/leaflet-side-by-side" target="_blank">leaflet-side-by-side</a>
+                        </td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>v2.0.0</td>
+                        <td>2017-08-05</td>
+                        <td>v2.0.0</td>
+                    </tr>
+                    <!--Leaflet插件 End-->
+                    <!--OpenLayers插件-->
+                    <tr class="">
+                        <td>
+                            <a href="http://openlayers.org/" target="_blank">openlayers</a>
+                        </td>
+                        <td>-</td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>v4.6.4</td>
+                        <td>2017-12-24</td>
+                        <td>v4.6.4</td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/Viglino/OL3-AnimatedCluster"
+                               target="_blank">OL3-AnimatedCluster</a>
+                        </td>
+                        <td>-</td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>2017-10-05</td>
+                        <td>-</td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/walkermatt/ol3-layerswitcher"
+                               target="_blank">ol3-layerswitcher</a>
+                        </td>
+                        <td>-</td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>v1.1.2</td>
+                        <td>2017-04-03</td>
+                        <td>v1.1.2</td>
+                    </tr>
+                    <!--Openlayers插件 End-->
+
+                    <!--mapboxGL插件-->
+                    <tr class="">
+                        <td>
+                            <a href="https://www.mapbox.com/mapbox-gl-js/api/" target="_blank">mapbox-gl-js</a>
+                        </td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>v0.43.0</td>
+                        <td>2017-12-22</td>
+                        <td>v0.43.0</td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/mapbox/mapbox-gl-draw" target="_blank">mapbox-gl-draw</a>
+                        </td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>v1.0.4</td>
+                        <td>2017-12-06</td>
+                        <td>v1.0.0</td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/mapbox/mapbox-gl-compare" target="_blank">mapbox-gl-compare</a>
+                        </td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>v0.1.0-dev</td>
+                        <td>2017-03-01</td>
+                        <td>v0.1.0-dev</td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/SuperMap/echartsLayer" target="_blank">echartsLayer</a>
+                        </td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>2017-12-04</td>
+                        <td>-</td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/mbostock/shapefile" target="_blank">shapefile</a>
+                        </td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>v0.6.6</td>
+                        <td>2017-09-03</td>
+                        <td>v0.6.6</td>
+                    </tr>
+                    <!--MapboxGL插件 End-->
+
+                    <!-- echarts插件 -->
+                    <tr class="">
+                        <td>
+                            <a href="http://echarts.baidu.com/" target="_blank">echarts</a>
+                        </td>
+                        <td class="check_small">√</td>
+                        <td class="check_small">√</td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>v3.8.5</td>
+                        <td>2017-12-26</td>
+                        <td>v3.8.5</td>
+                    </tr>
+                    <!-- echarts插件 End-->
+
+                    <!-- mapV插件 -->
+                    <tr class="">
+                        <td>
+                            <a href="http://mapv.baidu.com/" target="_blank">mapv</a>
+                        </td>
+                        <td class="check_small">√</td>
+                        <td class="check_small">√</td>
+                        <td class="check_small">√</td>
+                        <td class="check_small">√</td>
+                        <td>v2.0.19</td>
+                        <td>2017-12-15</td>
+                        <td>v2.0.14</td>
+                    </tr>
+                    <!-- mapV插件 End-->
+
+                    <!-- Turf插件 -->
+                    <tr class="">
+                        <td>
+                            <a href="http://turfjs.org/" target="_blank">turf</a>
+                        </td>
+                        <td class="check_small">√</td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>v5.1.6</td>
+                        <td>2017-12-26</td>
+                        <td>v4.6.1</td>
+                    </tr>
+                    <!-- Turf插件 End-->
+
+                    <!-- elasticsearch插件 -->
+                    <tr class="">
+                        <td>
+                            <a href="https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/index.html"
+                               target="_blank">elasticsearch
+                            </a>
+                        </td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>14.0.0</td>
+                        <td>2017-12-07</td>
+                        <td>v13.0.1</td>
+                    </tr>
+                    <!-- elasticsearch插件 End-->
+
+                    <!-- OSMBuildings插件 -->
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/kekscom/osmbuildings" target="_blank">osmbuildings</a>
+                        </td>
+                        <td class="check_small">√</td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>v0.2.2b</td>
+                        <td>2014-07-11</td>
+                        <td>v0.2.2b</td>
+                    </tr>
+                    <!-- OSMBuildings插件 End-->
+
+                    <!-- D3插件 -->
+                    <tr class="">
+                        <td>
+                            <a href="https://d3js.org/" target="_blank">d3</a>
+                        </td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>v4.12.0</td>
+                        <td>2017-11-22</td>
+                        <td>v4.10.2</td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/d3/d3-hexbin" target="_blank">d3-hexbin</a>
+                        </td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>v0.2.2</td>
+                        <td>2017-03-29</td>
+                        <td>v0.2.2</td>
+                    </tr>
+                    <!-- D3插件 End-->
+
+                    <!--其它插件-->
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/dataarts/dat.gui" target="_blank">dat.gui</a>
+                        </td>
+                        <td>-</td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>v0.6.5</td>
+                        <td>2017-12-24</td>
+                        <td>v0.6.5</td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="http://proj4js.org/" target="_blank">proj4js</a>
+                        </td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td class="check_small">√</td>
+                        <td>-</td>
+                        <td>V2.4.4</td>
+                        <td>2017-12-12</td>
+                        <td>v2.4.3</td>
+                    </tr>
+                    <!--其它插件End-->
+                    </tbody>
+                </table>
+                <!--table End-->
+                <p style="font-size: 10px;margin-bottom: 0">注：1. 第三方插件版本信息统计时间为 2017年12月</p>
+                <p style="font-size: 10px;padding-left: 25px">2. 部分插件无release版本及版本发布时间，以项目的最新提交时间为准</p>
+            </div>
+
+            <div class="section icl-docs-section">
+                <h2 class="section-title" id="license">许可协议</h2>
+
+                <p class="lead">本章介绍 SuperMap iClient for JavaScript 9D 相关第三方插件所涉及到的许可协议。</p>
+                <!-- 许可协议 Table -->
+                <table class="table" id="licenseTable">
+                    <thead>
+                    <tr>
+                        <th scope="col" rowspan="2">第三方插件列表</th>
+                        <th scope="col" colspan="8">相关许可协议</th>
+                    </tr>
+                    <tr>
+                        <!--license-->
+                        <th scope="col" style="font-size: 10px;background: #fff;font-weight: normal">
+                            <a href="https://opensource.org/licenses/bsd-license.html" target="_blank">BSD-2-Clause
+                                License</a>
+                        </th>
+                        <th scope="col" style="font-size: 10px;background: #fff;font-weight: normal">
+                            <a href="https://opensource.org/licenses/BSD-3-Clause" target="_blank">BSD-3-Clause
+                                License</a>
+                        </th>
+                        <th scope="col" style="font-size: 10px;background: #fff;font-weight: normal">
+                            <a href="https://mit-license.org/" target="_blank">MIT License</a>
+                        </th>
+                        <th scope="col" style="font-size: 10px;background: #fff;font-weight: normal">
+                            <a href="http://www.isc.org/downloads/software-support-policy/isc-license/" target="_blank">ISC
+                                License</a>
+                        </th>
+                        <th scope="col" style="font-size: 10px;background: #fff;font-weight: normal">
+                            <a href="http://www.apache.org/licenses/LICENSE-2.0.txt" target="_blank">Apache License
+                                2.0</a>
+                        </th>
+                        <th scope="col" style="font-size: 10px;background: #fff;font-weight: normal">
+                            <a href="http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.txt" target="_blank">CeCILL-B
+                                FREE<p>SOFTWARE LICENSE</p></a>
+                        </th>
+                        <th scope="col"
+                            style="font-size: 10px;background: #fff;font-weight: normal;color: rgb(60, 141, 188)">其它
+                        </th>
+                        <!--license End-->
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <!--Leaflet插件-->
+                    <tr class="">
+                        <td>
+                            <a href="http://leafletjs.com/" target="_blank">Leaflet</a>
+                        </td>
+                        <td class="">
+                            <a class="licenseLink" href="https://github.com/Leaflet/Leaflet/blob/master/LICENSE"
+                               target="_blank">查看</p></a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="http://leaflet.github.io/Leaflet.heat/demo/" target="_blank">Leaflet.heat</a>
+                        </td>
+                        <td class="">
+                            <a class="licenseLink" href="https://github.com/Leaflet/Leaflet.heat/blob/gh-pages/LICENSE"
+                               target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/Leaflet/Leaflet.markercluster" target="_blank">Leaflet.markercluster</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td class="">
+                            <a class="licenseLink"
+                               href="https://github.com/Leaflet/Leaflet.markercluster/blob/master/MIT-LICENCE.txt"
+                               target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://leaflet.github.io/Leaflet.draw/docs/leaflet-draw-latest.html"
+                               target="_blank">Leaflet.draw</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td class="">
+                            <a class="licenseLink"
+                               href="https://github.com/Leaflet/Leaflet.draw/blob/master/MIT-LICENSE.md"
+                               target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/codeofsumit/leaflet.pm" target="_blank">leaflet.pm</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td class="">
+                            <a class="licenseLink" href="https://github.com/codeofsumit/leaflet.pm/blob/develop/LICENSE"
+                               target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/mapshakers/leaflet-icon-pulse" target="_blank">leaflet-icon-pulse</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td class="">
+                            <a class="licenseLink"
+                               href="https://github.com/mapshakers/leaflet-icon-pulse/blob/master/LICENSE"
+                               target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/SuperMap/Leaflet.D3SvgOverlay" target="_blank">Leaflet.D3SvgOverlay</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td class="">
+                            <a class="licenseLink"
+                               href="https://github.com/SuperMap/Leaflet.D3SvgOverlay/blob/master/LICENSE"
+                               target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/Norkart/Leaflet-MiniMap" target="_blank">Leaflet-MiniMap</a>
+                        </td>
+                        <td class="">
+                            <a class="licenseLink"
+                               href="https://github.com/Norkart/Leaflet-MiniMap/blob/master/LICENSE.txt"
+                               target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/digidem/leaflet-side-by-side" target="_blank">leaflet-side-by-side</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td class="">
+                            <a class="licenseLink"
+                               href="https://github.com/digidem/leaflet-side-by-side/blob/gh-pages/LICENSE"
+                               target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <!--Leaflet插件 End-->
+                    <!--OpenLayers插件-->
+                    <tr class="">
+                        <td>
+                            <a href="http://openlayers.org/" target="_blank">openlayers</a>
+                        </td>
+                        <td class="">
+                            <a class="licenseLink"
+                               href=" https://github.com/openlayers/openlayers/blob/master/LICENSE.md" target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/Viglino/OL3-AnimatedCluster"
+                               target="_blank">OL3-AnimatedCluster</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="">
+                            <a class="licenseLink" href="http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.txt"
+                               target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/walkermatt/ol3-layerswitcher"
+                               target="_blank">ol3-layerswitcher</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <!--Openlayers插件 End-->
+
+                    <!--mapboxGL插件-->
+                    <tr class="">
+                        <td>
+                            <a href="https://www.mapbox.com/mapbox-gl-js/api/" target="_blank">mapbox-gl-js</a>
+                        </td>
+                        <td></td>
+                        <td class="">
+                            <a class="licenseLink" href="https://github.com/mapbox/mapbox-gl-js/blob/master/LICENSE.txt"
+                               target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/mapbox/mapbox-gl-draw" target="_blank">mapbox-gl-draw</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="">
+                            <a class="licenseLink" href="https://github.com/mapbox/mapbox-gl-draw/blob/master/LICENSE"
+                               target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/mapbox/mapbox-gl-compare" target="_blank">mapbox-gl-compare</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="">
+                            <a class="licenseLink"
+                               href="https://github.com/mapbox/mapbox-gl-compare/blob/master/LICENCE"
+                               target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/SuperMap/echartsLayer" target="_blank">echartsLayer</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td class="">
+                            <a class="licenseLink"
+                               href="https://github.com/SuperMap/echartsLayer/blob/master/LICENSE"
+                               target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/mbostock/shapefile" target="_blank">shapefile</a>
+                        </td>
+                        <td></td>
+                        <td class="">
+                            <a class="licenseLink"
+                               href="https://github.com/mbostock/shapefile/blob/master/LICENSE.txt"
+                               target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <!--MapboxGL插件 End-->
+
+                    <!-- echarts插件 -->
+                    <tr class="">
+                        <td>
+                            <a href="http://echarts.baidu.com/" target="_blank">echarts</a>
+                        </td>
+                        <td></td>
+                        <td class="">
+                            <a class="licenseLink" href="https://github.com/ecomfe/echarts/blob/master/LICENSE"
+                               target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <!-- echarts插件 End-->
+
+                    <!-- mapV插件 -->
+                    <tr class="">
+                        <td>
+                            <a href="http://mapv.baidu.com/" target="_blank">mapv</a>
+                        </td>
+                        <td></td>
+                        <td class="">
+                            <a class="licenseLink" href="https://github.com/huiyan-fe/mapv/blob/master/LICENSE"
+                               target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <!-- mapV插件 End-->
+
+                    <!-- Turf插件 -->
+                    <tr class="">
+                        <td>
+                            <a href="http://turfjs.org/" target="_blank">turf</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td class="">
+                            <a class="licenseLink" href="https://github.com/Turfjs/turf/blob/master/LICENSE"
+                               target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <!-- Turf插件 End-->
+
+                    <!-- elasticsearch插件 -->
+                    <tr class="">
+                        <td>
+                            <a href="https://www.elastic.co/guide/en/elasticsearch/client/javascript-api/current/index.html"
+                               target="_blank">elasticsearch</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="">
+                            <a class="licenseLink"
+                               href="https://github.com/elastic/elasticsearch-js/blob/master/LICENSE"
+                               target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <!-- elasticsearch插件 End-->
+
+                    <!-- OSMBuildings插件 -->
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/kekscom/osmbuildings" target="_blank">osmbuildings</a>
+                        </td>
+                        <td class="">
+                            <a class="licenseLink" href="https://github.com/kekscom/osmbuildings/blob/master/LICENSE.md"
+                               target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <!-- OSMBuildings插件 End-->
+
+                    <!-- D3插件 -->
+                    <tr class="">
+                        <td>
+                            <a href="https://d3js.org/" target="_blank">d3</a>
+                        </td>
+                        <td></td>
+                        <td class="">
+                            <a class="licenseLink" href="https://github.com/d3/d3/blob/master/LICENSE" target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/d3/d3-hexbin" target="_blank">d3-hexbin</a>
+                        </td>
+                        <td></td>
+                        <td class="">
+                            <a class="licenseLink" href="https://github.com/d3/d3-hexbin/blob/master/LICENSE"
+                               target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <!-- D3插件 End-->
+
+                    <!--其它插件-->
+                    <tr class="">
+                        <td>
+                            <a href="https://github.com/dataarts/dat.gui" target="_blank">dat.gui</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="">
+                            <a class="licenseLink" href="https://github.com/dataarts/dat.gui/blob/master/LICENSE"
+                               target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="">
+                        <td>
+                            <a href="http://proj4js.org/" target="_blank">proj4js</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td class="">
+                            <a class="licenseLink" href="https://github.com/proj4js/proj4js/blob/master/LICENSE.md"
+                               target="_blank">查看</a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <!--其它插件End-->
+                    </tbody>
+                </table>
+                <!-- 许可协议 Table End -->
+            </div>
+
+            <div class="section icl-docs-section">
+                <h2 class="section-title" id="how-to-choose">如何选择</h2>
+                <p class="lead" style="margin-bottom: 10px">本章介绍 SuperMap iClient for JavaScript 9D 如何选择地图基础库。</p>
+                <!--table-->
+                <table class="table" id="choiceTable">
+                    <thead>
+                    <tr>
+                        <th scope="col" rowspan="3" colspan="2">指标</th>
+                        <th scope="col" colspan="4">地图基础库和对应开源库</th>
+                    </tr>
+                    <!--basic libraries and openSource libraries -->
+                    <tr>
+                        <th scope="col">for Leaflet</th>
+                        <th scope="col">for OpenLayers</th>
+                        <th scope="col">for MapBoxGL</th>
+                        <th scope="col">iClient Classic</th>
+                    </tr>
+                    <tr>
+                        <th scope="col" style="background: #fff"><a href="https://github.com/Leaflet/Leaflet"
+                                                                    target="_blank">Leaflet</a></th>
+                        <th scope="col" style="background: #fff"><a href="https://github.com/openlayers/openlayers"
+                                                                    target="_blank">OpenLayers 3/4</a></th>
+                        <th scope="col" style="background: #fff"><a href="https://github.com/mapbox/mapbox-gl-js"
+                                                                    target="_blank">MapBoxGL</a></th>
+                        <th scope="col" style="background: #fff"><a href="https://github.com/openlayers/ol2"
+                                                                    target="_blank">OpenLayers 2</a></th>
+                    </tr>
+                    <!--basic libraries and openSource libraries -->
+                    </thead>
+
+                    <tbody>
+                    <tr style="background: #eee">
+                        <td class="indexName" colspan="2">遵守开源协议</td>
+                        <td>BSD-2-Clause</td>
+                        <td>BSD-2-Clause</td>
+                        <td>BSD-3-Clause</td>
+                        <td>BSD-2-Clause</td>
+                    </tr>
+                    <tr>
+                        <td class="indexName" colspan="2">是否存在闭源风险</td>
+                        <td>否</td>
+                        <td>否</td>
+                        <td>否</td>
+                        <td>否</td>
+                    </tr>
+                    <tr style="background: #eee">
+                        <td class="indexName" colspan="2">优势特性</td>
+                        <td>轻量<p>插件丰富</p></td>
+                        <td>HTML5<p>OL-Cesium</p></td>
+                        <td>MVT矢量瓦片<p>地图显示效果</p></td>
+                        <td>用户较多<p>稳定性较高</p></td>
+                    </tr>
+                    <tr>
+                        <td class="indexName" colspan="2">劣势特性</td>
+                        <td>插件稳定性</td>
+                        <td>较重<p>插件较少</p></td>
+                        <td style="color: red">只支持3857坐标系</td>
+                        <td>框架过时</td>
+                    </tr>
+                    <tr style="background: #eee">
+                        <td class="indexName" colspan="2">性能</td>
+                        <td style="color: red">高</td>
+                        <td>中</td>
+                        <td style="color: red">高</td>
+                        <td>低</td>
+                    </tr>
+                    <tr>
+                        <td class="indexName" colspan="2">稳定性</td>
+                        <td style="color: red">高</td>
+                        <td>中</td>
+                        <td>中</td>
+                        <td style="color: red">高</td>
+                    </tr>
+                    <tr style="background: #eee">
+                        <td class="indexName" colspan="2">扩展性</td>
+                        <td style="color: red">很好</td>
+                        <td>较好</td>
+                        <td>较差</td>
+                        <td>较好</td>
+                    </tr>
+                    <tr>
+                        <td class="indexName" colspan="2">文档</td>
+                        <td>较好<p>(无中文)</p></td>
+                        <td>较好<p>(无中文)</p></td>
+                        <td>较好<p>(无中文)</p></td>
+                        <td style="color: red">很好<p>(有中文API DOC)</p></td>
+                    </tr>
+                    <tr style="background: #eee">
+                        <td class="indexName" rowspan="6">社区活跃度</td>
+                        <td>Stars</td>
+                        <td style="color: red">19,763</td>
+                        <td>2,988</td>
+                        <td>2,275</td>
+                        <td>1,487</td>
+                    </tr>
+                    <tr style="background: #eee">
+                        <td>Contributors</td>
+                        <td style="color: red">532</td>
+                        <td>198</td>
+                        <td>164</td>
+                        <td>102</td>
+                    </tr>
+                    <tr style="background: #eee">
+                        <td>Commits</td>
+                        <td>6,411</td>
+                        <td style="color: red">21,793</td>
+                        <td>7,404</td>
+                        <td>7,248</td>
+                    </tr>
+                    <tr style="background: #eee">
+                        <td>Pull Requests</td>
+                        <td>53</td>
+                        <td>63</td>
+                        <td>16</td>
+                        <td style="color: red">149</td>
+                    </tr>
+                    <tr style="background: #eee">
+                        <td>Issues</td>
+                        <td style="color: red">255</td>
+                        <td>509</td>
+                        <td>527</td>
+                        <td>387</td>
+                    </tr>
+                    <tr style="background: #eee">
+                        <td>Forks</td>
+                        <td style="color: red">3,348</td>
+                        <td>1,418</td>
+                        <td>548</td>
+                        <td>819</td>
+                    </tr>
+                    <tr>
+                        <td class="indexName" colspan="2">软件成熟度</td>
+                        <td style="color: red">高</td>
+                        <td>中等</td>
+                        <td>中等</td>
+                        <td>一般</td>
+                    </tr>
+                    <tr style="background: #eee">
+                        <td class="indexName" colspan="2">社区生态链</td>
+                        <td style="color: red">非常完善</td>
+                        <td>较完善</td>
+                        <td>起步阶段</td>
+                        <td>较完善</td>
+                    </tr>
+                    <tr>
+                        <td class="indexName" colspan="2">学习成本</td>
+                        <td>中</td>
+                        <td>高</td>
+                        <td>中</td>
+                        <td>高</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!--table End-->
+                <p style="font-size: 10px">注：社区活跃度统计时间为 2017年10月</p>
+                <p style="margin-bottom: 0;padding-left: 20px;font-weight: bold">总结：</p>
+                <ul style="padding-left: 20px">任何开源软件产品的社区活跃度决定了该产品的成熟度、生命力、未来前途等，也会决定是否能建立研发-应用-服务的生态链。
+                    <li>Leaflet 地图库社区活跃度较高，轻量级，插件丰富，并且性能、稳定性、扩展性等综合实力较强。</li>
+                    <li>Openlayers 3/4 社区活跃度一般，地图库偏重量级，但扩展性较好，并且支持HTML5特性。</li>
+                    <li>MapboxGL 相比前两款地图库推出较晚，社区活跃度一般，现阶段只支持3857坐标系，可扩展性较差，但支持3D特性和较好的可视化效果。</li>
+                </ul>
+            </div>
+        </div>
+        <div role="main" class="col-md-1">
+            <a style="position: fixed;bottom: 10px;padding-left: 20px" id="returnTop" href=#>返回顶部 &uarr;</a>
+        </div>
+    </div>
+</div>
+<!--内容区 end-->
+
+<!--footer-->
+<footer class="icl-footer"></footer>
+<script>
+    utils.loadTemplate(".icl-footer", "../template/footer.html");
+</script>
+<!--footer end-->
+
+<script type="text/javascript" src="../js/common.js"></script>
+<script>
+    /*双击展开关闭*/
+    function onClick(obj) {
+        if ($(obj).next().is(":hidden")) {
+            $(obj).next().show();
+        } else {
+            $(obj).next().hide();
+        }
+    }
+
+    /*返回顶部*/
+    returnTop.onclick = function () {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>警情分析</title>
+    <link href="../dist/css/zui.css?v=1.8" rel="stylesheet">
+    <link href="../dist/css/case.css" rel="stylesheet">
+    <link href="../dist/lib/uploader/zui.uploader.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="dist/lib/ieonly/html5shiv.js"></script>
+    <script src="dist/lib/ieonly/respond.js"></script>
+    <script src="dist/lib/ieonly/excanvas.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="panel">
+            <div class="panel-heading-top-blue">
+                <span style="color:#3280fc;">案件录入</span>
+                <div class="pull-right panel-actions">
+                    <a id="pageClose" style="cursor:pointer;">
+                        <i class="icon icon-times"></i>关闭
+                    </a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="caseForm">
+                    <input type="hidden" id="district" name="district" value="" />
+                    <div class="form-group">
+                        <label for="alarmTime" class="col-sm-2 required">报警时间</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="alarmTime" name="alarmTime" placeholder="报警时间">
+                        </div>
+                        <label for="alarmMode" class="col-sm-2 required">报警方式</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="alarmMode" name="alarmMode">
+                                <option value="1">电话报警</option>
+                                <option value="2">app报警</option>
+                                <option value="3">短信报警</option>
+                                <option value="4">微信报警</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 required">报警人</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="报警人姓名">
+                        </div>
+                        <label for="telephone" class="col-sm-2">报警人电话</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="telephone" name="telephone" placeholder="报警人电话">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sex" class="col-sm-2 required">报警人性别</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="sex" name="sex">
+                                <option value="1">男</option>
+                                <option value="2">女</option>
+                                <option value="9">未知</option>
+                            </select>
+                        </div>
+                        <label for="age" class="col-sm-2">报警人年龄</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="age" name="age" placeholder="报警人年龄">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="alarmPosition" class="col-sm-2 required">警情位置</label>
+                        <div class="col-md-6 col-sm-10">
+                            <input type="text" class="form-control" id="alarmPosition" name="alarmPosition" placeholder="警情位置">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mapPosition" class="col-sm-2 required">上图位置</label>
+                        <div class="col-md-6 col-sm-10 input-control has-icon-right">
+                            <input type="text" class="form-control" readonly id="mapPosition" name="mapPosition" placeholder="上图位置">
+                            <label for="inputPasswordExample1" class="input-control-icon-right" style="cursor:pointer;" id="mapFinder"><i class="icon icon-map-marker"></i></label>
+                            <input type="hidden"  id="mapLongitude" name="mapLongitude" >
+                            <input type="hidden"  id="mapDimension" name="mapDimension" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="category" class="col-sm-2 required">警情类别</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" name="category" id="category" value="" key="case_affairs" required></select>
+                        </div>
+                        <div class="col-sm-2" id="subCategoryDiv" style="display: none;">
+                            <select class="form-control" name="subCategory" id="subCategory" value="" key="criminal" required></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="levels" class="col-sm-2 required">级别</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="levels" name="levels">
+                                <option value="1">一级 特大</option>
+                                <option value="2">二级 重大</option>
+                                <option value="3">三级 一般</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="isLoss" class="col-sm-2 required">是否有损失</label>
+                        <div class="col-sm-1">
+                            <input name="isLoss" type="radio" id="isLoss-1"  value="0" checked required>
+                            <label for="isLoss-1">无</label>
+                        </div>
+                        <div class="col-sm-1">
+                            <input name="isLoss" type="radio" id="isLoss-2" value="1" required>
+                            <label for="isLoss-2">有</label>
+                        </div>
+
+                        <div class="col-sm-2" id="damageMoneyDiv" style="display:none">
+                            <input type="text" class="form-control" id="damageMoney" name="damageMoney" placeholder="损失金额">
+                        </div>
+                    </div>
+                    <div class="form-group" style="display:none" id="lostThingsDiv">
+                        <label for="lostThings" class="col-sm-2">失窃物品</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="lostThings" name="lostThings" placeholder="失窃物品">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="disposeTime" class="col-sm-2 required">受理时间</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="disposeTime" name="disposeTime" placeholder="受理时间">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="policeOfficer" class="col-sm-2 required">接警人</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="policeOfficer" name="policeOfficer" placeholder="接警人" readonly>
+                        </div>
+                        <input type="hidden"  id="policeIdentity" name="policeIdentity">
+                    </div>
+                    <div class="form-group">
+                        <label for="arrivalTime" class="col-sm-2">到达现场时间</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" id="arrivalTime" name="arrivalTime" placeholder="到达现场时间">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="detail" class="col-sm-2 required">报警内容</label>
+                        <div class="col-md-6 col-sm-10">
+                            <textarea class="form-control" rows="3" id="detail" name="detail" placeholder="可以输入多行文本"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="disposeUnit" class="col-sm-2 required">处警单位</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" name="disposeUnit" id="disposeUnit" value="" key="case_unit" required></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="result" class="col-sm-2 required">处警结果</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="result" name="result">
+                                <option value="1">已下发</option>
+                                <option value="2">处理中</option>
+                                <option value="3">已反馈</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" id="save" name="save" class="btn btn-primary">提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- jQuery (ZUI中的Javascript组件依赖于jQuery) -->
+        <script src="../assets/jquery.js?v=1.8"></script>
+        <!-- ZUI Javascript组件 -->
+        <script src="../dist/js/zui.min.js?v=1.8"></script>
+        <script src="../dist/plugins/laydate/laydate.js"></script>
+        <script src="../dist/plugins/layer/layer.js"></script>
+        <script src="../dist/lib/uploader/zui.uploader.min.js"></script>
+        <script src="../dist/plugins/axios/axios.min.js"></script>
+        <script src="../dist/plugins/seajs/sea.js"></script>
+        <script src="../dist/plugins/seajs/seajs-text.js"></script>
+        <script src="../dist/plugins/seajs/handlebars-1.0.0.beta.6.js"></script>
+        <script type="text/javascript">
+            seajs.config({
+                base: "../dist/",
+                alias: {
+                    "utilityForm": "utility/form.js",
+                    "validate": "plugins/jquery-validate/jquery.validate.min.js",
+                    "validation": "plugins/jquery-validate/additional-methods.js",
+                    "localization": "plugins/jquery-validate/localization/messages_zh.min.js"
+                },
+                vars: {
+                    requestFrontUrl: 'http://127.0.0.1/apollo-front/',
+                }
+            });
+
+            if(0==$.trim(window.location.search).length){
+                seajs.use('./add.js');
+            }else{
+                seajs.use('./edit.js');
+            }
+        </script>
+</body>
+
+</html>

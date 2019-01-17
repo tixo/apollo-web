@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>警务大数据登陆页面</title>
+  <link href="../dist/css/zui.css?v=1.8" rel="stylesheet">
+  <link href="../dist/css/case.css" rel="stylesheet">
+  <link rel="stylesheet" href="../dist/plugins/iview/iview.css">
+
+  <!--[if lt IE 9]>
+    <script src="dist/lib/ieonly/html5shiv.js"></script>
+    <script src="dist/lib/ieonly/respond.js"></script>
+    <script src="dist/lib/ieonly/excanvas.js"></script>
+  <![endif]-->
+<style>
+    .body{
+        background-repeat:no-repeat;
+        background-size:100% 100%;
+        background-attachment:fixed
+    }
+    .context{
+        position: absolute; 
+        width:100%;
+        height:200px;
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        border-radius:0px;
+        border-width:0px;
+        border-style:solid;
+        text-align:center;
+        line-height:20px;
+        font-weight:normal;
+        font-style:normal;
+        z-index:5;
+        opacity:1
+    }
+    .imgDiv{
+        display:inline-block;
+        width:130px;
+        height:100px;
+        left:590px;
+        top:423px;
+        border-radius:0px;
+        border-width:0px;
+        border-style:solid;
+        font-weight:normal;
+        font-style:normal;
+        z-index:6;
+        opacity:1
+    }
+    .title{
+        height:auto;
+        left:740px;
+        top:457px;
+        color:#ffffff;
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        font-size:48.0px;
+        padding:0px;
+        border-radius:0px;
+        border-width:0px;
+        border-style:solid;
+        line-height:70px;
+        font-weight:bold
+        
+    }
+    .title-english{
+        height:auto;
+        left:740px;
+        top:517px;
+        color:#ffffff;
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        font-size:28.0px;
+        padding:0px;
+        border-radius:0px;
+        border-width:0px;
+        border-style:solid;
+        line-height:41px;
+        font-weight:bold;
+    }
+    .inputDiv{
+        margin-left:2%;
+        display:inline-block;
+    }
+    .input{
+        border:none;
+        float:left;
+        margin-top:5px;
+        margin-left:5%;
+        width: 240px;
+        height: 40px;
+        font-size: 16px;
+    }
+    .loginin{
+        margin-top:10px;
+        display:inline-block;
+        color:#ffffff;
+        border-width:0px;
+        border-style:solid;
+        width:100px
+    }
+    .bottom{
+        margin-top:14%;
+        height:23px;
+        left:564px;
+        color:#bbbbbb;
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        font-size:14.0px;padding:0px;
+        border-radius:0px;
+        border-width:0px;
+        border-style:solid;
+        font-weight:normal;
+        font-style:normal;
+    }
+</style>
+</head>
+
+<body background="raw_1516592168.jpeg" class="body">
+    <div class="middle-box text-center loginscreen  animated fadeInDown">
+        <div class="context">
+            <div class="imgDiv">
+                <img src="./raw_1513661771.png" style="display:block;">
+            </div>
+            <div style="display:inline-block">
+                <div class="title">
+                    警务大数据应用系统     
+                </div>
+                <div class="title-english">
+                    <p>Police data application system</p>
+                </div>
+            </div>
+            <div class="text" style="padding: 0px;"><p>&nbsp;</p></div>
+            <div style="margin-bottom:10px">
+                <form role="form" action="">
+                    <div class="input-control has-icon-left inputDiv">
+                        <input id="inputAccountExample1" type="text" class="form-control input" placeholder="用户名">
+                        <label for="inputAccountExample1" class="input-control-icon-left" style="margin-left:9px;margin-top:9px"><i class="icon icon-user icon-2x"></i></label>
+                    </div>
+                    <div class="input-control has-icon-left inputDiv">
+                        <input id="inputPasswordExample1" type="password" class="form-control input" placeholder="密码">
+                        <label for="inputPasswordExample1" class="input-control-icon-left" style="margin-left:9px;margin-top:9px"><i class="icon icon-lock icon-2x"></i></label>
+                    </div>       
+                    <div class="loginin">
+                        <span class="icon-signin" style="font-size:45px; border:none;margin-left:50px;margin-top:-5px"></span> 
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div style="margin-top:15%; height:200px;background-color:#030303;transform: rotate(0deg);-webkit-transform: rotate(0deg);border-radius:0px;border-width:0px;border-style:solid;text-align:center;line-height:20px;font-weight:normal;font-style:normal;opacity:0.4">
+
+        </div>
+        <div class="bottom">
+            <p>Copyright © www.hagntianjidi.com, All Rights Reserved.</p>
+        </div>
+    </div>
+</body>
+
+</html>

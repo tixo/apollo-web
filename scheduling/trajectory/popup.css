@@ -1,0 +1,88 @@
+.mypopup{
+	position: absolute;
+    top: 0px;
+    left: 0px;
+    min-width:100px;
+	min-height:100px;
+    margin: 0;
+    padding: 0;
+    z-index: 1000; 
+    border: solid 1px #DADADA;
+    background: url(../images/popup/backgroud.png) repeat;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 5px rgba(165, 164, 164, 0.5);
+    -moz-box-shadow: 0 0 5px rgba(165, 164, 164, 0.5);
+    box-shadow: 0 0 5px rgba(165, 164, 164, 0.5);
+}
+.popup_top{
+	position: relative;
+    top: -9px;
+    z-index: -1;
+    width: 100%;
+    height: 45px;
+    margin-bottom: -10px;
+}
+.popup_close{
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    background-image:url(../images/popup/btn_close.png);
+}
+.popup_close:hover{
+	background-image:url(../images/popup/btn_close_2.png);
+}
+.popup_title{
+	width: 171px;
+    height: 32px;
+    color: white;
+    line-height: 32px;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
+    background-image:url(../images/popup/bubble_title.png);
+}
+.popup_middle{
+    height: calc(100% - 45px);
+    padding: 0px 5px 10px 5px;
+}
+.popup_middle table{
+	width: 100%;
+	border-collapse: collapse;
+}
+.popup_middle table td{
+	border: solid #BDBDBD 1px;
+    padding: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+.popup_titleStyle{
+	font-size: 16px;
+	font-weight: bold;
+}
+.popup_normalStyle{
+	font-size: 15px;
+}
+.popup_bottom{
+    position: absolute;
+    left: 50%;
+    margin-left: -14.5px;
+    width: 29px;
+    height: 23px;
+    bottom:-24px;
+    background-image:url(../images/popup/bubble_shape.png);
+}
+
+/*测量控件鼠标形状*/
+.measureCur{
+    cursor: url(../images/cur/measure.cur), auto;
+}
+/*绘制控件鼠标形状*/
+.drawCur{
+    cursor: url(../images/cur/draw.cur), auto;
+}

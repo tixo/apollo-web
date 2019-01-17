@@ -1,0 +1,664 @@
+/**************************police-select*********************************/
+
+.police-select {
+    width: 180px;
+    height: 250px;
+    position: absolute;
+    top: 35px;
+    right: -180px;
+    background: url(../../../../config/common/rightResource/img/shu-bg.png) no-repeat;
+    background-size: 100% 100%;
+    z-index: 999;
+}
+
+.police-select2 {
+    z-index: 999;
+    top: 95px;
+}
+
+.police-select3 {
+    z-index: 999;
+    top: 155px;
+}
+
+.police-select4 {
+    z-index: 999;
+    top: 249px;
+}
+
+.police-select5 {
+    z-index: 999;
+    top: 310px;
+}
+
+.police-select6 {
+    z-index: 999;
+    top: 400px;
+}
+
+.police-select7 {
+    z-index: 999;
+    top: 480px;
+}
+
+.police-select7 .dongtaibiaohui {
+    width: 100%;
+    height: 85%;
+    overflow-x: hidden;
+}
+.police-select7 .dongtaibiaohui table tr td div img{
+    display: block;
+    margin: 2px;
+}
+
+.div-plot {
+    height: 22px;
+    padding: 10px;
+    background-color: #5c90c6;
+    margin-top: -3px;
+}
+
+.btn-plot {
+    width: 100%;
+    height: 22px;
+    overflow: hidden;
+    padding: 1px 6px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+
+.btn-police {
+    width: 20px;
+    background: url(../../../../config/common/rightResource/img/btn-shu-bg.png) no-repeat;
+    background-size: 100% 100% !important;
+    position: absolute;
+    top: 0px;
+    left: -20px;
+    line-height: 16px;
+    text-align: center;
+    padding: 14px 0;
+    color: #fff;
+    font-size: 12px;
+}
+
+.btn-police:hover {
+    color: #fff;
+}
+
+.zTreeDemoBackground {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    padding: 8px 7px;
+    box-sizing: border-box;
+}
+
+.ztree {
+    width: 154px;
+    height: 100%;
+    padding-top: 10px;
+    margin-top: 5px;
+    overflow: auto;
+}
+
+.ztreeRec li {
+    width: 100%;
+    height: 28px;
+    line-height: 28px;
+    overflow: hidden;
+}
+
+.ztreeRec li .rec {
+    margin-left: 2px;
+    float: left;
+}
+
+.ztreeRec li span {
+    width: 16px;
+    height: 16px;
+}
+
+.ztreeRec li span img {
+    width: 100%;
+    height: 100%;
+}
+
+.ztreeRec li input {
+    margin-top: 3px;
+    color: #2892e5 !important;
+    background: white;
+}
+
+.ztreeRec li span:nth-child(1) {
+    margin-left: 10px;
+}
+
+
+
+
+
+/* 修改滚动条样式宽度 开始 */
+
+.mCSB_dragger_bar {
+    width: 5px !important;
+}
+
+
+
+
+
+/* 修改滚动条样式 颜色 */
+
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+    background-color: rgba(180, 182, 187, 0.75);
+}
+
+.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+    background-color: rgba(180, 182, 187, 0.85);
+}
+
+.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
+.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
+    background-color: rgba(180, 182, 187, 0.9);
+}
+
+
+
+
+
+/* 修改滚动条样式 结束*/
+
+.ztree li span.button.ico_docu {
+    background-size: 92% 92% !important;
+}
+
+
+
+
+
+/**********8/轨迹控制面板
+ * 
+ */
+
+.guiji-panel {
+    min-width: 600px;
+    min-height: 100px;
+    position: absolute;
+    bottom: 9%;
+    left: 50%;
+    margin-left: -300px;
+    background: #205891;
+}
+
+.guiji-panel-box {
+    margin: 6px;
+    width: 592px;
+    height: 92px;
+    box-sizing: border-box;
+    background: #f0f5fa;
+    overflow: hidden;
+}
+
+.left-panel-box,
+.right-panel-box {
+    height: 100%;
+    float: left;
+    box-sizing: border-box;
+}
+
+.left-panel-box {
+    width: 35%;
+    border-right: 2px solid #fff;
+    box-sizing: border-box;
+}
+
+.right-panel-box {
+    width: 65%;
+    background: url(../../../../config/common/rightResource/img/bg-bk.png) no-repeat left;
+}
+
+.time-panel-box {
+    font-size: 12px;
+    padding-top: 8px;
+    padding-left: 20px;
+}
+
+.ipt-panel {
+    width: 110px;
+    height: 20px !important;
+    line-height: 20px !important;
+}
+
+.time-panel-box li {
+    line-height: 30px;
+}
+
+.panel-btn {
+    width: 60px;
+    height: 20px;
+    line-height: 20px;
+    display: block;
+    color: #fff;
+    text-align: center;
+    float: right;
+    margin-right: 18px;
+    background: #306ab6;
+    cursor: pointer;
+}
+
+.right-panel-top {
+    width: 100%;
+    font-size: 10px;
+    text-align: right;
+    padding-right: 20px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    position: relative;
+}
+
+.clert-guiji {
+    font-size: 14px;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+    position: absolute;
+    top: -20px;
+    right: 10px;
+    cursor: pointer;
+    /*font-weight: bold;*/
+    color: #306ab6;
+}
+
+.right-panel-top span:nth-child(3) {
+    color: #12aaec;
+    font-size: 14px;
+}
+
+.btm-col {
+    width: 92%;
+    margin-left: 4%;
+    height: 5px;
+    background: #c4d1e3;
+}
+
+.time-col {
+    width: 60%;
+    height: 100%;
+    background: #86adf0;
+    position: relative;
+}
+
+.move-btn {
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    background: #fff;
+    border: 1px solid #c5cbd3;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.btn-pane-group {
+    overflow: hidden;
+    margin: 0 auto;
+    width: 230px;
+}
+
+.btn-pane-group span {
+    width: 26px;
+    height: 26px;
+    display: block;
+    float: left;
+    background: #fff;
+    margin-top: 10px;
+    margin-left: 16px;
+    cursor: pointer;
+}
+
+.btn-pane-group .kuaitui a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../../../../config/common/rightResource/img/kt.png)no-repeat #f0f5fa;
+    background-size: 100% 100%;
+}
+
+.btn-pane-group .kuaitui a:hover {
+    background: url(../../../../config/common/rightResource/img/kt-xz.png)no-repeat #f0f5fa;
+    background-size: 100% 100%;
+}
+
+.btn-pane-group .zanting a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../../../../config/common/rightResource/img/zt.png)no-repeat #f0f5fa;
+    background-size: 100% 100%;
+}
+
+.btn-pane-group .zanting a:hover {
+    background: url(../../../../config/common/rightResource/img/zt-xz.png)no-repeat #f0f5fa;
+    background-size: 100% 100%;
+}
+
+.btn-pane-group .kuaijin a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../../../../config/common/rightResource/img/kj.png)no-repeat #f0f5fa;
+    background-size: 100% 100%;
+}
+
+.btn-pane-group .kuaijin a:hover {
+    background: url(../../../../config/common/rightResource/img/kj-xz.png)no-repeat #f0f5fa;
+    background-size: 100% 100%;
+}
+
+.btn-pane-group .bofang a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../../../../config/common/rightResource/img/bf.png)no-repeat #f0f5fa;
+    background-size: 100% 100%;
+}
+
+.btn-pane-group .bofang a:hover {
+    background: url(../../../../config/common/rightResource/img/bf-xz.png)no-repeat #f0f5fa;
+    background-size: 100% 100%;
+}
+
+.btn-pane-group .tingzhi a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../../../../config/common/rightResource/img/stop.png)no-repeat #f0f5fa;
+    background-size: 100% 100%;
+}
+
+.btn-pane-group .tingzhi a:hover {
+    background: url(../../../../config/common/rightResource/img/stop-xz.png)no-repeat #f0f5fa;
+    background-size: 100% 100%;
+}
+
+
+
+
+
+/**
+ * 飞行按钮样式
+ */
+
+.fly-panel {
+    display: none;
+    height: 10%;
+    width: 15%;
+    position: absolute;
+    /*margin-left: -300px;*/
+    background: #205891;
+    left: 50%;
+    bottom: 10%;
+    padding: 6px;
+    text-align: center;
+}
+
+.flytitle {
+    margin-top: -16px;
+    color: #205891;
+}
+
+.fly-panel-box {
+    height: 100%;
+    bottom: 10%;
+    box-sizing: border-box;
+    background: white;
+    overflow: hidden;
+}
+
+.btn-fly-group {
+    box-sizing: border-box;
+    width: 280px;
+    position: absolute;
+    bottom: 21%;
+    overflow: hidden;
+}
+
+#play {
+    height: 40px;
+    width: 40px;
+    content: url(../../../../config/common/rightResource/img/bf.png);
+}
+
+#pause {
+    height: 40px;
+    width: 40px;
+    display: none;
+    content: url(../../../../config/common/rightResource/img/zt.png);
+}
+
+#stop {
+    height: 40px;
+    width: 40px;
+    content: url(../../../../config/common/rightResource/img/stop.png);
+}
+
+#play:hover {
+    content: url(../../../../config/common/rightResource/img/bf-xz.png);
+}
+
+#pause:hover {
+    content: url(../../../../config/common/rightResource/img/zt-xz.png);
+}
+
+#stop:hover {
+    content: url(../../../../config/common/rightResource/img/stop-xz.png);
+}
+
+.flyaniu {
+    display: block;
+    position: relative;
+    left: 35%;
+    transform: translateX(-50%);
+}
+
+
+
+
+/************
+ * 
+ * 
+ * 视频监控样式
+ * 
+ * ***************/
+<<<<<<< .mine
+
+.shipin-box {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    bottom: 200px;
+    left: 400px;
+    background: #e2e9e9;
+    z-index: 999;
+    display: none;
+||||||| .r522
+.shipin-box{
+	width:300px;
+	height:300px;
+	position:absolute;
+	bottom:200px;
+	left:400px;
+	background:#e2e9e9;
+	z-index: 999;
+	display: none;
+=======
+.shipin-box{
+	width:300px;
+	height:300px;
+	position:absolute;
+	bottom:51px;
+	left:293px;
+	background:#e2e9e9;
+	z-index: 999;
+	display: none;
+>>>>>>> .r534
+}
+
+.shipin-ctn {
+    width: 280px;
+    height: 150px;
+    margin: 10px;
+}
+
+.left-sp,
+.ctn-sp,
+.rit-sp {
+    float: left;
+    width: 100px;
+    min-height: 100px;
+    box-sizing: border-box;
+}
+
+.direction {
+    width: 80px;
+    height: 80px;
+    padding: 2px;
+    background: url(../../../../config/common/rightResource/img/control.png) no-repeat center;
+    background-size: 100% 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    margin-top: 6px;
+    margin-left: 10px;
+}
+
+.direction li {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.direction li img {
+    width: 100%;
+    height: 100%;
+}
+
+.direction li:nth-child(1) {
+    position: absolute;
+    top: 3px;
+    left: 38px;
+}
+
+.direction li:nth-child(2) {
+    position: absolute;
+    top: 32px;
+    left: 6px;
+}
+
+.direction li:nth-child(3) {
+    position: absolute;
+    top: 32px;
+    right: 6px;
+}
+
+.direction li:nth-child(4) {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+}
+
+.direction li:nth-child(5) {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -15px;
+    margin-top: -15px;
+}
+
+.direction li:nth-child(5) img {
+    width: 100%;
+    height: 100%;
+}
+
+.direction li:nth-child(6) {
+    position: absolute;
+    top: 50px;
+    left: 14px;
+}
+
+.direction li:nth-child(7) {
+    position: absolute;
+    top: 50px;
+    right: 14px;
+}
+
+.direction li:nth-child(8) {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+}
+
+.direction li:nth-child(9) {
+    position: absolute;
+    bottom: 12px;
+    left: 37px;
+}
+
+.ctn-sp ul {
+    margin-left: 18px;
+    margin-top: 8px;
+}
+
+.ctn-sp ul li span {
+    font-size: 12px;
+}
+
+.ctn-sp ul li span:nth-child(1) {
+    display: inline-block;
+    height: 14px;
+    width: 14px;
+}
+
+.ctn-sp ul li span:nth-child(2) {
+    display: inline-block;
+    height: 14px;
+    line-height: 14px;
+}
+
+.ctn-sp ul li span:nth-child(3) {
+    display: inline-block;
+    height: 14px;
+    width: 14px;
+}
+
+.ctn-sp ul li span img {
+    width: 100%;
+    height: 100%;
+    vertical-align: inherit;
+}
+
+.rit-sp div {
+    width: 30px;
+    height: 30px;
+    float: left;
+    margin-left: 11px;
+    margin-top: 12px;
+}
+.rit-sp div img {
+    width: 100%;
+    height: 100%;
+}
+.jingyuan-zs{
+	position:absolute;
+	top:-4px;
+	left:10px;
+}

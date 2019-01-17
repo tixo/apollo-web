@@ -1,0 +1,31 @@
+{{#each this}}
+<div class="space2">
+  <div class="row space2">
+    <div class="hot">
+      <span>目标对象</span>
+    </div>
+    <div>
+      <ul>
+        <a>
+          <img id="{{id}}" src="{{url}}" />
+        </a>
+      </ul>
+    </div>
+  </div>
+  <div class="row space2">
+    <div class="hot">
+      <span>人脸对比结果</span>
+    </div>
+    <div>
+      <ul>
+          {{#each compare}}
+            <a>
+              <img src="{{imgPath}}" />
+              <br /><span class="sapn">相似度{{score}}</span>
+            </a>          
+          {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
+{{/each}}

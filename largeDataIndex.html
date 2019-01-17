@@ -1,0 +1,239 @@
+<!DOCTYPE html><html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<title>大数据应用系统</title>
+		<link href="./scheduling/dist/css/zui.css?v=1.8" rel="stylesheet">
+		<link rel="shortcut icon" href="./assets/img/main_html/logo.ico"/>
+		<!--[if lt IE 8]><link rel="stylesheet" type="text/css" href="assets/css/style.css"><![endif]-->
+		<link rel="stylesheet/less" type="text/css" id="css">
+		<link rel="stylesheet" href="./supermap/webgl/supermap/3D/css/pretty.css" type="text/css">
+		<!--浏览器版本检查-->
+		<script type="text/javascript" src="./module/plugins/browserUpdate/browser.js"></script>
+		<script type="text/javascript" src="./module/jquery/jquery-1.8.1.min.js"></script>
+		<script type="text/javascript" src="./module/jquery/jquery.cookie.js"></script>
+		<script type="text/javascript" src="./module/sea/sea.js"></script>
+		<!--系统权限判断-->
+		<script type="text/javascript" src="./assets/js/auth_init.js"></script>
+		<!--系统加载主入口-->
+		<script type="text/javascript" src="./assets/js/init.js"></script>
+		<!--主要参数配置-->
+		<script type="text/javascript" src="./config/main_config.js"></script>
+		<script type="text/javascript" src="./config/common/websocket/js/sockjs.min.js"></script>
+	    <script type="text/javascript" src="./config/common/websocket/js/stomp.min.js"></script>
+		<script src="./scheduling/dist/plugins/layer/layer.js"></script>
+		<script type="text/javascript" src="./config/common/camera/js/camera.js"></script>
+		<script>
+		var _webSocket;
+			//根据屏幕分辨率加载不同的css
+			(function(){
+				var style = document.getElementById('css');
+				if(window.screen.width<=1440){
+					style.href="./assets/css/style_1366.less"
+				}else{
+					style.href="./assets/css/style_1920.less"
+				}
+				if(window.screen.width>=1920){
+					window.services.mapconfig.zoom = 3;
+					//window.services.mapconfig.minZoom = 3;
+					$(".more-text").css("top","4px");
+				}
+			})();
+			/**
+			 * 菜单和全局变量初始化
+			 */
+			initializationMenus(function (response) {
+				initMenus(getMenu(response.data,frontHttpUrl));
+				if(authorization.appId=="44D605DC09F04F67A1C549BCBB3BA442"){
+					$('#topIframe').attr('src', "./assets/html/top/top-manager.html");
+				}else{
+					$('#topIframe').attr('src', "./assets/html/top/top.html");
+					if(window.screen.width>=1920){
+					window.services.mapconfig.zoom = 3;
+					//window.services.mapconfig.minZoom = 3;
+				}
+				}
+			});
+			seajs.use(["./config/common/websocket/websocket.js"], function(webSocket) {
+				_webSocket = webSocket;
+				webSocket.connect(handlemsg, '/topic/case');
+      		    webSocket.connect(handlemsg, ' /topic/target');
+      		    webSocket.connect(handlemsg,'/topic/surveillance');
+      		    webSocket.connect(handlemsg,'/topic/alarm/pillar',"pillar");
+			});
+			//webSocket回调函数
+			function handlemsg(message){
+				if(isExitsFunction($("#left_iframe")[0].contentWindow.websocketHandle)){
+					$("#left_iframe")[0].contentWindow.websocketHandle(message);
+				}
+			}
+			//判断函数是否存在
+			function isExitsFunction(funcName) {
+			  try {
+			    if (typeof(eval(funcName)) == "function") {
+			      return true;
+			    }
+			  } catch(e) {}
+			  return false;
+			}
+			/*cameraLogin1();
+			cameraLogin2();*/
+			getAlias();
+			getLocalIPAddress();
+			function moreShow(){
+				if($("#moreDiv").css("display") != 'none') {
+					$("#moreDiv").hide();
+				}else{
+					$("#moreDiv").show();
+				}
+			}
+			function moreHide(){
+				$("#moreDiv").hide();
+			}
+		</script>
+		<script type="text/javascript" src="./module/less/less-1.3.3.min.js"></script>
+		<!--气泡模板-->
+		<!--导出为Excel文件-->
+		<script type="text/javascript" src="./module/plugins/JsonExportExcel.min.js"></script>
+		<!--系统加载主入口-->
+		<script type="text/javascript" src="./assets/js/init.js"></script>
+		<style>
+			.right{
+			    float: right;
+			}
+			button.setting{
+				background: transparent;
+				border:none;
+				height: 100%;
+                width: 60px;
+			}
+			.setting{
+			    cursor: pointer;
+			}
+			.setting img{
+			  /* width: 20px;*/
+			}
+			button {
+				outline:none;
+			}
+			.critical{
+				color: #0081C2;
+			}
+			ul, ol {margin: 0;list-style: none;}
+			.more-ul li{
+				width: 60px;
+				height: 25px;
+			    float:left;
+			    cursor: pointer;
+			}
+			.more-span{
+			    position: relative;
+			    color: #0988f5;
+			    font-size: 12px;
+                width: 40px;
+			}
+			.four{
+			   left: -13px;
+			}
+			.more-text{
+				top: -2px;
+			    color: white;
+			    position: relative;
+			    left: 15px;
+			    font-size: 14px;
+			}
+		</style>
+	</head>
+	<body onselectstart="return false">
+		<div id="moreDiv" style="position: absolute;z-index:1;filter:alpha(opacity:30); opacity:0.9;top:84px;right:20px;width: 562px;height: 46px;background-color: #fff;display: none;border: 1px solid  rgb(196, 217, 243);;" >
+			<img  src="./assets/html/top/img/more-triangle.png" style="position: absolute; top: -12px;right:30px;z-index: 1; width: 15px; height: 13px;" alt=""/>
+			<ul class="more-ul">
+				<li id="full">
+					<div style="background:url(./assets/html/top/img/full-width.png) no-repeat ;background-size:100% 100%;height:24px;margin-top: 2px;width: 24px;" ></div>
+					<span class="more-span">全 幅</span>
+				</li>
+				<li id="full-screen">
+					<div style="background:url(./assets/html/top/img/full.png) no-repeat ;background-size:100% 100%;height:24px;margin-top: 2px;width: 24px;" ></div>
+					<span class="more-span">全 屏</span>
+				</li>
+				<li id="distance">
+					<div style="background:url(./assets/html/top/img/measure.png) no-repeat ;background-size:100% 100%;height:24px;margin-top: 2px;width: 24px;" ></div>
+					<span class="more-span">测 距</span>
+				</li>
+				<li id="area">
+					<div style="background:url(./assets/html/top/img/planimetry.png) no-repeat ;background-size:100% 100%;height:24px;margin-top: 2px;width: 24px;" ></div>
+					<span class="more-span">测 面</span>
+				</li>
+				<li id="clear">
+					<div style="background:url(./assets/html/top/img/clear.png) no-repeat ;background-size:100% 100%;height:24px;margin-top: 2px;width: 24px;" ></div>
+					<span class="more-span">清除</span>
+				</li>
+				<li onclick="setting();">
+					<div style="background:url(./assets/html/top/img/setting-zb.png) no-repeat ;background-size:100% 100%;height:24px;margin-top: 2px;width: 24px;" ></div>
+					<span class="more-span four">设置班组</span>
+				</li>
+				<li onclick="updatePassword();">
+					<div style="background:url(./assets/html/top/img/update-password.png) no-repeat ;background-size:100% 100%;height:24px;margin-top: 2px;width: 24px;" ></div>
+					<span class="more-span four">修改密码</span>
+				</li>
+				<li onclick="switchingSystem();">
+					<div style="background:url(./assets/html/top/img/switching-system.png) no-repeat ;background-size:100% 100%;height:24px;margin-top: 2px;width: 24px;" ></div>
+					<span class="more-span four">切换系统</span>
+				</li>
+				<li onclick="loginOut();">
+					<div style="background:url(./assets/html/top/img/login-out.png) no-repeat ;background-size:100% 100%;height:24px;margin-top: 2px;width: 24px;" ></div>
+					<span class="more-span four">退出系统</span>
+				</li>
+			</ul>
+		</div>
+		<!--顶部logo栏-->
+		<div class="main main_top">
+			<div style="position:fixed ;z-index:999999;top:10px; right: 15px;">
+				 <div style="float: right;position:absolute ;z-index: 9999999; right: 5px;">
+					  <button class="right setting" type="button" ><img onclick="moreShow();" id="moreBut" src="./assets/html/top/img/更多1366.png" alt=""/></button>
+					  <!--<ul class="dropdown-menu pull-right" style="z-index: 9999;">
+						<li><a href="javascript:void(0)" onclick="switchingSystem();"><i class="icon icon-exchange critical"></i> 切换系统</a></li>
+						<li><a href="javascript:void(0)" onclick="updatePassword();"><i class="icon icon-lock critical"></i> 修改密码</a></li>
+					    <li><a href="javascript:void(0)" onclick="setting();"><i class="icon icon-cogs critical"></i> 设置班组</a></li>
+					    <li><a href="javascript:void(0)" onclick="loginOut();"><i class="icon icon-off critical"></i> 退出系统</a></li>
+					  </ul>-->
+					  <span class="more-text">更 多</span>
+					</div>
+				</div>
+			<iframe src="" id="topIframe" width="100%" height="100%"  scrolling="no" frameborder="0"></iframe>
+		</div>
+		<!--中部地图区域-->
+		<div class="main main_middle" style="width:100% !important">
+			<!--左侧导航-->
+			<iframe name="left_iframe" id="left_iframe" width="100%" height="100%"  scrolling="no" frameborder="0"  allowfullscreen="true" ></iframe>
+			<!--加载动画-->
+			<div id="loadingbar_bg">
+				<div class="spinner">
+					<div class="spinner-container container1">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
+					</div>
+					<div class="spinner-container container2">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
+					</div>
+					<div class="spinner-container container3">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+
+
+
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Spring Boot+WebSocket+广播式</title>
+<script src="js/stomp.min.js"></script>
+<script src="js/sockjs.min.js"></script>
+<script type="text/javascript" src="../../../supermap/webgl/module/jquery/jquery-1.11.2.min.js" ></script>
+</head>
+<body onload="disconnect()">
+<noscript><h2 style="color: #ff0000">貌似你的浏览器不支持websocket</h2></noscript>
+<div>
+    <div>
+        <button id="connect" onclick="connect();">连接</button>
+        <button id="disconnect" disabled="disabled" onclick="disconnect();">断开连接</button>
+    </div>
+    <div id="conversationDiv">
+        <label>输入你的名字</label><input type="text" id="name" />
+        <p id="response"></p>
+    </div>
+</div>
+<script type="text/javascript">
+    var stompClient = null;
+    function setConnected(connected) {
+        document.getElementById('connect').disabled = connected;
+        document.getElementById('disconnect').disabled = !connected;
+        document.getElementById('conversationDiv').style.visibility = connected ? 'visible' : 'hidden';
+        $('#response').html();
+    }
+ 	//连接
+    function connect() {
+        var socket = new SockJS('http://192.168.1.13:8021/webSocketServer'); //链接SockJS 的endpoint 名称为"/endpointWisely"
+        stompClient = Stomp.over(socket);//使用stomp子协议的WebSocket 客户端
+        stompClient.connect({}, function(frame) {//链接Web Socket的服务端。
+            setConnected(true);
+            console.log('Connected: ' + frame);
+            stompClient.subscribe('/topic/case', function(respnose){ //订阅/topic/getResponse 目标发送的消息。这个是在控制器的@SendTo中定义的。
+                console.log(respnose);
+                showResponse(JSON.parse(respnose.body).responseMessage);
+            });
+        });
+    }
+ 	//断开
+    function disconnect() {
+        if (stompClient != null) {
+            stompClient.disconnect();
+        }
+        setConnected(false);
+        console.log("Disconnected");
+    }
+ 	//新消息回调
+    function showResponse(message) {
+          var response = $("#response");
+          response.html(message);
+    }
+</script>
+</body>
+</html>

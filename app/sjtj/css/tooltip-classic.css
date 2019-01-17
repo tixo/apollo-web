@@ -1,0 +1,148 @@
+.tooltip {
+    display: inline;
+    position: relative;
+    z-index: 999;
+}
+
+
+
+
+
+/* Trigger text */
+
+.tooltip-item {
+    background: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    padding: 0 10px;
+}
+
+
+
+
+
+/* Gap filler */
+
+.tooltip-item::after {
+    content: '';
+    position: absolute;
+    width: 360px;
+    height: 20px;
+    bottom: 100%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+/* Tooltip */
+.tooltip-content {
+    position: absolute;
+    z-index: 9999;
+    width: 360px;
+    height: 200px;
+    left: 50%;
+    margin: 0 0 20px -180px;
+    bottom: 100%;
+    text-align: left;
+    font-size: 0.765em;
+    line-height: 1.4;
+    box-shadow: -5px -5px 15px rgba(48, 54, 61, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+    /*opacity: 1;*/
+    cursor: default;
+}
+
+.tooltip:hover .tooltip-content {
+    pointer-events: auto;
+    opacity: 1;
+    -webkit-transform: translate3d(255, 255, 255) rotate3d(255, 255, 255, 0.9);
+    transform: translate3d(255, 255, 255) rotate3d(255, 255, 255, 0.9);
+}
+
+.tooltip-content .tooltip-text .bktitle {
+    display: block;
+    width: 80%;
+    text-align: center;
+    float: left;
+}
+
+.tooltip-content .tooltip-text .bktable {
+    float: left;
+    width: 72%;
+    height: 100%;
+}
+
+.tooltip-content .tooltip-text .bktable table {
+    width: 100%;
+    height: 100%;
+}
+
+.tooltip-content .tooltip-text .bkimg {
+    display: block;
+    width: 27%;
+    height: 100%;
+    float: right;
+}
+
+.tooltip-content .tooltip-text .bkimg img {
+    width: 100%;
+    height: 100%;
+}
+
+.tooltip-content .tooltip-text .bktable table tr td {
+    display: inline-block;
+    width: 50%;
+    text-align: left;
+}
+
+
+/* Arrow */
+
+.tooltip-content::after {
+    content: '';
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    height: 0;
+    width: 0;
+    position: absolute;
+    border-color: transparent;
+    border-top-color: rgba(255, 255, 255, 0.9);
+    border-width: 10px;
+    margin-left: -10px;
+}
+
+
+/* Tooltip content*/
+
+.tooltip-close {
+    width: 0.5em;
+    height: 0.5em;
+    font-size: 1.5em;
+    line-height: 0.5em;
+    display: block;
+    padding: 0.6em;
+    margin: 0;
+    color: #439bed;
+    float: right;
+}
+
+.tooltip-close:hover {
+    cursor: pointer;
+    color: #439bed;
+    background-color: #ccc;
+}
+
+.tooltip-text {
+    font-size: 0.68em;
+    line-height: 2.35em;
+    display: block;
+    padding: 1.31em 1.21em 1.21em 1.21em;
+    color: rgba(0, 0, 0, 0.9);
+    height: 60%;
+}
+
+.tooltip-text a {
+    font-weight: bold;
+}

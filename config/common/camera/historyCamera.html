@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>历史视频</title>
+		<link href="../../../scheduling/dist/css/zui.css?v=1.8" rel="stylesheet">
+		<link rel="stylesheet" href="../../../config/common/camera/css/multichannelCamera.css" type="text/css">
+		<link rel="stylesheet" href="../../../app/sjtj/css/allVideo.css" type="text/css">
+		<link href="../../../app/anjianjingqing/css/daterangepicker.css" rel="stylesheet">
+		<script type="text/javascript" src="../../../module/jquery/jquery-1.8.1.min.js"></script>
+		<link rel="stylesheet" href="../../../module/plugins/scrollbar/jquery.mCustomScrollbar.css" type="text/css">
+		<link rel="stylesheet" type="text/css" href="../../../app/yibiaosanshi/css/zTreeStyle.css" />
+		<script type="text/javascript" src="../../../module/plugins/zTree/js/jquery.ztree.core.min.js"></script>
+		<script type="text/javascript" src="../../../module/plugins/zTree/js/jquery.ztree.excheck.js"></script>
+		<script type="text/javascript" src="../../../module/plugins/zTree/js/jquery.ztree.exhide.js"></script>
+		<script type="text/javascript" src="../../../module/sea/sea.js"></script>
+		<script type="text/javascript" src="../../../module/plugins/scrollbar/jquery.mCustomScrollbar.js"></script>
+		<script type="text/javascript" src="../../../module/plugins/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script type="text/javascript" src="../../../config/common/camera/js/flv.js"></script>
+   		<script type="text/javascript" src="../../../config/common/camera/js/camera.js"></script>
+   		<script type="text/javascript" src="../../../scheduling/dist/js/zui.min.js?v=1.8"></script>
+   		<script type="text/javascript" src="../../../scheduling/dist/utility/form.js"></script>
+		<script type="text/javascript" src="../../../app/anjianjingqing/js/moment.min.js"></script>
+	    <script type="text/javascript" src="../../../config/common/camera/js/daterangepicker.js"></script>
+		<script type="text/javascript">
+			var thisIframe1 = null;
+			var _video;
+			$("iframe", parent.document).each(function(index, e) {
+		        if (e.src.indexOf("historyCamera.html") > 0) {
+		            thisIframe1=e;
+		            return false;
+		        }
+		    });
+		    thisIframe1.setAttribute('allowfullscreen','true');
+			seajs.config({base: "./js/"});
+     		seajs.use(["historyCamera.js"],function(video){
+     			_video = video;
+     		});
+     		$(function(){
+			    $.each(parent.window.cameraLists,function(i,item){
+			    	if(i==0){
+			    		$("#radioAddress").append('<p><input type="radio" data-stage="'+item.stage+'" data-cameraType="'+item.cameraType+'" name="cameraName" value="'+item.cameraIndex+'" checked>'+item.installationAddress+"</p>");
+			    	}else{
+			    		$("#radioAddress").append('<p><input type="radio" data-stage="'+item.stage+'" data-cameraType="'+item.cameraType+'"  name="cameraName" value="'+item.cameraIndex+'">'+item.installationAddress+"</p>");
+			    	}
+	     		});
+	     		initTime();
+			});
+       function initTime() {
+        //定义locale汉化插件
+        var locale = {
+            "format": 'YYYYMMDDHHmmss',
+            "separator": "~",
+            "applyLabel": "确定",
+            "cancelLabel": "取消",
+            "fromLabel": "起始时间",
+            "toLabel": "结束时间'",
+            "customRangeLabel": "自定义",
+            "weekLabel": "W",
+            "daysOfWeek": ["日", "一", "二", "三", "四", "五", "六"],
+            "monthNames": ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+            "firstDay": 1
+        };
+        //初始化显示当前时间
+        //$("#myFrameId").contents().find('#daterange-btn span').html(moment().subtract('hours', 1).format('YYYY-MM-DD') + ' 至  ' + moment().format('YYYY-MM-DD'));
+        //日期控件初始化
+        $("#inputSearch").daterangepicker({
+        		opens : 'left',
+        		timePicker : true, //是否显示小时和分钟
+			    timePickerIncrement :1, //时间的增量，单位为分钟
+			    timePicker24Hour: true, //时间制
+			    alwaysShowCalendars:true,
+			    showDropdowns: true,
+			    maxDate: moment(new Date()), //设置最大日期
+			    'locale': locale,
+                //汉化按钮部分
+                ranges: {
+                    '今日': [moment(), moment()],
+                    '昨日': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    '最近7日': [moment().subtract(6, 'days'), moment()],
+                    '最近30日': [moment().subtract(29, 'days'), moment()],
+                    '本月': [moment().startOf('month'), moment().endOf('month')],
+                    '上月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                startDate: moment().subtract(29, 'days'),
+                endDate: moment()
+            }/*,
+            function(start, end) {
+                $("#myFrameId")[0].contentWindow.searchParam(start.format('YYYY-MM-DD'), end.format('YYYY-MM-DD'));
+            }*/
+        );
+    }
+  		</script>
+  		<style>
+  		.center-po{
+  			position: relative;
+  			width: 80%;
+  		}
+  		.right-po{
+  			position: absolute;
+   			right: 0px;
+  		}
+  		</style>
+	</head>
+	<body>
+		<div class="box-index">
+			<div class="video-ctn">
+				<div class="options" style="display:none ;">
+                    <input type="checkbox" id="isLive"  checked />
+                    <input type="checkbox" id="withCredentials"  />
+                    <input type="checkbox" id="hasAudio" />
+                    <input type="checkbox" id="hasVideo" checked />
+                </div>
+				<div class="video-box checkbox-video" id="sp001" style="display: block;">
+					<!--<span class="no" style="margin-left: 0px;cursor: Pointer;border: 1px solid #07CC3F;color:#07CC3F ;" onclick="_video.flvLoad('videoIframesp001');">刷新</span>-->
+					<iframe style="position:relative ;z-index: 1;" class="video-content"  data-id="sp001"  name="videoIframesp001" id="videoIframesp001" src="../../../config/common/camera/cell-his.html" width="100%" height=""  scrolling="no" frameborder="0"  allowfullscreen="true" ></iframe>
+				</div>
+				<div class="video-box" id="sp002" style="display: block;">
+					<iframe style="position:relative ;z-index: 1;" class="video-content"  data-id="sp002"  name="videoIframesp002" id="videoIframesp002" src="../../../config/common/camera/cell-his.html" width="100%" height=""  scrolling="no" frameborder="0"  allowfullscreen="true" ></iframe>
+				</div>
+				<div class="video-box" id="sp003" style="display: block;">
+					<div id="streamURLsp003" style="display: none;">
+			            <div class="url-input">
+			                <input id="sURLsp003" type="text" value="" />
+			            </div>
+			        </div>
+					<iframe style="position:relative ;z-index: 1;" class="video-content"  data-id="sp003"  name="videoIframesp003" id="videoIframesp003" src="../../../config/common/camera/cell-his.html" width="100%" height=""  scrolling="no" frameborder="0"  allowfullscreen="true" ></iframe>
+				</div>
+				<div class="video-box" id="sp004" style="display: block;">
+					<iframe style="position:relative ;z-index: 1;" class="video-content"  data-id="sp004"  name="videoIframesp004" id="videoIframesp004" src="../../../config/common/camera/cell-his.html" width="100%" height=""  scrolling="no" frameborder="0"  allowfullscreen="true" ></iframe>
+				</div>
+			</div>
+			<div class="video-option">
+				<div class="panel panel-primary" style="top:2px;">
+				  <div class="panel-heading">
+				   	摄像头历史查询
+				  </div>
+				<div class="panel-body">
+					<div id="radioAddress">
+						
+						
+					</div>
+					<div class="input-group" style="margin-top: 8px;">
+						<div class="input-control search-box search-box-circle has-icon-left has-icon-right search-example" id="searchboxExample">
+							<input id="inputSearch" type="search" class="form-control search-input" placeholder="时间选择">
+							<label for="inputSearch" class="input-control-icon-left search-icon"><i class="icon icon-search"></i></label>
+						</div>
+						<span class="input-group-btn">
+						    <button class="btn btn-primary" type="button" onclick="_video.hisCameraSearchD();">查询</button>
+						  </span>
+					</div>
+				</div>
+				</div>
+				<div id="treeScrollbar" style="height:calc(100% - 200px)">
+					<ul class="ztree" id="video-list">
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

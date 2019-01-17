@@ -68,6 +68,19 @@ define(['validate', 'validation', 'localization', 'utilityForm'], function (requ
         });
     }
 
+    function initCaseAffirs() {
+        seajs.use('../app/common/ajax', function (ajax) {
+            ajax.post("dictionary/info/findCaseAffairs", [], function (response) {
+                var result = response.data;
+                //var value = $("#" + domId).attr("value");
+                //$("#" + domId).val(value);
+                $.each(result, function (index, d) {
+                    $("#category").append('<option value="' + d.dicIdent + '">' + d.dicName + '</option>');
+                });
+            });
+        });
+    }
+
     //初始化字典下拉框
     function common_select(domId) {
         var dicKey = $("#" + domId).attr("key");
@@ -111,21 +124,26 @@ define(['validate', 'validation', 'localization', 'utilityForm'], function (requ
 
     function initMapFinder() {
         $('#mapFinder').on('click', function () {
-           
-            //弹出即全屏
-            var index = layer.open({
-                type: 2,
-                content: './map.html',
-                area: ['320px', '195px'],
-                maxmin: true,
-                closeBtn: 2,
-                btnAlign: 'c',
-                btn: ['关闭'],
-                yes: function (index, layero) {
-                  layer.closeAll();
-                }
-            });
-            layer.full(index);
+            console.log($('#alarmPosition').val())
+			
+            if($.isEmpty($('#alarmPosition').val())){
+                $.showErrorInfo('请先输入警情位置');
+            }else{
+                //弹出即全屏
+                var index = layer.open({
+                    type: 2,
+                    content: './map.html',
+                    area: ['320px', '195px'],
+                    maxmin: true,
+                    closeBtn: 2,
+                    btnAlign: 'c',
+                    btn: ['关闭'],
+                    yes: function (index, layero) {
+                    layer.closeAll();
+                    }
+                });
+                layer.full(index);
+            }
         });
     }
 
@@ -186,6 +204,7 @@ define(['validate', 'validation', 'localization', 'utilityForm'], function (requ
 
         
         common_select("category");
+        //initCaseAffirs();
         unit_select();
         initDownload();
 

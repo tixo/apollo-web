@@ -399,7 +399,7 @@ define(["utilityForm"], function (require, exports, module) {
     } else {
       $('#criminalItems').attr('style', 'display:none');
       $('#subCriminal').attr('style', 'display:none');
-      $('#issueShow').attr('style', 'display:none');
+      //$('#issueShow').attr('style', 'display:none');
     }
     params.searchParams.issue = $(this).attr('value');
   });

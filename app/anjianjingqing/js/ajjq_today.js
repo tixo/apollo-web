@@ -50,11 +50,16 @@ function caseList(data) {
             classifyImg = "img/qt" + i + ".png";
         }
         item.img = classifyImg;
+        var place = item.place;
+        if(place.length>25){
+        	place = place.substring(0,24);
+        	place += "...";
+        }
         cells += "<div class='jin-list " + backgroundColor + "' data-obj='" + JSON.stringify(item) + "' id='case" + item.id + "'>";
         cells += '<div class="criminal-left">' + '<img src="' + classifyImg + '"/></div>';
         cells += '<div class="criminal-right">';
         cells += '<span>' + item.time + '</span>在';
-        cells += '<span>' + item.place + '</span>发生';
+        cells += '<span title='+item.place+'>' + place + '</span>发生';
         cells += '<span>' + item.type + '</span>';
         cells += '</div>';
         cells += '</div>';

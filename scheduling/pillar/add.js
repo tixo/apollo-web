@@ -4,8 +4,8 @@ define(function (require, exports, module) {
     });
     
     $('#save').on('click',function(){
-        if($("#policeForm").valid()){
-            var params = $.formToJson($("#policeForm").serialize());
+        if($("#pillarForm").valid()){
+            var params = $.formToJson($("#pillarForm").serialize());
             params.department =  $("#departmentId").find("option:selected").text();
             save(params);
         }

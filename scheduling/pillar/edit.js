@@ -4,14 +4,14 @@ define(function (require, exports, module) {
     var policeValidation = require('./formValidate');
     policeValidation.initValidation();
     $('#save').on('click',function(){
-        if($("#policeForm").valid()){
+        if($("#pillarForm").valid()){
             debugger;
-            var params = $.formToJson($("#policeForm").serialize());
+            var params = $.formToJson($("#pillarForm").serialize());
             params.id=id;
             params.department =  $("#departmentId").find("option:selected").text();
             update(params);
         }
-    })
+    });
 
     function update(params) {
         seajs.use('../app/common/ajax', function (ajax) {

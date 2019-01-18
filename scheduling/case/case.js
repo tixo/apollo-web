@@ -178,6 +178,7 @@ define(function (require, exports, module) {
     filters: []
   }, {
     title: '案件类型',
+    sortable: 'custom',
     key: 'categoryName'
   }, {
     title: '报警时间',
@@ -187,9 +188,14 @@ define(function (require, exports, module) {
     title: '报警人',
     key: 'name'
   }, {
-    title: '处警单位',
-    key: 'disposeName'
+    title: '警情位置',
+    key: 'alarmPosition'
   }, {
+    title: '报警内容',
+    key: 'detail'
+  }
+  
+  /*{
     title: '处置情况',
     key: 'result',
     render: (h, params) => {
@@ -206,7 +212,8 @@ define(function (require, exports, module) {
       }
       return target;
     }
-  }];
+  }*/
+];
 
     //模块默认初始化方法
   function initialization() {

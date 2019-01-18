@@ -44,7 +44,8 @@ define(function (require, exports, module) {
 				}
 			});
 		}
-
+		console.log(yAxis);
+		console.log(series);
 		return {
 			yAxis: yAxis,
 			series: series
@@ -52,47 +53,44 @@ define(function (require, exports, module) {
 	}
 
 	function getConfig(data) {
-
+		
 		return {
 			tooltip: {
 				trigger: 'axis'
 			},
 			legend: {
-				data: ['案发小区TOP5']
+				data: ['案发区域TOP5']
 			},
 			toolbox: {
 				show: false,
-				feature: {
-					mark: {
-						show: true
-					},
-					dataView: {
-						show: true,
-						readOnly: false
-					},
-					magicType: {
-						show: true,
-						type: ['line', 'bar']
-					},
-					restore: {
-						show: true
-					},
-					saveAsImage: {
-						show: true
-					}
+				feature : {
+					mark : {show: true},
+					dataView : {show: true, readOnly: false},
+					magicType : {show: true, type: ['line', 'bar']},
+					restore : {show: true},
+					saveAsImage : {show: true}
 				}
 			},
 			calculable: true,
 			xAxis: [{
-				type: 'value',
-				boundaryGap: [0, 0.01]
-			}],
-			yAxis: [{
 				type: 'category',
+				axisLabel: {
+					interval: 0,
+					rotate: 30,//倾斜度 -90 至 90 默认为0  
+					margin: 2,
+					textStyle: {
+						fontWeight: "bolder",
+						color: "#000000"
+					}
+				},
 				data: data.yAxis
 			}],
+			// ,data: data.series
+			yAxis: [{
+				type: 'value'
+			}],
 			series: [{
-				name: '案发区域TOP5',
+				name: '案发小区TOP5',
 				type: 'bar',
 				data: data.series
 			}]

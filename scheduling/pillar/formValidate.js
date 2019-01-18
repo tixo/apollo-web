@@ -5,7 +5,7 @@ define(['validate', 'validation', 'localization', 'utilityForm'], function (requ
             window.location.href = './index.html';
         });
         //表单验证
-        $("#policeForm").validate({
+        $("#pillarForm").validate({
             debug: false, //调试模式，即使验证成功也不会跳转到目标页面
             focusInvalid: false, //当为false时，验证无效时，没有焦点响应  
             onkeyup: false,
@@ -19,22 +19,17 @@ define(['validate', 'validation', 'localization', 'utilityForm'], function (requ
                     required: true,
                     maxlength: 512
                 },
+                mapLongitude:{
+                    required: true
+                },
+                mapDimension:{
+                    required: true
+                },                
                 params: {
                     maxlength: 256
                 },
                 remark: {
                     maxlength: 256
-                }
-            },
-            messages: {
-                no: {
-                    required: "警员编号不能为空！"
-                },
-                name: {
-                    required: "警员姓名不能为空！"
-                },
-                unit: {
-                    required: "所属单位不能为空！"
                 }
             }
         });

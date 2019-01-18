@@ -98,7 +98,7 @@ define(function (require, exports, module) {
     filters: []
   }, {
     title: '位置',
-    key: 'name',
+    key: 'address',
     sortable: 'custom'
   },
   {
